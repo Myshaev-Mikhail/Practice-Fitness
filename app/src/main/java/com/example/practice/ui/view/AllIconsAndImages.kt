@@ -1,4 +1,4 @@
-package com.example.practice
+package com.example.practice.ui.view
 
 import CommunityOff
 import CommunityOn
@@ -22,6 +22,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.practice.R
 import io.github.composegears.valkyrie.Add
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Attachment
@@ -836,6 +837,38 @@ fun AllIconsAndImages() {
 
             Image(
                 painter = painterResource(id = R.mipmap.ic_cup),
+                contentDescription = "woman",
+                modifier = Modifier
+                    .size(65.dp)
+                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+            )
+        }
+        Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
+            Image(
+                painter = painterResource(id = R.mipmap.beautiful_young_sporty_man_training_workout_gym),
+                contentDescription = "woman",
+                modifier = Modifier
+                    .size(65.dp)
+                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+            )
+
+            Image(
+                painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym),
+                contentDescription = "woman",
+                modifier = Modifier
+                    .size(65.dp)
+                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+            )
+
+            Image(
+                painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym_3),
+                contentDescription = "woman",
+                modifier = Modifier
+                    .size(65.dp)
+                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+            )
+            Image(
+                painter = painterResource(id = R.mipmap.beautiful_young_sporty_man_training_workout_gym_3),
                 contentDescription = "woman",
                 modifier = Modifier
                     .size(65.dp)
