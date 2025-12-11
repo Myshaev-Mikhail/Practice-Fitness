@@ -11,8 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.ui.font.LeagueSpartan
 import com.example.practice.ui.font.Poppins
 
 @Composable
@@ -22,6 +24,11 @@ fun AppOutlinedButton(
     backgroundColor: Color = Color.Black.copy(alpha = 0.2f),
     borderColor: Color = Color.White,
     textColor: Color = Color.White,
+    textStyle: TextStyle = TextStyle(
+        fontFamily = LeagueSpartan,
+        fontSize = 14.sp,
+        fontWeight = Medium
+    ),
     onClick: () -> Unit
 ) {
     Button(
@@ -36,11 +43,7 @@ fun AppOutlinedButton(
             text = text,
             color = textColor,
             modifier = Modifier.padding(vertical = 12.dp),
-            style = TextStyle(
-                fontFamily = Poppins,
-                fontSize = 24.sp,
-                fontWeight = Bold
-            )
+            style = textStyle
         )
     }
 }

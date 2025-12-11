@@ -7,9 +7,11 @@ import NutritionOn
 import ProgressOn
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,15 +27,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice.R
+import com.example.practice.ui.font.LeagueSpartan
 import com.example.practice.ui.font.Poppins
+import com.example.practice.ui.view.AppButton
+import com.example.practice.ui.view.AppOutlinedButton
+import com.example.practice.ui.view.AppToggleButton
+import com.example.practice.ui.view.BottomNavigation
 import io.github.composegears.valkyrie.Add
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Attachment
@@ -108,6 +117,7 @@ import io.github.composegears.valkyrie.StarDefault
 import io.github.composegears.valkyrie.StarVariant
 import io.github.composegears.valkyrie.StartSmallOff
 import io.github.composegears.valkyrie.StartSmallOn
+import io.github.composegears.valkyrie.Store
 import io.github.composegears.valkyrie.SupportAgent
 import io.github.composegears.valkyrie.Telegram
 import io.github.composegears.valkyrie.TimeDefault
@@ -122,7 +132,7 @@ import io.github.composegears.valkyrie.WorkOut
 import io.github.composegears.valkyrie.WorkoutOff
 import io.github.composegears.valkyrie.WorkoutOn
 
-@Preview(widthDp = 1000, heightDp = 1500)
+@Preview(widthDp = 700, heightDp = 1500)
 @Composable
 fun IconsAndImages() {
     Column(
@@ -150,7 +160,7 @@ fun IconsAndImages() {
                     )
                 )
             }
-            Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
+            Row(modifier = Modifier.padding(4.dp)) {
                 Column(modifier = Modifier.padding(8.dp)) {
                     Image(
                         painter = rememberVectorPainter(image = ValkyrieIcons.CheckProgress1),
@@ -806,11 +816,251 @@ fun IconsAndImages() {
                     )
                 )
             }
-            Row() {
-                Column {
+            Row(
+                modifier = Modifier.padding(4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.padding(4.dp)) {
+                    AppButton(
+                        modifier = Modifier.width(156.dp),
+                        text = "Log In",
+                        buttonColor = colorResource(R.color.white),
+                        textColor = colorResource(R.color.purple)
+                    ) { }
+                    AppButton(
+                        modifier = Modifier.width(156.dp),
+                        text = "Log In",
+                        buttonColor = colorResource(R.color.black),
+                        textColor = colorResource(R.color.purple)
+                    ) { }
+                }
+                Column(modifier = Modifier.padding(4.dp)) {
+                    AppButton(
+                        modifier = Modifier.width(156.dp),
+                        text = "Log In",
+                        buttonColor = colorResource(R.color.lime_green),
+                        textColor = colorResource(R.color.purple)
+                    ) { }
+                    AppButton(
+                        modifier = Modifier.width(156.dp),
+                        text = "Log In",
+                        buttonColor = colorResource(R.color.purple),
+                        textColor = colorResource(R.color.white)
+                    ) { }
+                }
 
+                Spacer(modifier = Modifier.padding(12.dp))
+
+                Column(modifier = Modifier.padding(4.dp)) {
+                    AppButton(
+                        modifier = Modifier.width(100.dp).height(25.dp),
+                        text = "Main Button",
+                        buttonColor = colorResource(R.color.white),
+                        textColor = colorResource(R.color.purple)
+                    ) { }
+
+                    Spacer(modifier = Modifier.padding(4.dp))
+
+                    AppButton(
+                        modifier = Modifier.width(100.dp).height(25.dp),
+                        text = "Main Button",
+                        buttonColor = colorResource(R.color.lime_green),
+                        textColor = colorResource(R.color.black)
+                    ) { }
+                }
+
+                Column(modifier = Modifier.padding(4.dp)) {
+                    AppButton(
+                        modifier = Modifier.width(100.dp).height(25.dp),
+                        text = "Main Button",
+                        buttonColor = colorResource(R.color.lime_green),
+                        textColor = colorResource(R.color.black)
+                    ) { }
+
+                    Spacer(modifier = Modifier.padding(4.dp))
+
+                    AppButton(
+                        modifier = Modifier
+                            .width(100.dp).height(25.dp)
+                            .border(
+                                width = 2.dp,
+                                color = colorResource(R.color.lime_green),
+                                shape = RoundedCornerShape(28.dp)
+                            ),
+                        text = "Main Button",
+                        textStyle = TextStyle(
+                            fontFamily = LeagueSpartan,
+                            fontSize = 10.sp,
+                            fontWeight = Normal
+                        ),
+                        buttonColor = colorResource(R.color.black),
+                        textColor = colorResource(R.color.white)
+                    ) { }
+                }
+
+                Spacer(modifier = Modifier.padding(12.dp))
+
+                Column(modifier = Modifier.padding(4.dp)) {
+                    AppButton(
+                        modifier = Modifier.width(100.dp).height(25.dp),
+                        text = "Main Button",
+                        buttonColor = colorResource(R.color.white),
+                        textColor = colorResource(R.color.purple),
+                        image = rememberVectorPainter(image = ValkyrieIcons.Store),
+                        imageSize = 14.dp
+                    ) { }
+
+                    Spacer(modifier = Modifier.padding(4.dp))
+
+                    AppButton(
+                        modifier = Modifier.width(100.dp).height(25.dp),
+                        text = "Main Button",
+                        buttonColor = colorResource(R.color.lime_green),
+                        textColor = colorResource(R.color.black),
+                        image = rememberVectorPainter(image = ValkyrieIcons.Store),
+                        imageSize = 14.dp,
+                        imageColor = colorResource(R.color.black)
+                    ) { }
                 }
             }
+            Box(
+                modifier = Modifier
+                    .background(colorResource(R.color.purple), shape = RoundedCornerShape(16.dp))
+                    .padding(start = 4.dp, top = 0.dp, end = 4.dp, bottom = 0.dp)
+            ) {
+                Text(
+                    modifier = Modifier.padding(4.dp),
+                    text = "Menu Switch On / Off ",
+                    color = colorResource(R.color.lime_green),
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
+            }
+
+            Row(
+                modifier = Modifier.padding(4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    AppToggleButton(
+                        text = "Lose Weight",
+                        textStyle = TextStyle(
+                            fontFamily = LeagueSpartan,
+                            fontSize = 10.sp,
+                            fontWeight = Normal
+                        ),
+                        isSelected = false,
+                        selectedColor = colorResource(R.color.black),
+                        unselectedColor = colorResource(R.color.white),
+                        textSelectedColor = colorResource(R.color.black),
+                        onClick = { },
+                        modifier = Modifier.width(110.dp),
+                        circleSize = 20.dp,
+                        buttonColor = colorResource(R.color.white)
+                    )
+                    AppToggleButton(
+                        text = "Lose Weight",
+                        textStyle = TextStyle(
+                            fontFamily = LeagueSpartan,
+                            fontSize = 10.sp,
+                            fontWeight = Normal
+                        ),
+                        isSelected = true,
+                        selectedColor = colorResource(R.color.lime_green),
+                        unselectedColor = colorResource(R.color.white),
+                        textSelectedColor = colorResource(R.color.white),
+                        onClick = { },
+                        modifier = Modifier.width(110.dp),
+                        circleSize = 20.dp,
+                        buttonColor = colorResource(R.color.black)
+                    )
+                }
+
+                Spacer(modifier = Modifier.padding(20.dp))
+
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Row(modifier = Modifier.padding(4.dp)) {
+                        AppButton(
+                            text = "FAQ",
+                            modifier = Modifier.width(140.dp).height(20.dp),
+                            buttonColor = colorResource(R.color.lime_green),
+                            textColor = colorResource(R.color.black)
+                        ) { }
+                        Spacer(modifier = Modifier.width(24.dp))
+                        AppButton(
+                            text = "Contact Us",
+                            modifier = Modifier.width(140.dp).height(20.dp),
+                            buttonColor = colorResource(R.color.white),
+                            textColor = colorResource(R.color.purple)
+                        ) { }
+                    }
+                    Row(modifier = Modifier.padding(4.dp)) {
+                        AppButton(
+                            text = "General",
+                            modifier = Modifier.width(98.dp).height(20.dp),
+                            buttonColor = colorResource(R.color.lime_green),
+                            textColor = colorResource(R.color.black)
+                        ) { }
+                        Spacer(modifier = Modifier.width(4.dp))
+                        AppButton(
+                            text = "Account",
+                            modifier = Modifier.width(98.dp).height(20.dp),
+                            buttonColor = colorResource(R.color.white),
+                            textColor = colorResource(R.color.purple)
+                        ) { }
+                        Spacer(modifier = Modifier.width(4.dp))
+                        AppButton(
+                            text = "Services",
+                            modifier = Modifier.width(98.dp).height(20.dp),
+                            buttonColor = colorResource(R.color.white),
+                            textColor = colorResource(R.color.purple)
+                        ) { }
+                    }
+                    Spacer(modifier = Modifier.height(4.dp))
+                    AppButton(
+                        text = "Search",
+                        modifier = Modifier.width(304.dp).height(35.dp),
+                        buttonColor = colorResource(R.color.white),
+                        textColor = colorResource(R.color.black)
+                    ) { }
+                }
+
+                Spacer(modifier = Modifier.padding(20.dp))
+
+                Box(
+                    modifier = Modifier.padding(8.dp),
+                    contentAlignment = Alignment.Center
+                ){
+                    Box(
+                        modifier = Modifier
+                            .background(colorResource(R.color.purple), shape = RoundedCornerShape(20.dp))
+                            .width(100.dp)
+                            .height(80.dp),
+                    )
+                    AppOutlinedButton(
+                        text = "NEW B UTTON",
+                        textColor = colorResource(R.color.white),
+                        modifier = Modifier.width(140.dp)
+                    ) { }
+                }
+            }
+            Text(
+                modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                text = "Bottom Navigation",
+                color = colorResource(R.color.lime_green),
+                style = TextStyle(
+                    fontFamily = Poppins,
+                    fontSize = 12.sp,
+                    fontWeight = Bold
+                )
+            )
+            Box(modifier = Modifier.width(150.dp)) {
+
+            }
+            BottomNavigation(modifier = Modifier)
         }
 
         Spacer(modifier = Modifier.padding(16.dp))
