@@ -1,6 +1,7 @@
 package io.github.composegears.valkyrie
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
@@ -18,7 +19,7 @@ val ValkyrieIcons.SearchOn: ImageVector
             viewportWidth = 44f,
             viewportHeight = 42f
         ).apply {
-            path(fill = SolidColor(Color.White)) {
+            path(fill = SolidColor(Color.White), pathFillType = PathFillType.EvenOdd) {
                 moveTo(34f, 30.446f)
                 lineTo(42.48f, 35.935f)
                 curveTo(43.236f, 36.424f, 43.76f, 37.184f, 43.936f, 38.047f)
@@ -39,8 +40,6 @@ val ValkyrieIcons.SearchOn: ImageVector
                 curveTo(32.796f, 30.34f, 32.995f, 30.27f, 33.205f, 30.252f)
                 curveTo(33.485f, 30.227f, 33.765f, 30.296f, 34f, 30.446f)
                 close()
-            }
-            path(fill = SolidColor(Color(0xFF212020))) {
                 moveTo(4.631f, 17.5f)
                 arcToRelative(13.895f, 12.833f, 0f, isMoreThanHalf = true, isPositiveArc = false, 27.789f, 0f)
                 arcToRelative(13.895f, 12.833f, 0f, isMoreThanHalf = true, isPositiveArc = false, -27.789f, 0f)

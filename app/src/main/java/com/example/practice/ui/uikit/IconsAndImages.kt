@@ -132,7 +132,7 @@ import io.github.composegears.valkyrie.WorkOut
 import io.github.composegears.valkyrie.WorkoutOff
 import io.github.composegears.valkyrie.WorkoutOn
 
-@Preview(widthDp = 700, heightDp = 1500)
+@Preview(widthDp = 700, heightDp = 1200)
 @Composable
 fun IconsAndImages() {
     Column(
@@ -1454,137 +1454,6 @@ fun IconsAndImages() {
                             .padding(4.dp)
                     )
                 }
-            }
-        }
-
-
-        Column {
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-                    .background(colorResource(id = R.color.purple))
-                    .width(640.dp)
-                    .height(60.dp),
-                contentAlignment = Alignment.CenterStart
-            ) {
-                Text(
-                    modifier = Modifier.padding(start = 24.dp),
-                    text = "Additional Elements",
-                    color = colorResource(R.color.white),
-                    style = TextStyle(
-                        fontFamily = Poppins,
-                        fontSize = 24.sp,
-                        fontWeight = Bold
-                    )
-                )
-            }
-            Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
-                Image(
-                    painter = painterResource(id = R.mipmap.ic_group),
-                    contentDescription = "group",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.woman_working_out_gym_2_1),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_1),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.woman_helping_man_gym_1),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.woman_helping_man_gym_bike),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-
-            }
-            Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
-                Image(
-                    painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_4),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_2),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.ic_logo),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.ic_cup),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-            }
-            Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
-                Image(
-                    painter = painterResource(id = R.mipmap.beautiful_young_sporty_man_training_workout_gym),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-
-                Image(
-                    painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym_3),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
-                Image(
-                    painter = painterResource(id = R.mipmap.beautiful_young_sporty_man_training_workout_gym_3),
-                    contentDescription = "woman",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-                )
             }
         }
     }
