@@ -1,5 +1,6 @@
 package com.example.practice.ui.view
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -22,6 +24,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
@@ -32,6 +36,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.example.practice.R
 import com.example.practice.ui.font.Poppins
+import io.github.composegears.valkyrie.Arrow
+import io.github.composegears.valkyrie.ValkyrieIcons
 import kotlin.math.roundToInt
 
 @Composable
@@ -139,12 +145,19 @@ fun WeightPicker(
             }
         }
 
-        Spacer(Modifier.height(20.dp))
+        Image(
+            painter = rememberVectorPainter(ValkyrieIcons.Arrow),
+            contentDescription = null,
+            modifier = Modifier
+                .size(30.dp)
+                .padding(top = 8.dp)
+                .rotate(90f)
+        )
 
         Row(
             verticalAlignment = Alignment.Bottom,
             horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.padding(top = 20.dp)
+            modifier = Modifier.padding(top = 8.dp)
         ) {
             Text(
                 text = String.format("%.1f", currentWeight),
@@ -156,7 +169,7 @@ fun WeightPicker(
                 )
             )
 
-            Spacer(Modifier.width(6.dp))
+            Spacer(Modifier.width(4.dp))
 
             Text(
                 text = "Kg",

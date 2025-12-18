@@ -21,6 +21,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,8 +29,12 @@ import com.example.practice.R
 import com.example.practice.ui.font.Poppins
 import com.example.practice.ui.view.BadgeItem
 import com.example.practice.ui.view.ExerciseCard
+import com.example.practice.ui.view.HeightPicker
+import com.example.practice.ui.view.ProfileCard
+import com.example.practice.ui.view.ProfileHorizontalCard
 import com.example.practice.ui.view.ProfileStatsCard
 import com.example.practice.ui.view.StatsCard
+import com.example.practice.ui.view.StepsChartCard
 import com.example.practice.ui.view.WeightPicker
 import io.github.composegears.valkyrie.NotificationOff
 import io.github.composegears.valkyrie.PlayOff
@@ -38,9 +43,10 @@ import io.github.composegears.valkyrie.Property1NotificationOn
 import io.github.composegears.valkyrie.SearchOff
 import io.github.composegears.valkyrie.TimeDefault
 import io.github.composegears.valkyrie.ValkyrieIcons
+import io.github.composegears.valkyrie.WomanGender
 import io.github.composegears.valkyrie.WorkOut
 
-@Preview(widthDp = 1050, heightDp = 1400)
+@Preview(widthDp = 1450, heightDp = 2500)
 @Composable
 fun AdditionalElements() {
     Column {
@@ -256,11 +262,216 @@ fun AdditionalElements() {
                     viewsCount = "1,254"
                 )
             }
+
+            Spacer(modifier = Modifier.width(20.dp))
+
+            Column(modifier = Modifier.padding(4.dp)) {
+                ProfileCard(
+                    modifier = Modifier.size(width = 300.dp, height = 240.dp),
+                    avatar = painterResource(id = R.mipmap.ic_group1),
+                    name = "Madison Smith",
+                    email = "madisons@example.com",
+                    birthday = "April 1st",
+                    weightKg = 75,
+                    age = 28,
+                    heightMeters = 1.65f
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                ProfileHorizontalCard(
+                    modifier = Modifier.size(width = 310.dp, height = 140.dp),
+                    avatar = painterResource(R.mipmap.ic_group1),
+                    name = "Madison",
+                    age = 28,
+                    genderSymbol = rememberVectorPainter(image = ValkyrieIcons.WomanGender),
+                    weightKg = 75,
+                    heightMeters = 1.65f
+                )
+            }
+
+            Box(
+                modifier = Modifier
+                    .padding(start = 8.dp, top = 12.dp, end = 8.dp)
+                    .width(2.dp)
+                    .height(400.dp)
+                    .background(colorResource(R.color.lime_green))
+            )
+
+            Column(modifier = Modifier.padding(4.dp)) {
+                Text(
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                    text = "Graphs",
+                    color = colorResource(R.color.lime_green),
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                StepsChartCard(
+                    title = "Steps",
+                    yLabels = listOf(170, 165, 155, 150),
+                    months = listOf("Jan", "Feb", "Mar", "Apr"),
+                    values = listOf(0.65f, 0.85f, 0.55f, 0.60f)
+                )
+
+                WeightPicker(modifier = Modifier.width(310.dp))
+            }
+
+            Spacer(modifier = Modifier.width(20.dp))
+
+            HeightPicker()
         }
 
-
+        Box(
+            modifier = Modifier
+                .padding(start = 28.dp, top = 28.dp, end = 8.dp, bottom = 28.dp)
+                .width(990.dp)
+                .height(2.dp)
+                .background(colorResource(R.color.lime_green))
+        )
 
         Row(modifier = Modifier.padding(4.dp)) {
+
+            Column(modifier = Modifier.padding(4.dp)) {
+                Text(
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                    text = "Calendar",
+                    color = colorResource(R.color.lime_green),
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
+
+                Box(
+                    modifier = Modifier
+                    .padding(8.dp)
+                    .size(300.dp)
+                ) {
+
+
+
+
+                }
+
+                Text(
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                    text = "App Logo",
+                    color = colorResource(R.color.lime_green),
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Box {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.mipmap.ic_logo),
+                            contentDescription = "woman",
+                            modifier = Modifier
+                                .width(270.dp)
+                                .height(120.dp)
+                                .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                        )
+                        Row {
+                            Text(
+                                text = "FIT",
+                                color = colorResource(R.color.lime_green),
+                                style = TextStyle(
+                                    fontFamily = Poppins,
+                                    fontSize = 80.sp,
+                                    fontWeight = Bold
+                                )
+                            )
+                            Text(
+                                text = "BODY",
+                                color = colorResource(R.color.lime_green),
+                                style = TextStyle(
+                                    fontFamily = Poppins,
+                                    fontSize = 80.sp,
+                                    fontWeight = Normal
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .padding(start = 28.dp, top = 12.dp, end = 8.dp)
+                    .width(2.dp)
+                    .height(650.dp)
+                    .background(colorResource(R.color.lime_green))
+            )
+
+            Column(modifier = Modifier.padding(4.dp)) {
+                Text(
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                    text = "CTA",
+                    color = colorResource(R.color.lime_green),
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
+
+                Box(
+                    modifier = Modifier.width(650.dp).height(580.dp)
+                )
+
+            }
+
+            Box(
+                modifier = Modifier
+                    .padding(start = 28.dp, top = 12.dp, end = 8.dp)
+                    .width(2.dp)
+                    .height(650.dp)
+                    .background(colorResource(R.color.lime_green))
+            )
+
+            Column(modifier = Modifier.padding(4.dp)) {
+                Text(
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                    text = "Input Fields",
+                    color = colorResource(R.color.lime_green),
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+        }
+        Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
             Image(
                 painter = painterResource(id = R.mipmap.ic_group),
                 contentDescription = "group",
@@ -300,10 +511,6 @@ fun AdditionalElements() {
                     .size(65.dp)
                     .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
             )
-
-
-        }
-        Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
             Image(
                 painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_4),
                 contentDescription = "woman",
@@ -368,6 +575,5 @@ fun AdditionalElements() {
                     .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
             )
         }
-        WeightPicker()
     }
 }
