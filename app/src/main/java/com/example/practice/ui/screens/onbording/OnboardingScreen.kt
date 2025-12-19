@@ -9,6 +9,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -17,12 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import com.example.practice.R
-import com.example.practice.ui.view.AppOutlinedButton
+import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
-import io.github.composegears.valkyrie.ValkyrieIcons
+import io.github.composegears.valkyrie.Icons
 import kotlinx.coroutines.launch
 
 @Composable
@@ -56,12 +55,12 @@ fun OnboardingScreen(onFinish: () -> Unit) {
         ) {
             Text(
                 "Skip",
-                color = colorResource(id = R.color.lime_green),
+                color = MaterialTheme.colorScheme.secondary,
                 modifier = Modifier.padding(end = 4.dp)
             )
 
             Image(
-                painter = rememberVectorPainter(image = ValkyrieIcons.Arrow),
+                painter = rememberVectorPainter(image = Icons.Arrow),
                 contentDescription = "skip",
                 modifier = Modifier
                     .graphicsLayer(scaleX = -1f)
