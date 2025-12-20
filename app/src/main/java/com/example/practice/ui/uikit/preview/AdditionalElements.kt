@@ -22,6 +22,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,14 +30,19 @@ import androidx.compose.ui.unit.sp
 import com.example.practice.R
 import com.example.practice.ui.uikit.theme.Poppins
 import com.example.practice.ui.uikit.components.BadgeItem
+import com.example.practice.ui.uikit.components.CyclingChallengeCard
 import com.example.practice.ui.uikit.components.ExerciseCard
 import com.example.practice.ui.uikit.components.HeightPicker
+import com.example.practice.ui.uikit.components.LogIn
 import com.example.practice.ui.uikit.components.ProfileCard
 import com.example.practice.ui.uikit.components.ProfileHorizontalCard
 import com.example.practice.ui.uikit.components.ProfileStatsCard
+import com.example.practice.ui.uikit.components.Search
+import com.example.practice.ui.uikit.components.SignUp
 import com.example.practice.ui.uikit.components.StatsCard
 import com.example.practice.ui.uikit.components.StepsChartCard
 import com.example.practice.ui.uikit.components.WeightPicker
+import com.example.practice.ui.uikit.components.WorkoutCard
 import io.github.composegears.valkyrie.BulbOn
 import io.github.composegears.valkyrie.NotificationOff
 import io.github.composegears.valkyrie.PlayOff
@@ -48,7 +54,7 @@ import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.WomanGender
 import io.github.composegears.valkyrie.WorkOut
 
-@Preview(widthDp = 1450, heightDp = 2500)
+@Preview(widthDp = 2450, heightDp = 3500)
 @Composable
 fun AdditionalElements() {
     Column {
@@ -432,8 +438,39 @@ fun AdditionalElements() {
                 )
 
                 Box(
-                    modifier = Modifier.width(650.dp).height(580.dp)
-                )
+                    modifier = Modifier.width(850.dp).height(580.dp)
+                ) {
+                    Row {
+                        Column {
+                            WorkoutCard(modifier = Modifier.width(400.dp))
+                            Spacer(modifier = Modifier.height(8.dp))
+                            CyclingChallengeCard(
+                                modifier = Modifier
+                                    .width(400.dp),
+                                background = MaterialTheme.colorScheme.onSecondary,
+                                title = "Weekly \n" + "Challenge",
+                                styleTitle = TextStyle(
+                                    fontFamily = Poppins,
+                                    fontWeight = Medium,
+                                    fontSize = 24.sp,
+                                    color = MaterialTheme.colorScheme.secondary
+                                ),
+                                description = "Plank With Hip Twist",
+                                styleDescription = TextStyle(
+                                    fontFamily = Poppins,
+                                    fontWeight = Normal,
+                                    fontSize = 12.sp,
+                                    color = MaterialTheme.colorScheme.onPrimary
+                                )
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Column {
+                            CyclingChallengeCard(modifier = Modifier.width(400.dp))
+                        }
+
+                    }
+                }
 
             }
 
@@ -459,7 +496,41 @@ fun AdditionalElements() {
 
                 Spacer(modifier = Modifier.height(12.dp))
 
+                Text(
+                    modifier = Modifier.padding(start = 12.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                    text = "Search",
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
 
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Search(modifier = Modifier.width(350.dp))
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Text(
+                    modifier = Modifier.padding(start = 12.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                    text = "Password & Date Iput Feild",
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                LogIn(modifier = Modifier.width(350.dp))
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                //SignUp(modifier = Modifier.padding(12.dp))
             }
 
 
