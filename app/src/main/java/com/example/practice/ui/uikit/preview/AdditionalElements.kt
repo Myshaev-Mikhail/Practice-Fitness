@@ -37,12 +37,14 @@ import com.example.practice.ui.uikit.components.LogIn
 import com.example.practice.ui.uikit.components.ProfileCard
 import com.example.practice.ui.uikit.components.ProfileHorizontalCard
 import com.example.practice.ui.uikit.components.ProfileStatsCard
+import com.example.practice.ui.uikit.components.RecipeCard
 import com.example.practice.ui.uikit.components.Search
 import com.example.practice.ui.uikit.components.SignUp
 import com.example.practice.ui.uikit.components.StatsCard
 import com.example.practice.ui.uikit.components.StepsChartCard
 import com.example.practice.ui.uikit.components.WeightPicker
 import com.example.practice.ui.uikit.components.WorkoutCard
+import com.example.practice.ui.uikit.components.WorkoutPreviewCard
 import io.github.composegears.valkyrie.BulbOn
 import io.github.composegears.valkyrie.NotificationOff
 import io.github.composegears.valkyrie.PlayOff
@@ -438,7 +440,7 @@ fun AdditionalElements() {
                 )
 
                 Box(
-                    modifier = Modifier.width(850.dp).height(580.dp)
+                    modifier = Modifier.width(850.dp).height(680.dp)
                 ) {
                     Row {
                         Column {
@@ -461,12 +463,38 @@ fun AdditionalElements() {
                                     fontWeight = Normal,
                                     fontSize = 12.sp,
                                     color = MaterialTheme.colorScheme.onPrimary
-                                )
+                                ),
+                                image = painterResource(id = R.mipmap.woman_helping_man_gym_1_4)
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            RecipeCard(
+                                modifier = Modifier.width(360.dp),
+                                badgeText = "Recipe Of The Day",
+                                title = "Carrot And Orange Smoothie",
+                                timeText = "10 Minutes",
+                                caloriesText = "70 Cal",
+                                mainImage = painterResource(id = R.mipmap.woman_helping_man_gym_1_1),
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            WorkoutPreviewCard(
+                                modifier = Modifier.width(150.dp),
+                                title = "Loop Band Exercises",
+                                durationText = "45 Minutes",
+                                exercisesText = "5 Exercises",
+                                image = painterResource(id = R.mipmap.woman_helping_man_gym_1_2),
                             )
                         }
                         Spacer(modifier = Modifier.width(8.dp))
                         Column {
                             CyclingChallengeCard(modifier = Modifier.width(400.dp))
+                            Spacer(modifier = Modifier.height(8.dp))
+                            RecipeCard(
+                                modifier = Modifier.width(360.dp),
+                                badgeText = "dumbbell step up",
+                                timeText = "12 Minutes",
+                                caloriesText = "120 Cal",
+                                mainImage = painterResource(id = R.mipmap.woman_working_out_gym_2_1),
+                            )
                         }
 
                     }
