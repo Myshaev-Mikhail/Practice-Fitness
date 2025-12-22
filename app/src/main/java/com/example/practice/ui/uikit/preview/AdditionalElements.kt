@@ -18,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
@@ -30,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.example.practice.R
 import com.example.practice.ui.uikit.theme.Poppins
 import com.example.practice.ui.uikit.components.BadgeItem
+import com.example.practice.ui.uikit.components.CalendarWidget
 import com.example.practice.ui.uikit.components.CyclingChallengeCard
 import com.example.practice.ui.uikit.components.ExerciseCard
 import com.example.practice.ui.uikit.components.HeightPicker
@@ -49,7 +49,6 @@ import io.github.composegears.valkyrie.BulbOn
 import io.github.composegears.valkyrie.NotificationOff
 import io.github.composegears.valkyrie.PlayOff
 import io.github.composegears.valkyrie.PlayOn
-import io.github.composegears.valkyrie.Property1NotificationOn
 import io.github.composegears.valkyrie.SearchOff
 import io.github.composegears.valkyrie.TimeDefault
 import io.github.composegears.valkyrie.Icons
@@ -217,6 +216,125 @@ fun AdditionalElements() {
                 )
             }
 
+            Column {
+                Text(
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
+                    text = "Оставшиеся картинки",
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontSize = 12.sp,
+                        fontWeight = Bold
+                    )
+                )
+                Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
+                    Image(
+                        painter = painterResource(id = R.mipmap.ic_group),
+                        contentDescription = "group",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.woman_working_out_gym_2_1),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_1),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.woman_helping_man_gym_1),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+                }
+                Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
+                    Image(
+                        painter = painterResource(id = R.mipmap.beautiful_young_sporty_man_training_workout_gym),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym_3),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.beautiful_young_sporty_man_training_workout_gym_3),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+                }
+                Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
+                    Image(
+                        painter = painterResource(id = R.mipmap.woman_helping_man_gym_bike),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_4),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_2),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.ic_logo),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.mipmap.ic_cup),
+                        contentDescription = "woman",
+                        modifier = Modifier
+                            .size(65.dp)
+                            .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
+                    )
+                }
+            }
         }
 
         Box(
@@ -249,9 +367,7 @@ fun AdditionalElements() {
                     rightTitle = "Duration",
                     rightValue = "1hr40m",
                 )
-
                 Spacer(modifier = Modifier.height(12.dp))
-
                 ExerciseCard(
                     modifier = Modifier.size(width = 280.dp, height = 140.dp),
                     title = "Dumbbell Step Up",
@@ -259,9 +375,7 @@ fun AdditionalElements() {
                     durationText = "12 Minutes",
                     levelText = "Medium"
                 )
-
                 Spacer(modifier = Modifier.height(12.dp))
-
                 ProfileStatsCard(
                     modifier = Modifier.size(width = 280.dp, height = 140.dp),
                     avatar = painterResource(id = R.mipmap.ic_group1),
@@ -272,9 +386,7 @@ fun AdditionalElements() {
                     viewsCount = "1,254"
                 )
             }
-
             Spacer(modifier = Modifier.width(20.dp))
-
             Column(modifier = Modifier.padding(4.dp)) {
                 ProfileCard(
                     modifier = Modifier.size(width = 300.dp, height = 240.dp),
@@ -286,9 +398,7 @@ fun AdditionalElements() {
                     age = 28,
                     heightMeters = 1.65f
                 )
-
                 Spacer(modifier = Modifier.height(20.dp))
-
                 ProfileHorizontalCard(
                     modifier = Modifier.size(width = 310.dp, height = 140.dp),
                     avatar = painterResource(R.mipmap.ic_group1),
@@ -319,21 +429,17 @@ fun AdditionalElements() {
                         fontWeight = Bold
                     )
                 )
-
                 Spacer(modifier = Modifier.height(20.dp))
-
                 StepsChartCard(
                     title = "Steps",
                     yLabels = listOf(170, 165, 155, 150),
                     months = listOf("Jan", "Feb", "Mar", "Apr"),
                     values = listOf(0.65f, 0.85f, 0.55f, 0.60f)
                 )
-
                 WeightPicker(modifier = Modifier.width(310.dp))
             }
 
             Spacer(modifier = Modifier.width(20.dp))
-
             HeightPicker()
         }
 
@@ -346,7 +452,6 @@ fun AdditionalElements() {
         )
 
         Row(modifier = Modifier.padding(4.dp)) {
-
             Column(modifier = Modifier.padding(4.dp)) {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
@@ -364,10 +469,9 @@ fun AdditionalElements() {
                     .padding(8.dp)
                     .size(300.dp)
                 ) {
-
-
-
-
+                    CalendarWidget(
+                        modifier = Modifier.width(350.dp)
+                    )
                 }
 
                 Text(
@@ -380,9 +484,7 @@ fun AdditionalElements() {
                         fontWeight = Bold
                     )
                 )
-
                 Spacer(modifier = Modifier.height(12.dp))
-
                 Box {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
@@ -551,130 +653,11 @@ fun AdditionalElements() {
                         fontWeight = Bold
                     )
                 )
-
                 Spacer(modifier = Modifier.height(8.dp))
-
                 LogIn(modifier = Modifier.width(350.dp))
-
                 Spacer(modifier = Modifier.height(8.dp))
-
-                //SignUp(modifier = Modifier.padding(12.dp))
+                SignUp(modifier = Modifier.width(350.dp))
             }
-
-
-
-
-
-
-
-
-
-
-
-        }
-        Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
-            Image(
-                painter = painterResource(id = R.mipmap.ic_group),
-                contentDescription = "group",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.woman_working_out_gym_2_1),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_1),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.woman_helping_man_gym_1),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.woman_helping_man_gym_bike),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-            Image(
-                painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_4),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.woman_helping_man_gym_1_2),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.ic_logo),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.ic_cup),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-        }
-        Row(modifier = Modifier.padding(start = 4.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)) {
-            Image(
-                painter = painterResource(id = R.mipmap.beautiful_young_sporty_man_training_workout_gym),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym_3),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
-            Image(
-                painter = painterResource(id = R.mipmap.beautiful_young_sporty_man_training_workout_gym_3),
-                contentDescription = "woman",
-                modifier = Modifier
-                    .size(65.dp)
-                    .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
-            )
         }
     }
 }
