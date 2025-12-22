@@ -1,31 +1,29 @@
 package com.example.practice.ui.screens.onbording
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import com.example.practice.R
-import com.example.practice.ui.view.AppOutlinedButton
+import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
-import io.github.composegears.valkyrie.ValkyrieIcons
+import io.github.composegears.valkyrie.Icons
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(onFinish: () -> Unit) {
     val pages = onboardingPages
@@ -48,24 +46,24 @@ fun OnboardingScreen(onFinish: () -> Unit) {
             }
         }
 
-        Row(
+        Button(
             modifier = Modifier
                 .align(alignment = Alignment.TopEnd)
+                .padding(top = 40.dp),
+            onClick = onFinish,
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
         ) {
             Text(
                 "Skip",
-                color = colorResource(id = R.color.lime_green),
-                modifier = Modifier
-                    .padding(top = 48.dp, end = 8.dp)
-                    .clickable { onFinish() }
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier.padding(end = 4.dp)
             )
 
             Image(
-                painter = rememberVectorPainter(image = ValkyrieIcons.Arrow),
+                painter = rememberVectorPainter(image = Icons.Arrow),
                 contentDescription = "skip",
                 modifier = Modifier
                     .graphicsLayer(scaleX = -1f)
-                    .padding(top = 48.dp, start = 16.dp)
             )
         }
 

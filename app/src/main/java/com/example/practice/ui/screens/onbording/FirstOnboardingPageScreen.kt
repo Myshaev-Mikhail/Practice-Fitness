@@ -8,12 +8,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
@@ -21,12 +21,12 @@ import androidx.compose.ui.text.font.FontWeight.Companion.SemiBold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice.R
-import com.example.practice.ui.font.LeagueSpartan
-import com.example.practice.ui.font.Poppins
+import com.example.practice.ui.uikit.theme.LeagueSpartan
+import com.example.practice.ui.uikit.theme.Poppins
 
 @Composable
 fun FirstOnboardingPageScreen(page: OnboardingPage) {
-    Box(modifier = Modifier.fillMaxSize().background(colorResource(id = R.color.lime_green))) {
+    Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.secondary)) {
         Image(
             painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym),
             contentDescription = null,
@@ -36,7 +36,7 @@ fun FirstOnboardingPageScreen(page: OnboardingPage) {
         Column(modifier = Modifier.align(Alignment.Center)) {
             Text(
                 text = "Welcom to",
-                color = colorResource(id = R.color.lime_green),
+                color = MaterialTheme.colorScheme.secondary,
                 style = TextStyle(
                     fontFamily = LeagueSpartan,
                     fontSize = 24.sp,
@@ -52,7 +52,7 @@ fun FirstOnboardingPageScreen(page: OnboardingPage) {
             Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
                 Text(
                     text = "FIT",
-                    color = colorResource(id = R.color.lime_green),
+                    color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
                         fontSize = 36.sp,
@@ -61,7 +61,7 @@ fun FirstOnboardingPageScreen(page: OnboardingPage) {
                 )
                 Text(
                     text = "BODY",
-                    color = colorResource(id = R.color.lime_green),
+                    color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
                         fontSize = 36.sp,
