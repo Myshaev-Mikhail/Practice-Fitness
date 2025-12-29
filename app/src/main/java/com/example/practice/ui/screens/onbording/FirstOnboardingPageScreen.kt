@@ -17,7 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
-import androidx.compose.ui.text.font.FontWeight.Companion.SemiBold
+import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice.R
@@ -25,7 +25,7 @@ import com.example.practice.ui.uikit.theme.LeagueSpartan
 import com.example.practice.ui.uikit.theme.Poppins
 
 @Composable
-fun FirstOnboardingPageScreen(page: OnboardingPage) {
+fun FirstOnboardingPageScreen() {
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.secondary)) {
         Image(
             painter = painterResource(id = R.mipmap.beautiful_young_sporty_woman_training_workout_gym),
@@ -65,7 +65,7 @@ fun FirstOnboardingPageScreen(page: OnboardingPage) {
                     style = TextStyle(
                         fontFamily = Poppins,
                         fontSize = 36.sp,
-                        fontWeight = SemiBold
+                        fontWeight = Normal
                     ),
                     modifier = Modifier.padding(start = 2.dp)
                 )

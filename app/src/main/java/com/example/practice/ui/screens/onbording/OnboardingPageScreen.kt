@@ -11,35 +11,60 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.practice.ui.uikit.theme.Poppins
+import io.github.composegears.valkyrie.Arrow
+import io.github.composegears.valkyrie.Icons
 
 @Composable
 fun OnboardingPageScreen(
     page: OnboardingPage,
     currentPage: Int,
-    totalPages: Int
+    totalPages: Int,
+    onSkip: () -> Unit
 ) {
     Box(Modifier.fillMaxSize()) {
-
         Image(
             painter = painterResource(page.imageRes),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
+
+        if (currentPage != 3) {
+            Button(
+                modifier = Modifier
+                    .align(alignment = Alignment.TopEnd)
+                    .padding(top = 40.dp),
+                onClick = onSkip,
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+            ) {
+                Text(
+                    "Skip",
+                    color = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.padding(end = 4.dp)
+                )
+
+                Image(
+                    painter = rememberVectorPainter(image = Icons.Arrow),
+                    contentDescription = "skip",
+                    modifier = Modifier
+                        .graphicsLayer(scaleX = -1f)
+                )
+            }
+        }
 
         Box(
             modifier = Modifier
@@ -62,21 +87,13 @@ fun OnboardingPageScreen(
                 Text(
                     text = page.title,
                     color = MaterialTheme.colorScheme.onPrimary,
-                    style = TextStyle(
-                        fontFamily = Poppins,
-                        fontSize = 20.sp,
-                        fontWeight = Bold
-                    )
+                    style = MaterialTheme.typography.titleLarge
                 )
 
                 Text(
                     text = page.description,
                     color = MaterialTheme.colorScheme.onPrimary,
-                    style = TextStyle(
-                        fontFamily = Poppins,
-                        fontSize = 20.sp,
-                        fontWeight = Bold
-                    )
+                    style = MaterialTheme.typography.titleLarge
                 )
                 Row(
                     modifier = Modifier
@@ -93,7 +110,7 @@ fun OnboardingPageScreen(
                                 .size(width = 28.dp, height = 4.dp)
                                 .background(
                                     color = if (selected)
-                                        MaterialTheme.colorScheme.onBackground
+                                        MaterialTheme.colorScheme.onPrimary
                                     else
                                         MaterialTheme.colorScheme.primary,
                                     shape = RoundedCornerShape(50)
