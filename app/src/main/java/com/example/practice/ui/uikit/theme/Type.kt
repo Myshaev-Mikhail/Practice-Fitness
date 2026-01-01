@@ -5,6 +5,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.sp
 import com.example.practice.R
 
@@ -43,26 +44,26 @@ val Typography = Typography(
 
     labelSmall = TextStyle(
         fontFamily = LeagueSpartan,
-        fontSize = 10.sp,
-        fontWeight = FontWeight.Normal
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp
     ),
 
     bodyMedium = TextStyle(
         fontFamily = Poppins,
-        fontSize = 13.sp,
-        fontWeight = FontWeight.Medium
+        fontWeight = FontWeight.Medium,
+        fontSize = 13.sp
     ),
 
     titleSmall = TextStyle(
         fontFamily = LeagueSpartan,
-        fontSize = 14.sp,
-        fontWeight = FontWeight.SemiBold
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp
     ),
 
     bodySmall = TextStyle(
         fontFamily = LeagueSpartan,
-        fontSize = 14.sp,
-        fontWeight = FontWeight.Light
+        fontWeight = FontWeight.Light,
+        fontSize = 14.sp
     ),
 
     labelMedium = TextStyle(
@@ -75,5 +76,11 @@ val Typography = Typography(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,
         fontSize = 16.sp
+    ),
+
+    titleLarge = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = Bold,
+        fontSize = 20.sp
     )
 )
