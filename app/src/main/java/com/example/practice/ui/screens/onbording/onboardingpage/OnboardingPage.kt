@@ -1,4 +1,4 @@
-package com.example.practice.ui.screens.onbording
+package com.example.practice.ui.screens.onbording.onboardingpage
 
 import CommunityOn
 import NutritionOn

@@ -1,4 +1,4 @@
-package com.example.practice.ui.screens.onbording
+package com.example.practice.ui.screens.onbording.onboardingpage
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
