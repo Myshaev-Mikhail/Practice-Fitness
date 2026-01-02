@@ -29,12 +29,15 @@ import com.example.practice.ui.uikit.theme.Poppins
 
 @Composable
 fun SignUp(
-    modifier: Modifier
+    email: String,
+    password: String,
+    confirmPassword: String,
+    onEmailChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onConfirmPasswordChange: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var username by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -91,7 +94,7 @@ fun SignUp(
 
         TextField(
             value = email,
-            onValueChange = { email = it },
+            onValueChange = onEmailChange,
             textStyle = TextStyle(
                 fontFamily = Poppins,
                 fontWeight = Normal,
@@ -131,7 +134,7 @@ fun SignUp(
 
         TextField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange = onPasswordChange,
             textStyle = TextStyle(
                 fontFamily = Poppins,
                 fontWeight = Normal,
@@ -172,7 +175,7 @@ fun SignUp(
 
         TextField(
             value = confirmPassword,
-            onValueChange = { confirmPassword = it },
+            onValueChange = onConfirmPasswordChange,
             textStyle = TextStyle(
                 fontFamily = Poppins,
                 fontWeight = Normal,

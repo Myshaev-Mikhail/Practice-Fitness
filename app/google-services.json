@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "438413539038",
+    "project_id": "fitbody-a9fd9",
+    "storage_bucket": "fitbody-a9fd9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438413539038:android:14e45244f0d85376c2744f",
+        "android_client_info": {
+          "package_name": "com.example.practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4LDWoe61-q4qNrGQWDWuISSTjqvYc4zs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

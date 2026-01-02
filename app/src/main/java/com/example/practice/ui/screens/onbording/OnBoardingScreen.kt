@@ -45,7 +45,7 @@ fun OnBoardingScreen(
             }
 
             is OnBoardingSideEffect.NavigateToLogin -> {
-                navController.navigate(FitnessScreen.LogIn.route) {
+                navController.navigate(FitnessScreen.SignIn.route) {
                     popUpTo(FitnessScreen.OnBoarding.route) {
                         inclusive = true
                     }

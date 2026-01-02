@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.practice.ui.screens.login.LogInScreen
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
+import com.example.practice.ui.screens.signin.SignUpScreen
 import com.example.practice.ui.uikit.theme.FitnessTheme
 
 class MainActivity : ComponentActivity() {
@@ -42,7 +43,14 @@ fun NavigationApp(startDestination: String) {
         }
 
         composable(FitnessScreen.LogIn.route) {
-            LogInScreen()
+            LogInScreen(
+                navController = navController
+            )
+        }
+        composable(FitnessScreen.SignIn.route) {
+            SignUpScreen(
+                navController = navController
+            )
         }
     }
 }
@@ -50,4 +58,5 @@ fun NavigationApp(startDestination: String) {
 sealed class FitnessScreen(val route: String) {
     data object OnBoarding : FitnessScreen("onboarding")
     data object LogIn : FitnessScreen("login")
+    data object SignIn : FitnessScreen("signin")
 }
