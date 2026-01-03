@@ -1,4 +1,4 @@
-package com.example.practice.ui.screens.signin.intents
+package com.example.practice.ui.screens.signup.intents
 
 sealed class SignUpAction {
     data class EmailChanged(val value: String) : SignUpAction()

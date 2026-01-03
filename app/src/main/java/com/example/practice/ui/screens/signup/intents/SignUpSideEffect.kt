@@ -1,4 +1,4 @@
-package com.example.practice.ui.screens.signin.intents
+package com.example.practice.ui.screens.signup.intents
 
 sealed class SignUpSideEffect {
     data object Success : SignUpSideEffect()

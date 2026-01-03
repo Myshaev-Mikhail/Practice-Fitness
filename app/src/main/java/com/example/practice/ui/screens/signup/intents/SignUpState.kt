@@ -1,4 +1,4 @@
-package com.example.practice.ui.screens.signin.intents
+package com.example.practice.ui.screens.signup.intents
 
 data class SignUpState(
     val email: String = "",

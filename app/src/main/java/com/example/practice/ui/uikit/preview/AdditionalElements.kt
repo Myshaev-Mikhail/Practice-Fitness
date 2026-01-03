@@ -654,7 +654,7 @@ fun AdditionalElements() {
                     )
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                LogIn(modifier = Modifier.width(350.dp))
+                //LogIn(modifier = Modifier.width(350.dp))
                 Spacer(modifier = Modifier.height(8.dp))
                 //SignUp(modifier = Modifier.width(350.dp))
             }
