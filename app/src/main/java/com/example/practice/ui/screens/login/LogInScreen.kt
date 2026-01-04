@@ -28,7 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.ui.FitnessScreen
+import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.login.intents.LogInAction
 import com.example.practice.ui.screens.login.intents.LogInSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
@@ -120,7 +120,7 @@ fun LogInScreen(
                 text = "Log In",
                 textColor = MaterialTheme.colorScheme.onPrimary
             ) {
-                viewModel.uiAction(LogInAction.LogInClicked)
+                viewModel.uiAction(LogInAction.EmailLogInClicked)
             }
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -142,7 +142,9 @@ fun LogInScreen(
                     modifier = Modifier
                         .padding(8.dp)
                         .size(40.dp)
-
+                        .clickable {
+                            viewModel.uiAction(LogInAction.GoogleLogInClicked, context)
+                        }
                 )
                 Image(
                     painter = rememberVectorPainter(Icons.Facebook),
@@ -170,6 +172,7 @@ fun LogInScreen(
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.outline
                 )
+                Spacer(modifier = Modifier.width(4.dp))
                 Text(
                     text = "Sign Up",
                     style = MaterialTheme.typography.bodySmall,

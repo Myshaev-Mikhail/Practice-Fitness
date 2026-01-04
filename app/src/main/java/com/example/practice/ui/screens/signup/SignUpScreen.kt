@@ -28,7 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.ui.FitnessScreen
+import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.signup.intents.SignUpAction
 import com.example.practice.ui.screens.signup.intents.SignUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
@@ -121,7 +121,7 @@ fun SignUpScreen(
                 text = "Sign Up",
                 textColor = MaterialTheme.colorScheme.onPrimary
             ) {
-                viewModel.uiAction(SignUpAction.SignUpClicked)
+                viewModel.uiAction(SignUpAction.EmailSignUpClicked)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -143,7 +143,9 @@ fun SignUpScreen(
                     modifier = Modifier
                         .padding(8.dp)
                         .size(40.dp)
-
+                        .clickable {
+                            viewModel.uiAction(SignUpAction.GoogleLogInClicked, context)
+                        }
                 )
                 Image(
                     painter = rememberVectorPainter(Icons.Facebook),
