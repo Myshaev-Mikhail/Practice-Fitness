@@ -43,6 +43,10 @@ class LogInViewModel : ViewModel() {
                     launchGoogleSignIn(it)
                 }
             }
+
+            is LogInAction.ForgotPasswordClicked -> {
+                sideEffect.value = LogInSideEffect.ShowForgottenPasswordScreen
+            }
         }
     }
 
@@ -90,5 +94,9 @@ class LogInViewModel : ViewModel() {
                 sideEffect.value = LogInSideEffect.ShowToast("Google login failed")
             }
         }
+    }
+
+    fun clearSideEffect() {
+        sideEffect.value = LogInSideEffect.Empty
     }
 }

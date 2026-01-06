@@ -5,4 +5,5 @@ sealed class LogInAction {
     data class PasswordChanged(val value: String) : LogInAction()
     data object EmailLogInClicked : LogInAction()
     data object GoogleLogInClicked : LogInAction()
+    data object ForgotPasswordClicked : LogInAction()
 }

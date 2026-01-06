@@ -36,28 +36,16 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     ),
 
-    labelLarge = TextStyle(
-        fontFamily = LeagueSpartan,
-        fontWeight = FontWeight.Medium,
-        fontSize = 14.sp
-    ),
-
     labelSmall = TextStyle(
         fontFamily = LeagueSpartan,
         fontWeight = FontWeight.Normal,
         fontSize = 10.sp
     ),
 
-    bodyMedium = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.Medium,
-        fontSize = 13.sp
-    ),
-
-    titleSmall = TextStyle(
+    labelMedium = TextStyle(
         fontFamily = LeagueSpartan,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 14.sp
+        fontWeight = FontWeight.Light,
+        fontSize = 12.sp
     ),
 
     bodySmall = TextStyle(
@@ -66,10 +54,22 @@ val Typography = Typography(
         fontSize = 14.sp
     ),
 
-    labelMedium = TextStyle(
+    titleSmall = TextStyle(
         fontFamily = LeagueSpartan,
-        fontWeight = FontWeight.Light,
-        fontSize = 12.sp
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp
+    ),
+
+    labelLarge = TextStyle(
+        fontFamily = LeagueSpartan,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp
+    ),
+
+    bodyMedium = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 13.sp
     ),
 
     titleMedium = TextStyle(

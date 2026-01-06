@@ -1,6 +1,7 @@
 package com.example.practice.ui.uikit.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,7 @@ fun LogIn(
     password: String,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
+    onForgotPassword: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -80,7 +82,11 @@ fun LogIn(
             text = "Forgot Password?",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary,
-            modifier = Modifier.align(Alignment.End)
+            modifier = Modifier
+                .align(Alignment.End)
+                .clickable {
+                     onForgotPassword()
+                }
         )
     }
 }

@@ -50,12 +50,13 @@ fun SignUpScreen(
     LaunchedEffect(sideEffect) {
         when (sideEffect) {
             is SignUpSideEffect.Success -> {
-                navController.navigate(FitnessScreen.SignUp.route)
-                // TODO
+                navController.navigate(FitnessScreen.SetUp.route)
             }
+
             is SignUpSideEffect.ShowToast -> {
                 Toast.makeText(context, (sideEffect as SignUpSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
             }
+
             else -> Unit
         }
     }
@@ -90,9 +91,13 @@ fun SignUpScreen(
 
             SignUp(
                 modifier = Modifier.fillMaxWidth(),
+                fullName = state.fullName,
                 email = state.email,
                 password = state.password,
                 confirmPassword = state.confirmPassword,
+                onFullNameChange = {
+                    viewModel.uiAction(SignUpAction.FullNameChanged(it))
+                },
                 onEmailChange = {
                     viewModel.uiAction(SignUpAction.EmailChanged(it))
                 },

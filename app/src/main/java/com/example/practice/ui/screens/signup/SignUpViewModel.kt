@@ -25,6 +25,10 @@ class SignUpViewModel : ViewModel() {
 
     fun uiAction(action: SignUpAction, context: Context? = null) {
         when (action) {
+            is SignUpAction.FullNameChanged -> {
+                uiState.value = uiState.value.copy(fullName = action.value)
+            }
+
             is SignUpAction.EmailChanged -> {
                 uiState.value = uiState.value.copy(email = action.value)
             }
@@ -59,7 +63,11 @@ class SignUpViewModel : ViewModel() {
         uiState.value = state.copy(isLoading = true)
 
         viewModelScope.launch {
-            val result = authRepository.signUp(state.email, state.password)
+            val result = authRepository.signUp(
+                email = state.email,
+                password = state.password,
+                fullName = state.fullName
+            )
 
             uiState.value = uiState.value.copy(isLoading = false)
 

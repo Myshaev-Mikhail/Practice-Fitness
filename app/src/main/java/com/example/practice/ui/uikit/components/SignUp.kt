@@ -21,9 +21,11 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SignUp(
+    fullName: String = "",
     email: String,
     password: String,
     confirmPassword: String,
+    onFullNameChange: (String) -> Unit,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onConfirmPasswordChange: (String) -> Unit,
@@ -45,8 +47,8 @@ fun SignUp(
         Spacer(modifier = Modifier.height(4.dp))
 
         BasicTextField(
-            value = username,
-            onValueChange = { username = it },
+            value = fullName,
+            onValueChange = onFullNameChange,
             textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),

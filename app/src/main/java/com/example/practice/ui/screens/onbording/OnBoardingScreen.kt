@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -82,6 +83,7 @@ fun OnBoardingScreen(
             if (state.currentPage == state.totalPages - 1) {
                 AppOutlinedButton(
                     text = "Get Started",
+                    backgroundColor = MaterialTheme.colorScheme.onSecondary,
                     onClick = {
                         viewModel.uiAction(OnboardingAction.Finish)
                     }
@@ -89,6 +91,7 @@ fun OnBoardingScreen(
             } else {
                 AppOutlinedButton(
                     text = "Next",
+                    backgroundColor = MaterialTheme.colorScheme.onSecondary,
                     onClick = {
                         viewModel.uiAction(OnboardingAction.NextPage)
                     }

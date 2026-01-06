@@ -50,12 +50,20 @@ fun LogInScreen(
     LaunchedEffect(sideEffect) {
         when (sideEffect) {
             is LogInSideEffect.Success -> {
-                navController.navigate(FitnessScreen.LogIn.route)
-                // TODO
+                navController.navigate(FitnessScreen.SetUp.route)
+                viewModel.clearSideEffect()
             }
+
             is LogInSideEffect.ShowToast -> {
                 Toast.makeText(context, (sideEffect as LogInSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
+                viewModel.clearSideEffect()
             }
+
+            is LogInSideEffect.ShowForgottenPasswordScreen -> {
+                navController.navigate(FitnessScreen.ForgottenPassword.route)
+                viewModel.clearSideEffect()
+            }
+
             else -> Unit
         }
     }
@@ -106,6 +114,9 @@ fun LogInScreen(
                 onPasswordChange = {
                     viewModel.uiAction(LogInAction.PasswordChanged(it))
                 },
+                onForgotPassword = {
+                    viewModel.uiAction(LogInAction.ForgotPasswordClicked)
+                }
             )
         }
 
