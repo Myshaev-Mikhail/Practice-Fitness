@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 fun AppOutlinedButton(
     modifier: Modifier = Modifier,
     text: String,
-    backgroundColor: Color = MaterialTheme.colorScheme.background.copy(alpha = 0.2f),
+    backgroundColor: Color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f),
     borderColor: Color = MaterialTheme.colorScheme.outline,
     textColor: Color = MaterialTheme.colorScheme.onPrimary,
     textStyle: TextStyle = MaterialTheme.typography.labelLarge,
@@ -34,7 +34,7 @@ fun AppOutlinedButton(
         Text(
             text = text,
             color = textColor,
-            modifier = Modifier.padding(vertical = 12.dp),
+            modifier = Modifier.padding(vertical = 8.dp),
             style = textStyle
         )
     }

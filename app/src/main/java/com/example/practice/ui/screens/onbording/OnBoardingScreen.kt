@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -17,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.ui.FitnessScreen
+import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.onbording.intents.OnBoardingSideEffect
 import com.example.practice.ui.screens.onbording.intents.OnboardingAction
 import com.example.practice.ui.screens.onbording.onboardingpage.FirstOnboardingPageScreen
@@ -45,11 +46,7 @@ fun OnBoardingScreen(
             }
 
             is OnBoardingSideEffect.NavigateToLogin -> {
-                navController.navigate(FitnessScreen.LogIn.route) {
-                    popUpTo(FitnessScreen.OnBoarding.route) {
-                        inclusive = true
-                    }
-                }
+                navController.navigate(FitnessScreen.LogIn.route)
             }
 
             OnBoardingSideEffect.Empty -> Unit
@@ -86,6 +83,7 @@ fun OnBoardingScreen(
             if (state.currentPage == state.totalPages - 1) {
                 AppOutlinedButton(
                     text = "Get Started",
+                    backgroundColor = MaterialTheme.colorScheme.onSecondary,
                     onClick = {
                         viewModel.uiAction(OnboardingAction.Finish)
                     }
@@ -93,6 +91,7 @@ fun OnBoardingScreen(
             } else {
                 AppOutlinedButton(
                     text = "Next",
+                    backgroundColor = MaterialTheme.colorScheme.onSecondary,
                     onClick = {
                         viewModel.uiAction(OnboardingAction.NextPage)
                     }

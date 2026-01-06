@@ -7,10 +7,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,23 +17,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.font.FontWeight.Companion.Light
-import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.practice.ui.uikit.theme.LeagueSpartan
-import com.example.practice.ui.uikit.theme.Poppins
 
 @Composable
 fun SignUp(
-    modifier: Modifier
+    fullName: String = "",
+    email: String,
+    password: String,
+    confirmPassword: String,
+    onFullNameChange: (String) -> Unit,
+    onEmailChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onConfirmPasswordChange: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var username by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -43,160 +40,94 @@ fun SignUp(
     ) {
         Text(
             text = "Full name",
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp,
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
-        TextField(
-            value = username,
-            onValueChange = { username = it },
-            textStyle = TextStyle(
-                fontFamily = Poppins,
-                fontWeight = Normal,
-                fontSize = 16.sp,
+        BasicTextField(
+            value = fullName,
+            onValueChange = onFullNameChange,
+            textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),
-            placeholder = {
-                Text(
-                    text = "User name",
-                    fontFamily = LeagueSpartan,
-                    fontWeight = Light,
-                    fontSize = 14.sp
-                )
-            },
             singleLine = true,
-            shape = RoundedCornerShape(24.dp),
-            colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = Color.White,
-                focusedContainerColor = Color.White,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White, RoundedCornerShape(24.dp))
+                .padding(horizontal = 16.dp, vertical = 10.dp)
         )
+
+        Spacer(modifier = Modifier.height(12.dp))
 
         Text(
             text = "Email or Mobile Number",
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp,
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
-        TextField(
+        BasicTextField(
             value = email,
-            onValueChange = { email = it },
-            textStyle = TextStyle(
-                fontFamily = Poppins,
-                fontWeight = Normal,
-                fontSize = 16.sp,
+            onValueChange = onEmailChange,
+            textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),
-            placeholder = {
-                Text(
-                    text = "email or mobile number",
-                    fontFamily = LeagueSpartan,
-                    fontWeight = Light,
-                    fontSize = 14.sp
-                )
-            },
             singleLine = true,
-            shape = RoundedCornerShape(24.dp),
-            colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = Color.White,
-                focusedContainerColor = Color.White,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White, RoundedCornerShape(24.dp))
+                .padding(horizontal = 16.dp, vertical = 10.dp)
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         Text(
             text = "Password",
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp,
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
-        TextField(
+        BasicTextField(
             value = password,
-            onValueChange = { password = it },
-            textStyle = TextStyle(
-                fontFamily = Poppins,
-                fontWeight = Normal,
-                fontSize = 16.sp,
+            onValueChange = onPasswordChange,
+            textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),
-            placeholder = {
-                Text(
-                    text = "Password",
-                    fontFamily = LeagueSpartan,
-                    fontWeight = Light,
-                    fontSize = 14.sp
-                )
-            },
-            singleLine = true,
-            shape = RoundedCornerShape(24.dp),
             visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
-            colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = Color.White,
-                focusedContainerColor = Color.White,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            modifier = Modifier.fillMaxWidth()
+            singleLine = true,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White, RoundedCornerShape(24.dp))
+                .padding(horizontal = 16.dp, vertical = 10.dp)
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         Text(
             text = "Confirm Password",
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp,
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
-        TextField(
+        BasicTextField(
             value = confirmPassword,
-            onValueChange = { confirmPassword = it },
-            textStyle = TextStyle(
-                fontFamily = Poppins,
-                fontWeight = Normal,
-                fontSize = 16.sp,
+            onValueChange = onConfirmPasswordChange,
+            textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),
-            placeholder = {
-                Text(
-                    text = "Confirm password",
-                    fontFamily = LeagueSpartan,
-                    fontWeight = Light,
-                    fontSize = 14.sp
-                )
-            },
-            singleLine = true,
-            shape = RoundedCornerShape(24.dp),
             visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
-            colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = Color.White,
-                focusedContainerColor = Color.White,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            modifier = Modifier.fillMaxWidth()
+            singleLine = true,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White, RoundedCornerShape(24.dp))
+                .padding(horizontal = 16.dp, vertical = 10.dp)
         )
     }
 }
