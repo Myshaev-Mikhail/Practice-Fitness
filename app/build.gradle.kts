@@ -58,6 +58,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("androidx.navigation:navigation-compose:2.9.6")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     //FB
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))

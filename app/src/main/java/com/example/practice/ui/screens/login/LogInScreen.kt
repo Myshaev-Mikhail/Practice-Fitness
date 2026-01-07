@@ -43,7 +43,7 @@ fun LogInScreen(
     navController: NavController
 ) {
     val viewModel: LogInViewModel = viewModel()
-    val state by viewModel.uiStateEmitter.collectAsState()
+    val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
 
@@ -106,8 +106,8 @@ fun LogInScreen(
         ) {
             LogIn(
                 modifier = Modifier.fillMaxWidth(),
-                email = state.email,
-                password = state.password,
+                email = uiState.email,
+                password = uiState.password,
                 onEmailChange = {
                     viewModel.uiAction(LogInAction.EmailChanged(it))
                 },
