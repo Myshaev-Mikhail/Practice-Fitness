@@ -29,31 +29,36 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.domain.models.Gender
+import com.example.practice.domain.models.Goal
 import com.example.practice.ui.screens.setup.intents.SetUpAction
 import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
-import com.example.practice.ui.uikit.components.GenderItem
+import com.example.practice.ui.uikit.components.AppToggleCheckBox
 import io.github.composegears.valkyrie.Arrow
-import io.github.composegears.valkyrie.FemaleOff
-import io.github.composegears.valkyrie.FemaleOn
 import io.github.composegears.valkyrie.Icons
-import io.github.composegears.valkyrie.MaleOff
-import io.github.composegears.valkyrie.Property1MaleOn
 
 @Composable
-fun GenderScreen(
+fun GoalScreen(
     navController: NavController,
     viewModel: SetUpViewModel
 ) {
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    var selectedGender by remember { mutableStateOf<Gender?>(null) }
+    var selectedGoals by remember { mutableStateOf(setOf<Goal>()) }
+
+    fun toggleGoal(goal: Goal) {
+        selectedGoals =
+            if (selectedGoals.contains(goal)) {
+                selectedGoals - goal
+            } else {
+                selectedGoals + goal
+            }
+    }
 
     when (sideEffect) {
         is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.Age.route)
+            navController.navigate(FitnessScreen.ActivityLevel.route)
             viewModel.clearSideEffect()
         }
 
@@ -98,11 +103,28 @@ fun GenderScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text(
-            text = "What’s Your Gender",
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onBackground
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp)
+        ) {
+            Text(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                text = "What Is Your Goal?",
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(
+                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
+                        " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                color = MaterialTheme.colorScheme.onBackground,
+                style = MaterialTheme.typography.labelLarge,
+                textAlign = TextAlign.Center
+            )
+        }
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -110,40 +132,41 @@ fun GenderScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.tertiary)
-                .padding(16.dp)
+                .padding(24.dp)
         ) {
-            Text(
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
-                        " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                color = MaterialTheme.colorScheme.onTertiary,
-                style = MaterialTheme.typography.bodySmall,
-                textAlign = TextAlign.Center
-            )
+            Column(modifier = Modifier.fillMaxWidth()) {
+                AppToggleCheckBox(
+                    text = "Lose Weight",
+                    isSelected = selectedGoals.contains(Goal.LOSE_WEIGHT),
+                    onClick = { toggleGoal(Goal.LOSE_WEIGHT) },
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                AppToggleCheckBox(
+                    text = "Gain weight",
+                    isSelected = selectedGoals.contains(Goal.GAIN_WEIGHT),
+                    onClick = { toggleGoal(Goal.GAIN_WEIGHT) },
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                AppToggleCheckBox(
+                    text = "Muscle Mass Gain",
+                    isSelected = selectedGoals.contains(Goal.MUSCLE_MASS_GAIN),
+                    onClick = { toggleGoal(Goal.MUSCLE_MASS_GAIN) },
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                AppToggleCheckBox(
+                    text = "shape body",
+                    isSelected = selectedGoals.contains(Goal.SHAPE_BODY),
+                    onClick = { toggleGoal(Goal.SHAPE_BODY) },
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                AppToggleCheckBox(
+                    text = "Others",
+                    isSelected = selectedGoals.contains(Goal.OTHERS),
+                    onClick = { toggleGoal(Goal.OTHERS) },
+                )
+            }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Column {
-            GenderItem(
-                isSelected = selectedGender == Gender.MALE,
-                icon = if (selectedGender == Gender.MALE)
-                    Icons.Property1MaleOn else Icons.MaleOff,
-                text = "Male",
-                iconSize = 150.dp,
-                onClick = { selectedGender = Gender.MALE }
-            )
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            GenderItem(
-                isSelected = selectedGender == Gender.FEMALE,
-                icon = if (selectedGender == Gender.FEMALE)
-                    Icons.FemaleOn else Icons.FemaleOff,
-                text = "Female",
-                iconSize = 150.dp,
-                onClick = { selectedGender = Gender.FEMALE }
-            )
-        }
         Spacer(modifier = Modifier.height(32.dp))
         AppOutlinedButton(
             modifier = Modifier
@@ -152,8 +175,8 @@ fun GenderScreen(
             text = "Continue",
             textStyle = MaterialTheme.typography.titleLarge,
         ) {
-            selectedGender?.let {
-                viewModel.uiAction(SetUpAction.GenderSelected(it))
+            if (selectedGoals.isNotEmpty()) {
+                viewModel.uiAction(SetUpAction.GoalSelected(selectedGoals))
             }
         }
     }

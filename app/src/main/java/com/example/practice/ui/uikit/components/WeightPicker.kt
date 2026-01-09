@@ -90,7 +90,7 @@ fun WeightPicker(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
-                    .background(MaterialTheme.colorScheme.primary)
+                    .background(MaterialTheme.colorScheme.tertiary)
                     .align(Alignment.BottomCenter)
             )
 

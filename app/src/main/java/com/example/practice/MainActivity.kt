@@ -16,8 +16,12 @@ import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordScreen
 import com.example.practice.ui.screens.login.LogInScreen
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
+import com.example.practice.ui.screens.setup.ActivityLevelScreen
 import com.example.practice.ui.screens.setup.AgeScreen
+import com.example.practice.ui.screens.setup.FillYourProfileScreen
 import com.example.practice.ui.screens.setup.GenderScreen
+import com.example.practice.ui.screens.setup.GoalScreen
+import com.example.practice.ui.screens.setup.HeightScreen
 import com.example.practice.ui.screens.setup.SetUpScreen
 import com.example.practice.ui.screens.setup.SetUpViewModel
 import com.example.practice.ui.screens.setup.SetUpViewModelFactory
@@ -154,6 +158,74 @@ fun NavigationApp(startDestination: String) {
                 viewModel = viewModel
             )
         }
+        composable(FitnessScreen.Height.route) { backStackEntry ->
+            val parentEntry = remember(backStackEntry) {
+                navController.getBackStackEntry(FitnessScreen.SetUp.route)
+            }
+
+            val dataStore = rememberUserProfileDataStore()
+
+            val viewModel: SetUpViewModel = viewModel(
+                parentEntry,
+                factory = SetUpViewModelFactory(dataStore)
+            )
+
+            HeightScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(FitnessScreen.Goal.route) { backStackEntry ->
+            val parentEntry = remember(backStackEntry) {
+                navController.getBackStackEntry(FitnessScreen.SetUp.route)
+            }
+
+            val dataStore = rememberUserProfileDataStore()
+
+            val viewModel: SetUpViewModel = viewModel(
+                parentEntry,
+                factory = SetUpViewModelFactory(dataStore)
+            )
+
+            GoalScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(FitnessScreen.ActivityLevel.route) { backStackEntry ->
+            val parentEntry = remember(backStackEntry) {
+                navController.getBackStackEntry(FitnessScreen.SetUp.route)
+            }
+
+            val dataStore = rememberUserProfileDataStore()
+
+            val viewModel: SetUpViewModel = viewModel(
+                parentEntry,
+                factory = SetUpViewModelFactory(dataStore)
+            )
+
+            ActivityLevelScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(FitnessScreen.FillYourProfile.route) { backStackEntry ->
+            val parentEntry = remember(backStackEntry) {
+                navController.getBackStackEntry(FitnessScreen.SetUp.route)
+            }
+
+            val dataStore = rememberUserProfileDataStore()
+
+            val viewModel: SetUpViewModel = viewModel(
+                parentEntry,
+                factory = SetUpViewModelFactory(dataStore)
+            )
+
+            FillYourProfileScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
     }
 }
 
@@ -170,4 +242,8 @@ sealed class FitnessScreen(val route: String) {
     data object Gender : FitnessScreen("gender")
     data object Age : FitnessScreen("age")
     data object Weight : FitnessScreen("weight")
+    data object Height : FitnessScreen("height")
+    data object Goal : FitnessScreen("goal")
+    data object ActivityLevel : FitnessScreen("activity_level")
+    data object FillYourProfile : FitnessScreen("fill_your_frofile")
 }

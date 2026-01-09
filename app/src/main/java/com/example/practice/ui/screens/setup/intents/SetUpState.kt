@@ -9,7 +9,16 @@ data class SetUpState(
     val age: Int? = null,
     val weight: Float? = null,
     val height: Int? = null,
-    val goal: Goal? = null,
+    val goal: List<Goal>? = null,
     val activityLevel: ActivityLevel? = null,
-    val isLoading: Boolean = false
+    val profile: SetUpProfile? = null,
+    val isLoading: Boolean = false,
+)
+
+data class SetUpProfile(
+    val fullName: String? = null,
+    val nickname: String? = null,
+    val email: String? = null,
+    val mobileNumber: String? = null,
+    val avatarUri: String? = null
 )

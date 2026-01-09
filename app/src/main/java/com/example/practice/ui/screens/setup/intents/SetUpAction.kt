@@ -10,7 +10,9 @@ sealed class SetUpAction {
     data class AgeEntered(val age: Int) : SetUpAction()
     data class WeightEntered(val weight: Float) : SetUpAction()
     data class HeightEntered(val height: Int) : SetUpAction()
-    data class GoalSelected(val goal: Goal) : SetUpAction()
+    data class GoalSelected(val goal: Set<Goal>) : SetUpAction()
     data class ActivitySelected(val level: ActivityLevel) : SetUpAction()
+    data class ProfileChanged(val profile: SetUpProfile) : SetUpAction()
+    data object SaveProfile : SetUpAction()
     data object NavigateBack : SetUpAction()
 }

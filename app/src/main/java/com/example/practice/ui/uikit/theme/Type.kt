@@ -66,6 +66,18 @@ val Typography = Typography(
         fontSize = 14.sp
     ),
 
+    headlineSmall = TextStyle(
+        fontFamily = LeagueSpartan,
+        fontWeight = FontWeight.Normal,
+        fontSize = 18.sp
+    ),
+
+    headlineMedium = TextStyle(
+        fontFamily = LeagueSpartan,
+        fontWeight = FontWeight.Medium,
+        fontSize = 24.sp
+    ),
+
     bodyMedium = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,

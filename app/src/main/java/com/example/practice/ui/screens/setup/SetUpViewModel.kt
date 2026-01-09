@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 class SetUpViewModel(
     private val dataStore: UserProfileDataStore
 ) : ViewModel() {
-
     private val uiState = MutableStateFlow(SetUpState())
     val uiStateEmitter = uiState.asStateFlow()
 
@@ -31,19 +30,16 @@ class SetUpViewModel(
             is SetUpAction.GenderSelected -> saveAndNext {
                 dataStore.saveGender(action.gender)
                 uiState.value = uiState.value.copy(gender = action.gender)
-                println("Гендер :${action.gender}")
             }
 
             is SetUpAction.AgeEntered -> saveAndNext {
                 dataStore.saveAge(action.age)
                 uiState.value = uiState.value.copy(age = action.age)
-                println("Возраст :${action.age}")
             }
 
             is SetUpAction.WeightEntered -> saveAndNext {
                 dataStore.saveWeight(action.weight)
                 uiState.value = uiState.value.copy(weight = action.weight)
-                println("Вес :${action.weight}")
             }
 
             is SetUpAction.HeightEntered -> saveAndNext {
@@ -52,13 +48,23 @@ class SetUpViewModel(
             }
 
             is SetUpAction.GoalSelected -> saveAndNext {
-                dataStore.saveGoal(action.goal)
-                uiState.value = uiState.value.copy(goal = action.goal)
+                dataStore.saveGoal(action.goal.toList())
+                uiState.value = uiState.value.copy(goal = action.goal.toList())
             }
 
             is SetUpAction.ActivitySelected -> saveAndNext {
                 dataStore.saveActivity(action.level)
                 uiState.value = uiState.value.copy(activityLevel = action.level)
+            }
+
+            is SetUpAction.ProfileChanged -> {
+                uiState.value = uiState.value.copy(profile = action.profile)
+            }
+
+            SetUpAction.SaveProfile -> saveAndNext {
+                uiState.value.profile?.let {
+                    dataStore.saveProfile(it)
+                }
             }
 
             SetUpAction.NavigateBack -> {

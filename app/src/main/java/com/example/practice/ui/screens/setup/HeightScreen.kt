@@ -30,24 +30,24 @@ import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.setup.intents.SetUpAction
 import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
-import com.example.practice.ui.uikit.components.AgePicker
 import com.example.practice.ui.uikit.components.AppOutlinedButton
+import com.example.practice.ui.uikit.components.HeightPicker
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
 
 @Composable
-fun AgeScreen(
+fun HeightScreen(
     navController: NavController,
     viewModel: SetUpViewModel
 ) {
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    var selectedAge by remember { mutableStateOf(28) }
+    var selectedHeight by remember { mutableStateOf(165) }
 
     when (sideEffect) {
         is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.Weight.route)
+            navController.navigate(FitnessScreen.Goal.route)
             viewModel.clearSideEffect()
         }
 
@@ -102,11 +102,13 @@ fun AgeScreen(
             ) {
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    text = "How Old Are You?",
+                    text = "How Old Are Height?",
                     style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onBackground,
+                    color = MaterialTheme.colorScheme.onBackground
                 )
+
                 Spacer(modifier = Modifier.height(24.dp))
+
                 Text(
                     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
                             " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -116,20 +118,11 @@ fun AgeScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
-        }
-        Box(
-            modifier = Modifier
-                .align(Alignment.Center)
-        ) {
-            AgePicker(
-                minAge = 10,
-                maxAge = 100,
-                initialAge = selectedAge,
-                onAgeChange = { age ->
-                    selectedAge = age
-                }
-            )
+            HeightPicker(
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) { height ->
+                selectedHeight = height
+            }
         }
 
         Box(
@@ -144,7 +137,7 @@ fun AgeScreen(
                 text = "Continue",
                 textStyle = MaterialTheme.typography.titleLarge,
             ) {
-                viewModel.uiAction(SetUpAction.AgeEntered(selectedAge))
+                viewModel.uiAction(SetUpAction.HeightEntered(selectedHeight))
             }
         }
     }

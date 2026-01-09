@@ -440,7 +440,7 @@ fun AdditionalElements() {
             }
 
             Spacer(modifier = Modifier.width(20.dp))
-            HeightPicker()
+            //HeightPicker()
         }
 
         Box(

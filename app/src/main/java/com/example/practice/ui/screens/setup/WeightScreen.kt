@@ -23,7 +23,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -48,7 +47,7 @@ fun WeightScreen(
 
     when (sideEffect) {
         is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.SetUp.route)
+            navController.navigate(FitnessScreen.Height.route)
             viewModel.clearSideEffect()
         }
 
@@ -60,77 +59,88 @@ fun WeightScreen(
         else -> Unit
     }
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(MaterialTheme.colorScheme.background),
     ) {
-        Spacer(modifier = Modifier.height(45.dp))
-        Row(
+        Column(
             modifier = Modifier
-                .align(Alignment.Start)
-                .clickable {
-                    viewModel.uiAction(SetUpAction.NavigateBack)
-                }
+                .align(Alignment.TopCenter)
         ) {
-            Spacer(modifier = Modifier.width(24.dp))
-            Image(
-                painter = rememberVectorPainter(Icons.Arrow),
-                contentDescription = null,
+            Spacer(modifier = Modifier.height(45.dp))
+            Row(
                 modifier = Modifier
-                    .size(11.dp)
-            )
+                    .align(Alignment.Start)
+                    .clickable {
+                        viewModel.uiAction(SetUpAction.NavigateBack)
+                    }
+            ) {
+                Spacer(modifier = Modifier.width(24.dp))
+                Image(
+                    painter = rememberVectorPainter(Icons.Arrow),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(11.dp)
+                )
 
-            Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(8.dp))
 
-            Text(
-                text = "Back",
-                color = MaterialTheme.colorScheme.secondary,
-                style = MaterialTheme.typography.titleSmall,
-            )
+                Text(
+                    text = "Back",
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = MaterialTheme.typography.titleSmall,
+                )
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp)
+            ) {
+                Text(
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    text = "How Old Are You?",
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                Text(
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
+                            " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.labelLarge,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Text(
-            text = "How Old Are You?",
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onBackground
-        )
-
-        Spacer(modifier = Modifier.height(24.dp))
+        Box(
+            modifier = Modifier.align(Alignment.Center)
+        ) {
+            WeightPicker { weight ->
+                selectedWeight = weight
+            }
+        }
 
         Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+                .align(Alignment.BottomCenter)
+                .padding(24.dp)
         ) {
-            Text(
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
-                        " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                color = MaterialTheme.colorScheme.onTertiary,
-                style = MaterialTheme.typography.bodySmall,
-                textAlign = TextAlign.Center
-            )
-        }
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        WeightPicker { weight ->
-            selectedWeight = weight
-        }
-
-
-        Spacer(modifier = Modifier.height(32.dp))
-        AppOutlinedButton(
-            modifier = Modifier
-                .width(180.dp)
-                .padding(vertical = 4.dp),
-            text = "Next",
-            textStyle = MaterialTheme.typography.titleLarge,
-        ) {
-            viewModel.uiAction(SetUpAction.WeightEntered(selectedWeight))
+            AppOutlinedButton(
+                modifier = Modifier
+                    .width(180.dp)
+                    .padding(vertical = 4.dp),
+                text = "Continue",
+                textStyle = MaterialTheme.typography.titleLarge,
+            ) {
+                viewModel.uiAction(SetUpAction.WeightEntered(selectedWeight))
+            }
         }
     }
 }

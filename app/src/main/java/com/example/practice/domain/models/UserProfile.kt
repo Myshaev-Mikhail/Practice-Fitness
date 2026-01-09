@@ -5,8 +5,13 @@ data class UserProfile(
     val age: Int,
     val weight: Float,
     val height: Int,
-    val goal: Goal,
-    val activityLevel: ActivityLevel
+    val goal: List<Goal>,
+    val activityLevel: ActivityLevel,
+    val fullName: String? = null,
+    val nickname: String? = null,
+    val email: String? = null,
+    val mobileNumber: String? = null,
+    val avatarUri: String? = null
 )
 
 enum class Gender { MALE, FEMALE }

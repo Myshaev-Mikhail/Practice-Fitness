@@ -28,26 +28,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.domain.models.ActivityLevel
 import com.example.practice.ui.screens.setup.intents.SetUpAction
 import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
-import com.example.practice.ui.uikit.components.AgePicker
 import com.example.practice.ui.uikit.components.AppOutlinedButton
+import com.example.practice.ui.uikit.components.AppToggleButton
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
 
 @Composable
-fun AgeScreen(
+fun ActivityLevelScreen(
     navController: NavController,
     viewModel: SetUpViewModel
 ) {
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    var selectedAge by remember { mutableStateOf(28) }
+    var selectedActivityLevel by remember { mutableStateOf<ActivityLevel?>(null) }
 
     when (sideEffect) {
         is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.Weight.route)
+            navController.navigate(FitnessScreen.FillYourProfile.route)
             viewModel.clearSideEffect()
         }
 
@@ -102,11 +103,13 @@ fun AgeScreen(
             ) {
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    text = "How Old Are You?",
+                    text = "Physical Activity Level",
                     style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onBackground,
+                    color = MaterialTheme.colorScheme.onBackground
                 )
+
                 Spacer(modifier = Modifier.height(24.dp))
+
                 Text(
                     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
                             " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -115,23 +118,36 @@ fun AgeScreen(
                     textAlign = TextAlign.Center
                 )
             }
-
-            Spacer(modifier = Modifier.height(24.dp))
         }
+
         Box(
             modifier = Modifier
                 .align(Alignment.Center)
         ) {
-            AgePicker(
-                minAge = 10,
-                maxAge = 100,
-                initialAge = selectedAge,
-                onAgeChange = { age ->
-                    selectedAge = age
-                }
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp)
+            ) {
+                AppToggleButton(
+                    text = "Beginner",
+                    isSelected = selectedActivityLevel == ActivityLevel.BEGINNER,
+                    onClick = { selectedActivityLevel = ActivityLevel.BEGINNER },
+                )
+                Spacer(modifier = Modifier.height(28.dp))
+                AppToggleButton(
+                    text = "Intermediate",
+                    isSelected = selectedActivityLevel == ActivityLevel.INTERMEDIATE,
+                    onClick = { selectedActivityLevel = ActivityLevel.INTERMEDIATE },
+                )
+                Spacer(modifier = Modifier.height(28.dp))
+                AppToggleButton(
+                    text = "Advance",
+                    isSelected = selectedActivityLevel == ActivityLevel.ADVANCED,
+                    onClick = { selectedActivityLevel = ActivityLevel.ADVANCED },
+                )
+            }
         }
-
         Box(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -144,7 +160,9 @@ fun AgeScreen(
                 text = "Continue",
                 textStyle = MaterialTheme.typography.titleLarge,
             ) {
-                viewModel.uiAction(SetUpAction.AgeEntered(selectedAge))
+                selectedActivityLevel?.let {
+                    viewModel.uiAction(SetUpAction.ActivitySelected(it))
+                }
             }
         }
     }
