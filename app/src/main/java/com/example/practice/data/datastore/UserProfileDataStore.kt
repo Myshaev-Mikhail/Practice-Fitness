@@ -2,6 +2,7 @@ package com.example.practice.data.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
@@ -17,43 +18,54 @@ import kotlinx.coroutines.flow.map
 class UserProfileDataStore(
     private val dataStore: DataStore<Preferences>
 ) {
-    suspend fun saveGender(gender: Gender) {
+    suspend fun setFirstSetupCompleted() {
+        dataStore.edit {
+            it[UserProfileKeys.FIRST_SETUP_COMPLETED] = true
+        }
+    }
+
+    val firstSetupCompletedFlow: Flow<Boolean> =
+        dataStore.data.map {
+            it[UserProfileKeys.FIRST_SETUP_COMPLETED] ?: false
+        }
+
+    suspend fun setGender(gender: Gender) {
         dataStore.edit {
             it[UserProfileKeys.GENDER] = gender.name
         }
     }
 
-    suspend fun saveAge(age: Int) {
+    suspend fun setAge(age: Int) {
         dataStore.edit {
             it[UserProfileKeys.AGE] = age
         }
     }
 
-    suspend fun saveWeight(weight: Float) {
+    suspend fun setWeight(weight: Float) {
         dataStore.edit {
             it[UserProfileKeys.WEIGHT] = weight
         }
     }
 
-    suspend fun saveHeight(height: Int) {
+    suspend fun setHeight(height: Int) {
         dataStore.edit {
             it[UserProfileKeys.HEIGHT] = height
         }
     }
 
-    suspend fun saveGoal(goal: List<Goal>) {
+    suspend fun setGoal(goal: List<Goal>) {
         dataStore.edit {
             it[UserProfileKeys.GOAL] = goal.joinToString(",") { it.name }
         }
     }
 
-    suspend fun saveActivity(level: ActivityLevel) {
+    suspend fun setActivity(level: ActivityLevel) {
         dataStore.edit {
             it[UserProfileKeys.ACTIVITY] = level.name
         }
     }
 
-    suspend fun saveProfile(profile: SetUpProfile) {
+    suspend fun setProfile(profile: SetUpProfile) {
         dataStore.edit {
             it[UserProfileKeys.FULL_NAME] = profile.fullName.orEmpty()
             it[UserProfileKeys.NICKNAME] = profile.nickname.orEmpty()
@@ -106,4 +118,5 @@ object UserProfileKeys {
     val EMAIL = stringPreferencesKey("email")
     val MOBILE = stringPreferencesKey("mobile")
     val AVATAR_URI = stringPreferencesKey("avatarUri")
+    val FIRST_SETUP_COMPLETED = booleanPreferencesKey("first_setup_completed")
 }

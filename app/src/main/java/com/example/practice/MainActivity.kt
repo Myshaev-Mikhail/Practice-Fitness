@@ -5,14 +5,21 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.practice.extensions.userProfileDataStore
 import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordScreen
+import com.example.practice.ui.screens.home.HomeScreen
+import com.example.practice.ui.screens.home.HomeViewModel
+import com.example.practice.ui.screens.home.HomeViewModelFactory
 import com.example.practice.ui.screens.login.LogInScreen
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
@@ -26,7 +33,6 @@ import com.example.practice.ui.screens.setup.SetUpScreen
 import com.example.practice.ui.screens.setup.SetUpViewModel
 import com.example.practice.ui.screens.setup.SetUpViewModelFactory
 import com.example.practice.ui.screens.setup.WeightScreen
-import com.example.practice.ui.screens.setup.rememberUserProfileDataStore
 import com.example.practice.ui.screens.signup.SignUpScreen
 import com.example.practice.ui.uikit.theme.FitnessTheme
 
@@ -37,10 +43,30 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             FitnessTheme(true) {
-                NavigationApp(
-                    startDestination = FitnessScreen.OnBoarding.route
-                )
+                AppEntryPoint()
             }
+        }
+    }
+}
+
+@Composable
+fun AppEntryPoint() {
+    val context = LocalContext.current
+    val dataStore = context.userProfileDataStore
+
+    val onboardingCompleted by dataStore
+        .firstSetupCompletedFlow
+        .collectAsState(initial = null)
+
+    when (onboardingCompleted) {
+        null -> {
+            // Splash / Loader
+        }
+        true -> {
+            NavigationApp(startDestination = FitnessScreen.Home.route)
+        }
+        false -> {
+            NavigationApp(startDestination = FitnessScreen.OnBoarding.route)
         }
     }
 }
@@ -93,7 +119,7 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = rememberUserProfileDataStore()
+            val dataStore = LocalContext.current.userProfileDataStore
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
@@ -110,7 +136,7 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = rememberUserProfileDataStore()
+            val dataStore = LocalContext.current.userProfileDataStore
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
@@ -128,7 +154,7 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = rememberUserProfileDataStore()
+            val dataStore = LocalContext.current.userProfileDataStore
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
@@ -146,7 +172,7 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = rememberUserProfileDataStore()
+            val dataStore = LocalContext.current.userProfileDataStore
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
@@ -163,7 +189,7 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = rememberUserProfileDataStore()
+            val dataStore = LocalContext.current.userProfileDataStore
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
@@ -180,7 +206,7 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = rememberUserProfileDataStore()
+            val dataStore = LocalContext.current.userProfileDataStore
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
@@ -197,7 +223,7 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = rememberUserProfileDataStore()
+            val dataStore = LocalContext.current.userProfileDataStore
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
@@ -214,7 +240,7 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = rememberUserProfileDataStore()
+            val dataStore = LocalContext.current.userProfileDataStore
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
@@ -222,6 +248,17 @@ fun NavigationApp(startDestination: String) {
             )
 
             FillYourProfileScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(FitnessScreen.Home.route) {
+            val dataStore = LocalContext.current.userProfileDataStore
+
+            val viewModel: HomeViewModel = viewModel(
+                factory = HomeViewModelFactory(dataStore)
+            )
+            HomeScreen(
                 navController = navController,
                 viewModel = viewModel
             )
@@ -246,4 +283,5 @@ sealed class FitnessScreen(val route: String) {
     data object Goal : FitnessScreen("goal")
     data object ActivityLevel : FitnessScreen("activity_level")
     data object FillYourProfile : FitnessScreen("fill_your_frofile")
+    data object Home : FitnessScreen("home")
 }

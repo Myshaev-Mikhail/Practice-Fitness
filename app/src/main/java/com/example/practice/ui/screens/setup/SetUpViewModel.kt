@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.data.datastore.UserProfileDataStore
 import com.example.practice.ui.screens.setup.intents.SetUpAction
+import com.example.practice.ui.screens.setup.intents.SetUpProfile
 import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
 import com.example.practice.ui.screens.setup.intents.SetUpState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,44 +29,58 @@ class SetUpViewModel(
             }
 
             is SetUpAction.GenderSelected -> saveAndNext {
-                dataStore.saveGender(action.gender)
+                dataStore.setGender(action.gender)
                 uiState.value = uiState.value.copy(gender = action.gender)
             }
 
             is SetUpAction.AgeEntered -> saveAndNext {
-                dataStore.saveAge(action.age)
+                dataStore.setAge(action.age)
                 uiState.value = uiState.value.copy(age = action.age)
             }
 
             is SetUpAction.WeightEntered -> saveAndNext {
-                dataStore.saveWeight(action.weight)
+                dataStore.setWeight(action.weight)
                 uiState.value = uiState.value.copy(weight = action.weight)
             }
 
             is SetUpAction.HeightEntered -> saveAndNext {
-                dataStore.saveHeight(action.height)
+                dataStore.setHeight(action.height)
                 uiState.value = uiState.value.copy(height = action.height)
             }
 
             is SetUpAction.GoalSelected -> saveAndNext {
-                dataStore.saveGoal(action.goal.toList())
+                dataStore.setGoal(action.goal.toList())
                 uiState.value = uiState.value.copy(goal = action.goal.toList())
             }
 
             is SetUpAction.ActivitySelected -> saveAndNext {
-                dataStore.saveActivity(action.level)
+                dataStore.setActivity(action.level)
                 uiState.value = uiState.value.copy(activityLevel = action.level)
             }
 
             is SetUpAction.ProfileChanged -> {
-                uiState.value = uiState.value.copy(profile = action.profile)
+                uiState.value = uiState.value.copy(
+                    profile = action.profile,
+                    isProfileValid = true
+                )
             }
 
-            SetUpAction.SaveProfile -> saveAndNext {
-                uiState.value.profile?.let {
-                    dataStore.saveProfile(it)
+
+            SetUpAction.SaveProfile -> {
+                val profile = uiState.value.profile
+
+                if (isProfileValid(profile)) {
+                    viewModelScope.launch {
+                        dataStore.setProfile(profile!!)
+                        dataStore.setFirstSetupCompleted()
+                        sideEffect.value = SetUpSideEffect.NavigateNext
+                    }
+                } else {
+                    uiState.value = uiState.value.copy(isProfileValid = false)
+                    sideEffect.value = SetUpSideEffect.ShowProfileValidationError
                 }
             }
+
 
             SetUpAction.NavigateBack -> {
                 sideEffect.value = SetUpSideEffect.NavigateBack
@@ -79,6 +94,16 @@ class SetUpViewModel(
             sideEffect.value = SetUpSideEffect.NavigateNext
         }
     }
+
+    private fun isProfileValid(profile: SetUpProfile?): Boolean {
+        if (profile == null) return false
+
+        return profile.fullName?.isNotBlank() == true &&
+                profile.nickname?.isNotBlank() == true &&
+                profile.email?.isNotBlank() == true &&
+                profile.mobileNumber?.isNotBlank() == true
+    }
+
 
     fun clearSideEffect() {
         sideEffect.value = SetUpSideEffect.Empty

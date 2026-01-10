@@ -1,6 +1,7 @@
 package com.example.practice.ui.screens.setup
 
 import android.net.Uri
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -19,7 +20,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -61,12 +61,31 @@ fun FillYourProfileScreen(
     when (sideEffect) {
 
         is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.SetUp.route)
+            navController.navigate(FitnessScreen.Home.route)
             viewModel.clearSideEffect()
         }
 
         is SetUpSideEffect.NavigateBack -> {
             navController.popBackStack()
+            viewModel.clearSideEffect()
+        }
+
+        is SetUpSideEffect.ShowProfileValidationError -> {
+            Toast
+                .makeText(
+                    context,
+                    "Please fill in all required fields",
+                    Toast.LENGTH_SHORT
+                )
+                .show()
+
+            viewModel.clearSideEffect()
+        }
+
+        is SetUpSideEffect.NavigateToHome -> {
+            navController.navigate(FitnessScreen.Home.route) {
+                popUpTo(0) { inclusive = true }
+            }
             viewModel.clearSideEffect()
         }
 

@@ -46,6 +46,7 @@ import com.example.practice.ui.uikit.components.WeightPicker
 import com.example.practice.ui.uikit.components.WorkoutCard
 import com.example.practice.ui.uikit.components.WorkoutPreviewCard
 import io.github.composegears.valkyrie.BulbOn
+import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.NotificationOff
 import io.github.composegears.valkyrie.PlayOff
 import io.github.composegears.valkyrie.PlayOn
@@ -584,6 +585,8 @@ fun AdditionalElements() {
                                 durationText = "45 Minutes",
                                 exercisesText = "5 Exercises",
                                 image = painterResource(id = R.mipmap.woman_helping_man_gym_1_2),
+                                isStar = true,
+                                icon = rememberVectorPainter(Icons.Calories)
                             )
                         }
                         Spacer(modifier = Modifier.width(8.dp))

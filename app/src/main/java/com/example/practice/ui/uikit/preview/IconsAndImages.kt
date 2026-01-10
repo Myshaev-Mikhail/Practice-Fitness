@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.practice.ui.uikit.theme.Poppins
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.AppOutlinedButton
@@ -1033,7 +1034,10 @@ fun IconsAndImages() {
             Box(modifier = Modifier.width(150.dp)) {
 
             }
-            BottomNavigation(modifier = Modifier)
+            BottomNavigation(
+                navController = rememberNavController(),
+                modifier = Modifier
+            )
         }
 
         Spacer(modifier = Modifier.padding(16.dp))

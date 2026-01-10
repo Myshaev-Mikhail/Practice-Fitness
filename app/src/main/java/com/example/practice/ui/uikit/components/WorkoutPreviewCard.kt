@@ -39,6 +39,8 @@ import com.example.practice.ui.uikit.theme.Poppins
 import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.PlayOff
+import io.github.composegears.valkyrie.StarDefault
+import io.github.composegears.valkyrie.StarVariant
 import io.github.composegears.valkyrie.StartSmallOn
 import io.github.composegears.valkyrie.TimeDefault
 import io.github.composegears.valkyrie.WorkOut
@@ -49,6 +51,8 @@ fun WorkoutPreviewCard(
     durationText: String,
     exercisesText: String,
     image: Painter,
+    isStar: Boolean = true,
+    icon: Painter,
     modifier: Modifier = Modifier
 ) {
     val configuration = LocalConfiguration.current
@@ -73,13 +77,13 @@ fun WorkoutPreviewCard(
             )
 
             Image(
-                painter = rememberVectorPainter(Icons.StartSmallOn),
+                painter = rememberVectorPainter(
+                    image = if (isStar) Icons.StarVariant else Icons.StarDefault),
                 contentDescription = null,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(8.dp)
                     .size(15.dp),
-                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.secondary)
             )
         }
 
@@ -153,7 +157,7 @@ fun WorkoutPreviewCard(
                         Spacer(modifier = Modifier.width(8.dp))
 
                         Image(
-                            painter = rememberVectorPainter(Icons.WorkOut),
+                            painter = icon,
                             contentDescription = null,
                             modifier = Modifier
                                 .width(7.dp)
