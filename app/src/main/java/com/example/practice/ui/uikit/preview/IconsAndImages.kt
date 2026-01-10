@@ -27,19 +27,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
-import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.practice.R
-import com.example.practice.ui.uikit.theme.LeagueSpartan
 import com.example.practice.ui.uikit.theme.Poppins
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.AppOutlinedButton
-import com.example.practice.ui.uikit.components.AppToggleButton
+import com.example.practice.ui.uikit.components.AppToggleCheckBox
 import com.example.practice.ui.uikit.components.BottomNavigation
 import io.github.composegears.valkyrie.Add
 import io.github.composegears.valkyrie.Arrow
@@ -938,29 +934,21 @@ fun IconsAndImages() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column {
-                    AppToggleButton(
+                    AppToggleCheckBox(
                         text = "Lose Weight",
                         textStyle = MaterialTheme.typography.labelSmall,
                         isSelected = false,
-                        selectedColor = MaterialTheme.colorScheme.background,
-                        unselectedColor = MaterialTheme.colorScheme.onBackground,
-                        textSelectedColor = MaterialTheme.colorScheme.onSecondary,
                         onClick = { },
                         modifier = Modifier.width(110.dp),
                         circleSize = 20.dp,
-                        buttonColor = MaterialTheme.colorScheme.onBackground
                     )
-                    AppToggleButton(
+                    AppToggleCheckBox(
                         text = "Lose Weight",
                         textStyle = MaterialTheme.typography.labelSmall,
                         isSelected = true,
-                        selectedColor = MaterialTheme.colorScheme.secondary,
-                        unselectedColor = MaterialTheme.colorScheme.onBackground,
-                        textSelectedColor = MaterialTheme.colorScheme.onPrimary,
                         onClick = { },
                         modifier = Modifier.width(110.dp),
                         circleSize = 20.dp,
-                        buttonColor = MaterialTheme.colorScheme.background
                     )
                 }
 

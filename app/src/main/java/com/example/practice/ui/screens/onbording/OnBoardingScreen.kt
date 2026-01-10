@@ -31,12 +31,12 @@ fun OnBoardingScreen(
     navController: NavController
 ) {
     val viewModel: OnboardingViewModel = viewModel()
-    val state by viewModel.uiStateEmitter.collectAsState()
+    val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
     val pagerState = rememberPagerState(
         initialPage = 0,
-        pageCount = { state.totalPages }
+        pageCount = { uiState.totalPages }
     )
 
     LaunchedEffect(sideEffect) {
@@ -65,7 +65,7 @@ fun OnBoardingScreen(
                 OnboardingPageScreen(
                     page = onboardingPages[page],
                     currentPage = page,
-                    totalPages = state.totalPages,
+                    totalPages = uiState.totalPages,
                     onSkip = {
                         viewModel.uiAction(OnboardingAction.Skip)
                     }
@@ -80,7 +80,7 @@ fun OnBoardingScreen(
         ) {
             Spacer(modifier = Modifier.height(240.dp))
 
-            if (state.currentPage == state.totalPages - 1) {
+            if (uiState.currentPage == uiState.totalPages - 1) {
                 AppOutlinedButton(
                     text = "Get Started",
                     backgroundColor = MaterialTheme.colorScheme.onSecondary,

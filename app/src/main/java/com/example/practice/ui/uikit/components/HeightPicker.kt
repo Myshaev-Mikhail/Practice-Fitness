@@ -67,7 +67,7 @@ fun HeightPicker(
         onHeightChange(currentHeight)
     }
 
-    val pickerHeight = 300.dp
+    val pickerHeight = 370.dp
     val sidePadding = (pickerHeight / 2) - (itemHeight / 2)
 
     Column(
@@ -81,7 +81,7 @@ fun HeightPicker(
             modifier = Modifier.padding(bottom = 12.dp)
         ) {
             Box(
-                modifier = Modifier.width(95.dp),
+                modifier = Modifier.width(105.dp),
                 contentAlignment = Alignment.CenterEnd
             ) {
                 Text(
@@ -108,21 +108,21 @@ fun HeightPicker(
 
         Box(
             modifier = Modifier
-                .width(90.dp)
-                .height(300.dp),
+                .width(200.dp)
+                .height(370.dp),
             contentAlignment = Alignment.Center
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .width(56.dp)
+                    .width(100.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .background(MaterialTheme.colorScheme.tertiary)
             )
 
             Box(
                 modifier = Modifier
-                    .width(45.dp)
+                    .width(65.dp)
                     .height(3.dp)
                     .background(MaterialTheme.colorScheme.secondary)
                     .zIndex(1f)
@@ -134,7 +134,7 @@ fun HeightPicker(
                 modifier = Modifier
                     .size(26.dp)
                     .align(Alignment.CenterEnd)
-                    .offset(x = 18.dp)
+                    .offset(x = -(15.dp))
             )
 
             LazyColumn(
@@ -161,16 +161,16 @@ fun HeightPicker(
                                 style = TextStyle(
                                     fontFamily = Poppins,
                                     fontWeight = Bold,
-                                    fontSize = 16.sp,
+                                    fontSize = 20.sp,
                                 ),
                                 modifier = Modifier
-                                    .offset(x = -(scaleWidth / 2 + 28.dp))
+                                    .offset(x = -(scaleWidth / 2 + 44.dp))
                             )
                         }
 
                         Box(
                             modifier = Modifier
-                                .width(if (isFull) 22.dp else 12.dp)
+                                .width(if (isFull) 60.dp else 25.dp)
                                 .height(3.dp)
                                 .background(MaterialTheme.colorScheme.onPrimary)
                         )

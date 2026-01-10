@@ -28,24 +28,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.practice.FitnessScreen
 import com.example.practice.R
-import com.example.practice.ui.screens.setup.intents.UserProfileAction
-import com.example.practice.ui.screens.setup.intents.UserProfileSideEffect
+import com.example.practice.ui.screens.setup.intents.SetUpAction
+import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.theme.Poppins
 
 @Composable
 fun SetUpScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: SetUpViewModel
 ) {
-    val viewModel: UserProfileViewModel = viewModel()
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
     when (sideEffect) {
-        is UserProfileSideEffect.ShowGenderScreen -> {
-            //navController.navigate(FitnessScreen.)
-            // TODO
+        is SetUpSideEffect.ShowGenderScreen -> {
+            navController.navigate(FitnessScreen.Gender.route)
             viewModel.clearSideEffect()
         }
 
@@ -110,7 +110,7 @@ fun SetUpScreen(
             text = "Next",
             textStyle = MaterialTheme.typography.titleLarge
         ) {
-            viewModel.uiAction(UserProfileAction.NextScreen)
+            viewModel.uiAction(SetUpAction.StartSetUp)
         }
     }
 }
