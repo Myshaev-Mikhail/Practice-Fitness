@@ -13,6 +13,7 @@ data class SetUpState(
     val activityLevel: ActivityLevel? = null,
     val profile: SetUpProfile? = null,
     val isLoading: Boolean = false,
+    val isProfileValid: Boolean = true
 )
 
 data class SetUpProfile(
