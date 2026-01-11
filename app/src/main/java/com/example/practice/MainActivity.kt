@@ -22,6 +22,9 @@ import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.home.HomeViewModelFactory
 import com.example.practice.ui.screens.login.LogInScreen
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
+import com.example.practice.ui.screens.profile.ProfileScreen
+import com.example.practice.ui.screens.profile.ProfileViewModel
+import com.example.practice.ui.screens.profile.ProfileViewModelFactory
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
 import com.example.practice.ui.screens.setup.ActivityLevelScreen
 import com.example.practice.ui.screens.setup.AgeScreen
@@ -263,6 +266,17 @@ fun NavigationApp(startDestination: String) {
                 viewModel = viewModel
             )
         }
+        composable(FitnessScreen.Profile.route) {
+            val dataStore = LocalContext.current.userProfileDataStore
+
+            val viewModel: ProfileViewModel = viewModel(
+                factory = ProfileViewModelFactory(dataStore)
+            )
+            ProfileScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
     }
 }
 
@@ -284,4 +298,5 @@ sealed class FitnessScreen(val route: String) {
     data object ActivityLevel : FitnessScreen("activity_level")
     data object FillYourProfile : FitnessScreen("fill_your_frofile")
     data object Home : FitnessScreen("home")
+    data object Profile : FitnessScreen("profile")
 }
