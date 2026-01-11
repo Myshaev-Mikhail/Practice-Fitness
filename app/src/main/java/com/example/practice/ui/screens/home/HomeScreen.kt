@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.practice.FitnessScreen
 import com.example.practice.R
 import com.example.practice.ui.screens.home.intents.HomeAction
 import com.example.practice.ui.screens.home.intents.HomeSideEffect
@@ -66,9 +67,8 @@ fun HomeScreen(
             // TODO
         }
         is HomeSideEffect.ShowProfileScreen -> {
-            //navController.navigate(FitnessScreen.LogIn.route)
+            navController.navigate(FitnessScreen.Profile.route)
             viewModel.clearSideEffect()
-            // TODO
         }
         is HomeSideEffect.ShowProgressTrackingScreen -> {
             //navController.navigate(FitnessScreen.LogIn.route)
