@@ -1,5 +1,6 @@
 package com.example.practice.ui.screens.setup
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -45,16 +47,8 @@ fun GoalScreen(
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    var selectedGoals by remember { mutableStateOf(setOf<Goal>()) }
-
-    fun toggleGoal(goal: Goal) {
-        selectedGoals =
-            if (selectedGoals.contains(goal)) {
-                selectedGoals - goal
-            } else {
-                selectedGoals + goal
-            }
-    }
+    val context = LocalContext.current
+    val selectedGoals = state.goal?.toSet() ?: emptySet()
 
     when (sideEffect) {
         is SetUpSideEffect.NavigateNext -> {
@@ -64,6 +58,11 @@ fun GoalScreen(
 
         is SetUpSideEffect.NavigateBack -> {
             navController.popBackStack()
+            viewModel.clearSideEffect()
+        }
+
+        is SetUpSideEffect.ShowToast -> {
+            Toast.makeText(context, (sideEffect as SetUpSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
             viewModel.clearSideEffect()
         }
 
@@ -138,31 +137,76 @@ fun GoalScreen(
                 AppToggleCheckBox(
                     text = "Lose Weight",
                     isSelected = selectedGoals.contains(Goal.LOSE_WEIGHT),
-                    onClick = { toggleGoal(Goal.LOSE_WEIGHT) },
+                    onClick = {
+                        val updatedGoals =
+                            if (selectedGoals.contains(Goal.LOSE_WEIGHT)) {
+                                selectedGoals - Goal.LOSE_WEIGHT
+                            } else {
+                                selectedGoals + Goal.LOSE_WEIGHT
+                            }
+
+                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                    },
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 AppToggleCheckBox(
                     text = "Gain weight",
                     isSelected = selectedGoals.contains(Goal.GAIN_WEIGHT),
-                    onClick = { toggleGoal(Goal.GAIN_WEIGHT) },
+                    onClick = {
+                        val updatedGoals =
+                            if (selectedGoals.contains(Goal.GAIN_WEIGHT)) {
+                                selectedGoals - Goal.GAIN_WEIGHT
+                            } else {
+                                selectedGoals + Goal.GAIN_WEIGHT
+                            }
+
+                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                    },
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 AppToggleCheckBox(
                     text = "Muscle Mass Gain",
                     isSelected = selectedGoals.contains(Goal.MUSCLE_MASS_GAIN),
-                    onClick = { toggleGoal(Goal.MUSCLE_MASS_GAIN) },
+                    onClick = {
+                        val updatedGoals =
+                            if (selectedGoals.contains(Goal.MUSCLE_MASS_GAIN)) {
+                                selectedGoals - Goal.MUSCLE_MASS_GAIN
+                            } else {
+                                selectedGoals + Goal.MUSCLE_MASS_GAIN
+                            }
+
+                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                    },
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 AppToggleCheckBox(
-                    text = "shape body",
+                    text = "Shape body",
                     isSelected = selectedGoals.contains(Goal.SHAPE_BODY),
-                    onClick = { toggleGoal(Goal.SHAPE_BODY) },
+                    onClick = {
+                        val updatedGoals =
+                            if (selectedGoals.contains(Goal.SHAPE_BODY)) {
+                                selectedGoals - Goal.SHAPE_BODY
+                            } else {
+                                selectedGoals + Goal.SHAPE_BODY
+                            }
+
+                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                    },
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 AppToggleCheckBox(
                     text = "Others",
                     isSelected = selectedGoals.contains(Goal.OTHERS),
-                    onClick = { toggleGoal(Goal.OTHERS) },
+                    onClick = {
+                        val updatedGoals =
+                            if (selectedGoals.contains(Goal.OTHERS)) {
+                                selectedGoals - Goal.OTHERS
+                            } else {
+                                selectedGoals + Goal.OTHERS
+                            }
+
+                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                    },
                 )
             }
         }
@@ -175,9 +219,7 @@ fun GoalScreen(
             text = "Continue",
             textStyle = MaterialTheme.typography.titleLarge,
         ) {
-            if (selectedGoals.isNotEmpty()) {
-                viewModel.uiAction(SetUpAction.GoalSelected(selectedGoals))
-            }
+            viewModel.uiAction(SetUpAction.ContinueClickedGoal)
         }
     }
 }

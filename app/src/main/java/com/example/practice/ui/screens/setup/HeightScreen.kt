@@ -102,7 +102,7 @@ fun HeightScreen(
             ) {
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    text = "How Old Are Height?",
+                    text = "What Is Your height?",
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onBackground
                 )

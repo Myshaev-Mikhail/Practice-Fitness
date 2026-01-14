@@ -35,7 +35,13 @@ class LogInViewModel : ViewModel() {
             }
 
             is LogInAction.EmailLogInClicked -> {
-                logInWithEmail()
+                if (uiState.value.email.isEmpty()) {
+                    sideEffect.value = LogInSideEffect.ShowToast("Email is required")
+                } else if (uiState.value.password.isEmpty()) {
+                    sideEffect.value = LogInSideEffect.ShowToast("Password is required")
+                } else {
+                    logInWithEmail()
+                }
             }
 
             is LogInAction.GoogleLogInClicked -> {

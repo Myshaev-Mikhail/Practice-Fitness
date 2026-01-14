@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -22,8 +23,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
@@ -33,6 +36,7 @@ import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.setup.intents.SetUpAction
 import com.example.practice.ui.screens.setup.intents.SetUpProfile
 import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
+import com.example.practice.ui.screens.signup.intents.SignUpSideEffect
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.FillYourProfile
 import io.github.composegears.valkyrie.Arrow
@@ -43,10 +47,10 @@ fun FillYourProfileScreen(
     navController: NavController,
     viewModel: SetUpViewModel
 ) {
-    val state by viewModel.uiStateEmitter.collectAsState()
+    val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    val profile = state.profile ?: SetUpProfile()
+    val profile = uiState.profile ?: SetUpProfile()
     val scrollState = rememberScrollState()
 
     val context = LocalContext.current
@@ -57,6 +61,11 @@ fun FillYourProfileScreen(
             viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(avatarUri = it.toString())))
         }
     }
+
+    val fullNameFocusRequester = remember { FocusRequester() }
+    val nicknameFocusRequester = remember { FocusRequester() }
+    val emailFocusRequester = remember { FocusRequester() }
+    val mobileNumberFocusRequester = remember { FocusRequester() }
 
     when (sideEffect) {
 
@@ -71,16 +80,25 @@ fun FillYourProfileScreen(
         }
 
         is SetUpSideEffect.ShowProfileValidationError -> {
-            Toast
-                .makeText(
-                    context,
-                    "Please fill in all required fields",
-                    Toast.LENGTH_SHORT
-                )
-                .show()
+            Toast.makeText(context, "Please fill in all required fields", Toast.LENGTH_SHORT).show()
+            viewModel.clearSideEffect()
+        }
+        is SetUpSideEffect.ShowToast -> {
+            Toast.makeText(context, (sideEffect as SetUpSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
+
+            if (profile.fullName.isNullOrEmpty()) {
+                fullNameFocusRequester.requestFocus()
+            } else if (profile.nickname.isNullOrEmpty()) {
+                nicknameFocusRequester.requestFocus()
+            } else if (profile.email.isNullOrEmpty()) {
+                emailFocusRequester.requestFocus()
+            } else {
+                mobileNumberFocusRequester.requestFocus()
+            }
 
             viewModel.clearSideEffect()
         }
+
 
         is SetUpSideEffect.NavigateToHome -> {
             navController.navigate(FitnessScreen.Home.route) {
@@ -96,6 +114,7 @@ fun FillYourProfileScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(scrollState)
+            .imePadding()
             .background(MaterialTheme.colorScheme.background)
     ) {
         Spacer(modifier = Modifier.height(45.dp))
@@ -149,6 +168,10 @@ fun FillYourProfileScreen(
             nickname = profile.nickname.orEmpty(),
             email = profile.email.orEmpty(),
             mobileNumber = profile.mobileNumber.orEmpty(),
+            fullNameFocusRequester = fullNameFocusRequester,
+            nicknameFocusRequester = nicknameFocusRequester,
+            emailFocusRequester = emailFocusRequester,
+            mobileNumberFocusRequester = mobileNumberFocusRequester,
             onFullNameChange = {
                 viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(fullName = it)))
             },
@@ -177,6 +200,5 @@ fun FillYourProfileScreen(
         ) {
             viewModel.uiAction(SetUpAction.SaveProfile)
         }
-        Spacer(modifier = Modifier.height(200.dp))
     }
 }

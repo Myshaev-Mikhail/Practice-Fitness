@@ -9,18 +9,25 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun LogIn(
     email: String,
     password: String,
+    emailFocusRequester: FocusRequester,
+    passwordFocusRequester: FocusRequester,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onForgotPassword: () -> Unit,
@@ -42,12 +49,16 @@ fun LogIn(
         BasicTextField(
             value = email,
             onValueChange = onEmailChange,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next
+            ),
             textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
+                .focusRequester(emailFocusRequester)
                 .background(Color.White, RoundedCornerShape(24.dp))
                 .padding(horizontal = 16.dp, vertical = 10.dp)
         )
@@ -72,6 +83,7 @@ fun LogIn(
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
+                .focusRequester(passwordFocusRequester)
                 .background(Color.White, RoundedCornerShape(24.dp))
                 .padding(horizontal = 16.dp, vertical = 10.dp)
         )
