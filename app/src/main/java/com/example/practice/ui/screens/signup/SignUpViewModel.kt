@@ -42,7 +42,17 @@ class SignUpViewModel : ViewModel() {
             }
 
             is SignUpAction.EmailSignUpClicked -> {
-                signUp()
+                if (uiState.value.fullName.isEmpty()) {
+                    sideEffect.value = SignUpSideEffect.ShowToast("Full name is required")
+                } else if (uiState.value.email.isEmpty()) {
+                    sideEffect.value = SignUpSideEffect.ShowToast("Email is required")
+                } else if (uiState.value.password.isEmpty()) {
+                    sideEffect.value = SignUpSideEffect.ShowToast("Password is required")
+                } else if (uiState.value.confirmPassword.isEmpty()) {
+                    sideEffect.value = SignUpSideEffect.ShowToast("Please confirm your password")
+                } else {
+                    signUp()
+                }
             }
 
             is SignUpAction.GoogleLogInClicked -> {
@@ -105,5 +115,9 @@ class SignUpViewModel : ViewModel() {
                 sideEffect.value = SignUpSideEffect.ShowToast("Google login failed")
             }
         }
+    }
+
+    fun clearSideEffect() {
+        sideEffect.value = SignUpSideEffect.Empty
     }
 }

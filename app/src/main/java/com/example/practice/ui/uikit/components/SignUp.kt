@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,7 +17,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -25,14 +30,16 @@ fun SignUp(
     email: String,
     password: String,
     confirmPassword: String,
+    fullNameFocusRequester: FocusRequester,
+    emailFocusRequester: FocusRequester,
+    passwordFocusRequester: FocusRequester,
+    confirmPasswordFocusRequester: FocusRequester,
     onFullNameChange: (String) -> Unit,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onConfirmPasswordChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var username by remember { mutableStateOf("") }
-
     Column(
         modifier = modifier
             .background(MaterialTheme.colorScheme.primary)
@@ -49,12 +56,17 @@ fun SignUp(
         BasicTextField(
             value = fullName,
             onValueChange = onFullNameChange,
+            keyboardOptions = KeyboardOptions(
+                capitalization = KeyboardCapitalization.Words,
+                imeAction = ImeAction.Next
+            ),
             textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
+                .focusRequester(fullNameFocusRequester)
                 .background(Color.White, RoundedCornerShape(24.dp))
                 .padding(horizontal = 16.dp, vertical = 10.dp)
         )
@@ -72,12 +84,16 @@ fun SignUp(
         BasicTextField(
             value = email,
             onValueChange = onEmailChange,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next
+            ),
             textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
+                .focusRequester(emailFocusRequester)
                 .background(Color.White, RoundedCornerShape(24.dp))
                 .padding(horizontal = 16.dp, vertical = 10.dp)
         )
@@ -95,6 +111,9 @@ fun SignUp(
         BasicTextField(
             value = password,
             onValueChange = onPasswordChange,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next
+            ),
             textStyle = MaterialTheme.typography.titleMedium.copy(
                 color = MaterialTheme.colorScheme.onSecondary
             ),
@@ -102,6 +121,7 @@ fun SignUp(
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
+                .focusRequester(passwordFocusRequester)
                 .background(Color.White, RoundedCornerShape(24.dp))
                 .padding(horizontal = 16.dp, vertical = 10.dp)
         )
@@ -126,6 +146,7 @@ fun SignUp(
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
+                .focusRequester(confirmPasswordFocusRequester)
                 .background(Color.White, RoundedCornerShape(24.dp))
                 .padding(horizontal = 16.dp, vertical = 10.dp)
         )

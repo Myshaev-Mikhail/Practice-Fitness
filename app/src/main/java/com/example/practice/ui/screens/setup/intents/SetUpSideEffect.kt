@@ -6,5 +6,6 @@ sealed class SetUpSideEffect {
     data object ShowGenderScreen : SetUpSideEffect()
     data object ShowProfileValidationError : SetUpSideEffect()
     data object NavigateToHome : SetUpSideEffect()
+    data class ShowToast(val text: String) : SetUpSideEffect()
     data object Empty : SetUpSideEffect()
 }

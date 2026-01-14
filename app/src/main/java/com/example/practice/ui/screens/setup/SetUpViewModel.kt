@@ -23,14 +23,24 @@ class SetUpViewModel(
 
     fun uiAction(action: SetUpAction) {
         when (action) {
-
             SetUpAction.StartSetUp -> {
                 sideEffect.value = SetUpSideEffect.ShowGenderScreen
             }
 
-            is SetUpAction.GenderSelected -> saveAndNext {
-                dataStore.setGender(action.gender)
+            is SetUpAction.GenderSelected -> {
                 uiState.value = uiState.value.copy(gender = action.gender)
+            }
+
+            is SetUpAction.ContinueClickedGender -> {
+                val gender = uiState.value.gender
+                if (gender == null) {
+                    sideEffect.value =
+                        SetUpSideEffect.ShowToast("Gender is not selected")
+                } else {
+                    saveAndNext {
+                        dataStore.setGender(gender)
+                    }
+                }
             }
 
             is SetUpAction.AgeEntered -> saveAndNext {
@@ -48,14 +58,36 @@ class SetUpViewModel(
                 uiState.value = uiState.value.copy(height = action.height)
             }
 
-            is SetUpAction.GoalSelected -> saveAndNext {
-                dataStore.setGoal(action.goal.toList())
+            is SetUpAction.GoalSelected -> {
                 uiState.value = uiState.value.copy(goal = action.goal.toList())
             }
 
-            is SetUpAction.ActivitySelected -> saveAndNext {
-                dataStore.setActivity(action.level)
+            is SetUpAction.ContinueClickedGoal -> {
+                val goal = uiState.value.goal
+                if (goal == null) {
+                    sideEffect.value =
+                        SetUpSideEffect.ShowToast("Goal is not selected")
+                } else {
+                    saveAndNext {
+                        dataStore.setGoal(goal)
+                    }
+                }
+            }
+
+            is SetUpAction.ActivitySelected -> {
                 uiState.value = uiState.value.copy(activityLevel = action.level)
+            }
+
+            is SetUpAction.ContinueClickedActivityLevel -> {
+                val activityLevel = uiState.value.activityLevel
+                if (activityLevel == null) {
+                    sideEffect.value =
+                        SetUpSideEffect.ShowToast("Physical activity level is not selected")
+                } else {
+                    saveAndNext {
+                        dataStore.setActivity(activityLevel)
+                    }
+                }
             }
 
             is SetUpAction.ProfileChanged -> {
@@ -65,19 +97,23 @@ class SetUpViewModel(
                 )
             }
 
-
             SetUpAction.SaveProfile -> {
-                val profile = uiState.value.profile
+                val profile = uiState.value.profile ?: SetUpProfile()
 
-                if (isProfileValid(profile)) {
+                if (profile.fullName.isNullOrBlank()) {
+                    sideEffect.value = SetUpSideEffect.ShowToast("Full name is required")
+                } else if (profile.nickname.isNullOrBlank()) {
+                    sideEffect.value = SetUpSideEffect.ShowToast("Nickname is required")
+                } else if (profile.email.isNullOrBlank()) {
+                    sideEffect.value = SetUpSideEffect.ShowToast("Email is required")
+                } else if (profile.mobileNumber.isNullOrBlank()) {
+                    sideEffect.value = SetUpSideEffect.ShowToast("Mobile number is required")
+                } else {
                     viewModelScope.launch {
-                        dataStore.setProfile(profile!!)
+                        dataStore.setProfile(profile)
                         dataStore.setFirstSetupCompleted()
                         sideEffect.value = SetUpSideEffect.NavigateNext
                     }
-                } else {
-                    uiState.value = uiState.value.copy(isProfileValid = false)
-                    sideEffect.value = SetUpSideEffect.ShowProfileValidationError
                 }
             }
 

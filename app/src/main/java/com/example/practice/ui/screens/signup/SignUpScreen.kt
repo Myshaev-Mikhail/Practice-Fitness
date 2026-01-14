@@ -20,8 +20,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
@@ -43,18 +45,36 @@ fun SignUpScreen(
     navController: NavController
 ) {
     val viewModel: SignUpViewModel = viewModel()
-    val state by viewModel.uiStateEmitter.collectAsState()
+    val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
+
+    val fullNameFocusRequester = remember { FocusRequester() }
+    val emailFocusRequester = remember { FocusRequester() }
+    val passwordFocusRequester = remember { FocusRequester() }
+    val confirmPasswordFocusRequester = remember { FocusRequester() }
 
     LaunchedEffect(sideEffect) {
         when (sideEffect) {
             is SignUpSideEffect.Success -> {
                 navController.navigate(FitnessScreen.SetUp.route)
+                viewModel.clearSideEffect()
             }
 
             is SignUpSideEffect.ShowToast -> {
                 Toast.makeText(context, (sideEffect as SignUpSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
+
+                if (uiState.fullName.isEmpty()) {
+                    fullNameFocusRequester.requestFocus()
+                } else if (uiState.email.isEmpty()) {
+                    emailFocusRequester.requestFocus()
+                } else if (uiState.password.isEmpty()) {
+                    passwordFocusRequester.requestFocus()
+                } else {
+                    confirmPasswordFocusRequester.requestFocus()
+                }
+
+                viewModel.clearSideEffect()
             }
 
             else -> Unit
@@ -91,10 +111,14 @@ fun SignUpScreen(
 
             SignUp(
                 modifier = Modifier.fillMaxWidth(),
-                fullName = state.fullName,
-                email = state.email,
-                password = state.password,
-                confirmPassword = state.confirmPassword,
+                fullName = uiState.fullName,
+                email = uiState.email,
+                password = uiState.password,
+                confirmPassword = uiState.confirmPassword,
+                fullNameFocusRequester = fullNameFocusRequester,
+                emailFocusRequester = emailFocusRequester,
+                passwordFocusRequester = passwordFocusRequester,
+                confirmPasswordFocusRequester = confirmPasswordFocusRequester,
                 onFullNameChange = {
                     viewModel.uiAction(SignUpAction.FullNameChanged(it))
                 },

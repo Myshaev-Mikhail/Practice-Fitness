@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -32,6 +33,7 @@ fun AppToggleButton(
     Box(
         modifier = modifier
             .fillMaxWidth()
+            .clip(RoundedCornerShape(50.dp))
             .background(
                 color = backgroundColor,
                 shape = RoundedCornerShape(50.dp)

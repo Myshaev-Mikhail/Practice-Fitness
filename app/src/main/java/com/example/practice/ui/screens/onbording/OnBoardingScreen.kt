@@ -83,7 +83,7 @@ fun OnBoardingScreen(
             if (uiState.currentPage == uiState.totalPages - 1) {
                 AppOutlinedButton(
                     text = "Get Started",
-                    backgroundColor = MaterialTheme.colorScheme.onSecondary,
+                    backgroundColor = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.4f),
                     onClick = {
                         viewModel.uiAction(OnboardingAction.Finish)
                     }
@@ -91,7 +91,7 @@ fun OnBoardingScreen(
             } else {
                 AppOutlinedButton(
                     text = "Next",
-                    backgroundColor = MaterialTheme.colorScheme.onSecondary,
+                    backgroundColor = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.4f),
                     onClick = {
                         viewModel.uiAction(OnboardingAction.NextPage)
                     }

@@ -18,8 +18,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
@@ -33,6 +37,10 @@ fun FillYourProfile(
     nickname: String = "",
     email: String,
     mobileNumber: String,
+    fullNameFocusRequester: FocusRequester,
+    nicknameFocusRequester: FocusRequester,
+    emailFocusRequester: FocusRequester,
+    mobileNumberFocusRequester: FocusRequester,
     onFullNameChange: (String) -> Unit,
     onNicknameChange: (String) -> Unit,
     onEmailChange: (String) -> Unit,
@@ -79,12 +87,17 @@ fun FillYourProfile(
             BasicTextField(
                 value = fullName,
                 onValueChange = onFullNameChange,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Words,
+                    imeAction = ImeAction.Next
+                ),
                 textStyle = MaterialTheme.typography.headlineSmall.copy(
                     color = MaterialTheme.colorScheme.onSecondary
                 ),
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .focusRequester(fullNameFocusRequester)
                     .background(Color.White, RoundedCornerShape(18.dp))
                     .padding(horizontal = 16.dp, vertical = 14.dp)
             )
@@ -102,12 +115,17 @@ fun FillYourProfile(
             BasicTextField(
                 value = nickname,
                 onValueChange = onNicknameChange,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Words,
+                    imeAction = ImeAction.Next
+                ),
                 textStyle = MaterialTheme.typography.headlineSmall.copy(
                     color = MaterialTheme.colorScheme.onSecondary
                 ),
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .focusRequester(nicknameFocusRequester)
                     .background(Color.White, RoundedCornerShape(18.dp))
                     .padding(horizontal = 16.dp, vertical = 14.dp)
             )
@@ -125,12 +143,17 @@ fun FillYourProfile(
             BasicTextField(
                 value = email,
                 onValueChange = onEmailChange,
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Next,
+                    keyboardType = KeyboardType.Email
+                ),
                 textStyle = MaterialTheme.typography.headlineSmall.copy(
                     color = MaterialTheme.colorScheme.onSecondary
                 ),
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .focusRequester(emailFocusRequester)
                     .background(Color.White, RoundedCornerShape(18.dp))
                     .padding(horizontal = 16.dp, vertical = 14.dp)
             )
@@ -148,15 +171,17 @@ fun FillYourProfile(
             BasicTextField(
                 value = mobileNumber,
                 onValueChange = onMobileNumberChange,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Phone,
+                    imeAction = ImeAction.Done
+                ),
                 textStyle = MaterialTheme.typography.headlineSmall.copy(
                     color = MaterialTheme.colorScheme.onSecondary
                 ),
                 singleLine = true,
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Phone
-                ),
                 modifier = Modifier
                     .fillMaxWidth()
+                    .focusRequester(mobileNumberFocusRequester)
                     .background(Color.White, RoundedCornerShape(18.dp))
                     .padding(horizontal = 16.dp, vertical = 14.dp)
             )

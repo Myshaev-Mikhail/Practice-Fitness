@@ -20,8 +20,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
@@ -47,6 +49,9 @@ fun LogInScreen(
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
 
+    val emailFocusRequester = remember { FocusRequester() }
+    val passwordFocusRequester = remember { FocusRequester() }
+
     LaunchedEffect(sideEffect) {
         when (sideEffect) {
             is LogInSideEffect.Success -> {
@@ -56,6 +61,13 @@ fun LogInScreen(
 
             is LogInSideEffect.ShowToast -> {
                 Toast.makeText(context, (sideEffect as LogInSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
+
+                if (uiState.email.isEmpty()) {
+                    emailFocusRequester.requestFocus()
+                } else if (uiState.password.isEmpty()) {
+                    passwordFocusRequester.requestFocus()
+                }
+
                 viewModel.clearSideEffect()
             }
 
@@ -108,6 +120,8 @@ fun LogInScreen(
                 modifier = Modifier.fillMaxWidth(),
                 email = uiState.email,
                 password = uiState.password,
+                emailFocusRequester = emailFocusRequester,
+                passwordFocusRequester = passwordFocusRequester,
                 onEmailChange = {
                     viewModel.uiAction(LogInAction.EmailChanged(it))
                 },

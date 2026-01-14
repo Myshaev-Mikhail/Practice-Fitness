@@ -102,7 +102,7 @@ fun WeightScreen(
             ) {
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    text = "How Old Are You?",
+                    text = "What Is Your Weight?",
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onBackground
                 )
