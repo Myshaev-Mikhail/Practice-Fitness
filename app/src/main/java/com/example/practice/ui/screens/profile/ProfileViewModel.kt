@@ -9,7 +9,6 @@ import com.example.practice.ui.screens.profile.intents.ProfileState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlin.String
 
 class ProfileViewModel(
     private val userProfileDataStore: UserProfileDataStore
@@ -30,7 +29,7 @@ class ProfileViewModel(
                 sideEffect.value = ProfileSideEffect.ShowNavigateBack
             }
             is ProfileAction.NavigateProfileEditing -> {
-                sideEffect.value = ProfileSideEffect.ShowProfileEditingScreen
+                sideEffect.value = ProfileSideEffect.ShowEditProfileScreen
             }
             is ProfileAction.NavigateFavorite -> {
                 sideEffect.value = ProfileSideEffect.ShowFavoriteScreen

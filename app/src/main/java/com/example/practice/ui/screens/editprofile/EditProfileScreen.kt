@@ -1,5 +1,7 @@
-package com.example.practice.ui.screens.profile
+package com.example.practice.ui.screens.editprofile
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,8 +17,10 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,73 +32,51 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.profile.intents.ProfileAction
-import com.example.practice.ui.screens.profile.intents.ProfileSideEffect
+import com.example.practice.R
+import com.example.practice.ui.screens.editprofile.intents.EditProfileAction
+import com.example.practice.ui.screens.editprofile.intents.EditProfileSideEffect
+import com.example.practice.ui.uikit.components.AppButton
+import com.example.practice.ui.uikit.components.AvatarCrop
 import com.example.practice.ui.uikit.components.BottomNavigation
-import com.example.practice.ui.uikit.components.ProfileMenuItem
+import com.example.practice.ui.uikit.components.FormForEfitProfile
+import com.example.practice.ui.uikit.theme.LeagueSpartan
 import io.github.composegears.valkyrie.Arrow
-import io.github.composegears.valkyrie.Favorites
+import io.github.composegears.valkyrie.EditIcon
 import io.github.composegears.valkyrie.Icons
-import io.github.composegears.valkyrie.Logout
-import io.github.composegears.valkyrie.Privacity
-import io.github.composegears.valkyrie.Profile
-import io.github.composegears.valkyrie.Settings
-import io.github.composegears.valkyrie.SupportAgent
 
 @Composable
-fun ProfileScreen(
+fun EditProfileScreen(
     navController: NavController,
-    viewModel: ProfileViewModel
+    viewModel: EditProfileViewModel
 ) {
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    when (sideEffect) {
-        is ProfileSideEffect.ShowNavigateBack -> {
+    val scrollState = rememberScrollState()
+
+    val launcher =
+        rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.GetContent()
+        ) { uri ->
+            uri?.let {
+                viewModel.uiAction(
+                    EditProfileAction.AvatarPicked(it.toString())
+                )
+            }
+        }
+
+    when(sideEffect) {
+        is EditProfileSideEffect.ShowNavigateBack -> {
             navController.popBackStack()
-            viewModel.clearSideEffect()
         }
 
-        is ProfileSideEffect.ShowEditProfileScreen -> {
-            navController.navigate(FitnessScreen.EditProfile.route)
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowFavoriteScreen -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowPrivacyPolicyScreen -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowSettingsScreen -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowSupportScreen -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowLogoutScreen -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.Empty -> {
+        is EditProfileSideEffect.Empty -> {
             // Nothing
         }
     }
@@ -104,7 +86,11 @@ fun ProfileScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        Column {
+        Column(
+            modifier = Modifier
+                .verticalScroll(scrollState)
+                .padding(bottom = 48.dp)
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -112,13 +98,12 @@ fun ProfileScreen(
                     .padding(top = 44.dp, bottom = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
                 Row(
                     modifier = Modifier
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(ProfileAction.NavigateBack)
+                            viewModel.uiAction(EditProfileAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -138,15 +123,29 @@ fun ProfileScreen(
                     )
                 }
 
-                AsyncImage(
-                    model = uiState.avatarUri ?: com.example.practice.R.mipmap.ic_group1,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(125.dp)
-                        .clip(CircleShape),
-                    contentScale = ContentScale.Crop,
-                    error = painterResource(id = com.example.practice.R.mipmap.ic_group1)
-                )
+                Box {
+                    AsyncImage(
+                        model = uiState.tempAvatarUri
+                            ?: uiState.avatarUri
+                            ?: R.mipmap.ic_group1,
+                        contentDescription = "Avatar",
+                        modifier = Modifier
+                            .size(125.dp)
+                            .align(Alignment.Center)
+                            .clip(CircleShape)
+                            .clickable {
+                                launcher.launch("image/*")
+                            },
+                        contentScale = ContentScale.Crop,
+                        error = painterResource(id = R.mipmap.ic_group1)
+                    )
+
+                    Image(
+                        painter = rememberVectorPainter(Icons.EditIcon),
+                        contentDescription = "edit",
+                        modifier = Modifier.align(Alignment.BottomEnd)
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -183,7 +182,7 @@ fun ProfileScreen(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text = "${uiState.weight} Kg",
+                        text ="${uiState.weight} Kg",
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleMedium
                     )
@@ -203,7 +202,7 @@ fun ProfileScreen(
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text = "${uiState.age}",
+                        text = "${uiState.date}",
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleMedium
                     )
@@ -239,53 +238,67 @@ fun ProfileScreen(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Profile),
-                    title = "Profile",
-                    onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateProfileEditing)
+                FormForEfitProfile(
+                    fullName = uiState.fullName.orEmpty(),
+                    email = uiState.email.orEmpty(),
+                    mobileNumber = uiState.mobileNumber.orEmpty(),
+                    date = uiState.date?.toString().orEmpty(),
+                    weight = uiState.weight?.toString().orEmpty(),
+                    height = uiState.height?.toString().orEmpty(),
+
+                    onFullNameChange = {
+                        viewModel.uiAction(EditProfileAction.FullNameChanged(it))
+                    },
+                    onEmailChange = {
+                        viewModel.uiAction(EditProfileAction.EmailChanged(it))
+                    },
+                    onMobileNumberChange = {
+                        viewModel.uiAction(EditProfileAction.MobileChanged(it))
+                    },
+                    onDateChange = {
+                        viewModel.uiAction(EditProfileAction.AgeChanged(it))
+                    },
+                    onWeightChange = {
+                        viewModel.uiAction(EditProfileAction.WeightChanged(it))
+                    },
+                    onHeightChange = {
+                        viewModel.uiAction(EditProfileAction.HeightChanged(it))
                     }
                 )
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Favorites),
-                    title = "Favorite",
-                    onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateFavorite)
-                    }
-                )
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Privacity),
-                    title = "Privacy Policy",
-                    onClick = {
-                        viewModel.uiAction(ProfileAction.NavigatePrivacyPolicy)
-                    }
-                )
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Settings),
-                    title = "Settings",
-                    onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateSettings)
-                    }
-                )
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.SupportAgent),
-                    title = "Help",
-                    onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateSupport)
-                    }
-                )
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Logout),
-                    title = "Logout",
-                    onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateLogout)
-                    }
-                )
+                AppButton(
+                    modifier = Modifier
+                        .width(180.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .padding(bottom = 24.dp),
+                    text = "Update Profile",
+                    textColor = MaterialTheme.colorScheme.onSecondary,
+                    textStyle = TextStyle(
+                        fontFamily = LeagueSpartan,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 17.sp
+                    ),
+                    buttonColor = MaterialTheme.colorScheme.secondary,
+                ) {
+                    viewModel.uiAction(EditProfileAction.SaveProfile)
+                }
             }
         }
         BottomNavigation(
             navController = navController,
             modifier = Modifier.align(Alignment.BottomCenter)
+        )
+    }
+    if (uiState.tempAvatarUri != null) {
+        AvatarCrop(
+            imageUri = uiState.tempAvatarUri!!,
+            onConfirm = { finalUri ->
+                viewModel.uiAction(
+                    EditProfileAction.AvatarConfirmed(finalUri)
+                )
+            },
+            onCancel = {
+                viewModel.uiAction(EditProfileAction.ClearTempAvatar)
+            }
         )
     }
 }

@@ -68,7 +68,6 @@ fun FillYourProfileScreen(
     val mobileNumberFocusRequester = remember { FocusRequester() }
 
     when (sideEffect) {
-
         is SetUpSideEffect.NavigateNext -> {
             navController.navigate(FitnessScreen.Home.route)
             viewModel.clearSideEffect()

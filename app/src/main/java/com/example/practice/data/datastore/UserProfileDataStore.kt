@@ -65,6 +65,22 @@ class UserProfileDataStore(
         }
     }
 
+    suspend fun setFullName(value: String) {
+        dataStore.edit { it[UserProfileKeys.FULL_NAME] = value }
+    }
+
+    suspend fun setEmail(value: String) {
+        dataStore.edit { it[UserProfileKeys.EMAIL] = value }
+    }
+
+    suspend fun setMobile(value: String) {
+        dataStore.edit { it[UserProfileKeys.MOBILE] = value }
+    }
+
+    suspend fun setAvatar(value: String) {
+        dataStore.edit { it[UserProfileKeys.AVATAR_URI] = value }
+    }
+
     suspend fun setProfile(profile: SetUpProfile) {
         dataStore.edit {
             it[UserProfileKeys.FULL_NAME] = profile.fullName.orEmpty()

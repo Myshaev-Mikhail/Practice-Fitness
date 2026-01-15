@@ -4,9 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -66,27 +64,37 @@ fun AvatarCrop(
             )
         }
 
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(48.dp))
 
         Row {
-            Button(onClick = onCancel) {
-                Text("Back")
-            }
+            AppButton(
+                modifier = Modifier.width(120.dp),
+                text = "Back",
+                textColor = MaterialTheme.colorScheme.onSecondary,
+                textStyle = MaterialTheme.typography.titleMedium,
+                buttonColor = MaterialTheme.colorScheme.primary,
+                onClick = onCancel
+            )
 
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(32.dp))
 
-            Button(onClick = {
-                val finalUri = cropAndSaveAvatar(
-                    context,
-                    imageUri,
-                    scale,
-                    offset,
-                    cropSizeDp
-                )
-                onConfirm(finalUri)
-            }) {
-                Text("Next")
-            }
+            AppButton(
+                modifier = Modifier.width(120.dp),
+                text = "Next",
+                textColor = MaterialTheme.colorScheme.onSecondary,
+                textStyle = MaterialTheme.typography.titleMedium,
+                buttonColor = MaterialTheme.colorScheme.primary,
+                onClick = {
+                    val finalUri = cropAndSaveAvatar(
+                        context,
+                        imageUri,
+                        scale,
+                        offset,
+                        cropSizeDp
+                    )
+                    onConfirm(finalUri)
+                }
+            )
         }
     }
 }
