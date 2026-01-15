@@ -117,6 +117,12 @@ class SignUpViewModel : ViewModel() {
         }
     }
 
+    fun normalizeText(input: String): String {
+        return input
+            .trim()
+            .replace(Regex("\\s+"), " ")
+    }
+
     fun clearSideEffect() {
         sideEffect.value = SignUpSideEffect.Empty
     }

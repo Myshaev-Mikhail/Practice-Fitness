@@ -12,6 +12,7 @@ data class SetUpState(
     val goal: List<Goal>? = null,
     val activityLevel: ActivityLevel? = null,
     val profile: SetUpProfile? = null,
+    val tempAvatarUri: String? = null,
     val isLoading: Boolean = false,
     val isProfileValid: Boolean = true
 )

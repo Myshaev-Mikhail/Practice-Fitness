@@ -97,6 +97,16 @@ class SetUpViewModel(
                 )
             }
 
+            is SetUpAction.AvatarPicked -> {
+                uiState.value = uiState.value.copy(
+                    tempAvatarUri = action.uri
+                )
+            }
+
+            is SetUpAction.ClearTempAvatar -> {
+                uiState.value = uiState.value.copy(tempAvatarUri = null)
+            }
+
             SetUpAction.SaveProfile -> {
                 val profile = uiState.value.profile ?: SetUpProfile()
 
@@ -140,6 +150,11 @@ class SetUpViewModel(
                 profile.mobileNumber?.isNotBlank() == true
     }
 
+    fun normalizeText(input: String): String {
+        return input
+            .trim()
+            .replace(Regex("\\s+"), " ")
+    }
 
     fun clearSideEffect() {
         sideEffect.value = SetUpSideEffect.Empty

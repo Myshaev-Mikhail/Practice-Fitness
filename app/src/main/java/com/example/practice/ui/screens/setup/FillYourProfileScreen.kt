@@ -36,8 +36,8 @@ import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.setup.intents.SetUpAction
 import com.example.practice.ui.screens.setup.intents.SetUpProfile
 import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
-import com.example.practice.ui.screens.signup.intents.SignUpSideEffect
 import com.example.practice.ui.uikit.components.AppButton
+import com.example.practice.ui.uikit.components.AvatarCrop
 import com.example.practice.ui.uikit.components.FillYourProfile
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -58,7 +58,7 @@ fun FillYourProfileScreen(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let {
-            viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(avatarUri = it.toString())))
+            viewModel.uiAction(SetUpAction.AvatarPicked(it.toString()))
         }
     }
 
@@ -173,17 +173,24 @@ fun FillYourProfileScreen(
             emailFocusRequester = emailFocusRequester,
             mobileNumberFocusRequester = mobileNumberFocusRequester,
             onFullNameChange = {
-                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(fullName = it)))
+                val normalized = viewModel.normalizeText(it)
+                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(fullName = normalized)))
             },
+
             onNicknameChange = {
-                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(nickname = it)))
+                val normalized = viewModel.normalizeText(it)
+                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(nickname = normalized)))
             },
+
             onEmailChange = {
-                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(email = it)))
+                val normalized = viewModel.normalizeText(it)
+                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(email = normalized)))
             },
+
             onMobileNumberChange = {
-                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(mobileNumber = it)))
-            }
+                val normalized = viewModel.normalizeText(it)
+                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(mobileNumber = normalized)))
+            },
         )
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -200,5 +207,21 @@ fun FillYourProfileScreen(
         ) {
             viewModel.uiAction(SetUpAction.SaveProfile)
         }
+    }
+    if (uiState.tempAvatarUri != null) {
+        AvatarCrop(
+            imageUri = uiState.tempAvatarUri!!,
+            onConfirm = { finalUri ->
+                viewModel.uiAction(
+                    SetUpAction.ProfileChanged(
+                        profile.copy(avatarUri = finalUri)
+                    )
+                )
+                viewModel.uiAction(SetUpAction.ClearTempAvatar)
+            },
+            onCancel = {
+                viewModel.uiAction(SetUpAction.ClearTempAvatar)
+            }
+        )
     }
 }

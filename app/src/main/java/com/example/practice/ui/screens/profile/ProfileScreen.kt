@@ -26,9 +26,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.profile.intents.ProfileAction
 import com.example.practice.ui.screens.profile.intents.ProfileSideEffect
@@ -51,41 +53,48 @@ fun ProfileScreen(
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    when(sideEffect) {
+    when (sideEffect) {
         is ProfileSideEffect.ShowNavigateBack -> {
             navController.popBackStack()
             viewModel.clearSideEffect()
         }
+
         is ProfileSideEffect.ShowProfileEditingScreen -> {
             //navController.navigate(FitnessScreen.Profile.route)
             // TODO
             viewModel.clearSideEffect()
         }
+
         is ProfileSideEffect.ShowFavoriteScreen -> {
             //navController.navigate(FitnessScreen.Profile.route)
             // TODO
             viewModel.clearSideEffect()
         }
+
         is ProfileSideEffect.ShowPrivacyPolicyScreen -> {
             //navController.navigate(FitnessScreen.Profile.route)
             // TODO
             viewModel.clearSideEffect()
         }
+
         is ProfileSideEffect.ShowSettingsScreen -> {
             //navController.navigate(FitnessScreen.Profile.route)
             // TODO
             viewModel.clearSideEffect()
         }
+
         is ProfileSideEffect.ShowSupportScreen -> {
             //navController.navigate(FitnessScreen.Profile.route)
             // TODO
             viewModel.clearSideEffect()
         }
+
         is ProfileSideEffect.ShowLogoutScreen -> {
             //navController.navigate(FitnessScreen.Profile.route)
             // TODO
             viewModel.clearSideEffect()
         }
+
         is ProfileSideEffect.Empty -> {
             // Nothing
         }
@@ -130,12 +139,14 @@ fun ProfileScreen(
                     )
                 }
 
-                Image(
-                    painter = painterResource(id = com.example.practice.R.mipmap.ic_group1),
+                AsyncImage(
+                    model = uiState.avatarUri ?: com.example.practice.R.mipmap.ic_group1,
                     contentDescription = null,
                     modifier = Modifier
                         .size(125.dp)
-                        .clip(CircleShape)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop,
+                    error = painterResource(id = com.example.practice.R.mipmap.ic_group1)
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -173,7 +184,7 @@ fun ProfileScreen(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text ="${uiState.weight} Kg",
+                        text = "${uiState.weight} Kg",
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleMedium
                     )
