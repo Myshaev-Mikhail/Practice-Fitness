@@ -76,11 +76,11 @@ class UserProfileDataStore(
     }
 
     val profileFlow: Flow<UserProfile> =
-        dataStore.data.map { prefs ->
-            val gender = prefs[UserProfileKeys.GENDER]?.let { runCatching { Gender.valueOf(it) }.getOrNull() }
+        dataStore.data.map { preferences ->
+            val gender = preferences[UserProfileKeys.GENDER]?.let { runCatching { Gender.valueOf(it) }.getOrNull() }
                 ?: Gender.MALE
 
-            val goalsString = prefs[UserProfileKeys.GOAL] ?: ""
+            val goalsString = preferences[UserProfileKeys.GOAL] ?: ""
             val goals: List<Goal> =
                 if (goalsString.isBlank()) {
                     emptyList()
@@ -90,20 +90,19 @@ class UserProfileDataStore(
 
             UserProfile(
                 gender = gender,
-                age = prefs[UserProfileKeys.AGE] ?: 0,
-                weight = prefs[UserProfileKeys.WEIGHT] ?: 0f,
-                height = prefs[UserProfileKeys.HEIGHT] ?: 0,
+                age = preferences[UserProfileKeys.AGE] ?: 0,
+                weight = preferences[UserProfileKeys.WEIGHT] ?: 0f,
+                height = preferences[UserProfileKeys.HEIGHT] ?: 0,
                 goal = goals,
-                activityLevel = prefs[UserProfileKeys.ACTIVITY]?.let { runCatching { ActivityLevel.valueOf(it) }.getOrNull() }
+                activityLevel = preferences[UserProfileKeys.ACTIVITY]?.let { runCatching { ActivityLevel.valueOf(it) }.getOrNull() }
                     ?: ActivityLevel.BEGINNER,
-                fullName = prefs[UserProfileKeys.FULL_NAME],
-                nickname = prefs[UserProfileKeys.NICKNAME],
-                email = prefs[UserProfileKeys.EMAIL],
-                mobileNumber = prefs[UserProfileKeys.MOBILE],
-                avatarUri = prefs[UserProfileKeys.AVATAR_URI]
+                fullName = preferences[UserProfileKeys.FULL_NAME],
+                nickname = preferences[UserProfileKeys.NICKNAME],
+                email = preferences[UserProfileKeys.EMAIL],
+                mobileNumber = preferences[UserProfileKeys.MOBILE],
+                avatarUri = preferences[UserProfileKeys.AVATAR_URI]
             )
         }
-
 }
 
 object UserProfileKeys {

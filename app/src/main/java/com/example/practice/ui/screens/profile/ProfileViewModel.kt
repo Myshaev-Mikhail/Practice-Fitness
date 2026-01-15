@@ -9,6 +9,7 @@ import com.example.practice.ui.screens.profile.intents.ProfileState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlin.String
 
 class ProfileViewModel(
     private val userProfileDataStore: UserProfileDataStore
@@ -58,7 +59,8 @@ class ProfileViewModel(
                     email = profile.email,
                     weight = profile.weight,
                     age = profile.age,
-                    height = profile.height
+                    height = profile.height,
+                    avatarUri = profile.avatarUri
                 )
             }
         }

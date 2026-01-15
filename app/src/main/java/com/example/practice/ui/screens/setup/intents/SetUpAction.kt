@@ -16,6 +16,8 @@ sealed class SetUpAction {
     data class ActivitySelected(val level: ActivityLevel) : SetUpAction()
     data object ContinueClickedActivityLevel : SetUpAction()
     data class ProfileChanged(val profile: SetUpProfile) : SetUpAction()
+    data class AvatarPicked(val uri: String) : SetUpAction()
+    data object ClearTempAvatar : SetUpAction()
     data object SaveProfile : SetUpAction()
     data object NavigateBack : SetUpAction()
 }

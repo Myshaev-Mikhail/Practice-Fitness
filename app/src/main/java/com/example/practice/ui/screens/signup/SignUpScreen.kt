@@ -120,16 +120,20 @@ fun SignUpScreen(
                 passwordFocusRequester = passwordFocusRequester,
                 confirmPasswordFocusRequester = confirmPasswordFocusRequester,
                 onFullNameChange = {
-                    viewModel.uiAction(SignUpAction.FullNameChanged(it))
+                    val normalized = viewModel.normalizeText(it)
+                    viewModel.uiAction(SignUpAction.FullNameChanged(normalized))
                 },
                 onEmailChange = {
-                    viewModel.uiAction(SignUpAction.EmailChanged(it))
+                    val normalized = viewModel.normalizeText(it)
+                    viewModel.uiAction(SignUpAction.EmailChanged(normalized))
                 },
                 onPasswordChange = {
-                    viewModel.uiAction(SignUpAction.PasswordChanged(it))
+                    val normalized = viewModel.normalizeText(it)
+                    viewModel.uiAction(SignUpAction.PasswordChanged(normalized))
                 },
                 onConfirmPasswordChange = {
-                    viewModel.uiAction(SignUpAction.ConfirmPasswordChanged(it))
+                    val normalized = viewModel.normalizeText(it)
+                    viewModel.uiAction(SignUpAction.ConfirmPasswordChanged(normalized))
                 }
             )
 

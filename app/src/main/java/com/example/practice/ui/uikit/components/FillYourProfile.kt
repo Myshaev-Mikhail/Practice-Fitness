@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
@@ -18,16 +19,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
 import com.example.practice.R
+import io.github.composegears.valkyrie.EditIcon
+import io.github.composegears.valkyrie.Icons
 
 @Composable
 fun FillYourProfile(
@@ -56,22 +62,26 @@ fun FillYourProfile(
                 .background(MaterialTheme.colorScheme.primary)
                 .padding(8.dp)
         ) {
-            val painter = if (avatarUri != null && avatarUri.isNotEmpty()) {
-                rememberAsyncImagePainter(avatarUri)
-            } else {
-                painterResource(id = R.mipmap.ic_group)
+            Box(
+                modifier = Modifier.align(Alignment.Center)
+            ) {
+                AsyncImage(
+                    model = avatarUri ?: R.mipmap.ic_group1,
+                    contentDescription = "Avatar",
+                    modifier = Modifier
+                        .size(110.dp)
+                        .align(Alignment.Center)
+                        .clip(CircleShape)
+                        .clickable { onAvatarClick() },
+                    contentScale = ContentScale.Crop,
+                    error = painterResource(id = R.mipmap.ic_group1)
+                )
+                Image(
+                    painter = rememberVectorPainter(Icons.EditIcon),
+                    contentDescription = "edit",
+                    modifier = Modifier.align(Alignment.BottomEnd)
+                )
             }
-
-            Image(
-                painter = painter,
-                contentDescription = "Avatar",
-                modifier = Modifier
-                    .size(110.dp)
-                    .align(Alignment.Center)
-                    .clickable {
-                        onAvatarClick()
-                    }
-            )
         }
         Column(
             modifier = Modifier.padding(24.dp)
