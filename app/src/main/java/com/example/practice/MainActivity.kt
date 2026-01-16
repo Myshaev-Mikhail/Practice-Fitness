@@ -16,6 +16,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.practice.extensions.userProfileDataStore
+import com.example.practice.ui.screens.editprofile.EditProfileScreen
+import com.example.practice.ui.screens.editprofile.EditProfileViewModel
+import com.example.practice.ui.screens.editprofile.EditProfileViewModelFactory
 import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordScreen
 import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.home.HomeViewModel
@@ -277,6 +280,17 @@ fun NavigationApp(startDestination: String) {
                 viewModel = viewModel
             )
         }
+        composable(FitnessScreen.EditProfile.route) {
+            val dataStore = LocalContext.current.userProfileDataStore
+
+            val viewModel: EditProfileViewModel = viewModel(
+                factory = EditProfileViewModelFactory(dataStore)
+            )
+            EditProfileScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
     }
 }
 
@@ -296,7 +310,8 @@ sealed class FitnessScreen(val route: String) {
     data object Height : FitnessScreen("height")
     data object Goal : FitnessScreen("goal")
     data object ActivityLevel : FitnessScreen("activity_level")
-    data object FillYourProfile : FitnessScreen("fill_your_frofile")
+    data object FillYourProfile : FitnessScreen("fill_your_profile")
     data object Home : FitnessScreen("home")
     data object Profile : FitnessScreen("profile")
+    data object EditProfile : FitnessScreen("edit_profile")
 }
