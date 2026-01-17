@@ -1,4 +1,4 @@
-package com.example.practice.ui.screens.settings
+package com.example.practice.ui.screens.notificationsetting
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -23,11 +24,14 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.FitnessScreen
+import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingAction
+import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingSideEffect
+import com.example.practice.ui.screens.settings.SettingsViewModel
 import com.example.practice.ui.screens.settings.intents.SettingsAction
 import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ProfileMenuItem
+import com.example.practice.ui.uikit.components.ToggleSwitch
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.NotificationOff
@@ -35,32 +39,19 @@ import io.github.composegears.valkyrie.Profile
 import io.github.composegears.valkyrie.Telegram
 
 @Composable
-fun SettingsScreen(
+fun NotificationSettingScreen(
     navController: NavController
 ) {
-    val viewModel: SettingsViewModel = viewModel()
+    val viewModel: NotificationSettingViewModel = viewModel()
+    val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
     when (sideEffect) {
-        is SettingsSideEffect.ShowNavigateBack -> {
+        is NotificationSettingSideEffect.ShowNavigateBack -> {
             navController.popBackStack()
             viewModel.clearSideEffect()
         }
-        is SettingsSideEffect.ShowNavigateNotification -> {
-            navController.navigate(FitnessScreen.NotificationSetting.route)
-            viewModel.clearSideEffect()
-        }
-        is SettingsSideEffect.ShowNavigateTheme -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-        is SettingsSideEffect.ShowNavigateDelProfile -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-        is SettingsSideEffect.Empty -> {
+        is NotificationSettingSideEffect.Empty -> {
             // Nothing
         }
     }
@@ -83,7 +74,7 @@ fun SettingsScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(SettingsAction.NavigateBack)
+                            viewModel.uiAction(NotificationSettingAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -97,7 +88,7 @@ fun SettingsScreen(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = "Settings",
+                        text = "Notifications Settings",
                         color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.titleLarge
                     )
@@ -108,27 +99,18 @@ fun SettingsScreen(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.NotificationOff),
-                    title = "Notification Setting",
-                    onClick = {
-                        viewModel.uiAction(SettingsAction.NavigateNotification)
-                    }
+                ToggleSwitch(
+                    title = "General Notification"
                 )
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Telegram),
-                    title = "Theme Setting",
-                    onClick = {
-                        viewModel.uiAction(SettingsAction.NavigateTheme)
-                    }
+                Spacer(Modifier.height(20.dp))
+                ToggleSwitch(
+                    title = "Sound"
                 )
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Profile),
-                    title = "Delete Account",
-                    onClick = {
-                        viewModel.uiAction(SettingsAction.NavigateDelProfile)
-                    }
+                Spacer(Modifier.height(20.dp))
+                ToggleSwitch(
+                    title = "Vibrate"
                 )
+                Spacer(Modifier.height(20.dp))
             }
         }
         BottomNavigation(

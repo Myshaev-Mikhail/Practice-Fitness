@@ -3,14 +3,10 @@ package com.example.practice.ui.screens.settings
 import androidx.lifecycle.ViewModel
 import com.example.practice.ui.screens.settings.intents.SettingsAction
 import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
-import com.example.practice.ui.screens.settings.intents.SettingsState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class SettingsViewModel: ViewModel() {
-    private val uiState = MutableStateFlow(SettingsState())
-    val uiStateEmitter = uiState.asStateFlow()
-
     private val sideEffect = MutableStateFlow<SettingsSideEffect>(SettingsSideEffect.Empty)
     val sideEffectEmitter = sideEffect.asStateFlow()
 

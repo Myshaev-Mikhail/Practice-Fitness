@@ -25,6 +25,7 @@ import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.home.HomeViewModelFactory
 import com.example.practice.ui.screens.login.LogInScreen
+import com.example.practice.ui.screens.notificationsetting.NotificationSettingScreen
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.profile.ProfileScreen
 import com.example.practice.ui.screens.profile.ProfileViewModel
@@ -303,6 +304,11 @@ fun NavigationApp(startDestination: String) {
                 navController = navController
             )
         }
+        composable(FitnessScreen.NotificationSetting.route) {
+            NotificationSettingScreen(
+                navController = navController
+            )
+        }
     }
 }
 
@@ -328,4 +334,5 @@ sealed class FitnessScreen(val route: String) {
     data object EditProfile : FitnessScreen("edit_profile")
     data object Favorites : FitnessScreen("favorites")
     data object Settings : FitnessScreen("settings")
+    data object NotificationSetting : FitnessScreen("notification_setting")
 }
