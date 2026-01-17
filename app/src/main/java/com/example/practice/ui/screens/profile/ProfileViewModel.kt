@@ -32,7 +32,7 @@ class ProfileViewModel(
                 sideEffect.value = ProfileSideEffect.ShowEditProfileScreen
             }
             is ProfileAction.NavigateFavorite -> {
-                sideEffect.value = ProfileSideEffect.ShowFavoriteScreen
+                sideEffect.value = ProfileSideEffect.ShowFavoritesScreen
             }
             is ProfileAction.NavigatePrivacyPolicy -> {
                 sideEffect.value = ProfileSideEffect.ShowPrivacyPolicyScreen

@@ -48,6 +48,12 @@ val Typography = Typography(
         fontSize = 12.sp
     ),
 
+    displayMedium = TextStyle(
+        fontFamily = LeagueSpartan,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp
+    ),
+
     bodySmall = TextStyle(
         fontFamily = LeagueSpartan,
         fontWeight = FontWeight.Light,

@@ -64,9 +64,8 @@ fun ProfileScreen(
             viewModel.clearSideEffect()
         }
 
-        is ProfileSideEffect.ShowFavoriteScreen -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
+        is ProfileSideEffect.ShowFavoritesScreen -> {
+            navController.navigate(FitnessScreen.Favorites.route)
             viewModel.clearSideEffect()
         }
 
