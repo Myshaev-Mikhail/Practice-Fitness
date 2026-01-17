@@ -19,6 +19,7 @@ import com.example.practice.extensions.userProfileDataStore
 import com.example.practice.ui.screens.editprofile.EditProfileScreen
 import com.example.practice.ui.screens.editprofile.EditProfileViewModel
 import com.example.practice.ui.screens.editprofile.EditProfileViewModelFactory
+import com.example.practice.ui.screens.favorites.FavoritesScreen
 import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordScreen
 import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.home.HomeViewModel
@@ -291,6 +292,11 @@ fun NavigationApp(startDestination: String) {
                 viewModel = viewModel
             )
         }
+        composable(FitnessScreen.Favorites.route) {
+            FavoritesScreen(
+                navController = navController
+            )
+        }
     }
 }
 
@@ -314,4 +320,5 @@ sealed class FitnessScreen(val route: String) {
     data object Home : FitnessScreen("home")
     data object Profile : FitnessScreen("profile")
     data object EditProfile : FitnessScreen("edit_profile")
+    data object Favorites : FitnessScreen("favorites")
 }

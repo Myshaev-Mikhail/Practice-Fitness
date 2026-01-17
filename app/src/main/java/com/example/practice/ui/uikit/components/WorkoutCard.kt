@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.example.practice.R
 import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.Icons
+import io.github.composegears.valkyrie.PlayOff
 import io.github.composegears.valkyrie.StartSmallOn
 import io.github.composegears.valkyrie.TimeDefault
 import io.github.composegears.valkyrie.WorkOut
@@ -61,20 +62,18 @@ fun WorkoutCard(
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(20.dp),
+                    .padding(start = 16.dp, top = 16.dp, end = 4.dp, bottom = 12.dp),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-
                 Text(
                     text = title,
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
                             painter = rememberVectorPainter(Icons.TimeDefault),
@@ -144,6 +143,14 @@ fun WorkoutCard(
                             )
                         ),
                     contentScale = ContentScale.Crop
+                )
+
+                Image(
+                    painter = rememberVectorPainter(image = Icons.PlayOff),
+                    contentDescription = "video",
+                    modifier = Modifier
+                        .size(20.dp)
+                        .align(Alignment.Center)
                 )
 
                 Image(

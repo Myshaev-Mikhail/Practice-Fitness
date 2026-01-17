@@ -118,7 +118,7 @@ fun FormForEfitProfile(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Date of birth",
+            text = "Years old",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
