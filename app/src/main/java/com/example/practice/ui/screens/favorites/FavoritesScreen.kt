@@ -23,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -164,7 +165,7 @@ fun FavoritesScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
-                    .padding(start = 12.dp, top = 8.dp, end = 24.dp, bottom = 24.dp),
+                    .padding(start = 12.dp, top = 8.dp, end = 24.dp, bottom = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
@@ -256,7 +257,8 @@ fun FavoritesScreen(
                                 title = item.title,
                                 duration = item.duration,
                                 calories = item.calories,
-                                exercises = item.exercises
+                                exercises = item.exercises,
+                                image = painterResource(id = item.imageRes)
                             )
                             Spacer(Modifier.height(12.dp))
                         }
@@ -267,14 +269,15 @@ fun FavoritesScreen(
                                 isDescription = item.isDescriptor,
                                 description = item.description,
                                 duration = item.duration,
-                                calories = item.calories
+                                calories = item.calories,
+                                image = painterResource(id = item.imageRes)
                             )
                             Spacer(Modifier.height(12.dp))
                         }
                     }
                 }
             }
-            Spacer(Modifier.height(48.dp))
+            Spacer(Modifier.height(40.dp))
         }
         BottomNavigation(
             navController = navController,

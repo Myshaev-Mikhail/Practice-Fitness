@@ -84,7 +84,7 @@ class FavoritesViewModel: ViewModel() {
                 duration = "30 Minutes",
                 calories = "1210 Kcal",
                 exercises = "10 Exercises",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.woman_helping_man_gym_3,
                 isFavorite = false
             ),
             FavoritesItem.Workout(
@@ -93,7 +93,7 @@ class FavoritesViewModel: ViewModel() {
                 duration = "45 Minutes",
                 calories = "785 Kcal",
                 exercises = "5 Exercises",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.woman_helping_man_gym_1_2,
                 isFavorite = true
             ),
             FavoritesItem.Workout(
@@ -102,7 +102,7 @@ class FavoritesViewModel: ViewModel() {
                 duration = "12 Minutes",
                 calories = "1385 Kcal",
                 exercises = "3 Exercises",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.woman_working_out_gym_2_1,
                 isFavorite = false
             ),
             FavoritesItem.Workout(
@@ -111,7 +111,7 @@ class FavoritesViewModel: ViewModel() {
                 duration = "12 Minutes",
                 calories = "1250 Kcal",
                 exercises = "5 Exercises",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.full_shot_woman_lifting_her_leg_1,
                 isFavorite = false
             ),
 
@@ -122,7 +122,7 @@ class FavoritesViewModel: ViewModel() {
                 description = "Incorporating physical exercise into your daily routine can boost...",
                 duration = "",
                 calories = "",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.woman_helping_man_gym_2,
             ),
             FavoritesItem.Article(
                 id = "7",
@@ -131,7 +131,7 @@ class FavoritesViewModel: ViewModel() {
                 description = "",
                 duration = "15 Minutes",
                 calories = "150 Cal",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.woman_helping_man_gym_4,
             ),
             FavoritesItem.Article(
                 id = "8",
@@ -140,7 +140,7 @@ class FavoritesViewModel: ViewModel() {
                 description = "A lower body blast is a high-intensity workout focused on targeting...",
                 duration = "",
                 calories = "",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.woman_helping_man_gym_5,
             ),
             FavoritesItem.Article(
                 id = "9",
@@ -149,7 +149,7 @@ class FavoritesViewModel: ViewModel() {
                 description = "",
                 duration = "12 Minutes",
                 calories = "120 Cal",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.woman_helping_man_gym_6,
             ),
             FavoritesItem.Article(
                 id = "10",
@@ -158,7 +158,7 @@ class FavoritesViewModel: ViewModel() {
                 description = "Stay hydrated before, during, and after your workouts to optimize...",
                 duration = "",
                 calories = "",
-                imageRes = R.mipmap.woman_helping_man_gym_1,
+                imageRes = R.mipmap.woman_helping_man_gym_7,
             ),
         )
     }
