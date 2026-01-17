@@ -30,6 +30,7 @@ import com.example.practice.ui.screens.profile.ProfileScreen
 import com.example.practice.ui.screens.profile.ProfileViewModel
 import com.example.practice.ui.screens.profile.ProfileViewModelFactory
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
+import com.example.practice.ui.screens.settings.SettingsScreen
 import com.example.practice.ui.screens.setup.ActivityLevelScreen
 import com.example.practice.ui.screens.setup.AgeScreen
 import com.example.practice.ui.screens.setup.FillYourProfileScreen
@@ -297,6 +298,11 @@ fun NavigationApp(startDestination: String) {
                 navController = navController
             )
         }
+        composable(FitnessScreen.Settings.route) {
+            SettingsScreen(
+                navController = navController
+            )
+        }
     }
 }
 
@@ -321,4 +327,5 @@ sealed class FitnessScreen(val route: String) {
     data object Profile : FitnessScreen("profile")
     data object EditProfile : FitnessScreen("edit_profile")
     data object Favorites : FitnessScreen("favorites")
+    data object Settings : FitnessScreen("settings")
 }
