@@ -18,7 +18,7 @@ val Icons.NotificationOff: ImageVector
             viewportWidth = 45f,
             viewportHeight = 45f
         ).apply {
-            path(fill = SolidColor(Color(0xFFB3A0FF))) {
+            path(fill = SolidColor(Color(0xFF896CFE))) {
                 moveTo(22.5f, 22.5f)
                 moveToRelative(-22.5f, 0f)
                 arcToRelative(22.5f, 22.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, 45f, 0f)
