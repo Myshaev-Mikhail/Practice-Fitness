@@ -26,6 +26,8 @@ import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.home.HomeViewModelFactory
 import com.example.practice.ui.screens.login.LogInScreen
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingScreen
+import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModel
+import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModelFactory
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.profile.ProfileScreen
 import com.example.practice.ui.screens.profile.ProfileViewModel
@@ -305,8 +307,15 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.NotificationSetting.route) {
+            val context = LocalContext.current
+
+            val viewModel: NotificationSettingViewModel = viewModel(
+                factory = NotificationSettingViewModelFactory(context)
+            )
+
             NotificationSettingScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
     }

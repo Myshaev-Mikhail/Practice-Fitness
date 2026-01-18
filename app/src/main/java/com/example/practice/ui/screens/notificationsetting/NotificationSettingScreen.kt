@@ -1,5 +1,6 @@
 package com.example.practice.ui.screens.notificationsetting
 
+import android.app.TimePickerDialog
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,28 +22,22 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingAction
 import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingSideEffect
-import com.example.practice.ui.screens.settings.SettingsViewModel
-import com.example.practice.ui.screens.settings.intents.SettingsAction
-import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
-import com.example.practice.ui.uikit.components.ProfileMenuItem
 import com.example.practice.ui.uikit.components.ToggleSwitch
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
-import io.github.composegears.valkyrie.NotificationOff
-import io.github.composegears.valkyrie.Profile
-import io.github.composegears.valkyrie.Telegram
+import java.util.Calendar
 
 @Composable
 fun NotificationSettingScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: NotificationSettingViewModel
 ) {
-    val viewModel: NotificationSettingViewModel = viewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
@@ -50,6 +45,31 @@ fun NotificationSettingScreen(
         is NotificationSettingSideEffect.ShowNavigateBack -> {
             navController.popBackStack()
             viewModel.clearSideEffect()
+        }
+        is NotificationSettingSideEffect.ShowTimePicker -> {
+            val context = LocalContext.current
+            val calendar = uiState.notificationTime ?: Calendar.getInstance()
+
+            TimePickerDialog(
+                context,
+                { _, hourOfDay, minute ->
+                    val selectedTime = Calendar.getInstance().apply {
+                        set(Calendar.HOUR_OF_DAY, hourOfDay)
+                        set(Calendar.MINUTE, minute)
+                    }
+
+                    viewModel.uiAction(
+                        NotificationSettingAction.SetNotificationTime(
+                            time = selectedTime,
+                            context = context
+                        )
+                    )
+                    viewModel.clearSideEffect()
+                },
+                calendar.get(Calendar.HOUR_OF_DAY),
+                calendar.get(Calendar.MINUTE),
+                true
+            ).show()
         }
         is NotificationSettingSideEffect.Empty -> {
             // Nothing
@@ -68,7 +88,6 @@ fun NotificationSettingScreen(
                     .padding(top = 52.dp, bottom = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
                 Row(
                     modifier = Modifier
                         .align(Alignment.Start)
@@ -100,16 +119,29 @@ fun NotificationSettingScreen(
                     .fillMaxSize()
             ) {
                 ToggleSwitch(
-                    title = "General Notification"
+                    title = "General Notification",
+                    checked = uiState.generalNotificationEnabled,
+                    onCheckedChange = {
+                        viewModel.uiAction(NotificationSettingAction.ToggleGeneralNotification(it))
+                    }
                 )
-                Spacer(Modifier.height(20.dp))
+
                 ToggleSwitch(
-                    title = "Sound"
+                    title = "Sound",
+                    checked = uiState.soundEnabled,
+                    onCheckedChange = {
+                        viewModel.uiAction(NotificationSettingAction.ToggleSound(it))
+                    }
                 )
-                Spacer(Modifier.height(20.dp))
+
                 ToggleSwitch(
-                    title = "Vibrate"
+                    title = "Vibrate",
+                    checked = uiState.vibrateEnabled,
+                    onCheckedChange = {
+                        viewModel.uiAction(NotificationSettingAction.ToggleVibrate(it))
+                    }
                 )
+
                 Spacer(Modifier.height(20.dp))
             }
         }

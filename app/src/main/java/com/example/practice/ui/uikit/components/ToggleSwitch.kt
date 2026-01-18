@@ -18,23 +18,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun ToggleSwitch(
     title: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    initialChecked: Boolean = false,
-    onCheckedChange: (Boolean) -> Unit = {}
 ) {
-    var checked by remember { mutableStateOf(initialChecked) }
-
     val trackColor by animateColorAsState(
         targetValue = if (checked)
             MaterialTheme.colorScheme.secondary
@@ -58,10 +52,7 @@ fun ToggleSwitch(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable {
-                checked = !checked
-                onCheckedChange(checked)
-            }
+            .clickable { onCheckedChange(!checked) }
             .padding(horizontal = 24.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -86,7 +77,7 @@ fun ToggleSwitch(
                     .size(thumbSize)
                     .offset(x = thumbOffset)
                     .align(Alignment.CenterStart)
-                    .background(Color.White, CircleShape)
+                    .background(MaterialTheme.colorScheme.background, shape = CircleShape)
             )
         }
     }
