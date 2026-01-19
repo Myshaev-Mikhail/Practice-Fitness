@@ -30,9 +30,9 @@ import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ProfileMenuItem
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
+import io.github.composegears.valkyrie.Key
 import io.github.composegears.valkyrie.NotificationOff
 import io.github.composegears.valkyrie.Profile
-import io.github.composegears.valkyrie.Telegram
 
 @Composable
 fun SettingsScreen(
@@ -50,9 +50,8 @@ fun SettingsScreen(
             navController.navigate(FitnessScreen.NotificationSetting.route)
             viewModel.clearSideEffect()
         }
-        is SettingsSideEffect.ShowNavigateTheme -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
+        is SettingsSideEffect.ShowNavigatePassword -> {
+            navController.navigate(FitnessScreen.PasswordSetting.route)
             viewModel.clearSideEffect()
         }
         is SettingsSideEffect.ShowNavigateDelProfile -> {
@@ -116,10 +115,10 @@ fun SettingsScreen(
                     }
                 )
                 ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Telegram),
-                    title = "Theme Setting",
+                    icon = rememberVectorPainter(Icons.Key),
+                    title = "Password Setting",
                     onClick = {
-                        viewModel.uiAction(SettingsAction.NavigateTheme)
+                        viewModel.uiAction(SettingsAction.NavigatePassword)
                     }
                 )
                 ProfileMenuItem(

@@ -18,8 +18,8 @@ class SettingsViewModel: ViewModel() {
             is SettingsAction.NavigateNotification -> {
                 sideEffect.value = SettingsSideEffect.ShowNavigateNotification
             }
-            is SettingsAction.NavigateTheme -> {
-                sideEffect.value = SettingsSideEffect.ShowNavigateTheme
+            is SettingsAction.NavigatePassword -> {
+                sideEffect.value = SettingsSideEffect.ShowNavigatePassword
             }
             is SettingsAction.NavigateDelProfile -> {
                 sideEffect.value = SettingsSideEffect.ShowNavigateDelProfile
