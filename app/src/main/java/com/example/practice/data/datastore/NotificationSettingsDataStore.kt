@@ -36,6 +36,10 @@ class NotificationSettingsDataStore(private val dataStore: DataStore<Preferences
         it[Keys.MINUTE] = minute.toString()
     }
 
+    suspend fun clear() {
+        dataStore.edit { it.clear() }
+    }
+
     private object Keys {
         val GENERAL = booleanPreferencesKey("general_notification")
         val SOUND = booleanPreferencesKey("sound_notification")

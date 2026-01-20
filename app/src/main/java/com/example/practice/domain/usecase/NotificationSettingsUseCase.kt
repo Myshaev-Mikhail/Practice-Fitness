@@ -14,4 +14,6 @@ class NotificationSettingsUseCase(private val dataStore: NotificationSettingsDat
     suspend fun setVibrate(enabled: Boolean) = dataStore.setVibrate(enabled)
 
     suspend fun setTime(hour: Int, minute: Int) = dataStore.setNotificationTime(hour, minute)
+
+    suspend fun clear() = dataStore.clear()
 }

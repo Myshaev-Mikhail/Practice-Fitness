@@ -81,6 +81,10 @@ class UserProfileDataStore(
         dataStore.edit { it[UserProfileKeys.AVATAR_URI] = value }
     }
 
+    suspend fun clear() {
+        dataStore.edit { it.clear() }
+    }
+
     suspend fun setProfile(profile: SetUpProfile) {
         dataStore.edit {
             it[UserProfileKeys.FULL_NAME] = profile.fullName.orEmpty()

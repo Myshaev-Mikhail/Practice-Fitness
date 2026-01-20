@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.practice.extensions.provideNotificationSettingsUseCase
 import com.example.practice.extensions.userProfileDataStore
 import com.example.practice.ui.screens.editprofile.EditProfileScreen
 import com.example.practice.ui.screens.editprofile.EditProfileViewModel
@@ -35,6 +36,8 @@ import com.example.practice.ui.screens.profile.ProfileViewModel
 import com.example.practice.ui.screens.profile.ProfileViewModelFactory
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
 import com.example.practice.ui.screens.settings.SettingsScreen
+import com.example.practice.ui.screens.settings.SettingsViewModel
+import com.example.practice.ui.screens.settings.SettingsViewModelFactory
 import com.example.practice.ui.screens.setup.ActivityLevelScreen
 import com.example.practice.ui.screens.setup.AgeScreen
 import com.example.practice.ui.screens.setup.FillYourProfileScreen
@@ -303,8 +306,25 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Settings.route) {
+            val context = LocalContext.current
+
+            val userProfileDataStore = remember {
+                context.userProfileDataStore
+            }
+            val notificationSettingsUseCase = remember {
+                provideNotificationSettingsUseCase(context)
+            }
+
+            val viewModel: SettingsViewModel = viewModel(
+                factory = SettingsViewModelFactory(
+                    userProfileDataStore = userProfileDataStore,
+                    notificationSettingsUseCase = notificationSettingsUseCase
+                )
+            )
+
             SettingsScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
         composable(FitnessScreen.NotificationSetting.route) {

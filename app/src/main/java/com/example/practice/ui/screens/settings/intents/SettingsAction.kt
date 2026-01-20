@@ -4,5 +4,5 @@ sealed class SettingsAction {
     data object NavigateBack : SettingsAction()
     data object NavigateNotification : SettingsAction()
     data object NavigatePassword : SettingsAction()
-    data object NavigateDelProfile : SettingsAction()
+    data object DeleteProfile : SettingsAction()
 }

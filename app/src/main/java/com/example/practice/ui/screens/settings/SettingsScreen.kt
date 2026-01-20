@@ -1,5 +1,6 @@
 package com.example.practice.ui.screens.settings
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,16 +18,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.settings.intents.SettingsAction
 import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
+import com.example.practice.ui.uikit.components.DeleteAccountDialog
 import com.example.practice.ui.uikit.components.ProfileMenuItem
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -36,10 +41,13 @@ import io.github.composegears.valkyrie.Profile
 
 @Composable
 fun SettingsScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: SettingsViewModel
 ) {
-    val viewModel: SettingsViewModel = viewModel()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
+    val context = LocalContext.current
+
+    var showDeleteDialog by remember { mutableStateOf(false) }
 
     when (sideEffect) {
         is SettingsSideEffect.ShowNavigateBack -> {
@@ -54,9 +62,15 @@ fun SettingsScreen(
             navController.navigate(FitnessScreen.PasswordSetting.route)
             viewModel.clearSideEffect()
         }
-        is SettingsSideEffect.ShowNavigateDelProfile -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
+        is SettingsSideEffect.ShowDeleteProfile -> {
+            navController.navigate(FitnessScreen.OnBoarding.route) {
+                popUpTo(0)
+            }
+            viewModel.clearSideEffect()
+        }
+        is SettingsSideEffect.ShowError -> {
+            val message = (sideEffect as SettingsSideEffect.ShowError).throwable.message ?: "Unknown error"
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             viewModel.clearSideEffect()
         }
         is SettingsSideEffect.Empty -> {
@@ -125,8 +139,7 @@ fun SettingsScreen(
                     icon = rememberVectorPainter(Icons.Profile),
                     title = "Delete Account",
                     onClick = {
-                        viewModel.uiAction(SettingsAction.NavigateDelProfile)
-                    }
+                        showDeleteDialog = true                    }
                 )
             }
         }
@@ -134,5 +147,15 @@ fun SettingsScreen(
             navController = navController,
             modifier = Modifier.align(Alignment.BottomCenter)
         )
+
+        if (showDeleteDialog) {
+            DeleteAccountDialog(
+                onCancel = { showDeleteDialog = false },
+                onConfirm = {
+                    showDeleteDialog = false
+                    viewModel.uiAction(SettingsAction.DeleteProfile)
+                }
+            )
+        }
     }
 }
