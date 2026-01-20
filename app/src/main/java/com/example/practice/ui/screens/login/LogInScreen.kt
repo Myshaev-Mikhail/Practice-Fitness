@@ -55,7 +55,7 @@ fun LogInScreen(
     LaunchedEffect(sideEffect) {
         when (sideEffect) {
             is LogInSideEffect.Success -> {
-                navController.navigate(FitnessScreen.SetUp.route)
+                navController.navigate(FitnessScreen.Home.route)
                 viewModel.clearSideEffect()
             }
 

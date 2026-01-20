@@ -45,7 +45,7 @@ fun ProfileMenuItem(
         Text(
             text = title,
             modifier = Modifier.weight(1f),
-            color = MaterialTheme.colorScheme.outline,
+            color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.headlineSmall
         )
 

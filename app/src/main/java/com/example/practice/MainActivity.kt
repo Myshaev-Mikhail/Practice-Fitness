@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.practice.extensions.provideNotificationSettingsUseCase
 import com.example.practice.extensions.userProfileDataStore
 import com.example.practice.ui.screens.editprofile.EditProfileScreen
 import com.example.practice.ui.screens.editprofile.EditProfileViewModel
@@ -25,11 +26,18 @@ import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.home.HomeViewModelFactory
 import com.example.practice.ui.screens.login.LogInScreen
+import com.example.practice.ui.screens.notificationsetting.NotificationSettingScreen
+import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModel
+import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModelFactory
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
+import com.example.practice.ui.screens.passwordsetting.PasswordSettingScreen
 import com.example.practice.ui.screens.profile.ProfileScreen
 import com.example.practice.ui.screens.profile.ProfileViewModel
 import com.example.practice.ui.screens.profile.ProfileViewModelFactory
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
+import com.example.practice.ui.screens.settings.SettingsScreen
+import com.example.practice.ui.screens.settings.SettingsViewModel
+import com.example.practice.ui.screens.settings.SettingsViewModelFactory
 import com.example.practice.ui.screens.setup.ActivityLevelScreen
 import com.example.practice.ui.screens.setup.AgeScreen
 import com.example.practice.ui.screens.setup.FillYourProfileScreen
@@ -297,6 +305,45 @@ fun NavigationApp(startDestination: String) {
                 navController = navController
             )
         }
+        composable(FitnessScreen.Settings.route) {
+            val context = LocalContext.current
+
+            val userProfileDataStore = remember {
+                context.userProfileDataStore
+            }
+            val notificationSettingsUseCase = remember {
+                provideNotificationSettingsUseCase(context)
+            }
+
+            val viewModel: SettingsViewModel = viewModel(
+                factory = SettingsViewModelFactory(
+                    userProfileDataStore = userProfileDataStore,
+                    notificationSettingsUseCase = notificationSettingsUseCase
+                )
+            )
+
+            SettingsScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(FitnessScreen.NotificationSetting.route) {
+            val context = LocalContext.current
+
+            val viewModel: NotificationSettingViewModel = viewModel(
+                factory = NotificationSettingViewModelFactory(context)
+            )
+
+            NotificationSettingScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(FitnessScreen.PasswordSetting.route) {
+            PasswordSettingScreen(
+                navController = navController
+            )
+        }
     }
 }
 
@@ -321,4 +368,7 @@ sealed class FitnessScreen(val route: String) {
     data object Profile : FitnessScreen("profile")
     data object EditProfile : FitnessScreen("edit_profile")
     data object Favorites : FitnessScreen("favorites")
+    data object Settings : FitnessScreen("settings")
+    data object NotificationSetting : FitnessScreen("notification_setting")
+    data object PasswordSetting : FitnessScreen("password_setting")
 }

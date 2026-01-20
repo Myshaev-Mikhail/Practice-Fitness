@@ -76,8 +76,7 @@ fun ProfileScreen(
         }
 
         is ProfileSideEffect.ShowSettingsScreen -> {
-            //navController.navigate(FitnessScreen.Profile.route)
-            // TODO
+            navController.navigate(FitnessScreen.Settings.route)
             viewModel.clearSideEffect()
         }
 

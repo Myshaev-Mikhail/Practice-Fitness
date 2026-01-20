@@ -1,6 +1,7 @@
 package com.example.practice.data.auth
 
 import com.google.firebase.auth.ActionCodeSettings
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
@@ -84,6 +85,22 @@ class AuthRepository(
             FirebaseAuth.getInstance()
                 .confirmPasswordReset(oobCode, newPassword)
                 .await()
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+
+    suspend fun changePassword(oldPassword: String, newPassword: String): Result<Unit> {
+        val user = auth.currentUser ?: return Result.failure(Exception("Пользователь не авторизован"))
+        val email = user.email ?: return Result.failure(Exception("Email пользователя не найден"))
+
+        return try {
+            val credential = EmailAuthProvider.getCredential(email, oldPassword)
+            user.reauthenticate(credential).await()
+
+            user.updatePassword(newPassword).await()
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
