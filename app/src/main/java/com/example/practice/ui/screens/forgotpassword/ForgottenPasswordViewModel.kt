@@ -7,6 +7,7 @@ import com.example.practice.data.auth.AuthRepository
 import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordAction
 import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordSideEffect
 import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordState
+import com.example.practice.ui.utils.isInternetAvailable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -27,6 +28,11 @@ class ForgottenPasswordViewModel : ViewModel() {
             }
 
             is ForgottenPasswordAction.SendClicked -> {
+                if (context != null && !isInternetAvailable(context)) {
+                    sideEffect.value = ForgottenPasswordSideEffect.ShowToast("There is no internet connection")
+                    return
+                }
+
                 sendResetEmail()
             }
 

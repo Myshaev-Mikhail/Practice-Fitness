@@ -110,8 +110,7 @@ fun HeightScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
-                            " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    text = "Your height, along with weight, helps calculate your BMI and tailor your fitness plan.",
                     color = MaterialTheme.colorScheme.onBackground,
                     style = MaterialTheme.typography.labelLarge,
                     textAlign = TextAlign.Center

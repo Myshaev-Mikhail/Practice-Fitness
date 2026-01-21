@@ -20,6 +20,8 @@ class EditProfileViewModel(
     private val sideEffect = MutableStateFlow<EditProfileSideEffect>(EditProfileSideEffect.Empty)
     val sideEffectEmitter = sideEffect.asStateFlow()
 
+    private var originalState: EditProfileState? = null
+
     init {
         profileData()
     }
@@ -86,7 +88,11 @@ class EditProfileViewModel(
             }
 
             is EditProfileAction.NavigateBack -> {
-                sideEffect.value = EditProfileSideEffect.ShowNavigateBack
+                if (hasUnsavedChanges()) {
+                    sideEffect.value = EditProfileSideEffect.ShowUnsavedChangesDialog
+                } else {
+                    sideEffect.value = EditProfileSideEffect.ShowNavigateBack
+                }
             }
         }
     }
@@ -94,7 +100,7 @@ class EditProfileViewModel(
     private fun profileData() {
         viewModelScope.launch {
             userProfileDataStore.profileFlow.first().let { profile ->
-                uiState.value = EditProfileState(
+                val state = EditProfileState(
                     avatarUri = profile.avatarUri,
                     fullName = profile.fullName.orEmpty(),
                     email = profile.email.orEmpty(),
@@ -104,8 +110,23 @@ class EditProfileViewModel(
                     height = profile.height,
                     isProfileValid = true
                 )
+                uiState.value = state
+                originalState = state
             }
         }
+    }
+
+    fun hasUnsavedChanges(): Boolean {
+        val current = uiState.value
+        val original = originalState ?: return false
+
+        return current.avatarUri != original.avatarUri ||
+                current.fullName != original.fullName ||
+                current.email != original.email ||
+                current.mobileNumber != original.mobileNumber ||
+                current.date != original.date ||
+                current.weight != original.weight ||
+                current.height != original.height
     }
 
     private fun saveProfile() {

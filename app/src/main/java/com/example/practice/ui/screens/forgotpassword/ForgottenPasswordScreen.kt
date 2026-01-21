@@ -121,7 +121,7 @@ fun ForgottenPasswordScreen(
             )
             Text(
                 modifier = Modifier.padding(40.dp),
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                text = "Don’t worry! Enter your email and we’ll help you reset your password so you can get back on track.",
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center

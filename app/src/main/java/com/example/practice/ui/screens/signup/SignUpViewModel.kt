@@ -9,6 +9,7 @@ import com.example.practice.domain.auth.GoogleSignInUseCase
 import com.example.practice.ui.screens.signup.intents.SignUpAction
 import com.example.practice.ui.screens.signup.intents.SignUpSideEffect
 import com.example.practice.ui.screens.signup.intents.SignUpState
+import com.example.practice.ui.utils.isInternetAvailable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -42,6 +43,11 @@ class SignUpViewModel : ViewModel() {
             }
 
             is SignUpAction.EmailSignUpClicked -> {
+                if (context != null && !isInternetAvailable(context)) {
+                    sideEffect.value = SignUpSideEffect.ShowToast("There is no internet connection")
+                    return
+                }
+
                 if (uiState.value.fullName.isEmpty()) {
                     sideEffect.value = SignUpSideEffect.ShowToast("Full name is required")
                 } else if (uiState.value.email.isEmpty()) {
@@ -56,6 +62,11 @@ class SignUpViewModel : ViewModel() {
             }
 
             is SignUpAction.GoogleLogInClicked -> {
+                if (context != null && !isInternetAvailable(context)) {
+                    sideEffect.value = SignUpSideEffect.ShowToast("There is no internet connection")
+                    return
+                }
+
                 context?.let {
                     launchGoogleSignIn(it)
                 }

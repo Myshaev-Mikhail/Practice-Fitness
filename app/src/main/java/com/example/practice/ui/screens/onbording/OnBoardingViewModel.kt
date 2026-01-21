@@ -42,4 +42,8 @@ class OnboardingViewModel : ViewModel() {
     private fun finish() {
         sideEffect.value = OnBoardingSideEffect.NavigateToLogin
     }
+
+    fun updateCurrentPage(page: Int) {
+        uiState.update { it.copy(currentPage = page) }
+    }
 }

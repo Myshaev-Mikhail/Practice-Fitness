@@ -26,6 +26,8 @@ import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.home.HomeViewModelFactory
 import com.example.practice.ui.screens.login.LogInScreen
+import com.example.practice.ui.screens.login.LogInViewModel
+import com.example.practice.ui.screens.login.LogInViewModelFactory
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingScreen
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModel
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModelFactory
@@ -100,8 +102,15 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.LogIn.route) {
+            val dataStore = LocalContext.current.userProfileDataStore
+
+            val viewModel: LogInViewModel = viewModel(
+                factory = LogInViewModelFactory(dataStore)
+            )
+
             LogInScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
         composable(FitnessScreen.SignUp.route) {

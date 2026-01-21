@@ -31,6 +31,8 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.setup.intents.SetUpAction
@@ -149,10 +151,9 @@ fun FillYourProfileScreen(
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onBackground,
         )
-        Spacer(modifier = Modifier.height(24.dp))
         Text(
-            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
-                    " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            modifier = Modifier.padding(24.dp),
+            text = "Complete your profile to get the most accurate insights and a personalized fitness plan.",
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.labelLarge,
             textAlign = TextAlign.Center
@@ -208,19 +209,28 @@ fun FillYourProfileScreen(
         }
     }
     if (uiState.tempAvatarUri != null) {
-        AvatarCrop(
-            imageUri = uiState.tempAvatarUri!!,
-            onConfirm = { finalUri ->
-                viewModel.uiAction(
-                    SetUpAction.ProfileChanged(
-                        profile.copy(avatarUri = finalUri)
-                    )
-                )
+        Dialog(
+            onDismissRequest = {
                 viewModel.uiAction(SetUpAction.ClearTempAvatar)
             },
-            onCancel = {
-                viewModel.uiAction(SetUpAction.ClearTempAvatar)
-            }
-        )
+            properties = DialogProperties(
+                usePlatformDefaultWidth = false
+            )
+        ) {
+            AvatarCrop(
+                imageUri = uiState.tempAvatarUri!!,
+                onConfirm = { finalUri ->
+                    viewModel.uiAction(
+                        SetUpAction.ProfileChanged(
+                            profile.copy(avatarUri = finalUri)
+                        )
+                    )
+                    viewModel.uiAction(SetUpAction.ClearTempAvatar)
+                },
+                onCancel = {
+                    viewModel.uiAction(SetUpAction.ClearTempAvatar)
+                }
+            )
+        }
     }
 }
