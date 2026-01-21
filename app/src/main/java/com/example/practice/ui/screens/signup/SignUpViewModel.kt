@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.data.auth.AuthRepository
-import com.example.practice.domain.auth.GoogleSignInUseCase
+import com.example.practice.domain.usecase.GoogleSignInUseCase
 import com.example.practice.ui.screens.signup.intents.SignUpAction
 import com.example.practice.ui.screens.signup.intents.SignUpSideEffect
 import com.example.practice.ui.screens.signup.intents.SignUpState

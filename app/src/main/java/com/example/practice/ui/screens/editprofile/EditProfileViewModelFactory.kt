@@ -2,16 +2,21 @@ package com.example.practice.ui.screens.editprofile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.practice.data.datastore.UserProfileDataStore
+import com.example.practice.domain.usecase.GetUserProfileUseCase
+import com.example.practice.domain.usecase.UpdateUserProfileUseCase
 
 class EditProfileViewModelFactory(
-    private val userProfileDataStore: UserProfileDataStore
+    private val getUserProfile: GetUserProfileUseCase,
+    private val updateUserProfile: UpdateUserProfileUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EditProfileViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return EditProfileViewModel(userProfileDataStore) as T
+            return EditProfileViewModel(
+                getUserProfile = getUserProfile,
+                updateUserProfile = updateUserProfile
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

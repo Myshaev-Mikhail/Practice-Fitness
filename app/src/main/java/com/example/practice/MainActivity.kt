@@ -15,19 +15,16 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.practice.extensions.provideNotificationSettingsUseCase
+import com.example.practice.di.EditProfileDi
 import com.example.practice.extensions.userProfileDataStore
 import com.example.practice.ui.screens.editprofile.EditProfileScreen
 import com.example.practice.ui.screens.editprofile.EditProfileViewModel
-import com.example.practice.ui.screens.editprofile.EditProfileViewModelFactory
 import com.example.practice.ui.screens.favorites.FavoritesScreen
 import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordScreen
 import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.home.HomeViewModel
-import com.example.practice.ui.screens.home.HomeViewModelFactory
 import com.example.practice.ui.screens.login.LogInScreen
 import com.example.practice.ui.screens.login.LogInViewModel
-import com.example.practice.ui.screens.login.LogInViewModelFactory
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingScreen
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModel
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModelFactory
@@ -35,11 +32,9 @@ import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingScreen
 import com.example.practice.ui.screens.profile.ProfileScreen
 import com.example.practice.ui.screens.profile.ProfileViewModel
-import com.example.practice.ui.screens.profile.ProfileViewModelFactory
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
 import com.example.practice.ui.screens.settings.SettingsScreen
 import com.example.practice.ui.screens.settings.SettingsViewModel
-import com.example.practice.ui.screens.settings.SettingsViewModelFactory
 import com.example.practice.ui.screens.setup.ActivityLevelScreen
 import com.example.practice.ui.screens.setup.AgeScreen
 import com.example.practice.ui.screens.setup.FillYourProfileScreen
@@ -48,7 +43,6 @@ import com.example.practice.ui.screens.setup.GoalScreen
 import com.example.practice.ui.screens.setup.HeightScreen
 import com.example.practice.ui.screens.setup.SetUpScreen
 import com.example.practice.ui.screens.setup.SetUpViewModel
-import com.example.practice.ui.screens.setup.SetUpViewModelFactory
 import com.example.practice.ui.screens.setup.WeightScreen
 import com.example.practice.ui.screens.signup.SignUpScreen
 import com.example.practice.ui.uikit.theme.FitnessTheme
@@ -72,7 +66,7 @@ fun AppEntryPoint() {
     val dataStore = context.userProfileDataStore
 
     val onboardingCompleted by dataStore
-        .firstSetupCompletedFlow
+        .getFirstSetupCompleted
         .collectAsState(initial = null)
 
     when (onboardingCompleted) {
@@ -102,10 +96,10 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.LogIn.route) {
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: LogInViewModel = viewModel(
-                factory = LogInViewModelFactory(dataStore)
+                factory = EditProfileDi.provideFirstSetupViewModelFactory(context)
             )
 
             LogInScreen(
@@ -142,12 +136,11 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
-                factory = SetUpViewModelFactory(dataStore)
+                factory = EditProfileDi.provideSetUpViewModelFactory(context)
             )
 
             SetUpScreen(
@@ -159,12 +152,11 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
-                factory = SetUpViewModelFactory(dataStore)
+                factory = EditProfileDi.provideSetUpViewModelFactory(context)
             )
 
             AgeScreen(
@@ -177,12 +169,11 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
-                factory = SetUpViewModelFactory(dataStore)
+                factory = EditProfileDi.provideSetUpViewModelFactory(context)
             )
 
             GenderScreen(
@@ -196,11 +187,11 @@ fun NavigationApp(startDestination: String) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
 
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
-                factory = SetUpViewModelFactory(dataStore)
+                factory = EditProfileDi.provideSetUpViewModelFactory(context)
             )
 
             WeightScreen(
@@ -212,12 +203,11 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
-                factory = SetUpViewModelFactory(dataStore)
+                factory = EditProfileDi.provideSetUpViewModelFactory(context)
             )
 
             HeightScreen(
@@ -229,12 +219,11 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
-                factory = SetUpViewModelFactory(dataStore)
+                factory = EditProfileDi.provideSetUpViewModelFactory(context)
             )
 
             GoalScreen(
@@ -246,12 +235,11 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
-                factory = SetUpViewModelFactory(dataStore)
+                factory = EditProfileDi.provideSetUpViewModelFactory(context)
             )
 
             ActivityLevelScreen(
@@ -263,12 +251,11 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: SetUpViewModel = viewModel(
                 parentEntry,
-                factory = SetUpViewModelFactory(dataStore)
+                factory = EditProfileDi.provideSetUpViewModelFactory(context)
             )
 
             FillYourProfileScreen(
@@ -277,10 +264,10 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Home.route) {
-            val dataStore = LocalContext.current.userProfileDataStore
+            val dataStore = LocalContext.current
 
             val viewModel: HomeViewModel = viewModel(
-                factory = HomeViewModelFactory(dataStore)
+                factory = EditProfileDi.provideHomeViewModelFactory(dataStore)
             )
             HomeScreen(
                 navController = navController,
@@ -288,10 +275,10 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Profile.route) {
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: ProfileViewModel = viewModel(
-                factory = ProfileViewModelFactory(dataStore)
+                factory = EditProfileDi.provideProfileViewModelFactory(context)
             )
             ProfileScreen(
                 navController = navController,
@@ -299,10 +286,10 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.EditProfile.route) {
-            val dataStore = LocalContext.current.userProfileDataStore
+            val context = LocalContext.current
 
             val viewModel: EditProfileViewModel = viewModel(
-                factory = EditProfileViewModelFactory(dataStore)
+                factory = EditProfileDi.provideEditProfileViewModelFactory(context)
             )
             EditProfileScreen(
                 navController = navController,
@@ -317,18 +304,8 @@ fun NavigationApp(startDestination: String) {
         composable(FitnessScreen.Settings.route) {
             val context = LocalContext.current
 
-            val userProfileDataStore = remember {
-                context.userProfileDataStore
-            }
-            val notificationSettingsUseCase = remember {
-                provideNotificationSettingsUseCase(context)
-            }
-
             val viewModel: SettingsViewModel = viewModel(
-                factory = SettingsViewModelFactory(
-                    userProfileDataStore = userProfileDataStore,
-                    notificationSettingsUseCase = notificationSettingsUseCase
-                )
+                factory = EditProfileDi.provideSettingsViewModelFactory(context)
             )
 
             SettingsScreen(
@@ -362,8 +339,7 @@ sealed class FitnessScreen(val route: String) {
     data object SignUp : FitnessScreen("signup")
     data object ForgottenPassword : FitnessScreen("forgotten_password")
     data object SetPassword : FitnessScreen("set_password?oobCode={oobCode}") {
-        fun createRoute(oobCode: String): String =
-            "set_password?oobCode=$oobCode"
+        fun createRoute(oobCode: String): String = "set_password?oobCode=$oobCode"
     }
     data object SetUp : FitnessScreen("set_up")
     data object Gender : FitnessScreen("gender")

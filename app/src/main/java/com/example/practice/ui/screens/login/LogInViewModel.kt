@@ -6,18 +6,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.data.auth.AuthError
 import com.example.practice.data.auth.AuthRepository
-import com.example.practice.data.datastore.UserProfileDataStore
 import com.example.practice.ui.screens.login.intents.LogInAction
 import com.example.practice.ui.screens.login.intents.LogInSideEffect
 import com.example.practice.ui.screens.login.intents.LogInState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import com.example.practice.domain.auth.GoogleSignInUseCase
+import com.example.practice.domain.usecase.GoogleSignInUseCase
+import com.example.practice.domain.usecase.SetFirstSetupUseCase
 import com.example.practice.ui.utils.isInternetAvailable
 
 class LogInViewModel(
-    private val dataStore: UserProfileDataStore
+    private val setFirstSetup : SetFirstSetupUseCase
 ) : ViewModel() {
     private val uiState = MutableStateFlow(LogInState())
     val uiStateEmitter = uiState.asStateFlow()
@@ -81,7 +81,7 @@ class LogInViewModel(
             result
                 .onSuccess {
                     sideEffect.value = LogInSideEffect.Success
-                    dataStore.setFirstSetupCompleted()
+                    setFirstSetup.invoke()
                 }
                 .onFailure { error ->
                     val message = when (error) {
@@ -99,7 +99,6 @@ class LogInViewModel(
             val result = googleSignInUseCase.execute(context)
             result.onSuccess { idToken ->
                 logInWithGoogleToken(idToken)
-                dataStore.setFirstSetupCompleted()
             }.onFailure { error ->
                 sideEffect.value = LogInSideEffect.ShowToast("Google sign-in failed")
                 Log.e("LogInViewModel", "Google sign-in failed", error)
@@ -114,6 +113,7 @@ class LogInViewModel(
             uiState.value = uiState.value.copy(isLoading = false)
             result.onSuccess {
                 sideEffect.value = LogInSideEffect.Success
+                setFirstSetup.invoke()
             }.onFailure { error ->
                 sideEffect.value = LogInSideEffect.ShowToast("Google login failed")
             }

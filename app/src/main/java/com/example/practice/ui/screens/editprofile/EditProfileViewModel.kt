@@ -2,7 +2,9 @@ package com.example.practice.ui.screens.editprofile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.datastore.UserProfileDataStore
+import com.example.practice.domain.models.UserProfile
+import com.example.practice.domain.usecase.GetUserProfileUseCase
+import com.example.practice.domain.usecase.UpdateUserProfileUseCase
 import com.example.practice.ui.screens.editprofile.intents.EditProfileAction
 import com.example.practice.ui.screens.editprofile.intents.EditProfileSideEffect
 import com.example.practice.ui.screens.editprofile.intents.EditProfileState
@@ -12,7 +14,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class EditProfileViewModel(
-    private val userProfileDataStore: UserProfileDataStore
+    private val getUserProfile: GetUserProfileUseCase,
+    private val updateUserProfile: UpdateUserProfileUseCase
 ): ViewModel() {
     private val uiState = MutableStateFlow(EditProfileState())
     val uiStateEmitter = uiState.asStateFlow()
@@ -97,9 +100,12 @@ class EditProfileViewModel(
         }
     }
 
+    private var originalProfile: UserProfile? = null
+
     private fun profileData() {
         viewModelScope.launch {
-            userProfileDataStore.profileFlow.first().let { profile ->
+            getUserProfile().first().let { profile ->
+                originalProfile = profile
                 val state = EditProfileState(
                     avatarUri = profile.avatarUri,
                     fullName = profile.fullName.orEmpty(),
@@ -132,43 +138,26 @@ class EditProfileViewModel(
     private fun saveProfile() {
         viewModelScope.launch {
             val state = uiState.value
+            val current = originalProfile ?: return@launch
 
-            state.fullName?.let {
-                userProfileDataStore.setFullName(it)
-            }
-
-            state.email?.let {
-                userProfileDataStore.setEmail(it)
-            }
-
-            state.mobileNumber?.let {
-                userProfileDataStore.setMobile(it)
-            }
-
-            state.avatarUri?.let {
-                userProfileDataStore.setAvatar(it)
-            }
-
-            state.date?.let {
-                userProfileDataStore.setAge(it)
-            }
-
-            state.weight?.let {
-                userProfileDataStore.setWeight(it)
-            }
-
-            state.height?.let {
-                userProfileDataStore.setHeight(it)
-            }
-
-            state.avatarUri?.let {
-                userProfileDataStore.setAvatar(it)
-            }
+            updateUserProfile(
+                current.copy(
+                    gender = originalProfile!!.gender,
+                    goal = originalProfile!!.goal,
+                    activityLevel = originalProfile!!.activityLevel,
+                    age = state.date ?: 0,
+                    weight = state.weight ?: 0f,
+                    height = state.height ?: 0,
+                    fullName = state.fullName,
+                    email = state.email,
+                    mobileNumber = state.mobileNumber,
+                    avatarUri = state.avatarUri
+                )
+            )
 
             sideEffect.value = EditProfileSideEffect.ShowNavigateBack
         }
     }
-
 
     fun normalizeText(input: String): String {
         return input

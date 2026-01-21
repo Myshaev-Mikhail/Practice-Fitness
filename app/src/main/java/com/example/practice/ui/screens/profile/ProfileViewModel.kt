@@ -2,16 +2,18 @@ package com.example.practice.ui.screens.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.datastore.UserProfileDataStore
+import com.example.practice.domain.models.UserProfile
+import com.example.practice.domain.usecase.GetUserProfileUseCase
 import com.example.practice.ui.screens.profile.intents.ProfileAction
 import com.example.practice.ui.screens.profile.intents.ProfileSideEffect
 import com.example.practice.ui.screens.profile.intents.ProfileState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
-    private val userProfileDataStore: UserProfileDataStore
+    private val getUserProfile: GetUserProfileUseCase
 ): ViewModel() {
     private val uiState = MutableStateFlow(ProfileState())
     val uiStateEmitter = uiState.asStateFlow()
@@ -50,10 +52,13 @@ class ProfileViewModel(
         }
     }
 
+    private var originalProfile: UserProfile? = null
+
     private fun profileData() {
         viewModelScope.launch {
-            userProfileDataStore.profileFlow.collect { profile ->
-                uiState.value = uiState.value.copy(
+            getUserProfile().first().let { profile ->
+                originalProfile = profile
+                val state = ProfileState(
                     fullName = profile.fullName,
                     email = profile.email,
                     weight = profile.weight,
@@ -61,6 +66,7 @@ class ProfileViewModel(
                     height = profile.height,
                     avatarUri = profile.avatarUri
                 )
+                uiState.value = state
             }
         }
     }

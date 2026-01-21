@@ -2,7 +2,8 @@ package com.example.practice.ui.screens.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.datastore.UserProfileDataStore
+import com.example.practice.domain.models.UserProfile
+import com.example.practice.domain.usecase.GetUserProfileUseCase
 import com.example.practice.ui.screens.home.intents.HomeAction
 import com.example.practice.ui.screens.home.intents.HomeSideEffect
 import com.example.practice.ui.screens.home.intents.HomeState
@@ -11,7 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val userProfileDataStore: UserProfileDataStore
+    private val getUserProfile: GetUserProfileUseCase
 ) : ViewModel() {
     private val uiState = MutableStateFlow(HomeState())
     val uiStateEmitter = uiState.asStateFlow()
@@ -23,11 +24,14 @@ class HomeViewModel(
         observeUserProfile()
     }
 
+    private var originalProfile: UserProfile? = null
+
     private fun observeUserProfile() {
         viewModelScope.launch {
-            userProfileDataStore.profileFlow.collect { profile ->
+            getUserProfile().collect { profile ->
+                originalProfile = profile
                 uiState.value = uiState.value.copy(
-                    nickname = profile.nickname
+                    nickname = profile.nickname.orEmpty()
                 )
             }
         }
@@ -55,7 +59,6 @@ class HomeViewModel(
             }
         }
     }
-
 
     fun clearSideEffect() {
         sideEffect.value = HomeSideEffect.Empty
