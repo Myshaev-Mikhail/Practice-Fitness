@@ -45,7 +45,7 @@ fun WeightPicker(
     minWeight: Float = 30f,
     maxWeight: Float = 190f,
     initialWeight: Float = 75f,
-    step: Float = 0.2f,
+    step: Float = 0.1f,
     onWeightChange: (Float) -> Unit = {}
 ) {
     val itemWidth = 32.dp
@@ -66,20 +66,19 @@ fun WeightPicker(
 
     val currentWeight = minWeight + currentIndex * step
 
-    LaunchedEffect(currentIndex) {
-        onWeightChange(((currentWeight * 10).roundToInt()) / 10f)
-    }
-
-    LaunchedEffect(listState.isScrollInProgress) {
+    LaunchedEffect(listState.isScrollInProgress, currentIndex) {
         if (!listState.isScrollInProgress) {
             listState.animateScrollToItem(currentIndex)
         }
     }
 
+    LaunchedEffect(currentIndex) {
+        onWeightChange(((currentWeight * 10).roundToInt()) / 10f)
+    }
+
     val sidePadding = (LocalConfiguration.current.screenWidthDp.dp / 2) - (itemWidth / 2)
 
     Column(modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -97,7 +96,7 @@ fun WeightPicker(
             Box(
                 modifier = Modifier
                     .width(3.dp)
-                    .height(45.dp)
+                    .height(65.dp)
                     .offset(y = 26.dp)
                     .background(MaterialTheme.colorScheme.secondary)
                     .zIndex(1f)
@@ -110,7 +109,10 @@ fun WeightPicker(
             ) {
                 items(count) { idx ->
                     val value = minWeight + idx * step
-                    val isFull = (value * 10 % 10 == 0f)
+                    val intIndex = ((value - minWeight) / step).roundToInt()
+                    val isFull = intIndex % 10 == 0
+                    val isMedium = !isFull && intIndex % 5 == 0
+                    val isShort = !isFull && !isMedium
 
                     Column(
                         modifier = Modifier
@@ -129,13 +131,20 @@ fun WeightPicker(
                                     fontSize = 18.sp,
                                 )
                             )
-                            Spacer(Modifier.height(12.dp))
-                        } else Spacer(Modifier.height(26.dp))
+                            Spacer(Modifier.height(4.dp))
+                        } else Spacer(Modifier.height(32.dp))
 
                         Box(
                             modifier = Modifier
                                 .width(3.dp)
-                                .height(if (isFull) 45.dp else 24.dp)
+                                .height(
+                                    when {
+                                        isFull -> 55.dp
+                                        isMedium -> 45.dp
+                                        isShort -> 30.dp
+                                        else -> 0.dp
+                                    }
+                                )
                                 .offset(y = 10.dp)
                                 .background(MaterialTheme.colorScheme.onPrimary)
                         )

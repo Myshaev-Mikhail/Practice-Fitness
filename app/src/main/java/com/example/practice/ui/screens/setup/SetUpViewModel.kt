@@ -2,7 +2,11 @@ package com.example.practice.ui.screens.setup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.datastore.UserProfileDataStore
+import com.example.practice.domain.models.ActivityLevel
+import com.example.practice.domain.models.Gender
+import com.example.practice.domain.models.UserProfile
+import com.example.practice.domain.usecase.SetFirstSetupUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 import com.example.practice.ui.screens.setup.intents.SetUpAction
 import com.example.practice.ui.screens.setup.intents.SetUpProfile
 import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
@@ -12,7 +16,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SetUpViewModel(
-    private val dataStore: UserProfileDataStore
+    private val updateUserProfile: SetUserProfileUseCase,
+    private val setFirstSetup: SetFirstSetupUseCase
 ) : ViewModel() {
     private val uiState = MutableStateFlow(SetUpState())
     val uiStateEmitter = uiState.asStateFlow()
@@ -37,25 +42,23 @@ class SetUpViewModel(
                     sideEffect.value =
                         SetUpSideEffect.ShowToast("Gender is not selected")
                 } else {
-                    saveAndNext {
-                        dataStore.setGender(gender)
-                    }
+                    sideEffect.value = SetUpSideEffect.NavigateNext
                 }
             }
 
-            is SetUpAction.AgeEntered -> saveAndNext {
-                dataStore.setAge(action.age)
+            is SetUpAction.AgeEntered -> {
                 uiState.value = uiState.value.copy(age = action.age)
+                sideEffect.value = SetUpSideEffect.NavigateNext
             }
 
-            is SetUpAction.WeightEntered -> saveAndNext {
-                dataStore.setWeight(action.weight)
+            is SetUpAction.WeightEntered -> {
                 uiState.value = uiState.value.copy(weight = action.weight)
+                sideEffect.value = SetUpSideEffect.NavigateNext
             }
 
-            is SetUpAction.HeightEntered -> saveAndNext {
-                dataStore.setHeight(action.height)
+            is SetUpAction.HeightEntered -> {
                 uiState.value = uiState.value.copy(height = action.height)
+                sideEffect.value = SetUpSideEffect.NavigateNext
             }
 
             is SetUpAction.GoalSelected -> {
@@ -68,9 +71,7 @@ class SetUpViewModel(
                     sideEffect.value =
                         SetUpSideEffect.ShowToast("Goal is not selected")
                 } else {
-                    saveAndNext {
-                        dataStore.setGoal(goal)
-                    }
+                    sideEffect.value = SetUpSideEffect.NavigateNext
                 }
             }
 
@@ -84,9 +85,7 @@ class SetUpViewModel(
                     sideEffect.value =
                         SetUpSideEffect.ShowToast("Physical activity level is not selected")
                 } else {
-                    saveAndNext {
-                        dataStore.setActivity(activityLevel)
-                    }
+                    sideEffect.value = SetUpSideEffect.NavigateNext
                 }
             }
 
@@ -98,9 +97,7 @@ class SetUpViewModel(
             }
 
             is SetUpAction.AvatarPicked -> {
-                uiState.value = uiState.value.copy(
-                    tempAvatarUri = action.uri
-                )
+                uiState.value = uiState.value.copy(tempAvatarUri = action.uri)
             }
 
             is SetUpAction.ClearTempAvatar -> {
@@ -119,14 +116,9 @@ class SetUpViewModel(
                 } else if (profile.mobileNumber.isNullOrBlank()) {
                     sideEffect.value = SetUpSideEffect.ShowToast("Mobile number is required")
                 } else {
-                    viewModelScope.launch {
-                        dataStore.setProfile(profile)
-                        dataStore.setFirstSetupCompleted()
-                        sideEffect.value = SetUpSideEffect.NavigateNext
-                    }
+                    saveProfile()
                 }
             }
-
 
             SetUpAction.NavigateBack -> {
                 sideEffect.value = SetUpSideEffect.NavigateBack
@@ -134,21 +126,39 @@ class SetUpViewModel(
         }
     }
 
-    private fun saveAndNext(block: suspend () -> Unit) {
+    private fun saveProfile() {
+        val profileInput = uiState.value.profile ?: return
+        if (!isProfileValid(profileInput)) {
+            sideEffect.value = SetUpSideEffect.ShowToast("All fields must be filled")
+            return
+        }
+
+        val updatedProfile = UserProfile(
+            gender = uiState.value.gender ?: Gender.MALE,
+            age = uiState.value.age ?: 0,
+            weight = uiState.value.weight ?: 0f,
+            height = uiState.value.height ?: 0,
+            goal = uiState.value.goal ?: emptyList(),
+            activityLevel = uiState.value.activityLevel ?: ActivityLevel.BEGINNER,
+            fullName = profileInput.fullName,
+            nickname = profileInput.nickname,
+            email = profileInput.email,
+            mobileNumber = profileInput.mobileNumber,
+            avatarUri = uiState.value.tempAvatarUri ?: profileInput.avatarUri
+        )
+
         viewModelScope.launch {
-            block()
+            updateUserProfile(updatedProfile)
+            setFirstSetup()
             sideEffect.value = SetUpSideEffect.NavigateNext
         }
     }
 
-    private fun isProfileValid(profile: SetUpProfile?): Boolean {
-        if (profile == null) return false
-
-        return profile.fullName?.isNotBlank() == true &&
+    fun isProfileValid(profile: SetUpProfile): Boolean =
+        profile.fullName?.isNotBlank() == true &&
                 profile.nickname?.isNotBlank() == true &&
                 profile.email?.isNotBlank() == true &&
                 profile.mobileNumber?.isNotBlank() == true
-    }
 
     fun normalizeText(input: String): String {
         return input

@@ -2,7 +2,7 @@ package com.example.practice.ui.screens.setpassword
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.auth.AuthRepository
+import com.example.practice.data.repository.AuthRepositoryImpl
 import com.example.practice.ui.screens.setpassword.intents.SetPasswordAction
 import com.example.practice.ui.screens.setpassword.intents.SetPasswordSideEffect
 import com.example.practice.ui.screens.setpassword.intents.SetPasswordState
@@ -17,7 +17,7 @@ class SetPasswordViewModel(private val oobCode: String) : ViewModel() {
     private val sideEffect = MutableStateFlow<SetPasswordSideEffect>(SetPasswordSideEffect.Empty)
     val sideEffectEmitter = sideEffect.asStateFlow()
 
-    private val authRepository = AuthRepository()
+    private val authRepository = AuthRepositoryImpl()
 
     fun uiAction(action: SetPasswordAction) {
         when (action) {

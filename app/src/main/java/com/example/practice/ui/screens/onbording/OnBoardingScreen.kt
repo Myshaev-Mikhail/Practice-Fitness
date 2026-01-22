@@ -39,6 +39,10 @@ fun OnBoardingScreen(
         pageCount = { uiState.totalPages }
     )
 
+    LaunchedEffect(pagerState.currentPage) {
+        viewModel.updateCurrentPage(pagerState.currentPage)
+    }
+
     LaunchedEffect(sideEffect) {
         when (val effect = sideEffect) {
             is OnBoardingSideEffect.ScrollToPage -> {
@@ -57,7 +61,7 @@ fun OnBoardingScreen(
         HorizontalPager(
             state = pagerState,
             modifier = Modifier.fillMaxSize(),
-            userScrollEnabled = false
+            userScrollEnabled = pagerState.currentPage != 0
         ) { page ->
             if (page == 0) {
                 FirstOnboardingPageScreen()

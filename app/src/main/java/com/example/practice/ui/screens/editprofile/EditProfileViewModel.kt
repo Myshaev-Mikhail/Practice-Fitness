@@ -2,7 +2,9 @@ package com.example.practice.ui.screens.editprofile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.datastore.UserProfileDataStore
+import com.example.practice.domain.models.UserProfile
+import com.example.practice.domain.usecase.GetUserProfileUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 import com.example.practice.ui.screens.editprofile.intents.EditProfileAction
 import com.example.practice.ui.screens.editprofile.intents.EditProfileSideEffect
 import com.example.practice.ui.screens.editprofile.intents.EditProfileState
@@ -12,13 +14,16 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class EditProfileViewModel(
-    private val userProfileDataStore: UserProfileDataStore
+    private val getUserProfile: GetUserProfileUseCase,
+    private val updateUserProfile: SetUserProfileUseCase
 ): ViewModel() {
     private val uiState = MutableStateFlow(EditProfileState())
     val uiStateEmitter = uiState.asStateFlow()
 
     private val sideEffect = MutableStateFlow<EditProfileSideEffect>(EditProfileSideEffect.Empty)
     val sideEffectEmitter = sideEffect.asStateFlow()
+
+    private var originalState: EditProfileState? = null
 
     init {
         profileData()
@@ -86,15 +91,22 @@ class EditProfileViewModel(
             }
 
             is EditProfileAction.NavigateBack -> {
-                sideEffect.value = EditProfileSideEffect.ShowNavigateBack
+                if (hasUnsavedChanges()) {
+                    sideEffect.value = EditProfileSideEffect.ShowUnsavedChangesDialog
+                } else {
+                    sideEffect.value = EditProfileSideEffect.ShowNavigateBack
+                }
             }
         }
     }
 
+    private var originalProfile: UserProfile? = null
+
     private fun profileData() {
         viewModelScope.launch {
-            userProfileDataStore.profileFlow.first().let { profile ->
-                uiState.value = EditProfileState(
+            getUserProfile().first().let { profile ->
+                originalProfile = profile
+                val state = EditProfileState(
                     avatarUri = profile.avatarUri,
                     fullName = profile.fullName.orEmpty(),
                     email = profile.email.orEmpty(),
@@ -104,50 +116,48 @@ class EditProfileViewModel(
                     height = profile.height,
                     isProfileValid = true
                 )
+                uiState.value = state
+                originalState = state
             }
         }
+    }
+
+    fun hasUnsavedChanges(): Boolean {
+        val current = uiState.value
+        val original = originalState ?: return false
+
+        return current.avatarUri != original.avatarUri ||
+                current.fullName != original.fullName ||
+                current.email != original.email ||
+                current.mobileNumber != original.mobileNumber ||
+                current.date != original.date ||
+                current.weight != original.weight ||
+                current.height != original.height
     }
 
     private fun saveProfile() {
         viewModelScope.launch {
             val state = uiState.value
+            val current = originalProfile ?: return@launch
 
-            state.fullName?.let {
-                userProfileDataStore.setFullName(it)
-            }
-
-            state.email?.let {
-                userProfileDataStore.setEmail(it)
-            }
-
-            state.mobileNumber?.let {
-                userProfileDataStore.setMobile(it)
-            }
-
-            state.avatarUri?.let {
-                userProfileDataStore.setAvatar(it)
-            }
-
-            state.date?.let {
-                userProfileDataStore.setAge(it)
-            }
-
-            state.weight?.let {
-                userProfileDataStore.setWeight(it)
-            }
-
-            state.height?.let {
-                userProfileDataStore.setHeight(it)
-            }
-
-            state.avatarUri?.let {
-                userProfileDataStore.setAvatar(it)
-            }
+            updateUserProfile(
+                current.copy(
+                    gender = originalProfile!!.gender,
+                    goal = originalProfile!!.goal,
+                    activityLevel = originalProfile!!.activityLevel,
+                    age = state.date ?: 0,
+                    weight = state.weight ?: 0f,
+                    height = state.height ?: 0,
+                    fullName = state.fullName,
+                    email = state.email,
+                    mobileNumber = state.mobileNumber,
+                    avatarUri = state.avatarUri
+                )
+            )
 
             sideEffect.value = EditProfileSideEffect.ShowNavigateBack
         }
     }
-
 
     fun normalizeText(input: String): String {
         return input

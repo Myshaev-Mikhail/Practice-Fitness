@@ -19,9 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -117,8 +114,7 @@ fun GoalScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
-                        " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                text = "Whether it’s building muscle, losing fat, or improving endurance, we’ll guide you every step.",
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.labelLarge,
                 textAlign = TextAlign.Center

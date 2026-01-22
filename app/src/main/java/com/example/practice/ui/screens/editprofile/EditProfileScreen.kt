@@ -5,6 +5,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,6 +40,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.practice.R
@@ -59,6 +65,7 @@ fun EditProfileScreen(
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
     val scrollState = rememberScrollState()
+    var isUnsavedChangesDialog by remember { mutableStateOf(false) }
 
     val launcher =
         rememberLauncherForActivityResult(
@@ -74,6 +81,12 @@ fun EditProfileScreen(
     when(sideEffect) {
         is EditProfileSideEffect.ShowNavigateBack -> {
             navController.popBackStack()
+            viewModel.clearSideEffect()
+        }
+
+        is EditProfileSideEffect.ShowUnsavedChangesDialog -> {
+            isUnsavedChangesDialog = true
+            viewModel.clearSideEffect()
         }
 
         is EditProfileSideEffect.Empty -> {
@@ -123,7 +136,14 @@ fun EditProfileScreen(
                     )
                 }
 
-                Box {
+                Box(
+                    modifier = Modifier.clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
+                        launcher.launch("image/*")
+                    }
+                ) {
                     AsyncImage(
                         model = uiState.tempAvatarUri
                             ?: uiState.avatarUri
@@ -132,10 +152,7 @@ fun EditProfileScreen(
                         modifier = Modifier
                             .size(125.dp)
                             .align(Alignment.Center)
-                            .clip(CircleShape)
-                            .clickable {
-                                launcher.launch("image/*")
-                            },
+                            .clip(CircleShape),
                         contentScale = ContentScale.Crop,
                         error = painterResource(id = R.mipmap.ic_group1)
                     )
@@ -287,18 +304,92 @@ fun EditProfileScreen(
             navController = navController,
             modifier = Modifier.align(Alignment.BottomCenter)
         )
+
+        if (isUnsavedChangesDialog) {
+            Dialog(
+                onDismissRequest = {
+                    isUnsavedChangesDialog = false
+                    viewModel.clearSideEffect()
+                },
+                properties = DialogProperties(
+                    dismissOnBackPress = true,
+                    dismissOnClickOutside = true
+                )
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            MaterialTheme.colorScheme.tertiary,
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                        .padding(24.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "You have unsaved changes!",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
+                        Spacer(Modifier.height(16.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            AppButton(
+                                modifier = Modifier.width(120.dp),
+                                text = "Cancel",
+                                textStyle = MaterialTheme.typography.headlineSmall,
+                                buttonColor = MaterialTheme.colorScheme.secondary,
+                                textColor = MaterialTheme.colorScheme.onSecondary
+                            ) {
+                                isUnsavedChangesDialog = false
+                                viewModel.clearSideEffect()
+                            }
+
+                            Spacer(Modifier.width(16.dp))
+
+                            AppButton(
+                                modifier = Modifier.width(120.dp),
+                                text = "Exit",
+                                textStyle = MaterialTheme.typography.headlineSmall,
+                                buttonColor = MaterialTheme.colorScheme.onPrimary,
+                                textColor = MaterialTheme.colorScheme.onSecondary
+                            ) {
+                                isUnsavedChangesDialog = false
+                                viewModel.clearSideEffect()
+                                navController.popBackStack()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     if (uiState.tempAvatarUri != null) {
-        AvatarCrop(
-            imageUri = uiState.tempAvatarUri!!,
-            onConfirm = { finalUri ->
-                viewModel.uiAction(
-                    EditProfileAction.AvatarConfirmed(finalUri)
-                )
-            },
-            onCancel = {
+        Dialog(
+            onDismissRequest = {
                 viewModel.uiAction(EditProfileAction.ClearTempAvatar)
-            }
-        )
+            },
+            properties = DialogProperties(
+                usePlatformDefaultWidth = false
+            )
+        ) {
+            AvatarCrop(
+                imageUri = uiState.tempAvatarUri!!,
+                onConfirm = { finalUri ->
+                    viewModel.uiAction(
+                        EditProfileAction.AvatarConfirmed(finalUri)
+                    )
+                },
+                onCancel = {
+                    viewModel.uiAction(EditProfileAction.ClearTempAvatar)
+                }
+            )
+        }
     }
 }

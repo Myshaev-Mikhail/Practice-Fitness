@@ -26,7 +26,7 @@ class NotificationSettingViewModel(
 
     init {
         viewModelScope.launch {
-            val settings = useCase.settingsFlow.first()
+            val settings = useCase.observeSettings().first()
             uiState.value = uiState.value.copy(
                 generalNotificationEnabled = settings.generalEnabled,
                 soundEnabled = settings.soundEnabled,

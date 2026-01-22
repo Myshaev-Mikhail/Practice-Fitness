@@ -2,16 +2,19 @@ package com.example.practice.ui.screens.setup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.practice.data.datastore.UserProfileDataStore
+import com.example.practice.domain.usecase.SetUserProfileUseCase
+import com.example.practice.domain.usecase.SetFirstSetupUseCase
 
 class SetUpViewModelFactory(
-    private val dataStore: UserProfileDataStore
+    private val updateUserProfile: SetUserProfileUseCase,
+    private val setFirstSetup: SetFirstSetupUseCase
 ) : ViewModelProvider.Factory {
-
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SetUpViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return SetUpViewModel(dataStore) as T
+            return SetUpViewModel(
+                updateUserProfile = updateUserProfile,
+                setFirstSetup = setFirstSetup) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

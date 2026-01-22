@@ -118,8 +118,7 @@ fun GenderScreen(
                 .padding(16.dp)
         ) {
             Text(
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit," +
-                        " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                text = "This helps us provide personalized recommendations for your workouts and nutrition.",
                 color = MaterialTheme.colorScheme.onTertiary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center

@@ -29,7 +29,6 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordAction
 import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordSideEffect
@@ -39,9 +38,9 @@ import io.github.composegears.valkyrie.Icons
 
 @Composable
 fun ForgottenPasswordScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: ForgottenPasswordViewModel
 ) {
-    val viewModel: ForgottenPasswordViewModel = viewModel()
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
@@ -121,7 +120,7 @@ fun ForgottenPasswordScreen(
             )
             Text(
                 modifier = Modifier.padding(40.dp),
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                text = "Don’t worry! Enter your email and we’ll help you reset your password so you can get back on track.",
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center

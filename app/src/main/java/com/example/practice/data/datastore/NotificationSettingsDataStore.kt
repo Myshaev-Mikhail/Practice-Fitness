@@ -5,19 +5,11 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.edit
+import com.example.practice.domain.models.NotificationSettings
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-data class NotificationSettings(
-    val generalEnabled: Boolean = false,
-    val soundEnabled: Boolean = true,
-    val vibrateEnabled: Boolean = true,
-    val hour: Int = 9,
-    val minute: Int = 0
-)
-
 class NotificationSettingsDataStore(private val dataStore: DataStore<Preferences>) {
-
     val settingsFlow: Flow<NotificationSettings> = dataStore.data.map { prefs ->
         NotificationSettings(
             generalEnabled = prefs[Keys.GENERAL] ?: false,
@@ -28,12 +20,23 @@ class NotificationSettingsDataStore(private val dataStore: DataStore<Preferences
         )
     }
 
-    suspend fun setGeneral(enabled: Boolean) = dataStore.edit { it[Keys.GENERAL] = enabled }
-    suspend fun setSound(enabled: Boolean) = dataStore.edit { it[Keys.SOUND] = enabled }
-    suspend fun setVibrate(enabled: Boolean) = dataStore.edit { it[Keys.VIBRATE] = enabled }
-    suspend fun setNotificationTime(hour: Int, minute: Int) = dataStore.edit {
-        it[Keys.HOUR] = hour.toString()
-        it[Keys.MINUTE] = minute.toString()
+    suspend fun setGeneral(enabled: Boolean) {
+        dataStore.edit { prefs -> prefs[Keys.GENERAL] = enabled }
+    }
+
+    suspend fun setSound(enabled: Boolean) {
+        dataStore.edit { prefs -> prefs[Keys.SOUND] = enabled }
+    }
+
+    suspend fun setVibrate(enabled: Boolean) {
+        dataStore.edit { prefs -> prefs[Keys.VIBRATE] = enabled }
+    }
+
+    suspend fun setTime(hour: Int, minute: Int) {
+        dataStore.edit { prefs ->
+            prefs[Keys.HOUR] = hour.toString()
+            prefs[Keys.MINUTE] = minute.toString()
+        }
     }
 
     suspend fun clear() {

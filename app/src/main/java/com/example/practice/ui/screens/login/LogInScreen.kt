@@ -42,9 +42,9 @@ import io.github.composegears.valkyrie.Icons
 
 @Composable
 fun LogInScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: LogInViewModel
 ) {
-    val viewModel: LogInViewModel = viewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
@@ -105,7 +105,7 @@ fun LogInScreen(
             )
             Text(
                 modifier = Modifier.padding(40.dp),
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                text = "Welcome back! Enter your credentials to access your personalized fitness journey.",
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center

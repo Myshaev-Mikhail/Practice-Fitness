@@ -7,16 +7,18 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.example.practice.App
 import com.example.practice.data.datastore.NotificationSettingsDataStore
 import com.example.practice.data.datastore.UserProfileDataStore
+import com.example.practice.data.repository.NotificationSettingsRepositoryImpl
 import com.example.practice.domain.usecase.NotificationSettingsUseCase
 
 val Context.userProfileDataStore: UserProfileDataStore
     get() = (applicationContext as App).userProfileDataStore
 
-private val Context.notificationSettingsPreferences: DataStore<Preferences> by preferencesDataStore(
+val Context.notificationSettingsPreferences: DataStore<Preferences> by preferencesDataStore(
     name = "notification_settings"
 )
 
 fun provideNotificationSettingsUseCase(context: Context): NotificationSettingsUseCase {
     val dataStore = NotificationSettingsDataStore(context.notificationSettingsPreferences)
-    return NotificationSettingsUseCase(dataStore)
+    val repository = NotificationSettingsRepositoryImpl(dataStore)
+    return NotificationSettingsUseCase(repository)
 }
