@@ -15,6 +15,7 @@ import com.example.practice.ui.screens.editprofile.EditProfileViewModel
 import com.example.practice.ui.screens.favorites.FavoritesScreen
 import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordScreen
 import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordViewModel
+import com.example.practice.ui.screens.help.HelpScreen
 import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.login.LogInScreen
@@ -25,6 +26,7 @@ import com.example.practice.ui.screens.notificationsetting.NotificationSettingVi
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingScreen
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingViewModel
+import com.example.practice.ui.screens.privacypolicy.PrivacyPolicyScreen
 import com.example.practice.ui.screens.profile.ProfileScreen
 import com.example.practice.ui.screens.profile.ProfileViewModel
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
@@ -307,6 +309,16 @@ fun NavigationApp(startDestination: String) {
                 viewModel = viewModel
             )
         }
+        composable(FitnessScreen.Help.route) {
+            HelpScreen(
+                navController = navController
+            )
+        }
+        composable(FitnessScreen.PrivacyPolicy.route) {
+            PrivacyPolicyScreen(
+                navController = navController
+            )
+        }
     }
 }
 
@@ -337,4 +349,6 @@ sealed class FitnessScreen(val route: String) {
     data object Settings : FitnessScreen("settings")
     data object NotificationSetting : FitnessScreen("notification_setting")
     data object PasswordSetting : FitnessScreen("password_setting")
+    data object Help : FitnessScreen("help")
+    data object PrivacyPolicy : FitnessScreen("privacy_policy")
 }

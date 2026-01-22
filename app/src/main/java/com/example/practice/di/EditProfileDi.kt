@@ -130,8 +130,13 @@ object EditProfileDi {
 
         val getUserProfile = GetUserProfileUseCase(repository)
 
+        val setUserProfile = SetUserProfileUseCase(repository)
+        val notificationSettings = provideNotificationSettingsUseCase(context)
+
         return ProfileViewModelFactory(
-            getUserProfile = getUserProfile
+            getUserProfile = getUserProfile,
+            setUserProfile = setUserProfile,
+            notificationSettings = notificationSettings
         )
     }
 

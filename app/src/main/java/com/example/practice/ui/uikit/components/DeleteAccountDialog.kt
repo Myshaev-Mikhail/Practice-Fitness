@@ -25,6 +25,9 @@ import androidx.compose.ui.window.DialogProperties
 
 @Composable
 fun DeleteAccountDialog(
+    titleText: String = "Are you sure you want to Delete Account?",
+    cancelText: String = "Cancel",
+    delAccount: String = "Yes, Del account",
     onCancel: () -> Unit,
     onConfirm: () -> Unit
 ) {
@@ -67,7 +70,7 @@ fun DeleteAccountDialog(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Are you sure you want to log out?",
+                    text = titleText,
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
@@ -79,7 +82,7 @@ fun DeleteAccountDialog(
                 ) {
                     AppButton(
                         modifier = Modifier.weight(1f),
-                        text = "Cancel",
+                        text = cancelText,
                         textColor = MaterialTheme.colorScheme.primary,
                         textStyle = MaterialTheme.typography.headlineSmall,
                         buttonColor = MaterialTheme.colorScheme.onPrimary,
@@ -90,13 +93,14 @@ fun DeleteAccountDialog(
 
                     AppButton(
                         modifier = Modifier.weight(1f),
-                        text = "Yes, Del account",
+                        text = delAccount,
                         textColor = MaterialTheme.colorScheme.onSecondary,
                         textStyle = MaterialTheme.typography.headlineSmall,
                         buttonColor = MaterialTheme.colorScheme.secondary,
                         onClick = onConfirm
                     )
                 }
+                Spacer(Modifier.height(20.dp))
             }
         }
     }

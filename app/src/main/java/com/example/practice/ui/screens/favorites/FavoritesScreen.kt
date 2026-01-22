@@ -86,7 +86,6 @@ fun FavoritesScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
                 .padding(top = 40.dp)
         ) {
             Row(
@@ -249,6 +248,7 @@ fun FavoritesScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(12.dp)
+                    .verticalScroll(rememberScrollState())
             ) {
                 uiState.visibleItems.forEach { item ->
                     when (item) {

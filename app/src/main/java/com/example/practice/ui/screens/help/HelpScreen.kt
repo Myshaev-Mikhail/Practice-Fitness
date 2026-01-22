@@ -1,6 +1,7 @@
-package com.example.practice.ui.screens.settings
+package com.example.practice.ui.screens.help
 
-import android.widget.Toast
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,66 +19,58 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.settings.intents.SettingsAction
-import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
+import com.example.practice.ui.screens.help.intents.HelpAction
+import com.example.practice.ui.screens.help.intents.HelpSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
-import com.example.practice.ui.uikit.components.DeleteAccountDialog
 import com.example.practice.ui.uikit.components.ProfileMenuItem
 import io.github.composegears.valkyrie.Arrow
+import io.github.composegears.valkyrie.Globe
 import io.github.composegears.valkyrie.Icons
-import io.github.composegears.valkyrie.Key
-import io.github.composegears.valkyrie.NotificationOff
-import io.github.composegears.valkyrie.Profile
+import io.github.composegears.valkyrie.Telegram
 
 @Composable
-fun SettingsScreen(
-    navController: NavController,
-    viewModel: SettingsViewModel
+fun HelpScreen(
+    navController: NavController
 ) {
+    val viewModel: HelpViewModel = viewModel()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
 
-    var showDeleteDialog by remember { mutableStateOf(false) }
-
     when (sideEffect) {
-        is SettingsSideEffect.ShowNavigateBack -> {
+        is HelpSideEffect.ShowNavigateBack -> {
             navController.popBackStack()
             viewModel.clearSideEffect()
         }
-        is SettingsSideEffect.ShowNavigateNotification -> {
-            navController.navigate(FitnessScreen.NotificationSetting.route)
+
+        is HelpSideEffect.ShowNavigateTelegram -> {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://t.me/lebensmude_spotter")
+            )
+            context.startActivity(intent)
             viewModel.clearSideEffect()
         }
-        is SettingsSideEffect.ShowNavigatePassword -> {
-            navController.navigate(FitnessScreen.PasswordSetting.route)
+
+        is HelpSideEffect.ShowNavigateEmail -> {
+            val intent = Intent(
+                Intent.ACTION_SENDTO,
+                Uri.parse("mailto:mikhailmyshaev@gmail.com")
+            )
+            context.startActivity(intent)
             viewModel.clearSideEffect()
         }
-        is SettingsSideEffect.ShowDeleteProfile -> {
-            navController.navigate(FitnessScreen.OnBoarding.route) {
-                popUpTo(0)
-            }
-            viewModel.clearSideEffect()
-        }
-        is SettingsSideEffect.ShowError -> {
-            val message = (sideEffect as SettingsSideEffect.ShowError).throwable.message ?: "Unknown error"
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-            viewModel.clearSideEffect()
-        }
-        is SettingsSideEffect.Empty -> {
+
+        is HelpSideEffect.Empty -> {
             // Nothing
         }
     }
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -96,7 +89,7 @@ fun SettingsScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(SettingsAction.NavigateBack)
+                            viewModel.uiAction(HelpAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -110,11 +103,25 @@ fun SettingsScreen(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = "Settings",
+                        text = "Help & FAQs",
                         color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.titleLarge
                     )
                 }
+            }
+
+            Box(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "How Can We Help You?",
+                    color = MaterialTheme.colorScheme.outline,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp),
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                )
             }
 
             Column(
@@ -122,24 +129,17 @@ fun SettingsScreen(
                     .fillMaxSize()
             ) {
                 ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.NotificationOff),
-                    title = "Notification Setting",
+                    icon = rememberVectorPainter(Icons.Telegram),
+                    title = "Telegram",
                     onClick = {
-                        viewModel.uiAction(SettingsAction.NavigateNotification)
+                        viewModel.uiAction(HelpAction.NavigateTelegram)
                     }
                 )
                 ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Key),
-                    title = "Password Setting",
+                    icon = rememberVectorPainter(Icons.Globe),
+                    title = "Email",
                     onClick = {
-                        viewModel.uiAction(SettingsAction.NavigatePassword)
-                    }
-                )
-                ProfileMenuItem(
-                    icon = rememberVectorPainter(Icons.Profile),
-                    title = "Delete Account",
-                    onClick = {
-                        showDeleteDialog = true
+                        viewModel.uiAction(HelpAction.NavigateEmail)
                     }
                 )
             }
@@ -148,15 +148,5 @@ fun SettingsScreen(
             navController = navController,
             modifier = Modifier.align(Alignment.BottomCenter)
         )
-
-        if (showDeleteDialog) {
-            DeleteAccountDialog(
-                onCancel = { showDeleteDialog = false },
-                onConfirm = {
-                    showDeleteDialog = false
-                    viewModel.uiAction(SettingsAction.DeleteProfile)
-                }
-            )
-        }
     }
 }

@@ -6,6 +6,6 @@ sealed class ProfileAction {
     data object NavigateFavorite : ProfileAction()
     data object NavigatePrivacyPolicy : ProfileAction()
     data object NavigateSettings : ProfileAction()
-    data object NavigateSupport : ProfileAction()
+    data object NavigateHelp : ProfileAction()
     data object NavigateLogout : ProfileAction()
 }
