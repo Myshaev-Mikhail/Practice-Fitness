@@ -3,10 +3,10 @@ package com.example.practice.ui.screens.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.practice.domain.usecase.NotificationSettingsUseCase
-import com.example.practice.domain.usecase.UpdateUserProfileUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 
 class SettingsViewModelFactory(
-    private val updateUserProfileUseCase: UpdateUserProfileUseCase,
+    private val updateUserProfileUseCase: SetUserProfileUseCase,
     private val notificationSettingsUseCase: NotificationSettingsUseCase
 ) : ViewModelProvider.Factory {
 

@@ -2,11 +2,11 @@ package com.example.practice.ui.screens.setup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.practice.domain.usecase.UpdateUserProfileUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 import com.example.practice.domain.usecase.SetFirstSetupUseCase
 
 class SetUpViewModelFactory(
-    private val updateUserProfile: UpdateUserProfileUseCase,
+    private val updateUserProfile: SetUserProfileUseCase,
     private val setFirstSetup: SetFirstSetupUseCase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

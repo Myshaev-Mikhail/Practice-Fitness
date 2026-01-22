@@ -34,7 +34,6 @@ class NotificationReceiver(
             vibrateEnabled = settings.vibrateEnabled
         )
 
-        // Планируем следующий запуск
         scheduleNextWorker(
             context = applicationContext,
             hour = settings.hour,
@@ -55,7 +54,7 @@ class NotificationReceiver(
                 set(Calendar.MINUTE, minute)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
-                if (before(now)) add(Calendar.DATE, 1) // если время уже прошло — на завтра
+                if (before(now)) add(Calendar.DATE, 1)
             }
 
             val delay = nextRun.timeInMillis - now.timeInMillis

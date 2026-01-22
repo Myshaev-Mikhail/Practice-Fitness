@@ -1,11 +1,10 @@
 package com.example.practice.ui.screens.signup
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.auth.AuthRepository
-import com.example.practice.domain.usecase.GoogleSignInUseCase
+import com.example.practice.domain.usecase.LogInWithGoogleUseCase
+import com.example.practice.domain.usecase.SignUpUseCase
 import com.example.practice.ui.screens.signup.intents.SignUpAction
 import com.example.practice.ui.screens.signup.intents.SignUpSideEffect
 import com.example.practice.ui.screens.signup.intents.SignUpState
@@ -14,15 +13,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel(
+    private val signUpWithEmailUseCase: SignUpUseCase,
+    private val logInWithGoogleUseCase: LogInWithGoogleUseCase,
+) : ViewModel() {
     private val uiState = MutableStateFlow(SignUpState())
     val uiStateEmitter = uiState.asStateFlow()
 
     private val sideEffect = MutableStateFlow<SignUpSideEffect>(SignUpSideEffect.Empty)
     val sideEffectEmitter = sideEffect.asStateFlow()
-
-    private val authRepository = AuthRepository()
-    private val googleSignInUseCase: GoogleSignInUseCase = GoogleSignInUseCase()
 
     fun uiAction(action: SignUpAction, context: Context? = null) {
         when (action) {
@@ -67,9 +66,7 @@ class SignUpViewModel : ViewModel() {
                     return
                 }
 
-                context?.let {
-                    launchGoogleSignIn(it)
-                }
+                logInWithGoogle()
             }
         }
     }
@@ -84,7 +81,7 @@ class SignUpViewModel : ViewModel() {
         uiState.value = state.copy(isLoading = true)
 
         viewModelScope.launch {
-            val result = authRepository.signUp(
+            val result = signUpWithEmailUseCase(
                 email = state.email,
                 password = state.password,
                 fullName = state.fullName
@@ -103,28 +100,20 @@ class SignUpViewModel : ViewModel() {
         }
     }
 
-    private fun launchGoogleSignIn(context: Context) {
-        viewModelScope.launch {
-            val result = googleSignInUseCase.execute(context)
-            result.onSuccess { idToken ->
-                logInWithGoogleToken(idToken)
-            }.onFailure { error ->
-                sideEffect.value = SignUpSideEffect.ShowToast("Google sign-in failed")
-                Log.e("LogInViewModel", "Google sign-in failed", error)
-            }
-        }
-    }
-
-    private fun logInWithGoogleToken(idToken: String) {
+    private fun logInWithGoogle() {
         uiState.value = uiState.value.copy(isLoading = true)
+
         viewModelScope.launch {
-            val result = authRepository.logInWithGoogle(idToken)
+            val result = logInWithGoogleUseCase()
             uiState.value = uiState.value.copy(isLoading = false)
-            result.onSuccess {
-                sideEffect.value = SignUpSideEffect.Success
-            }.onFailure { error ->
-                sideEffect.value = SignUpSideEffect.ShowToast("Google login failed")
-            }
+
+            result
+                .onSuccess {
+                    sideEffect.value = SignUpSideEffect.Success
+                }
+                .onFailure {
+                    sideEffect.value = SignUpSideEffect.ShowToast("Google sign-in failed")
+                }
         }
     }
 

@@ -3,7 +3,8 @@ package com.example.practice.ui.screens.passwordsetting
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.auth.AuthRepository
+import com.example.practice.data.repository.AuthRepositoryImpl
+import com.example.practice.domain.usecase.ChangePasswordUseCase
 import com.example.practice.ui.screens.passwordsetting.intents.PasswordSettingAction
 import com.example.practice.ui.screens.passwordsetting.intents.PasswordSettingSideEffect
 import com.example.practice.ui.screens.passwordsetting.intents.PasswordSettingState
@@ -12,14 +13,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class PasswordSettingViewModel: ViewModel() {
+class PasswordSettingViewModel(
+    private val changePasswordUseCase: ChangePasswordUseCase
+): ViewModel() {
     private val uiState = MutableStateFlow(PasswordSettingState())
     val uiStateEmitter = uiState.asStateFlow()
 
     private val sideEffect = MutableStateFlow<PasswordSettingSideEffect>(PasswordSettingSideEffect.Empty)
     val sideEffectEmitter = sideEffect.asStateFlow()
-
-    private val authRepository = AuthRepository()
 
     fun uiAction(action: PasswordSettingAction, context: Context? = null) {
         when (action) {
@@ -56,7 +57,7 @@ class PasswordSettingViewModel: ViewModel() {
                 }
 
                 viewModelScope.launch {
-                    val result = authRepository.changePassword(state.currentPassword, state.newPassword)
+                    val result = changePasswordUseCase(state.currentPassword, state.newPassword)
                     sideEffect.value = if (result.isSuccess) {
                         PasswordSettingSideEffect.ShowToast("Password changed successfully")
                     } else {

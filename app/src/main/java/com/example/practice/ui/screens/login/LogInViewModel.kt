@@ -1,32 +1,30 @@
 package com.example.practice.ui.screens.login
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.auth.AuthError
-import com.example.practice.data.auth.AuthRepository
+import com.example.practice.data.repository.AuthError
 import com.example.practice.ui.screens.login.intents.LogInAction
 import com.example.practice.ui.screens.login.intents.LogInSideEffect
 import com.example.practice.ui.screens.login.intents.LogInState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import com.example.practice.domain.usecase.GoogleSignInUseCase
+import com.example.practice.domain.usecase.LogInWithGoogleUseCase
+import com.example.practice.domain.usecase.LogInWithEmailUseCase
 import com.example.practice.domain.usecase.SetFirstSetupUseCase
 import com.example.practice.ui.utils.isInternetAvailable
 
 class LogInViewModel(
-    private val setFirstSetup : SetFirstSetupUseCase
+    private val logInWithEmailUseCase: LogInWithEmailUseCase,
+    private val logInWithGoogleUseCase: LogInWithGoogleUseCase,
+    private val setFirstSetup: SetFirstSetupUseCase
 ) : ViewModel() {
     private val uiState = MutableStateFlow(LogInState())
     val uiStateEmitter = uiState.asStateFlow()
 
     private val sideEffect = MutableStateFlow<LogInSideEffect>(LogInSideEffect.Empty)
     val sideEffectEmitter = sideEffect.asStateFlow()
-
-    val authRepository = AuthRepository()
-    private val googleSignInUseCase: GoogleSignInUseCase = GoogleSignInUseCase()
 
     fun uiAction(action: LogInAction, context: Context? = null) {
         when (action) {
@@ -59,9 +57,7 @@ class LogInViewModel(
                     return
                 }
 
-                context?.let {
-                    launchGoogleSignIn(it)
-                }
+                logInWithGoogle()
             }
 
             is LogInAction.ForgotPasswordClicked -> {
@@ -74,14 +70,17 @@ class LogInViewModel(
         uiState.value = uiState.value.copy(isLoading = true)
 
         viewModelScope.launch {
-            val result = authRepository.logIn(uiState.value.email, uiState.value.password)
+            val result = logInWithEmailUseCase(
+                uiState.value.email,
+                uiState.value.password
+            )
 
             uiState.value = uiState.value.copy(isLoading = false)
 
             result
                 .onSuccess {
-                    sideEffect.value = LogInSideEffect.Success
                     setFirstSetup.invoke()
+                    sideEffect.value = LogInSideEffect.Success
                 }
                 .onFailure { error ->
                     val message = when (error) {
@@ -94,29 +93,21 @@ class LogInViewModel(
         }
     }
 
-    private fun launchGoogleSignIn(context: Context) {
-        viewModelScope.launch {
-            val result = googleSignInUseCase.execute(context)
-            result.onSuccess { idToken ->
-                logInWithGoogleToken(idToken)
-            }.onFailure { error ->
-                sideEffect.value = LogInSideEffect.ShowToast("Google sign-in failed")
-                Log.e("LogInViewModel", "Google sign-in failed", error)
-            }
-        }
-    }
-
-    private fun logInWithGoogleToken(idToken: String) {
+    private fun logInWithGoogle() {
         uiState.value = uiState.value.copy(isLoading = true)
+
         viewModelScope.launch {
-            val result = authRepository.logInWithGoogle(idToken)
+            val result = logInWithGoogleUseCase()
             uiState.value = uiState.value.copy(isLoading = false)
-            result.onSuccess {
-                sideEffect.value = LogInSideEffect.Success
-                setFirstSetup.invoke()
-            }.onFailure { error ->
-                sideEffect.value = LogInSideEffect.ShowToast("Google login failed")
-            }
+
+            result
+                .onSuccess {
+                    setFirstSetup()
+                    sideEffect.value = LogInSideEffect.Success
+                }
+                .onFailure {
+                    sideEffect.value = LogInSideEffect.ShowToast("Google sign-in failed")
+                }
         }
     }
 

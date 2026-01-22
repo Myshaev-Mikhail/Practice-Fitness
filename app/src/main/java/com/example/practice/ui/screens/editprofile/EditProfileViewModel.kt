@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.usecase.GetUserProfileUseCase
-import com.example.practice.domain.usecase.UpdateUserProfileUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 import com.example.practice.ui.screens.editprofile.intents.EditProfileAction
 import com.example.practice.ui.screens.editprofile.intents.EditProfileSideEffect
 import com.example.practice.ui.screens.editprofile.intents.EditProfileState
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class EditProfileViewModel(
     private val getUserProfile: GetUserProfileUseCase,
-    private val updateUserProfile: UpdateUserProfileUseCase
+    private val updateUserProfile: SetUserProfileUseCase
 ): ViewModel() {
     private val uiState = MutableStateFlow(EditProfileState())
     val uiStateEmitter = uiState.asStateFlow()

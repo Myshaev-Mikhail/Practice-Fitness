@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.passwordsetting.intents.PasswordSettingAction
@@ -37,9 +36,9 @@ import io.github.composegears.valkyrie.Icons
 
 @Composable
 fun PasswordSettingScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: PasswordSettingViewModel
 ) {
-    val viewModel: PasswordSettingViewModel = viewModel()
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

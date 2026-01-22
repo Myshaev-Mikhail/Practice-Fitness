@@ -3,7 +3,7 @@ package com.example.practice.ui.screens.forgotpassword
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practice.data.auth.AuthRepository
+import com.example.practice.domain.usecase.ResetPasswordUseCase
 import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordAction
 import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordSideEffect
 import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordState
@@ -12,14 +12,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class ForgottenPasswordViewModel : ViewModel() {
+class ForgottenPasswordViewModel(
+    private val resetPasswordUseCase: ResetPasswordUseCase
+) : ViewModel() {
     private val uiState = MutableStateFlow(ForgottenPasswordState())
     val uiStateEmitter = uiState.asStateFlow()
 
     private val sideEffect = MutableStateFlow<ForgottenPasswordSideEffect>(ForgottenPasswordSideEffect.Empty)
     val sideEffectEmitter = sideEffect.asStateFlow()
-
-    val authRepository = AuthRepository()
 
     fun uiAction(action: ForgottenPasswordAction, context: Context? = null) {
         when (action) {
@@ -52,7 +52,7 @@ class ForgottenPasswordViewModel : ViewModel() {
         uiState.value = uiState.value.copy(isLoading = true)
 
         viewModelScope.launch {
-            val result = authRepository.resetPassword(uiState.value.email)
+            val result = resetPasswordUseCase(uiState.value.email)
             uiState.value = uiState.value.copy(isLoading = false)
 
             result

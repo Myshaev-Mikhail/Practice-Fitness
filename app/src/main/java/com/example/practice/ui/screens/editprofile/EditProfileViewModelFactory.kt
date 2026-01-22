@@ -3,11 +3,11 @@ package com.example.practice.ui.screens.editprofile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.practice.domain.usecase.GetUserProfileUseCase
-import com.example.practice.domain.usecase.UpdateUserProfileUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 
 class EditProfileViewModelFactory(
     private val getUserProfile: GetUserProfileUseCase,
-    private val updateUserProfile: UpdateUserProfileUseCase
+    private val updateUserProfile: SetUserProfileUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

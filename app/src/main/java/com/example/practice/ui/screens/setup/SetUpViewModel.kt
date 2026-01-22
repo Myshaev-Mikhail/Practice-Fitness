@@ -6,7 +6,7 @@ import com.example.practice.domain.models.ActivityLevel
 import com.example.practice.domain.models.Gender
 import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.usecase.SetFirstSetupUseCase
-import com.example.practice.domain.usecase.UpdateUserProfileUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 import com.example.practice.ui.screens.setup.intents.SetUpAction
 import com.example.practice.ui.screens.setup.intents.SetUpProfile
 import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SetUpViewModel(
-    private val updateUserProfile: UpdateUserProfileUseCase,
+    private val updateUserProfile: SetUserProfileUseCase,
     private val setFirstSetup: SetFirstSetupUseCase
 ) : ViewModel() {
     private val uiState = MutableStateFlow(SetUpState())

@@ -3,7 +3,7 @@ package com.example.practice.ui.screens.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.usecase.NotificationSettingsUseCase
-import com.example.practice.domain.usecase.UpdateUserProfileUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 import com.example.practice.ui.screens.settings.intents.SettingsAction
 import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
-    private val updateUserProfile: UpdateUserProfileUseCase,
+    private val updateUserProfile: SetUserProfileUseCase,
     private val notificationSettings: NotificationSettingsUseCase
 ): ViewModel() {
     private val sideEffect = MutableStateFlow<SettingsSideEffect>(SettingsSideEffect.Empty)

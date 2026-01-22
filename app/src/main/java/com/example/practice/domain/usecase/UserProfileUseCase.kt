@@ -2,8 +2,15 @@ package com.example.practice.domain.usecase
 
 import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.repository.UserProfileRepository
+import kotlin.collections.ifEmpty
 
-class UpdateUserProfileUseCase(
+class GetUserProfileUseCase(
+    private val repository: UserProfileRepository
+) {
+    operator fun invoke() = repository.observeProfile()
+}
+
+class SetUserProfileUseCase(
     private val repository: UserProfileRepository
 ) {
     suspend operator fun invoke(updated: UserProfile) {
@@ -29,4 +36,18 @@ class UpdateUserProfileUseCase(
     suspend fun clear() {
         repository.clearProfile()
     }
+}
+
+class SetFirstSetupUseCase(
+    private val repository: UserProfileRepository
+) {
+    suspend operator fun invoke() {
+        repository.setFirstSetup()
+    }
+}
+
+class GetFirstSetupUseCase(
+    private val repository: UserProfileRepository
+) {
+    suspend operator fun invoke() = repository.getCurrentFirstSetup()
 }
