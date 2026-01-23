@@ -14,7 +14,7 @@ class SettingsViewModelFactory(
         if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return SettingsViewModel(
-                updateUserProfile = updateUserProfileUseCase,
+                setUserProfile = updateUserProfileUseCase,
                 notificationSettings = notificationSettingsUseCase
             ) as T
         }

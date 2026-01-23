@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
-    private val updateUserProfile: SetUserProfileUseCase,
+    private val setUserProfile: SetUserProfileUseCase,
     private val notificationSettings: NotificationSettingsUseCase
 ): ViewModel() {
     private val sideEffect = MutableStateFlow<SettingsSideEffect>(SettingsSideEffect.Empty)
@@ -37,7 +37,7 @@ class SettingsViewModel(
     private fun deleteAccount() {
         viewModelScope.launch {
             try {
-                updateUserProfile.clear()
+                setUserProfile.clear()
                 notificationSettings.clear()
                 sideEffect.value = SettingsSideEffect.ShowDeleteProfile
             } catch (e: Exception) {

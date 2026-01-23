@@ -6,7 +6,8 @@ sealed class ProfileSideEffect {
     data object ShowFavoritesScreen : ProfileSideEffect()
     data object ShowPrivacyPolicyScreen : ProfileSideEffect()
     data object ShowSettingsScreen : ProfileSideEffect()
-    data object ShowSupportScreen : ProfileSideEffect()
+    data object ShowHelpScreen : ProfileSideEffect()
     data object ShowLogoutScreen : ProfileSideEffect()
+    data class ShowError(val throwable: Throwable) : ProfileSideEffect()
     data object Empty : ProfileSideEffect()
 }

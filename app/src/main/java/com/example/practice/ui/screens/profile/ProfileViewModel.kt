@@ -4,16 +4,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.usecase.GetUserProfileUseCase
+import com.example.practice.domain.usecase.NotificationSettingsUseCase
+import com.example.practice.domain.usecase.SetUserProfileUseCase
 import com.example.practice.ui.screens.profile.intents.ProfileAction
 import com.example.practice.ui.screens.profile.intents.ProfileSideEffect
 import com.example.practice.ui.screens.profile.intents.ProfileState
+import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
-    private val getUserProfile: GetUserProfileUseCase
+    private val getUserProfile: GetUserProfileUseCase,
+    private val setUserProfile: SetUserProfileUseCase,
+    private val notificationSettings: NotificationSettingsUseCase
 ): ViewModel() {
     private val uiState = MutableStateFlow(ProfileState())
     val uiStateEmitter = uiState.asStateFlow()
@@ -42,11 +47,11 @@ class ProfileViewModel(
             is ProfileAction.NavigateSettings -> {
                 sideEffect.value = ProfileSideEffect.ShowSettingsScreen
             }
-            is ProfileAction.NavigateSupport -> {
-                sideEffect.value = ProfileSideEffect.ShowSupportScreen
+            is ProfileAction.NavigateHelp -> {
+                sideEffect.value = ProfileSideEffect.ShowHelpScreen
             }
             is ProfileAction.NavigateLogout -> {
-                sideEffect.value = ProfileSideEffect.ShowLogoutScreen
+                logoutAccount()
             }
             else -> {}
         }
@@ -67,6 +72,18 @@ class ProfileViewModel(
                     avatarUri = profile.avatarUri
                 )
                 uiState.value = state
+            }
+        }
+    }
+
+    private fun logoutAccount() {
+        viewModelScope.launch {
+            try {
+                setUserProfile.clear()
+                notificationSettings.clear()
+                sideEffect.value = ProfileSideEffect.ShowLogoutScreen
+            } catch (e: Exception) {
+                sideEffect.value = ProfileSideEffect.ShowError(e)
             }
         }
     }
