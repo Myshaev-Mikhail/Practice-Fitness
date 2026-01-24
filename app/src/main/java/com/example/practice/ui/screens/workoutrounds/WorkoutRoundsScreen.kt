@@ -1,0 +1,152 @@
+package com.example.practice.ui.screens.workoutrounds
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.practice.ui.screens.workout.intents.WorkoutFilter
+import com.example.practice.ui.screens.workoutrounds.intents.WorkoutBadgeItem
+import com.example.practice.ui.screens.workoutrounds.intents.WorkoutRoundsSideEffect
+import com.example.practice.ui.uikit.components.BadgeItem
+import com.example.practice.ui.uikit.components.BottomNavigation
+import com.example.practice.ui.uikit.components.TopBar
+import com.example.practice.ui.uikit.components.WorkoutHeader
+
+@Composable
+fun WorkoutRoundsScreen(
+    navController: NavController
+) {
+    val viewModel: WorkoutRoundsViewModel = viewModel()
+    val uiState by viewModel.uiStateEmitter.collectAsState()
+    val sideEffect by viewModel.sideEffectEmitter.collectAsState()
+
+    val filter = navController.currentBackStackEntry
+        ?.arguments
+        ?.getString("filter")
+        ?.let { WorkoutFilter.valueOf(it) }
+        ?: WorkoutFilter.BEGINNER
+
+
+    LaunchedEffect(filter) {
+        viewModel.setFilter(filter)
+    }
+
+    when (sideEffect) {
+        is WorkoutRoundsSideEffect.ShowNavigationNext -> {
+
+        }
+
+        is WorkoutRoundsSideEffect.Empty -> {
+            // Nothing
+        }
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 40.dp)
+        ) {
+            TopBar(
+                navController = navController,
+                title = "Beginning"
+            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                uiState.workoutHeadCardItem?.let { header ->
+                    WorkoutHeader(
+                        badgeText = header.badgeText,
+                        timeText = header.timeText,
+                        caloriesText = header.caloriesText,
+                        mainImage = painterResource(id = header.mainImage),
+                        title = null,
+                        subtitle = null
+                    )
+                }
+
+                uiState.visibleItems
+                    .chunked(3)
+                    .forEachIndexed { roundIndex, roundItems ->
+                        Text(
+                            text = "Round ${roundIndex + 1}",
+                            color = MaterialTheme.colorScheme.secondary,
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 24.dp, top = 16.dp, bottom = 4.dp)
+                        )
+
+                        roundItems.forEach { item ->
+                            when (item) {
+                                is WorkoutBadgeItem.Beginner -> {
+                                    BadgeItem(
+                                        modifier = Modifier.padding(start = 20.dp, top = 12.dp, end = 20.dp),
+                                        icon = rememberVectorPainter(image = item.icon),
+                                        titleText = item.titleText,
+                                        subtitleIcon = rememberVectorPainter(image = item.subtitleIcon),
+                                        subtitleText = item.subtitleText,
+                                        trailingTopText = item.trailingTopText
+                                    )
+                                }
+
+                                is WorkoutBadgeItem.Intermediate -> {
+                                    BadgeItem(
+                                        modifier = Modifier.padding(start = 20.dp, top = 12.dp, end = 20.dp),
+                                        icon = rememberVectorPainter(image = item.icon),
+                                        titleText = item.titleText,
+                                        subtitleIcon = rememberVectorPainter(image = item.subtitleIcon),
+                                        subtitleText = item.subtitleText,
+                                        trailingTopText = item.trailingTopText
+                                    )
+                                }
+
+                                is WorkoutBadgeItem.Advanced -> {
+                                    BadgeItem(
+                                        modifier = Modifier.padding(start = 20.dp, top = 12.dp, end = 20.dp),
+                                        icon = rememberVectorPainter(image = item.icon),
+                                        iconBackgroundSize = 35.dp,
+                                        titleText = item.titleText,
+                                        subtitleIcon = rememberVectorPainter(image = item.subtitleIcon),
+                                        subtitleText = item.subtitleText,
+                                        trailingTopText = item.trailingTopText
+                                    )
+                                }
+                            }
+                        }
+                    }
+                Spacer(Modifier.height(56.dp))
+            }
+        }
+        BottomNavigation(
+            navController = navController,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
+    }
+}

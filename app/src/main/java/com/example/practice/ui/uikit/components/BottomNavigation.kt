@@ -64,24 +64,23 @@ fun BottomNavigation(
             }
 
             NavIcon(Icons.ResourcesWhite, iconSize) {
-                if (currentRoute != FitnessScreen.SignUp.route) {
-                    navController.navigate(FitnessScreen.SignUp.route)
-                }
+//                if (currentRoute != FitnessScreen.SignUp.route) {
+//                    navController.navigate(FitnessScreen.SignUp.route)
+//                }
                 // TODO
             }
 
             NavIcon(Icons.BookmarkOff, iconSize) {
-                if (currentRoute != FitnessScreen.LogIn.route) {
-                    navController.navigate(FitnessScreen.LogIn.route)
-                }
+//                if (currentRoute != FitnessScreen.LogIn.route) {
+//                    navController.navigate(FitnessScreen.LogIn.route)
+//                }
                 // TODO
             }
 
             NavIcon(Icons.SupportWhite, iconSize) {
-                if (currentRoute != FitnessScreen.OnBoarding.route) {
-                    navController.navigate(FitnessScreen.OnBoarding.route)
+                if (currentRoute != FitnessScreen.Help.route) {
+                    navController.navigate(FitnessScreen.Help.route)
                 }
-                // TODO
             }
         }
     }

@@ -547,7 +547,10 @@ fun AdditionalElements() {
                 ) {
                     Row {
                         Column {
-                            WorkoutCard(modifier = Modifier.width(400.dp))
+                            WorkoutCard(modifier = Modifier
+                                .width(400.dp),
+                                onClick = { }
+                            )
                             Spacer(modifier = Modifier.height(8.dp))
                             CyclingChallengeCard(
                                 modifier = Modifier

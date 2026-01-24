@@ -30,21 +30,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.favorites.intents.FavoritesAction
 import com.example.practice.ui.screens.favorites.intents.FavoritesFilter
 import com.example.practice.ui.screens.favorites.intents.FavoritesItem
-import com.example.practice.ui.screens.favorites.intents.FavoritesSideEffect
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.CyclingChallengeCard
+import com.example.practice.ui.uikit.components.TopBar
 import com.example.practice.ui.uikit.components.WorkoutCard
 import com.example.practice.ui.uikit.theme.Poppins
-import io.github.composegears.valkyrie.Arrow
-import io.github.composegears.valkyrie.BellNotificationOff
-import io.github.composegears.valkyrie.Icons
-import io.github.composegears.valkyrie.SearchOff
-import io.github.composegears.valkyrie.UserOff
 
 @Composable
 fun FavoritesScreen(
@@ -52,31 +46,6 @@ fun FavoritesScreen(
 ) {
     val viewModel: FavoritesViewModel = viewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
-    val sideEffect by viewModel.sideEffectEmitter.collectAsState()
-
-    when (sideEffect) {
-        is FavoritesSideEffect.ShowNavigateBack -> {
-            navController.popBackStack()
-            viewModel.clearSideEffect()
-        }
-        is FavoritesSideEffect.ShowSearchScreen -> {
-            //navController.navigate(FitnessScreen.Search.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-        is FavoritesSideEffect.ShowNotificationScreen -> {
-            //navController.navigate(FitnessScreen.Notification.route)
-            // TODO
-            viewModel.clearSideEffect()
-        }
-        is FavoritesSideEffect.ShowProfileScreen -> {
-            navController.navigate(FitnessScreen.Profile.route)
-            viewModel.clearSideEffect()
-        }
-        is FavoritesSideEffect.Empty -> {
-            // Nothing
-        }
-    }
 
     Box(
         modifier = Modifier
@@ -88,78 +57,11 @@ fun FavoritesScreen(
                 .fillMaxSize()
                 .padding(top = 40.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(end = 16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column{
-                    Row(
-                        modifier = Modifier
-                            .align(Alignment.Start)
-                            .padding(horizontal = 16.dp)
-                            .clickable {
-                                viewModel.uiAction(FavoritesAction.NavigateBack)
-                            },
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Image(
-                            painter = rememberVectorPainter(Icons.Arrow),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(15.dp)
-                        )
+            TopBar(
+                navController = navController,
+                title = "Favorites"
+            )
 
-                        Spacer(modifier = Modifier.width(8.dp))
-
-                        Text(
-                            text = "Favorites",
-                            color = MaterialTheme.colorScheme.primary,
-                            style = MaterialTheme.typography.titleLarge
-                        )
-                    }
-                }
-
-                Column(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Row(
-                        modifier = Modifier.align(Alignment.End)
-                    ) {
-                        Image(
-                            painter = rememberVectorPainter(image = Icons.SearchOff),
-                            contentDescription = "search",
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(24.dp)
-                                .clickable {
-                                    viewModel.uiAction(FavoritesAction.Search)
-                                }
-                        )
-                        Image(
-                            painter = rememberVectorPainter(image = Icons.BellNotificationOff),
-                            contentDescription = "notification",
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(24.dp)
-                                .clickable {
-                                    viewModel.uiAction(FavoritesAction.Notification)
-                                }
-                        )
-                        Image(
-                            painter = rememberVectorPainter(image = Icons.UserOff),
-                            contentDescription = "profile_user",
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(24.dp)
-                                .clickable {
-                                    viewModel.uiAction(FavoritesAction.Profile)
-                                }
-                        )
-                    }
-                }
-            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -258,7 +160,8 @@ fun FavoritesScreen(
                                 duration = item.duration,
                                 calories = item.calories,
                                 exercises = item.exercises,
-                                image = painterResource(id = item.imageRes)
+                                image = painterResource(id = item.imageRes),
+                                onClick = { }
                             )
                             Spacer(Modifier.height(12.dp))
                         }

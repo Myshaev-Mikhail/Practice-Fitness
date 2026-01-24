@@ -7,4 +7,5 @@ sealed class HomeAction {
     data object ProgressTracking : HomeAction()
     data object Nutrition : HomeAction()
     data object Community : HomeAction()
+    data object WorkoutSeeAll : HomeAction()
 }

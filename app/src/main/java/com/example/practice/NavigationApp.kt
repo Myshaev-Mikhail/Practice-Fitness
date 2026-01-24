@@ -43,6 +43,9 @@ import com.example.practice.ui.screens.setup.SetUpViewModel
 import com.example.practice.ui.screens.setup.WeightScreen
 import com.example.practice.ui.screens.signup.SignUpScreen
 import com.example.practice.ui.screens.signup.SignUpViewModel
+import com.example.practice.ui.screens.workout.WorkoutScreen
+import com.example.practice.ui.screens.workout.intents.WorkoutFilter
+import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsScreen
 
 @Composable
 fun NavigationApp(startDestination: String) {
@@ -319,6 +322,19 @@ fun NavigationApp(startDestination: String) {
                 navController = navController
             )
         }
+        composable(FitnessScreen.Workout.route) {
+            WorkoutScreen(
+                navController = navController
+            )
+        }
+        composable(
+            route = FitnessScreen.WorkoutRounds.route,
+            arguments = listOf(
+                navArgument("filter") { type = NavType.StringType }
+            )
+        ) {
+            WorkoutRoundsScreen(navController = navController)
+        }
     }
 }
 
@@ -351,4 +367,9 @@ sealed class FitnessScreen(val route: String) {
     data object PasswordSetting : FitnessScreen("password_setting")
     data object Help : FitnessScreen("help")
     data object PrivacyPolicy : FitnessScreen("privacy_policy")
+    data object Workout : FitnessScreen("workout")
+    data object WorkoutRounds : FitnessScreen("workout_rounds/{filter}") {
+        fun createRoute(filter: WorkoutFilter) =
+            "workout_rounds/${filter.name}"
+    }
 }

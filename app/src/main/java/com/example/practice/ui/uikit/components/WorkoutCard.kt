@@ -1,6 +1,7 @@
 package com.example.practice.ui.uikit.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -45,11 +46,13 @@ fun WorkoutCard(
     calories: String = "1320 Kcal",
     exercises: String = "5 Exercises",
     image: Painter = painterResource(id = R.mipmap.woman_helping_man_gym_1),
-    colorFilterStar: Color? = null
+    colorFilterStar: Color? = null,
+    onClick: () -> Unit
 ) {
     Card(
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { onClick() },
         shape = RoundedCornerShape(28.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.onPrimary

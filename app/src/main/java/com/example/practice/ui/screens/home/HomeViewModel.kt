@@ -57,6 +57,9 @@ class HomeViewModel(
             is HomeAction.Community -> {
                 sideEffect.value = HomeSideEffect.ShowCommunityScreen
             }
+            is HomeAction.WorkoutSeeAll -> {
+                sideEffect.value = HomeSideEffect.ShowWorkoutSeeAll
+            }
         }
     }
 
