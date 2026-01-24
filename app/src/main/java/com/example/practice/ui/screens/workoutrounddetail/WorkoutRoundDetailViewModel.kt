@@ -2,10 +2,10 @@ package com.example.practice.ui.screens.workoutrounddetail
 
 import androidx.lifecycle.ViewModel
 import com.example.practice.ui.screens.workout.workouts
+import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutDetails
 import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutRoundDetailAction
 import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutRoundDetailSideEffect
 import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutRoundDetailState
-import com.example.practice.ui.screens.workoutrounds.intents.WorkoutBadgeItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
@@ -25,15 +25,18 @@ class WorkoutRoundDetailViewModel: ViewModel() {
     private fun load(action: WorkoutRoundDetailAction.Load) {
         val workout = workouts.firstOrNull { it.id == action.workoutId } ?: return
 
-        val badge = workout.rounds
-            .filterIsInstance<WorkoutBadgeItem.Item>()
+        val detail = workout.details
+            .filterIsInstance<WorkoutDetails.Item>()
             .firstOrNull { it.id == action.badgeId }
             ?: return
 
         uiState.value = WorkoutRoundDetailState(
-            imageRes = workout.imageRes,
-            title = badge.titleText,
-            info = "Duration ${badge.subtitleText}, Sets ${badge.trailingTopText}"
+            imageRes = detail.imageRes,
+            title = workout.title,
+            description = detail.description,
+            time = detail.time,
+            rep = detail.rep,
+            workout = workout
         )
     }
 }

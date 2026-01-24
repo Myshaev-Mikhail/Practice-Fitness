@@ -4,6 +4,7 @@ package com.example.practice.ui.screens.workout
 import com.example.practice.R
 import com.example.practice.ui.screens.workout.intents.Workout
 import com.example.practice.ui.screens.workout.intents.WorkoutFilter
+import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutDetails
 import com.example.practice.ui.screens.workoutrounds.intents.WorkoutBadgeItem
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.PlayOff
@@ -28,6 +29,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(3, Icons.PlayOn,  "Squats", Icons.TimeDefault, "00:30", "3x"),
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Tabata Intervals", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Bicycle Crunches", Icons.TimeDefault, "00:10", "4x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     ),
 
@@ -45,6 +53,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(3, Icons.PlayOn,  "Squats", Icons.TimeDefault, "00:30", "3x"),
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Tabata Intervals", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Bicycle Crunches", Icons.TimeDefault, "00:10", "4x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     ),
 
@@ -62,6 +77,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(3, Icons.PlayOn,  "Squats", Icons.TimeDefault, "00:30", "3x"),
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Tabata Intervals", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Bicycle Crunches", Icons.TimeDefault, "00:10", "4x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     ),
 
@@ -82,6 +104,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Bicep Curls", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Barbell deadlift", Icons.TimeDefault, "00:10", "4x"),
             WorkoutBadgeItem.Item(6, Icons.PlayOff, "Hamstring Curls", Icons.TimeDefault, "00:30", "3x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     ),
 
@@ -100,6 +129,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Bicep Curls", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Barbell deadlift", Icons.TimeDefault, "00:10", "4x"),
             WorkoutBadgeItem.Item(6, Icons.PlayOff, "Hamstring Curls", Icons.TimeDefault, "00:30", "3x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     ),
 
@@ -118,6 +154,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Bicep Curls", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Barbell deadlift", Icons.TimeDefault, "00:10", "4x"),
             WorkoutBadgeItem.Item(6, Icons.PlayOff, "Hamstring Curls", Icons.TimeDefault, "00:30", "3x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     ),
 
@@ -139,6 +182,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Romanian Deadlifts", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Foam Rolling", Icons.TimeDefault, "00:10", "4x"),
             WorkoutBadgeItem.Item(6, Icons.PlayOff, "Incline Bench Sit Up", Icons.TimeDefault, "00:30", "3x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     ),
 
@@ -157,6 +207,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Romanian Deadlifts", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Foam Rolling", Icons.TimeDefault, "00:10", "4x"),
             WorkoutBadgeItem.Item(6, Icons.PlayOff, "Incline Bench Sit Up", Icons.TimeDefault, "00:30", "3x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     ),
 
@@ -175,6 +232,13 @@ val workouts = listOf(
             WorkoutBadgeItem.Item(4, Icons.PlayOff, "Romanian Deadlifts", Icons.TimeDefault, "00:10", "2x"),
             WorkoutBadgeItem.Item(5, Icons.PlayOff, "Foam Rolling", Icons.TimeDefault, "00:10", "4x"),
             WorkoutBadgeItem.Item(6, Icons.PlayOff, "Incline Bench Sit Up", Icons.TimeDefault, "00:30", "3x")
+        ),
+        details = listOf(
+            WorkoutDetails.Item(1, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(2, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(3, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(4, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
+            WorkoutDetails.Item(5, R.mipmap.woman_helping_man_gym_1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus libero eget.", "30 Second", "3"),
         )
     )
 )

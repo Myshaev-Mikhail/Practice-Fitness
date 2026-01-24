@@ -1,5 +1,6 @@
 package com.example.practice.ui.screens.workout.intents
 
+import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutDetails
 import com.example.practice.ui.screens.workoutrounds.intents.WorkoutBadgeItem
 
 data class WorkoutState(
@@ -26,5 +27,6 @@ data class Workout(
     val calories: String,
     val exercises: String,
     val imageRes: Int,
-    val rounds: List<WorkoutBadgeItem>
+    val rounds: List<WorkoutBadgeItem>,
+    val details: List<WorkoutDetails>
 )

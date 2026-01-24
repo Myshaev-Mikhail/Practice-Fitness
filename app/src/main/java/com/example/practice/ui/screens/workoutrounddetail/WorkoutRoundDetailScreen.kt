@@ -1,13 +1,11 @@
 package com.example.practice.ui.screens.workoutrounddetail
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -25,6 +23,7 @@ import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutRoundDe
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ExerciseCard
 import com.example.practice.ui.uikit.components.TopBar
+import com.example.practice.ui.uikit.components.WorkoutRoundDetail
 
 @Composable
 fun WorkoutRoundDetailScreen(
@@ -65,34 +64,33 @@ fun WorkoutRoundDetailScreen(
                 .fillMaxSize()
                 .padding(top = 40.dp)
         ) {
-            TopBar(navController = navController, title = "Exercise Detail")
+            TopBar(
+                navController = navController,
+                title = uiState.workout
+                    ?.filter
+                    ?.name
+                    ?.lowercase()
+                    ?.replaceFirstChar { it.uppercase() }
+                    ?: ""
+            )
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.tertiary)
-            ) {
-                uiState.imageRes?.let {
-                    Image(
-                        painter = painterResource(it),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(24.dp)
-                    )
-                }
+            uiState.imageRes?.let {
+                WorkoutRoundDetail(
+                    image = painterResource(it),
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
 
-            Spacer(Modifier.height(16.dp))
+            Spacer(modifier = Modifier.weight(1f))
 
             ExerciseCard(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(24.dp),
+                    .padding(start = 24.dp, end = 24.dp, bottom = 72.dp),
                 title = uiState.title,
-                description = "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Cursus Libero Eget.",
-                durationText = "12 Minutes",
-                levelText = "Medium"
+                description = uiState.description,
+                durationText = uiState.time,
+                levelText = uiState.rep
             )
         }
 

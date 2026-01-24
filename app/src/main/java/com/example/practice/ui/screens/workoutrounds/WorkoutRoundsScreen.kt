@@ -81,7 +81,12 @@ fun WorkoutRoundsScreen(
         ) {
             TopBar(
                 navController = navController,
-                title = "Beginning"
+                title = uiState.workout
+                    ?.filter
+                    ?.name
+                    ?.lowercase()
+                    ?.replaceFirstChar { it.uppercase() }
+                    ?: ""
             )
 
             Column(
@@ -119,7 +124,6 @@ fun WorkoutRoundsScreen(
                             modifier = Modifier
                                 .padding(start = 20.dp, top = 12.dp, end = 20.dp)
                                 .clickable {
-                                    // Переход на экран детали бейджа
                                     navController.navigate(
                                         FitnessScreen.WorkoutRoundDetail.createRoute(
                                             workoutId,

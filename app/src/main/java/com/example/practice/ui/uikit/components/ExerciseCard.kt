@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice.ui.uikit.theme.LeagueSpartan
 import com.example.practice.ui.uikit.theme.Poppins
+import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.TimeDefault
 import io.github.composegears.valkyrie.Icons
 
@@ -108,27 +109,26 @@ fun ExerciseCard(
                         ),
                         color = MaterialTheme.colorScheme.onSecondary,
                     )
+
+                    Spacer(modifier = Modifier.width(20.dp))
+
+                    Image(
+                        painter = rememberVectorPainter(Icons.Calories),
+                        contentDescription = null,
+                        modifier = Modifier.size(12.dp),
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onTertiary)
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        text = "$levelText Rep",
+                        style = TextStyle(
+                            fontFamily = LeagueSpartan,
+                            fontWeight = Light,
+                            fontSize = 15.sp
+                        ),
+                        color = MaterialTheme.colorScheme.onSecondary
+                    )
                 }
-
-                Spacer(modifier = Modifier.width(20.dp))
-
-                Box(
-                    modifier = Modifier
-                        .size(8.dp)
-                        .background(MaterialTheme.colorScheme.background, CircleShape)
-                )
-
-                Spacer(modifier = Modifier.width(20.dp))
-
-                Text(
-                    text = levelText,
-                    style = TextStyle(
-                        fontFamily = LeagueSpartan,
-                        fontWeight = Light,
-                        fontSize = 15.sp
-                    ),
-                    color = MaterialTheme.colorScheme.onSecondary
-                )
             }
         }
     }
