@@ -1,6 +1,7 @@
 package com.example.practice.ui.screens.workoutrounds
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.workout.intents.WorkoutFilter
 import com.example.practice.ui.screens.workoutrounds.intents.WorkoutBadgeItem
 import com.example.practice.ui.screens.workoutrounds.intents.WorkoutRoundsSideEffect
@@ -39,15 +41,22 @@ fun WorkoutRoundsScreen(
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    val filter = navController.currentBackStackEntry
+    val entry = navController.currentBackStackEntry
+
+    val filter = entry
         ?.arguments
         ?.getString("filter")
         ?.let { WorkoutFilter.valueOf(it) }
         ?: WorkoutFilter.BEGINNER
 
+    val workoutId = entry
+        ?.arguments
+        ?.getInt("workoutId")
+        ?: 0
 
-    LaunchedEffect(filter) {
-        viewModel.setFilter(filter)
+
+    LaunchedEffect(filter, workoutId) {
+        viewModel.setWorkout(filter, workoutId)
     }
 
     when (sideEffect) {
@@ -80,67 +89,52 @@ fun WorkoutRoundsScreen(
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
             ) {
-                uiState.workoutHeadCardItem?.let { header ->
+                uiState.workout?.let { workout ->
                     WorkoutHeader(
-                        badgeText = header.badgeText,
-                        timeText = header.timeText,
-                        caloriesText = header.caloriesText,
-                        mainImage = painterResource(id = header.mainImage),
+                        badgeText = workout.title,
+                        timeText = workout.duration,
+                        caloriesText = workout.calories,
+                        mainImage = painterResource(workout.imageRes),
                         title = null,
                         subtitle = null
                     )
                 }
 
+
                 uiState.visibleItems
                     .chunked(3)
-                    .forEachIndexed { roundIndex, roundItems ->
-                        Text(
-                            text = "Round ${roundIndex + 1}",
-                            color = MaterialTheme.colorScheme.secondary,
-                            style = MaterialTheme.typography.titleLarge,
+                    .forEachIndexed { index, round ->
+                    Text(
+                        text = "Round ${index + 1}",
+                        color = MaterialTheme.colorScheme.secondary,
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 24.dp, top = 16.dp, bottom = 4.dp)
+                    )
+
+                    round.forEach { item ->
+                        val badge = item as WorkoutBadgeItem.Item
+                        BadgeItem(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(start = 24.dp, top = 16.dp, bottom = 4.dp)
+                                .padding(start = 20.dp, top = 12.dp, end = 20.dp)
+                                .clickable {
+                                    // Переход на экран детали бейджа
+                                    navController.navigate(
+                                        FitnessScreen.WorkoutRoundDetail.createRoute(
+                                            workoutId,
+                                            badge.id
+                                        )
+                                    )
+                                },
+                            icon = rememberVectorPainter(badge.icon),
+                            titleText = badge.titleText,
+                            subtitleIcon = rememberVectorPainter(badge.subtitleIcon),
+                            subtitleText = badge.subtitleText,
+                            trailingTopText = badge.trailingTopText
                         )
-
-                        roundItems.forEach { item ->
-                            when (item) {
-                                is WorkoutBadgeItem.Beginner -> {
-                                    BadgeItem(
-                                        modifier = Modifier.padding(start = 20.dp, top = 12.dp, end = 20.dp),
-                                        icon = rememberVectorPainter(image = item.icon),
-                                        titleText = item.titleText,
-                                        subtitleIcon = rememberVectorPainter(image = item.subtitleIcon),
-                                        subtitleText = item.subtitleText,
-                                        trailingTopText = item.trailingTopText
-                                    )
-                                }
-
-                                is WorkoutBadgeItem.Intermediate -> {
-                                    BadgeItem(
-                                        modifier = Modifier.padding(start = 20.dp, top = 12.dp, end = 20.dp),
-                                        icon = rememberVectorPainter(image = item.icon),
-                                        titleText = item.titleText,
-                                        subtitleIcon = rememberVectorPainter(image = item.subtitleIcon),
-                                        subtitleText = item.subtitleText,
-                                        trailingTopText = item.trailingTopText
-                                    )
-                                }
-
-                                is WorkoutBadgeItem.Advanced -> {
-                                    BadgeItem(
-                                        modifier = Modifier.padding(start = 20.dp, top = 12.dp, end = 20.dp),
-                                        icon = rememberVectorPainter(image = item.icon),
-                                        iconBackgroundSize = 35.dp,
-                                        titleText = item.titleText,
-                                        subtitleIcon = rememberVectorPainter(image = item.subtitleIcon),
-                                        subtitleText = item.subtitleText,
-                                        trailingTopText = item.trailingTopText
-                                    )
-                                }
-                            }
-                        }
                     }
+                }
                 Spacer(Modifier.height(56.dp))
             }
         }

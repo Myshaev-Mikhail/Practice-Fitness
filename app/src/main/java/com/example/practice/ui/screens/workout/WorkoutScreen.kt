@@ -25,7 +25,6 @@ import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.ui.screens.workout.intents.WorkoutAction
 import com.example.practice.ui.screens.workout.intents.WorkoutFilter
-import com.example.practice.ui.screens.workout.intents.WorkoutCardItem
 import com.example.practice.ui.screens.workout.intents.WorkoutSideEffect
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.BottomNavigation
@@ -43,9 +42,12 @@ fun WorkoutScreen(
 
     when (sideEffect) {
         is WorkoutSideEffect.ShowNavigationNext -> {
-            val filter = (sideEffect as WorkoutSideEffect.ShowNavigationNext).filter
+            val effect = sideEffect as WorkoutSideEffect.ShowNavigationNext
             navController.navigate(
-                FitnessScreen.WorkoutRounds.createRoute(filter)
+                FitnessScreen.WorkoutRounds.createRoute(
+                    effect.filter,
+                    effect.workoutId
+                )
             )
             viewModel.clearSideEffect()
         }
@@ -122,44 +124,23 @@ fun WorkoutScreen(
                     subtitle = uiState.workoutHeadCardItem!!.subtitle
                 )
 
-                uiState.visibleItems.forEach { item ->
-                    when (item) {
-                        is WorkoutCardItem.Beginner -> {
-                            WorkoutCard(
-                                modifier = Modifier.padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 8.dp),
-                                title = item.title,
-                                duration = item.duration,
-                                calories = item.calories,
-                                exercises = item.exercises,
-                                image = painterResource(id = item.imageRes),
-                                onClick = { viewModel.uiAction(WorkoutAction.NavigationNext(uiState.selectedFilter)) }
+                uiState.visibleWorkouts.forEach { workout ->
+                    WorkoutCard(
+                        modifier = Modifier.padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 8.dp),
+                        title = workout.title,
+                        duration = workout.duration,
+                        calories = workout.calories,
+                        exercises = workout.exercises,
+                        image = painterResource(workout.imageRes),
+                        onClick = {
+                            viewModel.uiAction(
+                                WorkoutAction.NavigationNext(
+                                    filter = workout.filter,
+                                    workoutId = workout.id
+                                )
                             )
                         }
-
-                        is WorkoutCardItem.Intermediate -> {
-                            WorkoutCard(
-                                modifier = Modifier.padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 8.dp),
-                                title = item.title,
-                                duration = item.duration,
-                                calories = item.calories,
-                                exercises = item.exercises,
-                                image = painterResource(id = item.imageRes),
-                                onClick = { viewModel.uiAction(WorkoutAction.NavigationNext(uiState.selectedFilter)) }
-                            )
-                        }
-
-                        is WorkoutCardItem.Advanced -> {
-                            WorkoutCard(
-                                modifier = Modifier.padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 8.dp),
-                                title = item.title,
-                                duration = item.duration,
-                                calories = item.calories,
-                                exercises = item.exercises,
-                                image = painterResource(id = item.imageRes),
-                                onClick = { viewModel.uiAction(WorkoutAction.NavigationNext(uiState.selectedFilter)) }
-                            )
-                        }
-                    }
+                    )
                 }
                 Spacer(Modifier.height(52.dp))
             }

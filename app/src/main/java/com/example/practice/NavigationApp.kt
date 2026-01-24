@@ -45,6 +45,7 @@ import com.example.practice.ui.screens.signup.SignUpScreen
 import com.example.practice.ui.screens.signup.SignUpViewModel
 import com.example.practice.ui.screens.workout.WorkoutScreen
 import com.example.practice.ui.screens.workout.intents.WorkoutFilter
+import com.example.practice.ui.screens.workoutrounddetail.WorkoutRoundDetailScreen
 import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsScreen
 
 @Composable
@@ -330,10 +331,22 @@ fun NavigationApp(startDestination: String) {
         composable(
             route = FitnessScreen.WorkoutRounds.route,
             arguments = listOf(
-                navArgument("filter") { type = NavType.StringType }
+                navArgument("filter") { type = NavType.StringType },
+                navArgument("workoutId") { type = NavType.IntType }
             )
         ) {
             WorkoutRoundsScreen(navController = navController)
+        }
+        composable(
+            route = FitnessScreen.WorkoutRoundDetail.route,
+            arguments = listOf(
+                navArgument("workoutId") { type = NavType.IntType },
+                navArgument("badgeId") { type = NavType.IntType }
+            )
+        ) {
+            WorkoutRoundDetailScreen(
+                navController = navController
+            )
         }
     }
 }
@@ -368,8 +381,14 @@ sealed class FitnessScreen(val route: String) {
     data object Help : FitnessScreen("help")
     data object PrivacyPolicy : FitnessScreen("privacy_policy")
     data object Workout : FitnessScreen("workout")
-    data object WorkoutRounds : FitnessScreen("workout_rounds/{filter}") {
-        fun createRoute(filter: WorkoutFilter) =
-            "workout_rounds/${filter.name}"
+    data object WorkoutRounds : FitnessScreen("workout_rounds/{filter}/{workoutId}") {
+        fun createRoute(filter: WorkoutFilter, workoutId: Int) =
+            "workout_rounds/${filter.name}/$workoutId"
+    }
+    data object WorkoutRoundDetail : FitnessScreen(
+        "workout_badge_detail/{workoutId}/{badgeId}"
+    ) {
+        fun createRoute(workoutId: Int, badgeId: Int) =
+            "workout_badge_detail/$workoutId/$badgeId"
     }
 }
