@@ -20,11 +20,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.domain.models.WorkoutFilter
 import com.example.practice.ui.screens.workout.intents.WorkoutAction
-import com.example.practice.ui.screens.workout.intents.WorkoutFilter
 import com.example.practice.ui.screens.workout.intents.WorkoutSideEffect
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.BottomNavigation
@@ -34,11 +33,17 @@ import com.example.practice.ui.uikit.components.WorkoutHeader
 
 @Composable
 fun WorkoutScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: WorkoutViewModel
 ) {
-    val viewModel: WorkoutViewModel = viewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
+
+    val filters = listOf(
+        WorkoutFilter.BEGINNER to "Beginner",
+        WorkoutFilter.INTERMEDIATE to "Intermediate",
+        WorkoutFilter.ADVANCED to "Advanced"
+    )
 
     when (sideEffect) {
         is WorkoutSideEffect.ShowNavigationNext -> {
@@ -69,8 +74,13 @@ fun WorkoutScreen(
         ) {
             TopBar(
                 navController = navController,
-                title = "Beginning"
+                title = uiState.selectedFilter
+                    ?.name
+                    ?.lowercase()
+                    ?.replaceFirstChar { it.uppercase() }
+                    ?: ""
             )
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -78,12 +88,6 @@ fun WorkoutScreen(
                     .padding(start = 12.dp, top = 8.dp, end = 24.dp, bottom = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                val filters = listOf(
-                    WorkoutFilter.BEGINNER to "Beginner",
-                    WorkoutFilter.INTERMEDIATE to "Intermediate",
-                    WorkoutFilter.ADVANCED to "Advanced"
-                )
-
                 filters.forEach { (filter, title) ->
                     AppButton(
                         modifier = Modifier

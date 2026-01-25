@@ -1,16 +1,17 @@
 package com.example.practice.ui.screens.workoutrounds
 
 import androidx.lifecycle.ViewModel
-import com.example.practice.ui.screens.workout.intents.WorkoutFilter
 import com.example.practice.ui.screens.workoutrounds.intents.WorkoutRoundsAction
 import com.example.practice.ui.screens.workoutrounds.intents.WorkoutRoundsSideEffect
 import com.example.practice.ui.screens.workoutrounds.intents.WorkoutRoundsState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import com.example.practice.ui.screens.workout.workouts
+import com.example.practice.domain.models.Workout
+import com.example.practice.domain.usecase.GetWorkoutByIdUseCase
 
-class WorkoutRoundsViewModel : ViewModel() {
-
+class WorkoutRoundsViewModel(
+    private val getWorkoutByIdUseCase: GetWorkoutByIdUseCase
+) : ViewModel() {
     private val uiState = MutableStateFlow(WorkoutRoundsState())
     val uiStateEmitter = uiState.asStateFlow()
 
@@ -25,12 +26,11 @@ class WorkoutRoundsViewModel : ViewModel() {
         }
     }
 
-    fun setWorkout(filter: WorkoutFilter, workoutId: Int) {
-        val workout = workouts.firstOrNull {
-            it.filter == filter && it.id == workoutId
-        } ?: return
+    fun loadWorkout(workoutId: Int) {
+        val workout: Workout = getWorkoutByIdUseCase.execute(workoutId)
+            ?: return
 
-        uiState.value = uiState.value.copy(
+        uiState.value = WorkoutRoundsState(
             workout = workout,
             visibleItems = workout.rounds
         )

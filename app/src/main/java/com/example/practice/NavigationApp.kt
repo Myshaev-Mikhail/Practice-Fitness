@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.practice.di.EditProfileDi
+import com.example.practice.domain.models.WorkoutFilter
 import com.example.practice.ui.screens.editprofile.EditProfileScreen
 import com.example.practice.ui.screens.editprofile.EditProfileViewModel
 import com.example.practice.ui.screens.favorites.FavoritesScreen
@@ -44,9 +45,11 @@ import com.example.practice.ui.screens.setup.WeightScreen
 import com.example.practice.ui.screens.signup.SignUpScreen
 import com.example.practice.ui.screens.signup.SignUpViewModel
 import com.example.practice.ui.screens.workout.WorkoutScreen
-import com.example.practice.ui.screens.workout.intents.WorkoutFilter
+import com.example.practice.ui.screens.workout.WorkoutViewModel
 import com.example.practice.ui.screens.workoutrounddetail.WorkoutRoundDetailScreen
+import com.example.practice.ui.screens.workoutrounddetail.WorkoutRoundDetailViewModel
 import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsScreen
+import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsViewModel
 
 @Composable
 fun NavigationApp(startDestination: String) {
@@ -324,8 +327,12 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Workout.route) {
+            val viewModel: WorkoutViewModel = viewModel(
+                factory = EditProfileDi.provideWorkoutViewModelFactory()
+            )
             WorkoutScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
         composable(
@@ -335,7 +342,13 @@ fun NavigationApp(startDestination: String) {
                 navArgument("workoutId") { type = NavType.IntType }
             )
         ) {
-            WorkoutRoundsScreen(navController = navController)
+            val viewModel: WorkoutRoundsViewModel = viewModel(
+                factory = EditProfileDi.provideWorkoutRoundsViewModelFactory()
+            )
+            WorkoutRoundsScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
         }
         composable(
             route = FitnessScreen.WorkoutRoundDetail.route,
@@ -344,8 +357,12 @@ fun NavigationApp(startDestination: String) {
                 navArgument("badgeId") { type = NavType.IntType }
             )
         ) {
+            val viewModel: WorkoutRoundDetailViewModel = viewModel(
+                factory = EditProfileDi.provideWorkoutRoundDetailViewModelFactory()
+            )
             WorkoutRoundDetailScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
     }

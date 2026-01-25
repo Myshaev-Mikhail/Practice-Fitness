@@ -22,11 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.workout.intents.WorkoutFilter
-import com.example.practice.ui.screens.workoutrounds.intents.WorkoutBadgeItem
+import com.example.practice.domain.models.WorkoutBadgeItem
 import com.example.practice.ui.screens.workoutrounds.intents.WorkoutRoundsSideEffect
 import com.example.practice.ui.uikit.components.BadgeItem
 import com.example.practice.ui.uikit.components.BottomNavigation
@@ -35,35 +33,27 @@ import com.example.practice.ui.uikit.components.WorkoutHeader
 
 @Composable
 fun WorkoutRoundsScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: WorkoutRoundsViewModel
 ) {
-    val viewModel: WorkoutRoundsViewModel = viewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
     val entry = navController.currentBackStackEntry
-
-    val filter = entry
-        ?.arguments
-        ?.getString("filter")
-        ?.let { WorkoutFilter.valueOf(it) }
-        ?: WorkoutFilter.BEGINNER
 
     val workoutId = entry
         ?.arguments
         ?.getInt("workoutId")
         ?: 0
 
-
-    LaunchedEffect(filter, workoutId) {
-        viewModel.setWorkout(filter, workoutId)
+    LaunchedEffect(workoutId) {
+        viewModel.loadWorkout(workoutId)
     }
 
     when (sideEffect) {
         is WorkoutRoundsSideEffect.ShowNavigationNext -> {
 
         }
-
         is WorkoutRoundsSideEffect.Empty -> {
             // Nothing
         }
@@ -104,7 +94,6 @@ fun WorkoutRoundsScreen(
                         subtitle = null
                     )
                 }
-
 
                 uiState.visibleItems
                     .chunked(3)

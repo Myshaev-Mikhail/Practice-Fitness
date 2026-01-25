@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutRoundDetailAction
 import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutRoundDetailSideEffect
@@ -27,10 +26,9 @@ import com.example.practice.ui.uikit.components.WorkoutRoundDetail
 
 @Composable
 fun WorkoutRoundDetailScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: WorkoutRoundDetailViewModel
 ) {
-
-    val viewModel: WorkoutRoundDetailViewModel = viewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
@@ -47,7 +45,7 @@ fun WorkoutRoundDetailScreen(
 
     LaunchedEffect(workoutId, badgeId) {
         viewModel.uiAction(
-            WorkoutRoundDetailAction.Load(
+            WorkoutRoundDetailAction.LoadWorkoutDetail(
                 workoutId = workoutId,
                 badgeId = badgeId
             )
