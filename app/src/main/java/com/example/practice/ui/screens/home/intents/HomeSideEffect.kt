@@ -7,5 +7,6 @@ sealed class HomeSideEffect {
     data object ShowProgressTrackingScreen : HomeSideEffect()
     data object ShowNutritionScreen : HomeSideEffect()
     data object ShowCommunityScreen : HomeSideEffect()
+    data object ShowWorkoutSeeAll : HomeSideEffect()
     data object Empty : HomeSideEffect()
 }

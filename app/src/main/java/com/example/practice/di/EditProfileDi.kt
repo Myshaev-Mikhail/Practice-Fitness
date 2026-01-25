@@ -4,8 +4,14 @@ import android.content.Context
 import com.example.practice.data.repository.AuthRepositoryImpl
 import com.example.practice.data.repository.GoogleAuthRepositoryImpl
 import com.example.practice.data.repository.UserProfileRepositoryImpl
+import com.example.practice.data.repository.WorkoutRepositoryImpl
 import com.example.practice.domain.usecase.ChangePasswordUseCase
 import com.example.practice.domain.usecase.GetUserProfileUseCase
+import com.example.practice.domain.usecase.GetWorkoutByIdUseCase
+import com.example.practice.domain.usecase.GetWorkoutDetailUseCase
+import com.example.practice.domain.usecase.GetWorkoutHeaderUseCase
+import com.example.practice.domain.usecase.GetWorkoutsByFilterUseCase
+import com.example.practice.domain.usecase.GetWorkoutsUseCase
 import com.example.practice.domain.usecase.LogInWithEmailUseCase
 import com.example.practice.domain.usecase.LogInWithGoogleUseCase
 import com.example.practice.domain.usecase.ResetPasswordUseCase
@@ -23,6 +29,9 @@ import com.example.practice.ui.screens.profile.ProfileViewModelFactory
 import com.example.practice.ui.screens.settings.SettingsViewModelFactory
 import com.example.practice.ui.screens.setup.SetUpViewModelFactory
 import com.example.practice.ui.screens.signup.SignUpViewModelFactory
+import com.example.practice.ui.screens.workout.WorkoutViewModelFactory
+import com.example.practice.ui.screens.workoutrounddetail.WorkoutRoundDetailViewModelFactory
+import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsViewModelFactory
 
 object EditProfileDi {
     fun provideLogInViewModelFactory(context: Context): LogInViewModelFactory {
@@ -150,6 +159,42 @@ object EditProfileDi {
         return SettingsViewModelFactory(
             updateUserProfileUseCase = updateProfileUseCase,
             notificationSettingsUseCase = notificationSettingsUseCase
+        )
+    }
+
+    fun provideWorkoutViewModelFactory(): WorkoutViewModelFactory {
+        val repository = WorkoutRepositoryImpl()
+
+        val getWorkoutsUseCase = GetWorkoutsUseCase(repository)
+        val getWorkoutsByFilterUseCase = GetWorkoutsByFilterUseCase(repository)
+        val getWorkoutHeaderUseCase = GetWorkoutHeaderUseCase()
+
+        return WorkoutViewModelFactory(
+            getWorkoutsUseCase = getWorkoutsUseCase,
+            getWorkoutsByFilterUseCase = getWorkoutsByFilterUseCase,
+            getWorkoutHeaderUseCase = getWorkoutHeaderUseCase
+        )
+    }
+
+    fun provideWorkoutRoundDetailViewModelFactory(): WorkoutRoundDetailViewModelFactory {
+        val repository = WorkoutRepositoryImpl()
+
+        val getWorkoutByIdUseCase = GetWorkoutByIdUseCase(repository)
+        val getWorkoutDetailUseCase = GetWorkoutDetailUseCase(repository)
+
+        return WorkoutRoundDetailViewModelFactory(
+            getWorkoutByIdUseCase = getWorkoutByIdUseCase,
+            getWorkoutDetailUseCase = getWorkoutDetailUseCase
+        )
+    }
+
+    fun provideWorkoutRoundsViewModelFactory(): WorkoutRoundsViewModelFactory {
+        val repository = WorkoutRepositoryImpl()
+
+        val getWorkoutByIdUseCase = GetWorkoutByIdUseCase(repository)
+
+        return WorkoutRoundsViewModelFactory(
+            getWorkoutByIdUseCase = getWorkoutByIdUseCase
         )
     }
 }

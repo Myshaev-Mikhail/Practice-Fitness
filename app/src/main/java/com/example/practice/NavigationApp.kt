@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.practice.di.EditProfileDi
+import com.example.practice.domain.models.WorkoutFilter
 import com.example.practice.ui.screens.editprofile.EditProfileScreen
 import com.example.practice.ui.screens.editprofile.EditProfileViewModel
 import com.example.practice.ui.screens.favorites.FavoritesScreen
@@ -43,6 +44,12 @@ import com.example.practice.ui.screens.setup.SetUpViewModel
 import com.example.practice.ui.screens.setup.WeightScreen
 import com.example.practice.ui.screens.signup.SignUpScreen
 import com.example.practice.ui.screens.signup.SignUpViewModel
+import com.example.practice.ui.screens.workout.WorkoutScreen
+import com.example.practice.ui.screens.workout.WorkoutViewModel
+import com.example.practice.ui.screens.workoutrounddetail.WorkoutRoundDetailScreen
+import com.example.practice.ui.screens.workoutrounddetail.WorkoutRoundDetailViewModel
+import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsScreen
+import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsViewModel
 
 @Composable
 fun NavigationApp(startDestination: String) {
@@ -319,6 +326,45 @@ fun NavigationApp(startDestination: String) {
                 navController = navController
             )
         }
+        composable(FitnessScreen.Workout.route) {
+            val viewModel: WorkoutViewModel = viewModel(
+                factory = EditProfileDi.provideWorkoutViewModelFactory()
+            )
+            WorkoutScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(
+            route = FitnessScreen.WorkoutRounds.route,
+            arguments = listOf(
+                navArgument("filter") { type = NavType.StringType },
+                navArgument("workoutId") { type = NavType.IntType }
+            )
+        ) {
+            val viewModel: WorkoutRoundsViewModel = viewModel(
+                factory = EditProfileDi.provideWorkoutRoundsViewModelFactory()
+            )
+            WorkoutRoundsScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(
+            route = FitnessScreen.WorkoutRoundDetail.route,
+            arguments = listOf(
+                navArgument("workoutId") { type = NavType.IntType },
+                navArgument("badgeId") { type = NavType.IntType }
+            )
+        ) {
+            val viewModel: WorkoutRoundDetailViewModel = viewModel(
+                factory = EditProfileDi.provideWorkoutRoundDetailViewModelFactory()
+            )
+            WorkoutRoundDetailScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
     }
 }
 
@@ -351,4 +397,15 @@ sealed class FitnessScreen(val route: String) {
     data object PasswordSetting : FitnessScreen("password_setting")
     data object Help : FitnessScreen("help")
     data object PrivacyPolicy : FitnessScreen("privacy_policy")
+    data object Workout : FitnessScreen("workout")
+    data object WorkoutRounds : FitnessScreen("workout_rounds/{filter}/{workoutId}") {
+        fun createRoute(filter: WorkoutFilter, workoutId: Int) =
+            "workout_rounds/${filter.name}/$workoutId"
+    }
+    data object WorkoutRoundDetail : FitnessScreen(
+        "workout_badge_detail/{workoutId}/{badgeId}"
+    ) {
+        fun createRoute(workoutId: Int, badgeId: Int) =
+            "workout_badge_detail/$workoutId/$badgeId"
+    }
 }

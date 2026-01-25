@@ -5,7 +5,6 @@ import com.example.practice.R
 import com.example.practice.ui.screens.favorites.intents.FavoritesAction
 import com.example.practice.ui.screens.favorites.intents.FavoritesFilter
 import com.example.practice.ui.screens.favorites.intents.FavoritesItem
-import com.example.practice.ui.screens.favorites.intents.FavoritesSideEffect
 import com.example.practice.ui.screens.favorites.intents.FavoritesState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,27 +13,12 @@ class FavoritesViewModel: ViewModel() {
     private val uiState = MutableStateFlow(FavoritesState())
     val uiStateEmitter = uiState.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<FavoritesSideEffect>(FavoritesSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
-
     init {
         loadFavorites()
     }
 
     fun uiAction(action: FavoritesAction) {
         when (action) {
-            is FavoritesAction.NavigateBack -> {
-                sideEffect.value = FavoritesSideEffect.ShowNavigateBack
-            }
-            is FavoritesAction.Search -> {
-                sideEffect.value = FavoritesSideEffect.ShowSearchScreen
-            }
-            is FavoritesAction.Notification -> {
-                sideEffect.value = FavoritesSideEffect.ShowNotificationScreen
-            }
-            is FavoritesAction.Profile -> {
-                sideEffect.value = FavoritesSideEffect.ShowProfileScreen
-            }
             is FavoritesAction.SelectFilter -> {
                applyFilter(action.filter)
             }
@@ -61,10 +45,6 @@ class FavoritesViewModel: ViewModel() {
             selectedFilter = filter,
             visibleItems = filtered
         )
-    }
-
-    fun clearSideEffect() {
-        sideEffect.value = FavoritesSideEffect.Empty
     }
 
     companion object {

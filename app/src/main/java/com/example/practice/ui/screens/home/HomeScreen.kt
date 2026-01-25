@@ -85,6 +85,10 @@ fun HomeScreen(
             viewModel.clearSideEffect()
             // TODO
         }
+        is HomeSideEffect.ShowWorkoutSeeAll -> {
+            navController.navigate(FitnessScreen.Workout.route)
+            viewModel.clearSideEffect()
+        }
         is HomeSideEffect.Empty -> {
             // Nothing
         }
@@ -179,7 +183,10 @@ fun HomeScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 24.dp, end = 24.dp),
+                    .padding(start = 24.dp, end = 24.dp)
+                    .clickable {
+                        viewModel.uiAction(HomeAction.WorkoutSeeAll)
+                    },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -191,7 +198,6 @@ fun HomeScreen(
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.clickable { }
                 ) {
                     Text(
                         text = "See all",

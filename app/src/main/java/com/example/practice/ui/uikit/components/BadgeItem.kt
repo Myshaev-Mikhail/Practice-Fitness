@@ -34,7 +34,7 @@ fun BadgeItem(
     modifier: Modifier = Modifier,
     icon: Painter,
     iconBackgroundColor: Color? = null,
-    iconBackgroundSize: Dp = 36.dp,
+    iconBackgroundSize: Dp = 40.dp,
     overlineText: String? = null,
     titleText: String,
     subtitleText: String? = null,
@@ -66,13 +66,14 @@ fun BadgeItem(
                     Image(
                         painter = icon,
                         contentDescription = null,
-                        modifier = Modifier.size(18.dp),
+                        modifier = Modifier.size(45.dp),
                     )
                 }
             } else {
                 Image(
                     painter = icon,
-                    contentDescription = null
+                    contentDescription = null,
+                    modifier = Modifier.size(iconBackgroundSize)
                 )
             }
 
@@ -140,10 +141,12 @@ fun BadgeItem(
 
                 Spacer(modifier = Modifier.width(4.dp))
 
-                Column {
+                Column(
+                    modifier = Modifier.padding(end = 8.dp)
+                ) {
                     if (trailingTopText != null) {
                         Text(
-                            text = trailingTopText,
+                            text = "Repetition $trailingTopText",
                             color = MaterialTheme.colorScheme.primary,
                             style = MaterialTheme.typography.bodyMedium
                         )
