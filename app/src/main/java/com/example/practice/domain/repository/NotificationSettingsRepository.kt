@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface NotificationSettingsRepository {
     fun observeSettings(): Flow<NotificationSettings>
     suspend fun getCurrentSettings(): NotificationSettings
-
     suspend fun setGeneral(enabled: Boolean)
     suspend fun setSound(enabled: Boolean)
     suspend fun setVibrate(enabled: Boolean)
