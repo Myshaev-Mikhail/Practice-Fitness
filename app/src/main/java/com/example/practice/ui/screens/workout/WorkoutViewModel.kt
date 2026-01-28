@@ -5,9 +5,9 @@ import com.example.practice.domain.models.WorkoutFilter
 import com.example.practice.domain.usecase.GetWorkoutHeaderUseCase
 import com.example.practice.domain.usecase.GetWorkoutsByFilterUseCase
 import com.example.practice.domain.usecase.GetWorkoutsUseCase
-import com.example.practice.ui.screens.workout.intents.WorkoutAction
-import com.example.practice.ui.screens.workout.intents.WorkoutSideEffect
-import com.example.practice.ui.screens.workout.intents.WorkoutState
+import com.example.practice.ui.screens.workout.actions.WorkoutAction
+import com.example.practice.ui.screens.workout.actions.WorkoutSideEffect
+import com.example.practice.ui.screens.workout.actions.WorkoutState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
@@ -16,24 +16,24 @@ class WorkoutViewModel(
     private val getWorkoutsByFilterUseCase: GetWorkoutsByFilterUseCase,
     private val getHeaderUseCase: GetWorkoutHeaderUseCase
 ): ViewModel() {
-    private val uiState = MutableStateFlow(WorkoutState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(WorkoutState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<WorkoutSideEffect>(WorkoutSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<WorkoutSideEffect>(WorkoutSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
     init {
         loadWorkouts(WorkoutFilter.BEGINNER)
     }
 
-    fun uiAction(action: WorkoutAction) {
+    fun handleUiAction(action: WorkoutAction) {
         when (action) {
             is WorkoutAction.SelectFilter -> {
                 loadWorkouts(action.filter)
             }
 
             is WorkoutAction.NavigationNext -> {
-                sideEffect.value = WorkoutSideEffect.ShowNavigationNext(
+                sideEffectFlow.value = WorkoutSideEffect.ShowNavigationNext(
                     action.filter,
                     action.workoutId
                 )
@@ -42,7 +42,7 @@ class WorkoutViewModel(
     }
 
     private fun loadWorkouts(filter: WorkoutFilter) {
-        uiState.value = uiState.value.copy(
+        uiStateFlow.value = uiStateFlow.value.copy(
             selectedFilter = filter,
             visibleWorkouts = getWorkoutsByFilterUseCase.execute(filter),
             workoutHeadCardItem = getHeaderUseCase.execute(filter)
@@ -50,6 +50,6 @@ class WorkoutViewModel(
     }
 
     fun clearSideEffect() {
-        sideEffect.value = WorkoutSideEffect.Empty
+        sideEffectFlow.value = WorkoutSideEffect.Empty
     }
 }

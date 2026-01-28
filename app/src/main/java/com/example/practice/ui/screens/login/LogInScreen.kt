@@ -28,11 +28,10 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.login.intents.LogInAction
-import com.example.practice.ui.screens.login.intents.LogInSideEffect
+import com.example.practice.ui.screens.login.actions.LogInAction
+import com.example.practice.ui.screens.login.actions.LogInSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.LogIn
 import io.github.composegears.valkyrie.Facebook
@@ -123,13 +122,13 @@ fun LogInScreen(
                 emailFocusRequester = emailFocusRequester,
                 passwordFocusRequester = passwordFocusRequester,
                 onEmailChange = {
-                    viewModel.uiAction(LogInAction.EmailChanged(it))
+                    viewModel.handleUiAction(LogInAction.EmailChanged(it))
                 },
                 onPasswordChange = {
-                    viewModel.uiAction(LogInAction.PasswordChanged(it))
+                    viewModel.handleUiAction(LogInAction.PasswordChanged(it))
                 },
                 onForgotPassword = {
-                    viewModel.uiAction(LogInAction.ForgotPasswordClicked)
+                    viewModel.handleUiAction(LogInAction.ForgotPasswordClicked)
                 }
             )
         }
@@ -145,7 +144,7 @@ fun LogInScreen(
                 text = "Log In",
                 textColor = MaterialTheme.colorScheme.onPrimary
             ) {
-                viewModel.uiAction(LogInAction.EmailLogInClicked)
+                viewModel.handleUiAction(LogInAction.EmailLogInClicked)
             }
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -168,7 +167,7 @@ fun LogInScreen(
                         .padding(8.dp)
                         .size(40.dp)
                         .clickable {
-                            viewModel.uiAction(LogInAction.GoogleLogInClicked, context)
+                            viewModel.handleUiAction(LogInAction.GoogleLogInClicked, context)
                         }
                 )
                 Image(

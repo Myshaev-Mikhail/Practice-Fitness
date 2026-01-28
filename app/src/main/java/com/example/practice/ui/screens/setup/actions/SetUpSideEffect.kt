@@ -1,0 +1,11 @@
+package com.example.practice.ui.screens.setup.actions
+
+sealed class SetUpSideEffect {
+    data object NavigateNext : SetUpSideEffect()
+    data object NavigateBack : SetUpSideEffect()
+    data object ShowGenderScreen : SetUpSideEffect()
+    data object ShowProfileValidationError : SetUpSideEffect()
+    data object NavigateToHome : SetUpSideEffect()
+    data class ShowToast(val text: String) : SetUpSideEffect()
+    data object Empty : SetUpSideEffect()
+}

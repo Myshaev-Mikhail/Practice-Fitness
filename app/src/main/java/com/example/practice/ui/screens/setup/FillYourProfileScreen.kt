@@ -35,9 +35,9 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.setup.intents.SetUpAction
-import com.example.practice.ui.screens.setup.intents.SetUpProfile
-import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
+import com.example.practice.ui.screens.setup.actions.SetUpAction
+import com.example.practice.ui.screens.setup.actions.SetUpProfile
+import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.AvatarCrop
 import com.example.practice.ui.uikit.components.FillYourProfile
@@ -60,7 +60,7 @@ fun FillYourProfileScreen(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let {
-            viewModel.uiAction(SetUpAction.AvatarPicked(it.toString()))
+            viewModel.handleUiAction(SetUpAction.AvatarPicked(it.toString()))
         }
     }
 
@@ -123,7 +123,7 @@ fun FillYourProfileScreen(
             modifier = Modifier
                 .align(Alignment.Start)
                 .clickable {
-                    viewModel.uiAction(SetUpAction.NavigateBack)
+                    viewModel.handleUiAction(SetUpAction.NavigateBack)
                 }
         ) {
             Spacer(modifier = Modifier.width(24.dp))
@@ -174,22 +174,22 @@ fun FillYourProfileScreen(
             mobileNumberFocusRequester = mobileNumberFocusRequester,
             onFullNameChange = {
                 val normalized = viewModel.normalizeText(it)
-                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(fullName = normalized)))
+                viewModel.handleUiAction(SetUpAction.ProfileChanged(profile.copy(fullName = normalized)))
             },
 
             onNicknameChange = {
                 val normalized = viewModel.normalizeText(it)
-                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(nickname = normalized)))
+                viewModel.handleUiAction(SetUpAction.ProfileChanged(profile.copy(nickname = normalized)))
             },
 
             onEmailChange = {
                 val normalized = viewModel.normalizeText(it)
-                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(email = normalized)))
+                viewModel.handleUiAction(SetUpAction.ProfileChanged(profile.copy(email = normalized)))
             },
 
             onMobileNumberChange = {
                 val normalized = viewModel.normalizeText(it)
-                viewModel.uiAction(SetUpAction.ProfileChanged(profile.copy(mobileNumber = normalized)))
+                viewModel.handleUiAction(SetUpAction.ProfileChanged(profile.copy(mobileNumber = normalized)))
             },
         )
 
@@ -205,13 +205,13 @@ fun FillYourProfileScreen(
             textColor = MaterialTheme.colorScheme.outlineVariant,
             buttonColor = MaterialTheme.colorScheme.secondary
         ) {
-            viewModel.uiAction(SetUpAction.SaveProfile)
+            viewModel.handleUiAction(SetUpAction.SaveProfile)
         }
     }
     if (uiState.tempAvatarUri != null) {
         Dialog(
             onDismissRequest = {
-                viewModel.uiAction(SetUpAction.ClearTempAvatar)
+                viewModel.handleUiAction(SetUpAction.ClearTempAvatar)
             },
             properties = DialogProperties(
                 usePlatformDefaultWidth = false
@@ -220,15 +220,15 @@ fun FillYourProfileScreen(
             AvatarCrop(
                 imageUri = uiState.tempAvatarUri!!,
                 onConfirm = { finalUri ->
-                    viewModel.uiAction(
+                    viewModel.handleUiAction(
                         SetUpAction.ProfileChanged(
                             profile.copy(avatarUri = finalUri)
                         )
                     )
-                    viewModel.uiAction(SetUpAction.ClearTempAvatar)
+                    viewModel.handleUiAction(SetUpAction.ClearTempAvatar)
                 },
                 onCancel = {
-                    viewModel.uiAction(SetUpAction.ClearTempAvatar)
+                    viewModel.handleUiAction(SetUpAction.ClearTempAvatar)
                 }
             )
         }

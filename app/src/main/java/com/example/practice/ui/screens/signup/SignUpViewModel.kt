@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.usecase.LogInWithGoogleUseCase
 import com.example.practice.domain.usecase.SignUpUseCase
-import com.example.practice.ui.screens.signup.intents.SignUpAction
-import com.example.practice.ui.screens.signup.intents.SignUpSideEffect
-import com.example.practice.ui.screens.signup.intents.SignUpState
+import com.example.practice.ui.screens.signup.actions.SignUpAction
+import com.example.practice.ui.screens.signup.actions.SignUpSideEffect
+import com.example.practice.ui.screens.signup.actions.SignUpState
 import com.example.practice.ui.utils.isInternetAvailable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,44 +17,44 @@ class SignUpViewModel(
     private val signUpWithEmailUseCase: SignUpUseCase,
     private val logInWithGoogleUseCase: LogInWithGoogleUseCase,
 ) : ViewModel() {
-    private val uiState = MutableStateFlow(SignUpState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(SignUpState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<SignUpSideEffect>(SignUpSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<SignUpSideEffect>(SignUpSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
-    fun uiAction(action: SignUpAction, context: Context? = null) {
+    fun handleUiAction(action: SignUpAction, context: Context? = null) {
         when (action) {
             is SignUpAction.FullNameChanged -> {
-                uiState.value = uiState.value.copy(fullName = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(fullName = action.value)
             }
 
             is SignUpAction.EmailChanged -> {
-                uiState.value = uiState.value.copy(email = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(email = action.value)
             }
 
             is SignUpAction.PasswordChanged -> {
-                uiState.value = uiState.value.copy(password = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(password = action.value)
             }
 
             is SignUpAction.ConfirmPasswordChanged -> {
-                uiState.value = uiState.value.copy(confirmPassword = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(confirmPassword = action.value)
             }
 
             is SignUpAction.EmailSignUpClicked -> {
                 if (context != null && !isInternetAvailable(context)) {
-                    sideEffect.value = SignUpSideEffect.ShowToast("There is no internet connection")
+                    sideEffectFlow.value = SignUpSideEffect.ShowToast("There is no internet connection")
                     return
                 }
 
-                if (uiState.value.fullName.isEmpty()) {
-                    sideEffect.value = SignUpSideEffect.ShowToast("Full name is required")
-                } else if (uiState.value.email.isEmpty()) {
-                    sideEffect.value = SignUpSideEffect.ShowToast("Email is required")
-                } else if (uiState.value.password.isEmpty()) {
-                    sideEffect.value = SignUpSideEffect.ShowToast("Password is required")
-                } else if (uiState.value.confirmPassword.isEmpty()) {
-                    sideEffect.value = SignUpSideEffect.ShowToast("Please confirm your password")
+                if (uiStateFlow.value.fullName.isEmpty()) {
+                    sideEffectFlow.value = SignUpSideEffect.ShowToast("Full name is required")
+                } else if (uiStateFlow.value.email.isEmpty()) {
+                    sideEffectFlow.value = SignUpSideEffect.ShowToast("Email is required")
+                } else if (uiStateFlow.value.password.isEmpty()) {
+                    sideEffectFlow.value = SignUpSideEffect.ShowToast("Password is required")
+                } else if (uiStateFlow.value.confirmPassword.isEmpty()) {
+                    sideEffectFlow.value = SignUpSideEffect.ShowToast("Please confirm your password")
                 } else {
                     signUp()
                 }
@@ -62,7 +62,7 @@ class SignUpViewModel(
 
             is SignUpAction.GoogleLogInClicked -> {
                 if (context != null && !isInternetAvailable(context)) {
-                    sideEffect.value = SignUpSideEffect.ShowToast("There is no internet connection")
+                    sideEffectFlow.value = SignUpSideEffect.ShowToast("There is no internet connection")
                     return
                 }
 
@@ -72,13 +72,13 @@ class SignUpViewModel(
     }
 
     private fun signUp() {
-        val state = uiState.value
+        val state = uiStateFlow.value
         if (state.password != state.confirmPassword) {
-            sideEffect.value = SignUpSideEffect.ShowToast("Passwords do not match")
+            sideEffectFlow.value = SignUpSideEffect.ShowToast("Passwords do not match")
             return
         }
 
-        uiState.value = state.copy(isLoading = true)
+        uiStateFlow.value = state.copy(isLoading = true)
 
         viewModelScope.launch {
             val result = signUpWithEmailUseCase(
@@ -87,32 +87,32 @@ class SignUpViewModel(
                 fullName = state.fullName
             )
 
-            uiState.value = uiState.value.copy(isLoading = false)
+            uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
 
             result
                 .onSuccess {
-                    sideEffect.value = SignUpSideEffect.Success
+                    sideEffectFlow.value = SignUpSideEffect.Success
                 }
                 .onFailure {
-                    sideEffect.value =
+                    sideEffectFlow.value =
                         SignUpSideEffect.ShowToast(it.message ?: "Unknown error")
                 }
         }
     }
 
     private fun logInWithGoogle() {
-        uiState.value = uiState.value.copy(isLoading = true)
+        uiStateFlow.value = uiStateFlow.value.copy(isLoading = true)
 
         viewModelScope.launch {
             val result = logInWithGoogleUseCase()
-            uiState.value = uiState.value.copy(isLoading = false)
+            uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
 
             result
                 .onSuccess {
-                    sideEffect.value = SignUpSideEffect.Success
+                    sideEffectFlow.value = SignUpSideEffect.Success
                 }
                 .onFailure {
-                    sideEffect.value = SignUpSideEffect.ShowToast("Google sign-in failed")
+                    sideEffectFlow.value = SignUpSideEffect.ShowToast("Google sign-in failed")
                 }
         }
     }
@@ -124,6 +124,6 @@ class SignUpViewModel(
     }
 
     fun clearSideEffect() {
-        sideEffect.value = SignUpSideEffect.Empty
+        sideEffectFlow.value = SignUpSideEffect.Empty
     }
 }

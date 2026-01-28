@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.usecase.NotificationSettingsUseCase
-import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingAction
-import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingSideEffect
-import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingState
+import com.example.practice.ui.screens.notificationsetting.actions.NotificationSettingAction
+import com.example.practice.ui.screens.notificationsetting.actions.NotificationSettingSideEffect
+import com.example.practice.ui.screens.notificationsetting.actions.NotificationSettingState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
@@ -18,16 +18,16 @@ class NotificationSettingViewModel(
     private val context: Context
 ) : ViewModel() {
 
-    private val uiState = MutableStateFlow(NotificationSettingState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(NotificationSettingState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<NotificationSettingSideEffect>(NotificationSettingSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<NotificationSettingSideEffect>(NotificationSettingSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
     init {
         viewModelScope.launch {
             val settings = useCase.observeSettings().first()
-            uiState.value = uiState.value.copy(
+            uiStateFlow.value = uiStateFlow.value.copy(
                 generalNotificationEnabled = settings.generalEnabled,
                 soundEnabled = settings.soundEnabled,
                 vibrateEnabled = settings.vibrateEnabled,
@@ -39,20 +39,20 @@ class NotificationSettingViewModel(
         }
     }
 
-    fun uiAction(action: NotificationSettingAction) {
+    fun handleUiAction(action: NotificationSettingAction) {
         when (action) {
             NotificationSettingAction.NavigateBack -> {
-                sideEffect.value = NotificationSettingSideEffect.ShowNavigateBack
+                sideEffectFlow.value = NotificationSettingSideEffect.ShowNavigateBack
             }
 
             is NotificationSettingAction.ToggleGeneralNotification -> {
                 val enabled = action.enabled
-                uiState.value = uiState.value.copy(generalNotificationEnabled = enabled)
+                uiStateFlow.value = uiStateFlow.value.copy(generalNotificationEnabled = enabled)
 
                 viewModelScope.launch {
                     useCase.setGeneral(enabled)
                     if (enabled) {
-                        val time = uiState.value.notificationTime ?: Calendar.getInstance()
+                        val time = uiStateFlow.value.notificationTime ?: Calendar.getInstance()
                         NotificationReceiver.scheduleNextWorker(
                             context = context.applicationContext,
                             hour = time.get(Calendar.HOUR_OF_DAY),
@@ -61,12 +61,12 @@ class NotificationSettingViewModel(
                     }
                 }
 
-                if (enabled) sideEffect.value = NotificationSettingSideEffect.ShowTimePicker
+                if (enabled) sideEffectFlow.value = NotificationSettingSideEffect.ShowTimePicker
             }
 
             is NotificationSettingAction.SetNotificationTime -> {
                 val calendar = action.time
-                uiState.value = uiState.value.copy(notificationTime = calendar)
+                uiStateFlow.value = uiStateFlow.value.copy(notificationTime = calendar)
 
                 viewModelScope.launch {
                     useCase.setTime(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE))
@@ -79,18 +79,18 @@ class NotificationSettingViewModel(
             }
 
             is NotificationSettingAction.ToggleSound -> {
-                uiState.value = uiState.value.copy(soundEnabled = action.enabled)
+                uiStateFlow.value = uiStateFlow.value.copy(soundEnabled = action.enabled)
                 viewModelScope.launch { useCase.setSound(action.enabled) }
             }
 
             is NotificationSettingAction.ToggleVibrate -> {
-                uiState.value = uiState.value.copy(vibrateEnabled = action.enabled)
+                uiStateFlow.value = uiStateFlow.value.copy(vibrateEnabled = action.enabled)
                 viewModelScope.launch { useCase.setVibrate(action.enabled) }
             }
         }
     }
 
     fun clearSideEffect() {
-        sideEffect.value = NotificationSettingSideEffect.Empty
+        sideEffectFlow.value = NotificationSettingSideEffect.Empty
     }
 }

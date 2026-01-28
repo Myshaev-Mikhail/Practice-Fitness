@@ -6,10 +6,9 @@ import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.usecase.GetUserProfileUseCase
 import com.example.practice.domain.usecase.NotificationSettingsUseCase
 import com.example.practice.domain.usecase.SetUserProfileUseCase
-import com.example.practice.ui.screens.profile.intents.ProfileAction
-import com.example.practice.ui.screens.profile.intents.ProfileSideEffect
-import com.example.practice.ui.screens.profile.intents.ProfileState
-import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
+import com.example.practice.ui.screens.profile.actions.ProfileAction
+import com.example.practice.ui.screens.profile.actions.ProfileSideEffect
+import com.example.practice.ui.screens.profile.actions.ProfileState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
@@ -20,35 +19,37 @@ class ProfileViewModel(
     private val setUserProfile: SetUserProfileUseCase,
     private val notificationSettings: NotificationSettingsUseCase
 ): ViewModel() {
-    private val uiState = MutableStateFlow(ProfileState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(ProfileState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<ProfileSideEffect>(ProfileSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<ProfileSideEffect>(ProfileSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
+
+    private var originalProfile: UserProfile? = null
 
     init {
         profileData()
     }
 
-    fun uiAction(action: ProfileAction) {
+    fun handleUiAction(action: ProfileAction) {
         when(action) {
             is ProfileAction.NavigateBack -> {
-                sideEffect.value = ProfileSideEffect.ShowNavigateBack
+                sideEffectFlow.value = ProfileSideEffect.ShowNavigateBack
             }
             is ProfileAction.NavigateProfileEditing -> {
-                sideEffect.value = ProfileSideEffect.ShowEditProfileScreen
+                sideEffectFlow.value = ProfileSideEffect.ShowEditProfileScreen
             }
             is ProfileAction.NavigateFavorite -> {
-                sideEffect.value = ProfileSideEffect.ShowFavoritesScreen
+                sideEffectFlow.value = ProfileSideEffect.ShowFavoritesScreen
             }
             is ProfileAction.NavigatePrivacyPolicy -> {
-                sideEffect.value = ProfileSideEffect.ShowPrivacyPolicyScreen
+                sideEffectFlow.value = ProfileSideEffect.ShowPrivacyPolicyScreen
             }
             is ProfileAction.NavigateSettings -> {
-                sideEffect.value = ProfileSideEffect.ShowSettingsScreen
+                sideEffectFlow.value = ProfileSideEffect.ShowSettingsScreen
             }
             is ProfileAction.NavigateHelp -> {
-                sideEffect.value = ProfileSideEffect.ShowHelpScreen
+                sideEffectFlow.value = ProfileSideEffect.ShowHelpScreen
             }
             is ProfileAction.NavigateLogout -> {
                 logoutAccount()
@@ -56,8 +57,6 @@ class ProfileViewModel(
             else -> {}
         }
     }
-
-    private var originalProfile: UserProfile? = null
 
     private fun profileData() {
         viewModelScope.launch {
@@ -71,7 +70,7 @@ class ProfileViewModel(
                     height = profile.height,
                     avatarUri = profile.avatarUri
                 )
-                uiState.value = state
+                uiStateFlow.value = state
             }
         }
     }
@@ -81,14 +80,14 @@ class ProfileViewModel(
             try {
                 setUserProfile.clear()
                 notificationSettings.clear()
-                sideEffect.value = ProfileSideEffect.ShowLogoutScreen
+                sideEffectFlow.value = ProfileSideEffect.ShowLogoutScreen
             } catch (e: Exception) {
-                sideEffect.value = ProfileSideEffect.ShowError(e)
+                sideEffectFlow.value = ProfileSideEffect.ShowError(e)
             }
         }
     }
 
     fun clearSideEffect() {
-        sideEffect.value = ProfileSideEffect.Empty
+        sideEffectFlow.value = ProfileSideEffect.Empty
     }
 }

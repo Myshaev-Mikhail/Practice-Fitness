@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.domain.models.WorkoutFilter
-import com.example.practice.ui.screens.workout.intents.WorkoutAction
-import com.example.practice.ui.screens.workout.intents.WorkoutSideEffect
+import com.example.practice.ui.screens.workout.actions.WorkoutAction
+import com.example.practice.ui.screens.workout.actions.WorkoutSideEffect
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.TopBar
@@ -106,7 +106,7 @@ fun WorkoutScreen(
                             MaterialTheme.colorScheme.onBackground
                         }
                     ) {
-                        viewModel.uiAction(
+                        viewModel.handleUiAction(
                             WorkoutAction.SelectFilter(filter)
                         )
                     }
@@ -137,7 +137,7 @@ fun WorkoutScreen(
                         exercises = workout.exercises,
                         image = painterResource(workout.imageRes),
                         onClick = {
-                            viewModel.uiAction(
+                            viewModel.handleUiAction(
                                 WorkoutAction.NavigationNext(
                                     filter = workout.filter,
                                     workoutId = workout.id

@@ -26,12 +26,11 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.R
-import com.example.practice.ui.screens.setup.intents.SetUpAction
-import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
+import com.example.practice.ui.screens.setup.actions.SetUpAction
+import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.theme.Poppins
 
@@ -109,7 +108,7 @@ fun SetUpScreen(
             text = "Next",
             textStyle = MaterialTheme.typography.titleLarge
         ) {
-            viewModel.uiAction(SetUpAction.StartSetUp)
+            viewModel.handleUiAction(SetUpAction.StartSetUp)
         }
     }
 }

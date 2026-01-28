@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.usecase.GetUserProfileUseCase
 import com.example.practice.domain.usecase.SetUserProfileUseCase
-import com.example.practice.ui.screens.editprofile.intents.EditProfileAction
-import com.example.practice.ui.screens.editprofile.intents.EditProfileSideEffect
-import com.example.practice.ui.screens.editprofile.intents.EditProfileState
+import com.example.practice.ui.screens.editprofile.actions.EditProfileAction
+import com.example.practice.ui.screens.editprofile.actions.EditProfileSideEffect
+import com.example.practice.ui.screens.editprofile.actions.EditProfileState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
@@ -17,71 +17,72 @@ class EditProfileViewModel(
     private val getUserProfile: GetUserProfileUseCase,
     private val updateUserProfile: SetUserProfileUseCase
 ): ViewModel() {
-    private val uiState = MutableStateFlow(EditProfileState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(EditProfileState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<EditProfileSideEffect>(EditProfileSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<EditProfileSideEffect>(EditProfileSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
     private var originalState: EditProfileState? = null
+    private var originalProfile: UserProfile? = null
 
     init {
         profileData()
     }
 
-    fun uiAction(action: EditProfileAction) {
+    fun handleUiAction(action: EditProfileAction) {
         when (action) {
             is EditProfileAction.AvatarPicked -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     tempAvatarUri = action.uri
                 )
             }
 
             is EditProfileAction.AvatarConfirmed -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     avatarUri = action.uri,
                     tempAvatarUri = null
                 )
             }
 
             EditProfileAction.ClearTempAvatar -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     tempAvatarUri = null
                 )
             }
 
             is EditProfileAction.FullNameChanged -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     fullName = normalizeText(action.value)
                 )
             }
 
             is EditProfileAction.EmailChanged -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     email = normalizeText(action.value)
                 )
             }
 
             is EditProfileAction.MobileChanged -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     mobileNumber = normalizeText(action.value)
                 )
             }
 
             is EditProfileAction.AgeChanged -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     date = action.value.toIntOrNull()
                 )
             }
 
             is EditProfileAction.WeightChanged -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     weight = action.value.toFloatOrNull()
                 )
             }
 
             is EditProfileAction.HeightChanged -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     height = action.value.toIntOrNull()
                 )
             }
@@ -92,15 +93,13 @@ class EditProfileViewModel(
 
             is EditProfileAction.NavigateBack -> {
                 if (hasUnsavedChanges()) {
-                    sideEffect.value = EditProfileSideEffect.ShowUnsavedChangesDialog
+                    sideEffectFlow.value = EditProfileSideEffect.ShowUnsavedChangesDialog
                 } else {
-                    sideEffect.value = EditProfileSideEffect.ShowNavigateBack
+                    sideEffectFlow.value = EditProfileSideEffect.ShowNavigateBack
                 }
             }
         }
     }
-
-    private var originalProfile: UserProfile? = null
 
     private fun profileData() {
         viewModelScope.launch {
@@ -116,14 +115,14 @@ class EditProfileViewModel(
                     height = profile.height,
                     isProfileValid = true
                 )
-                uiState.value = state
+                uiStateFlow.value = state
                 originalState = state
             }
         }
     }
 
     fun hasUnsavedChanges(): Boolean {
-        val current = uiState.value
+        val current = uiStateFlow.value
         val original = originalState ?: return false
 
         return current.avatarUri != original.avatarUri ||
@@ -137,7 +136,7 @@ class EditProfileViewModel(
 
     private fun saveProfile() {
         viewModelScope.launch {
-            val state = uiState.value
+            val state = uiStateFlow.value
             val current = originalProfile ?: return@launch
 
             updateUserProfile(
@@ -155,7 +154,7 @@ class EditProfileViewModel(
                 )
             )
 
-            sideEffect.value = EditProfileSideEffect.ShowNavigateBack
+            sideEffectFlow.value = EditProfileSideEffect.ShowNavigateBack
         }
     }
 
@@ -166,6 +165,6 @@ class EditProfileViewModel(
     }
 
     fun clearSideEffect() {
-        sideEffect.value = EditProfileSideEffect.Empty
+        sideEffectFlow.value = EditProfileSideEffect.Empty
     }
 }

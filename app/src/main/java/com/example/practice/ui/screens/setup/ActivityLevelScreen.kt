@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.domain.models.ActivityLevel
-import com.example.practice.ui.screens.setup.intents.SetUpAction
-import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
+import com.example.practice.ui.screens.setup.actions.SetUpAction
+import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.AppToggleButton
 import io.github.composegears.valkyrie.Arrow
@@ -79,7 +79,7 @@ fun ActivityLevelScreen(
                 modifier = Modifier
                     .align(Alignment.Start)
                     .clickable {
-                        viewModel.uiAction(SetUpAction.NavigateBack)
+                        viewModel.handleUiAction(SetUpAction.NavigateBack)
                     }
             ) {
                 Spacer(modifier = Modifier.width(24.dp))
@@ -137,7 +137,7 @@ fun ActivityLevelScreen(
                     text = "Beginner",
                     isSelected = selectedActivityLevel == ActivityLevel.BEGINNER,
                     onClick = {
-                        viewModel.uiAction(SetUpAction.ActivitySelected(ActivityLevel.BEGINNER))
+                        viewModel.handleUiAction(SetUpAction.ActivitySelected(ActivityLevel.BEGINNER))
                     },
                 )
                 Spacer(modifier = Modifier.height(28.dp))
@@ -145,7 +145,7 @@ fun ActivityLevelScreen(
                     text = "Intermediate",
                     isSelected = selectedActivityLevel == ActivityLevel.INTERMEDIATE,
                     onClick = {
-                        viewModel.uiAction(SetUpAction.ActivitySelected(ActivityLevel.INTERMEDIATE))
+                        viewModel.handleUiAction(SetUpAction.ActivitySelected(ActivityLevel.INTERMEDIATE))
                     },
                 )
                 Spacer(modifier = Modifier.height(28.dp))
@@ -153,7 +153,7 @@ fun ActivityLevelScreen(
                     text = "Advance",
                     isSelected = selectedActivityLevel == ActivityLevel.ADVANCED,
                     onClick = {
-                        viewModel.uiAction(SetUpAction.ActivitySelected(ActivityLevel.ADVANCED))
+                        viewModel.handleUiAction(SetUpAction.ActivitySelected(ActivityLevel.ADVANCED))
                     },
                 )
             }
@@ -170,7 +170,7 @@ fun ActivityLevelScreen(
                 text = "Continue",
                 textStyle = MaterialTheme.typography.titleLarge,
             ) {
-                viewModel.uiAction(SetUpAction.ContinueClickedActivityLevel)
+                viewModel.handleUiAction(SetUpAction.ContinueClickedActivityLevel)
             }
         }
     }

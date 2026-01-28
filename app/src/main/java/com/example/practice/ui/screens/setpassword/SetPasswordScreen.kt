@@ -31,8 +31,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.ui.screens.setpassword.intents.SetPasswordAction
-import com.example.practice.ui.screens.setpassword.intents.SetPasswordSideEffect
+import com.example.practice.ui.screens.setpassword.actions.SetPasswordAction
+import com.example.practice.ui.screens.setpassword.actions.SetPasswordSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -96,7 +96,7 @@ fun SetPasswordScreen(
                     modifier = Modifier
                         .size(20.dp)
                         .clickable {
-                            viewModel.uiAction(SetPasswordAction.BackClicked)
+                            viewModel.handleUiAction(SetPasswordAction.BackClicked)
                         }
                 )
 
@@ -144,7 +144,7 @@ fun SetPasswordScreen(
                 BasicTextField(
                     value = state.password,
                     onValueChange = {
-                        viewModel.uiAction(SetPasswordAction.PasswordChanged(it))
+                        viewModel.handleUiAction(SetPasswordAction.PasswordChanged(it))
                     },
                     textStyle = MaterialTheme.typography.titleMedium.copy(
                         color = MaterialTheme.colorScheme.onSecondary
@@ -167,7 +167,7 @@ fun SetPasswordScreen(
                 BasicTextField(
                     value = state.confirmPassword,
                     onValueChange = {
-                        viewModel.uiAction(SetPasswordAction.ConfirmPasswordChanged(it))
+                        viewModel.handleUiAction(SetPasswordAction.ConfirmPasswordChanged(it))
                     },
                     textStyle = MaterialTheme.typography.titleMedium.copy(
                         color = MaterialTheme.colorScheme.onSecondary
@@ -192,7 +192,7 @@ fun SetPasswordScreen(
                 text = "Reset Password",
                 textColor = MaterialTheme.colorScheme.onPrimary
             ) {
-                viewModel.uiAction(SetPasswordAction.SubmitClicked)
+                viewModel.handleUiAction(SetPasswordAction.SubmitClicked)
             }
         }
     }

@@ -29,8 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.domain.models.Gender
-import com.example.practice.ui.screens.setup.intents.SetUpAction
-import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
+import com.example.practice.ui.screens.setup.actions.SetUpAction
+import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.GenderItem
 import io.github.composegears.valkyrie.Arrow
@@ -81,7 +81,7 @@ fun GenderScreen(
             modifier = Modifier
                 .align(Alignment.Start)
                 .clickable {
-                    viewModel.uiAction(SetUpAction.NavigateBack)
+                    viewModel.handleUiAction(SetUpAction.NavigateBack)
                 }
         ) {
             Spacer(modifier = Modifier.width(24.dp))
@@ -135,7 +135,7 @@ fun GenderScreen(
                 text = "Male",
                 iconSize = 150.dp,
                 onClick = {
-                    viewModel.uiAction(SetUpAction.GenderSelected(Gender.MALE))
+                    viewModel.handleUiAction(SetUpAction.GenderSelected(Gender.MALE))
                 }
             )
 
@@ -148,7 +148,7 @@ fun GenderScreen(
                 text = "Female",
                 iconSize = 150.dp,
                 onClick = {
-                    viewModel.uiAction(SetUpAction.GenderSelected(Gender.FEMALE))
+                    viewModel.handleUiAction(SetUpAction.GenderSelected(Gender.FEMALE))
                 }
             )
         }
@@ -160,7 +160,7 @@ fun GenderScreen(
             text = "Continue",
             textStyle = MaterialTheme.typography.titleLarge,
         ) {
-            viewModel.uiAction(SetUpAction.ContinueClickedGender)
+            viewModel.handleUiAction(SetUpAction.ContinueClickedGender)
         }
     }
 }

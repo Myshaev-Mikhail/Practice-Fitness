@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.usecase.GetUserProfileUseCase
-import com.example.practice.ui.screens.home.intents.HomeAction
-import com.example.practice.ui.screens.home.intents.HomeSideEffect
-import com.example.practice.ui.screens.home.intents.HomeState
+import com.example.practice.ui.screens.home.actions.HomeAction
+import com.example.practice.ui.screens.home.actions.HomeSideEffect
+import com.example.practice.ui.screens.home.actions.HomeState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -14,11 +14,11 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val getUserProfile: GetUserProfileUseCase
 ) : ViewModel() {
-    private val uiState = MutableStateFlow(HomeState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(HomeState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<HomeSideEffect>(HomeSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<HomeSideEffect>(HomeSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
     init {
         observeUserProfile()
@@ -30,40 +30,40 @@ class HomeViewModel(
         viewModelScope.launch {
             getUserProfile().collect { profile ->
                 originalProfile = profile
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     nickname = profile.nickname.orEmpty()
                 )
             }
         }
     }
 
-    fun uiAction(action: HomeAction) {
+    fun handleUiAction(action: HomeAction) {
         when(action) {
             is HomeAction.Search -> {
-                sideEffect.value = HomeSideEffect.ShowSearchScreen
+                sideEffectFlow.value = HomeSideEffect.ShowSearchScreen
             }
             is HomeAction.Notification -> {
-                sideEffect.value = HomeSideEffect.ShowNotificationScreen
+                sideEffectFlow.value = HomeSideEffect.ShowNotificationScreen
             }
             is HomeAction.Profile -> {
-                sideEffect.value = HomeSideEffect.ShowProfileScreen
+                sideEffectFlow.value = HomeSideEffect.ShowProfileScreen
             }
             is HomeAction.ProgressTracking -> {
-                sideEffect.value = HomeSideEffect.ShowProgressTrackingScreen
+                sideEffectFlow.value = HomeSideEffect.ShowProgressTrackingScreen
             }
             is HomeAction.Nutrition -> {
-                sideEffect.value = HomeSideEffect.ShowNutritionScreen
+                sideEffectFlow.value = HomeSideEffect.ShowNutritionScreen
             }
             is HomeAction.Community -> {
-                sideEffect.value = HomeSideEffect.ShowCommunityScreen
+                sideEffectFlow.value = HomeSideEffect.ShowCommunityScreen
             }
             is HomeAction.WorkoutSeeAll -> {
-                sideEffect.value = HomeSideEffect.ShowWorkoutSeeAll
+                sideEffectFlow.value = HomeSideEffect.ShowWorkoutSeeAll
             }
         }
     }
 
     fun clearSideEffect() {
-        sideEffect.value = HomeSideEffect.Empty
+        sideEffectFlow.value = HomeSideEffect.Empty
     }
 }
