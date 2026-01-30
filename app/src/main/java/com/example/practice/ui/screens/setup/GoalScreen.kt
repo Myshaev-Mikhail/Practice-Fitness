@@ -29,8 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.domain.models.Goal
-import com.example.practice.ui.screens.setup.intents.SetUpAction
-import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
+import com.example.practice.ui.screens.setup.actions.SetUpAction
+import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.AppToggleCheckBox
 import io.github.composegears.valkyrie.Arrow
@@ -69,7 +69,7 @@ fun GoalScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(45.dp))
@@ -77,7 +77,7 @@ fun GoalScreen(
             modifier = Modifier
                 .align(Alignment.Start)
                 .clickable {
-                    viewModel.uiAction(SetUpAction.NavigateBack)
+                    viewModel.handleUiAction(SetUpAction.NavigateBack)
                 }
         ) {
             Spacer(modifier = Modifier.width(24.dp))
@@ -141,7 +141,7 @@ fun GoalScreen(
                                 selectedGoals + Goal.LOSE_WEIGHT
                             }
 
-                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                        viewModel.handleUiAction(SetUpAction.GoalSelected(updatedGoals))
                     },
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -156,7 +156,7 @@ fun GoalScreen(
                                 selectedGoals + Goal.GAIN_WEIGHT
                             }
 
-                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                        viewModel.handleUiAction(SetUpAction.GoalSelected(updatedGoals))
                     },
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -171,7 +171,7 @@ fun GoalScreen(
                                 selectedGoals + Goal.MUSCLE_MASS_GAIN
                             }
 
-                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                        viewModel.handleUiAction(SetUpAction.GoalSelected(updatedGoals))
                     },
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -186,7 +186,7 @@ fun GoalScreen(
                                 selectedGoals + Goal.SHAPE_BODY
                             }
 
-                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                        viewModel.handleUiAction(SetUpAction.GoalSelected(updatedGoals))
                     },
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -201,7 +201,7 @@ fun GoalScreen(
                                 selectedGoals + Goal.OTHERS
                             }
 
-                        viewModel.uiAction(SetUpAction.GoalSelected(updatedGoals))
+                        viewModel.handleUiAction(SetUpAction.GoalSelected(updatedGoals))
                     },
                 )
             }
@@ -215,7 +215,7 @@ fun GoalScreen(
             text = "Continue",
             textStyle = MaterialTheme.typography.titleLarge,
         ) {
-            viewModel.uiAction(SetUpAction.ContinueClickedGoal)
+            viewModel.handleUiAction(SetUpAction.ContinueClickedGoal)
         }
     }
 }

@@ -7,10 +7,10 @@ import com.example.practice.domain.models.Gender
 import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.usecase.SetFirstSetupUseCase
 import com.example.practice.domain.usecase.SetUserProfileUseCase
-import com.example.practice.ui.screens.setup.intents.SetUpAction
-import com.example.practice.ui.screens.setup.intents.SetUpProfile
-import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
-import com.example.practice.ui.screens.setup.intents.SetUpState
+import com.example.practice.ui.screens.setup.actions.SetUpAction
+import com.example.practice.ui.screens.setup.actions.SetUpProfile
+import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
+import com.example.practice.ui.screens.setup.actions.SetUpState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -19,138 +19,137 @@ class SetUpViewModel(
     private val updateUserProfile: SetUserProfileUseCase,
     private val setFirstSetup: SetFirstSetupUseCase
 ) : ViewModel() {
-    private val uiState = MutableStateFlow(SetUpState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(SetUpState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect =
-        MutableStateFlow<SetUpSideEffect>(SetUpSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<SetUpSideEffect>(SetUpSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
-    fun uiAction(action: SetUpAction) {
+    fun handleUiAction(action: SetUpAction) {
         when (action) {
             SetUpAction.StartSetUp -> {
-                sideEffect.value = SetUpSideEffect.ShowGenderScreen
+                sideEffectFlow.value = SetUpSideEffect.ShowGenderScreen
             }
 
             is SetUpAction.GenderSelected -> {
-                uiState.value = uiState.value.copy(gender = action.gender)
+                uiStateFlow.value = uiStateFlow.value.copy(gender = action.gender)
             }
 
             is SetUpAction.ContinueClickedGender -> {
-                val gender = uiState.value.gender
+                val gender = uiStateFlow.value.gender
                 if (gender == null) {
-                    sideEffect.value =
+                    sideEffectFlow.value =
                         SetUpSideEffect.ShowToast("Gender is not selected")
                 } else {
-                    sideEffect.value = SetUpSideEffect.NavigateNext
+                    sideEffectFlow.value = SetUpSideEffect.NavigateNext
                 }
             }
 
             is SetUpAction.AgeEntered -> {
-                uiState.value = uiState.value.copy(age = action.age)
-                sideEffect.value = SetUpSideEffect.NavigateNext
+                uiStateFlow.value = uiStateFlow.value.copy(age = action.age)
+                sideEffectFlow.value = SetUpSideEffect.NavigateNext
             }
 
             is SetUpAction.WeightEntered -> {
-                uiState.value = uiState.value.copy(weight = action.weight)
-                sideEffect.value = SetUpSideEffect.NavigateNext
+                uiStateFlow.value = uiStateFlow.value.copy(weight = action.weight)
+                sideEffectFlow.value = SetUpSideEffect.NavigateNext
             }
 
             is SetUpAction.HeightEntered -> {
-                uiState.value = uiState.value.copy(height = action.height)
-                sideEffect.value = SetUpSideEffect.NavigateNext
+                uiStateFlow.value = uiStateFlow.value.copy(height = action.height)
+                sideEffectFlow.value = SetUpSideEffect.NavigateNext
             }
 
             is SetUpAction.GoalSelected -> {
-                uiState.value = uiState.value.copy(goal = action.goal.toList())
+                uiStateFlow.value = uiStateFlow.value.copy(goal = action.goal.toList())
             }
 
             is SetUpAction.ContinueClickedGoal -> {
-                val goal = uiState.value.goal
+                val goal = uiStateFlow.value.goal
                 if (goal == null) {
-                    sideEffect.value =
+                    sideEffectFlow.value =
                         SetUpSideEffect.ShowToast("Goal is not selected")
                 } else {
-                    sideEffect.value = SetUpSideEffect.NavigateNext
+                    sideEffectFlow.value = SetUpSideEffect.NavigateNext
                 }
             }
 
             is SetUpAction.ActivitySelected -> {
-                uiState.value = uiState.value.copy(activityLevel = action.level)
+                uiStateFlow.value = uiStateFlow.value.copy(activityLevel = action.level)
             }
 
             is SetUpAction.ContinueClickedActivityLevel -> {
-                val activityLevel = uiState.value.activityLevel
+                val activityLevel = uiStateFlow.value.activityLevel
                 if (activityLevel == null) {
-                    sideEffect.value =
+                    sideEffectFlow.value =
                         SetUpSideEffect.ShowToast("Physical activity level is not selected")
                 } else {
-                    sideEffect.value = SetUpSideEffect.NavigateNext
+                    sideEffectFlow.value = SetUpSideEffect.NavigateNext
                 }
             }
 
             is SetUpAction.ProfileChanged -> {
-                uiState.value = uiState.value.copy(
+                uiStateFlow.value = uiStateFlow.value.copy(
                     profile = action.profile,
                     isProfileValid = true
                 )
             }
 
             is SetUpAction.AvatarPicked -> {
-                uiState.value = uiState.value.copy(tempAvatarUri = action.uri)
+                uiStateFlow.value = uiStateFlow.value.copy(tempAvatarUri = action.uri)
             }
 
             is SetUpAction.ClearTempAvatar -> {
-                uiState.value = uiState.value.copy(tempAvatarUri = null)
+                uiStateFlow.value = uiStateFlow.value.copy(tempAvatarUri = null)
             }
 
             SetUpAction.SaveProfile -> {
-                val profile = uiState.value.profile ?: SetUpProfile()
+                val profile = uiStateFlow.value.profile ?: SetUpProfile()
 
                 if (profile.fullName.isNullOrBlank()) {
-                    sideEffect.value = SetUpSideEffect.ShowToast("Full name is required")
+                    sideEffectFlow.value = SetUpSideEffect.ShowToast("Full name is required")
                 } else if (profile.nickname.isNullOrBlank()) {
-                    sideEffect.value = SetUpSideEffect.ShowToast("Nickname is required")
+                    sideEffectFlow.value = SetUpSideEffect.ShowToast("Nickname is required")
                 } else if (profile.email.isNullOrBlank()) {
-                    sideEffect.value = SetUpSideEffect.ShowToast("Email is required")
+                    sideEffectFlow.value = SetUpSideEffect.ShowToast("Email is required")
                 } else if (profile.mobileNumber.isNullOrBlank()) {
-                    sideEffect.value = SetUpSideEffect.ShowToast("Mobile number is required")
+                    sideEffectFlow.value = SetUpSideEffect.ShowToast("Mobile number is required")
                 } else {
                     saveProfile()
                 }
             }
 
             SetUpAction.NavigateBack -> {
-                sideEffect.value = SetUpSideEffect.NavigateBack
+                sideEffectFlow.value = SetUpSideEffect.NavigateBack
             }
         }
     }
 
     private fun saveProfile() {
-        val profileInput = uiState.value.profile ?: return
+        val profileInput = uiStateFlow.value.profile ?: return
         if (!isProfileValid(profileInput)) {
-            sideEffect.value = SetUpSideEffect.ShowToast("All fields must be filled")
+            sideEffectFlow.value = SetUpSideEffect.ShowToast("All fields must be filled")
             return
         }
 
         val updatedProfile = UserProfile(
-            gender = uiState.value.gender ?: Gender.MALE,
-            age = uiState.value.age ?: 0,
-            weight = uiState.value.weight ?: 0f,
-            height = uiState.value.height ?: 0,
-            goal = uiState.value.goal ?: emptyList(),
-            activityLevel = uiState.value.activityLevel ?: ActivityLevel.BEGINNER,
+            gender = uiStateFlow.value.gender ?: Gender.MALE,
+            age = uiStateFlow.value.age ?: 0,
+            weight = uiStateFlow.value.weight ?: 0f,
+            height = uiStateFlow.value.height ?: 0,
+            goal = uiStateFlow.value.goal ?: emptyList(),
+            activityLevel = uiStateFlow.value.activityLevel ?: ActivityLevel.BEGINNER,
             fullName = profileInput.fullName,
             nickname = profileInput.nickname,
             email = profileInput.email,
             mobileNumber = profileInput.mobileNumber,
-            avatarUri = uiState.value.tempAvatarUri ?: profileInput.avatarUri
+            avatarUri = uiStateFlow.value.tempAvatarUri ?: profileInput.avatarUri
         )
 
         viewModelScope.launch {
             updateUserProfile(updatedProfile)
             setFirstSetup()
-            sideEffect.value = SetUpSideEffect.NavigateNext
+            sideEffectFlow.value = SetUpSideEffect.NavigateNext
         }
     }
 
@@ -167,6 +166,6 @@ class SetUpViewModel(
     }
 
     fun clearSideEffect() {
-        sideEffect.value = SetUpSideEffect.Empty
+        sideEffectFlow.value = SetUpSideEffect.Empty
     }
 }

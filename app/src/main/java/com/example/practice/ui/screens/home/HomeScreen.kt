@@ -33,8 +33,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.R
-import com.example.practice.ui.screens.home.intents.HomeAction
-import com.example.practice.ui.screens.home.intents.HomeSideEffect
+import com.example.practice.ui.screens.home.actions.HomeAction
+import com.example.practice.ui.screens.home.actions.HomeSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.CyclingChallengeCard
 import com.example.practice.ui.uikit.components.NavBar
@@ -62,7 +62,7 @@ fun HomeScreen(
             // TODO
         }
         is HomeSideEffect.ShowNotificationScreen -> {
-            //navController.navigate(FitnessScreen.LogIn.route)
+            navController.navigate(FitnessScreen.NotificationSetting.route)
             viewModel.clearSideEffect()
             // TODO
         }
@@ -141,7 +141,7 @@ fun HomeScreen(
                                 .padding(8.dp)
                                 .size(24.dp)
                                 .clickable {
-                                    viewModel.uiAction(HomeAction.Search)
+                                    viewModel.handleUiAction(HomeAction.Search)
                                 }
                         )
                         Image(
@@ -151,7 +151,7 @@ fun HomeScreen(
                                 .padding(8.dp)
                                 .size(24.dp)
                                 .clickable {
-                                    viewModel.uiAction(HomeAction.Notification)
+                                    viewModel.handleUiAction(HomeAction.Notification)
                                 }
                         )
                         Image(
@@ -161,7 +161,7 @@ fun HomeScreen(
                                 .padding(8.dp)
                                 .size(24.dp)
                                 .clickable {
-                                    viewModel.uiAction(HomeAction.Profile)
+                                    viewModel.handleUiAction(HomeAction.Profile)
                                 }
                         )
                     }
@@ -171,13 +171,13 @@ fun HomeScreen(
                 workout = true,
                 onWorkoutClick = { null },
                 onProgressClick = {
-                    viewModel.uiAction(HomeAction.ProgressTracking)
+                    viewModel.handleUiAction(HomeAction.ProgressTracking)
                 },
                 onNutritionClick = {
-                    viewModel.uiAction(HomeAction.Nutrition)
+                    viewModel.handleUiAction(HomeAction.Nutrition)
                 },
                 onCommunityClick = {
-                    viewModel.uiAction(HomeAction.Community)
+                    viewModel.handleUiAction(HomeAction.Community)
                 },
             )
             Row(
@@ -185,7 +185,7 @@ fun HomeScreen(
                     .fillMaxWidth()
                     .padding(start = 24.dp, end = 24.dp)
                     .clickable {
-                        viewModel.uiAction(HomeAction.WorkoutSeeAll)
+                        viewModel.handleUiAction(HomeAction.WorkoutSeeAll)
                     },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically

@@ -30,8 +30,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordAction
-import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordSideEffect
+import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordAction
+import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -94,7 +94,7 @@ fun ForgottenPasswordScreen(
                     modifier = Modifier
                         .size(20.dp)
                         .clickable {
-                            viewModel.uiAction(ForgottenPasswordAction.BackClicked)
+                            viewModel.handleUiAction(ForgottenPasswordAction.BackClicked)
                         }
                 )
 
@@ -147,7 +147,7 @@ fun ForgottenPasswordScreen(
                 BasicTextField(
                     value = state.email,
                     onValueChange = {
-                        viewModel.uiAction(ForgottenPasswordAction.EmailChanged(it))
+                        viewModel.handleUiAction(ForgottenPasswordAction.EmailChanged(it))
                     },
                     textStyle = MaterialTheme.typography.titleMedium.copy(
                         color = MaterialTheme.colorScheme.onSecondary
@@ -172,7 +172,7 @@ fun ForgottenPasswordScreen(
                 text = "Continue",
                 textColor = MaterialTheme.colorScheme.onPrimary
             ) {
-                viewModel.uiAction(ForgottenPasswordAction.SendClicked)
+                viewModel.handleUiAction(ForgottenPasswordAction.SendClicked)
             }
         }
     }

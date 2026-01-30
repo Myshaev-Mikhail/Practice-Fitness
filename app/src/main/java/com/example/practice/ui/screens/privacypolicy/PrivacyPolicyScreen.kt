@@ -26,8 +26,8 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.ui.screens.privacypolicy.intents.PrivacyPolicyAction
-import com.example.practice.ui.screens.privacypolicy.intents.PrivacyPolicySideEffect
+import com.example.practice.ui.screens.privacypolicy.actions.PrivacyPolicyAction
+import com.example.practice.ui.screens.privacypolicy.actions.PrivacyPolicySideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -69,7 +69,7 @@ fun PrivacyPolicyScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(PrivacyPolicyAction.NavigateBack)
+                            viewModel.handleUiAction(PrivacyPolicyAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {

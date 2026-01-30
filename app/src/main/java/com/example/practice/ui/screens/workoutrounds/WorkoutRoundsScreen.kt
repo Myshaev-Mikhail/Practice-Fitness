@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
 import com.example.practice.domain.models.WorkoutBadgeItem
-import com.example.practice.ui.screens.workoutrounds.intents.WorkoutRoundsSideEffect
+import com.example.practice.ui.screens.workoutrounds.actions.WorkoutRoundsSideEffect
 import com.example.practice.ui.uikit.components.BadgeItem
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.TopBar

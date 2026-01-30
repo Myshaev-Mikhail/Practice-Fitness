@@ -28,8 +28,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.setup.intents.SetUpAction
-import com.example.practice.ui.screens.setup.intents.SetUpSideEffect
+import com.example.practice.ui.screens.setup.actions.SetUpAction
+import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.WeightPicker
 import io.github.composegears.valkyrie.Arrow
@@ -73,7 +73,7 @@ fun WeightScreen(
                 modifier = Modifier
                     .align(Alignment.Start)
                     .clickable {
-                        viewModel.uiAction(SetUpAction.NavigateBack)
+                        viewModel.handleUiAction(SetUpAction.NavigateBack)
                     }
             ) {
                 Spacer(modifier = Modifier.width(24.dp))
@@ -138,7 +138,7 @@ fun WeightScreen(
                 text = "Continue",
                 textStyle = MaterialTheme.typography.titleLarge,
             ) {
-                viewModel.uiAction(SetUpAction.WeightEntered(selectedWeight))
+                viewModel.handleUiAction(SetUpAction.WeightEntered(selectedWeight))
             }
         }
     }

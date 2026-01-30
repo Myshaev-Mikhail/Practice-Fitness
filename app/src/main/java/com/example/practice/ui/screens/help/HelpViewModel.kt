@@ -1,32 +1,32 @@
 package com.example.practice.ui.screens.help
 
 import androidx.lifecycle.ViewModel
-import com.example.practice.ui.screens.help.intents.HelpAction
-import com.example.practice.ui.screens.help.intents.HelpSideEffect
+import com.example.practice.ui.screens.help.actions.HelpAction
+import com.example.practice.ui.screens.help.actions.HelpSideEffect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class HelpViewModel: ViewModel() {
-    private val sideEffect = MutableStateFlow<HelpSideEffect>(HelpSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<HelpSideEffect>(HelpSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
-    fun uiAction(action: HelpAction) {
+    fun handleUiAction(action: HelpAction) {
         when (action) {
             is HelpAction.NavigateBack -> {
-                sideEffect.value = HelpSideEffect.ShowNavigateBack
+                sideEffectFlow.value = HelpSideEffect.ShowNavigateBack
             }
 
             is HelpAction.NavigateTelegram -> {
-                sideEffect.value = HelpSideEffect.ShowNavigateTelegram
+                sideEffectFlow.value = HelpSideEffect.ShowNavigateTelegram
             }
 
             is HelpAction.NavigateEmail -> {
-                sideEffect.value = HelpSideEffect.ShowNavigateEmail
+                sideEffectFlow.value = HelpSideEffect.ShowNavigateEmail
             }
         }
     }
 
     fun clearSideEffect() {
-        sideEffect.value = HelpSideEffect.Empty
+        sideEffectFlow.value = HelpSideEffect.Empty
     }
 }

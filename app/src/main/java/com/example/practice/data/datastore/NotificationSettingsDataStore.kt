@@ -10,32 +10,32 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class NotificationSettingsDataStore(private val dataStore: DataStore<Preferences>) {
-    val settingsFlow: Flow<NotificationSettings> = dataStore.data.map { prefs ->
+    val settingsFlow: Flow<NotificationSettings> = dataStore.data.map { preferences ->
         NotificationSettings(
-            generalEnabled = prefs[Keys.GENERAL] ?: false,
-            soundEnabled = prefs[Keys.SOUND] ?: true,
-            vibrateEnabled = prefs[Keys.VIBRATE] ?: true,
-            hour = prefs[Keys.HOUR]?.toIntOrNull() ?: 9,
-            minute = prefs[Keys.MINUTE]?.toIntOrNull() ?: 0
+            generalEnabled = preferences[Keys.GENERAL] ?: false,
+            soundEnabled = preferences[Keys.SOUND] ?: true,
+            vibrateEnabled = preferences[Keys.VIBRATE] ?: true,
+            hour = preferences[Keys.HOUR]?.toIntOrNull() ?: 9,
+            minute = preferences[Keys.MINUTE]?.toIntOrNull() ?: 0
         )
     }
 
     suspend fun setGeneral(enabled: Boolean) {
-        dataStore.edit { prefs -> prefs[Keys.GENERAL] = enabled }
+        dataStore.edit { preferences -> preferences[Keys.GENERAL] = enabled }
     }
 
     suspend fun setSound(enabled: Boolean) {
-        dataStore.edit { prefs -> prefs[Keys.SOUND] = enabled }
+        dataStore.edit { preferences -> preferences[Keys.SOUND] = enabled }
     }
 
     suspend fun setVibrate(enabled: Boolean) {
-        dataStore.edit { prefs -> prefs[Keys.VIBRATE] = enabled }
+        dataStore.edit { preferences -> preferences[Keys.VIBRATE] = enabled }
     }
 
     suspend fun setTime(hour: Int, minute: Int) {
-        dataStore.edit { prefs ->
-            prefs[Keys.HOUR] = hour.toString()
-            prefs[Keys.MINUTE] = minute.toString()
+        dataStore.edit { preferences ->
+            preferences[Keys.HOUR] = hour.toString()
+            preferences[Keys.MINUTE] = minute.toString()
         }
     }
 

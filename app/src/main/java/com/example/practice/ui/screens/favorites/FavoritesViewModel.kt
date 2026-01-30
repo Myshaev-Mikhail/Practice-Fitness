@@ -2,22 +2,22 @@ package com.example.practice.ui.screens.favorites
 
 import androidx.lifecycle.ViewModel
 import com.example.practice.R
-import com.example.practice.ui.screens.favorites.intents.FavoritesAction
-import com.example.practice.ui.screens.favorites.intents.FavoritesFilter
-import com.example.practice.ui.screens.favorites.intents.FavoritesItem
-import com.example.practice.ui.screens.favorites.intents.FavoritesState
+import com.example.practice.ui.screens.favorites.actions.FavoritesAction
+import com.example.practice.ui.screens.favorites.actions.FavoritesFilter
+import com.example.practice.ui.screens.favorites.actions.FavoritesItem
+import com.example.practice.ui.screens.favorites.actions.FavoritesState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class FavoritesViewModel: ViewModel() {
-    private val uiState = MutableStateFlow(FavoritesState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(FavoritesState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
     init {
         loadFavorites()
     }
 
-    fun uiAction(action: FavoritesAction) {
+    fun handleUiAction(action: FavoritesAction) {
         when (action) {
             is FavoritesAction.SelectFilter -> {
                applyFilter(action.filter)
@@ -26,7 +26,7 @@ class FavoritesViewModel: ViewModel() {
     }
 
     private fun loadFavorites() {
-        uiState.value = uiState.value.copy(
+        uiStateFlow.value = uiStateFlow.value.copy(
             allItems = items,
             visibleItems = items
         )
@@ -34,14 +34,14 @@ class FavoritesViewModel: ViewModel() {
 
     private fun applyFilter(filter: FavoritesFilter) {
         val filtered = when (filter) {
-            FavoritesFilter.ALL -> uiState.value.allItems
+            FavoritesFilter.ALL -> uiStateFlow.value.allItems
             FavoritesFilter.VIDEO ->
-                uiState.value.allItems.filterIsInstance<FavoritesItem.Workout>()
+                uiStateFlow.value.allItems.filterIsInstance<FavoritesItem.Workout>()
             FavoritesFilter.ARTICLE ->
-                uiState.value.allItems.filterIsInstance<FavoritesItem.Article>()
+                uiStateFlow.value.allItems.filterIsInstance<FavoritesItem.Article>()
         }
 
-        uiState.value = uiState.value.copy(
+        uiStateFlow.value = uiStateFlow.value.copy(
             selectedFilter = filter,
             visibleItems = filtered
         )

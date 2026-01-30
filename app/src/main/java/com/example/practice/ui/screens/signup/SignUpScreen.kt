@@ -30,8 +30,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.signup.intents.SignUpAction
-import com.example.practice.ui.screens.signup.intents.SignUpSideEffect
+import com.example.practice.ui.screens.signup.actions.SignUpAction
+import com.example.practice.ui.screens.signup.actions.SignUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.SignUp
 import io.github.composegears.valkyrie.Facebook
@@ -120,19 +120,19 @@ fun SignUpScreen(
                 confirmPasswordFocusRequester = confirmPasswordFocusRequester,
                 onFullNameChange = {
                     val normalized = viewModel.normalizeText(it)
-                    viewModel.uiAction(SignUpAction.FullNameChanged(normalized))
+                    viewModel.handleUiAction(SignUpAction.FullNameChanged(normalized))
                 },
                 onEmailChange = {
                     val normalized = viewModel.normalizeText(it)
-                    viewModel.uiAction(SignUpAction.EmailChanged(normalized))
+                    viewModel.handleUiAction(SignUpAction.EmailChanged(normalized))
                 },
                 onPasswordChange = {
                     val normalized = viewModel.normalizeText(it)
-                    viewModel.uiAction(SignUpAction.PasswordChanged(normalized))
+                    viewModel.handleUiAction(SignUpAction.PasswordChanged(normalized))
                 },
                 onConfirmPasswordChange = {
                     val normalized = viewModel.normalizeText(it)
-                    viewModel.uiAction(SignUpAction.ConfirmPasswordChanged(normalized))
+                    viewModel.handleUiAction(SignUpAction.ConfirmPasswordChanged(normalized))
                 }
             )
 
@@ -153,7 +153,7 @@ fun SignUpScreen(
                 text = "Sign Up",
                 textColor = MaterialTheme.colorScheme.onPrimary
             ) {
-                viewModel.uiAction(SignUpAction.EmailSignUpClicked)
+                viewModel.handleUiAction(SignUpAction.EmailSignUpClicked)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -176,7 +176,7 @@ fun SignUpScreen(
                         .padding(8.dp)
                         .size(40.dp)
                         .clickable {
-                            viewModel.uiAction(SignUpAction.GoogleLogInClicked, context)
+                            viewModel.handleUiAction(SignUpAction.GoogleLogInClicked, context)
                         }
                 )
                 Image(

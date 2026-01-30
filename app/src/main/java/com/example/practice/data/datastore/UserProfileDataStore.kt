@@ -29,56 +29,56 @@ class UserProfileDataStore(
         }
 
     suspend fun setProfile(profile: UserProfile) {
-        dataStore.edit { prefs ->
-            prefs[UserProfileKeys.GENDER] = profile.gender.name
-            prefs[UserProfileKeys.AGE] = profile.age
-            prefs[UserProfileKeys.WEIGHT] = profile.weight
-            prefs[UserProfileKeys.HEIGHT] = profile.height
-            prefs[UserProfileKeys.ACTIVITY] = profile.activityLevel.name
-            prefs[UserProfileKeys.GOAL] = profile.goal.joinToString(",") { it.name }
+        dataStore.edit { preferences ->
+            preferences[UserProfileKeys.GENDER] = profile.gender.name
+            preferences[UserProfileKeys.AGE] = profile.age
+            preferences[UserProfileKeys.WEIGHT] = profile.weight
+            preferences[UserProfileKeys.HEIGHT] = profile.height
+            preferences[UserProfileKeys.ACTIVITY] = profile.activityLevel.name
+            preferences[UserProfileKeys.GOAL] = profile.goal.joinToString(",") { it.name }
 
-            prefs[UserProfileKeys.FULL_NAME] = profile.fullName.orEmpty()
-            prefs[UserProfileKeys.NICKNAME] = profile.nickname.orEmpty()
-            prefs[UserProfileKeys.EMAIL] = profile.email.orEmpty()
-            prefs[UserProfileKeys.MOBILE] = profile.mobileNumber.orEmpty()
-            prefs[UserProfileKeys.AVATAR_URI] = profile.avatarUri.orEmpty()
+            preferences[UserProfileKeys.FULL_NAME] = profile.fullName.orEmpty()
+            preferences[UserProfileKeys.NICKNAME] = profile.nickname.orEmpty()
+            preferences[UserProfileKeys.EMAIL] = profile.email.orEmpty()
+            preferences[UserProfileKeys.MOBILE] = profile.mobileNumber.orEmpty()
+            preferences[UserProfileKeys.AVATAR_URI] = profile.avatarUri.orEmpty()
         }
     }
 
-    suspend fun clear() {
-        dataStore.edit { it.clear() }
-    }
-
     val profileFlow: Flow<UserProfile> =
-        dataStore.data.map { prefs ->
-            val gender = prefs[UserProfileKeys.GENDER]
+        dataStore.data.map { preferences ->
+            val gender = preferences[UserProfileKeys.GENDER]
                 ?.let { runCatching { Gender.valueOf(it) }.getOrNull() }
                 ?: Gender.MALE
 
-            val goals = prefs[UserProfileKeys.GOAL]
+            val goals = preferences[UserProfileKeys.GOAL]
                 ?.takeIf { it.isNotBlank() }
                 ?.split(",")
                 ?.mapNotNull { runCatching { Goal.valueOf(it) }.getOrNull() }
                 ?: emptyList()
 
-            val activityLevel = prefs[UserProfileKeys.ACTIVITY]
+            val activityLevel = preferences[UserProfileKeys.ACTIVITY]
                 ?.let { runCatching { ActivityLevel.valueOf(it) }.getOrNull() }
                 ?: ActivityLevel.BEGINNER
 
             UserProfile(
                 gender = gender,
-                age = prefs[UserProfileKeys.AGE] ?: 0,
-                weight = prefs[UserProfileKeys.WEIGHT] ?: 0f,
-                height = prefs[UserProfileKeys.HEIGHT] ?: 0,
+                age = preferences[UserProfileKeys.AGE] ?: 0,
+                weight = preferences[UserProfileKeys.WEIGHT] ?: 0f,
+                height = preferences[UserProfileKeys.HEIGHT] ?: 0,
                 goal = goals,
                 activityLevel = activityLevel,
-                fullName = prefs[UserProfileKeys.FULL_NAME],
-                nickname = prefs[UserProfileKeys.NICKNAME],
-                email = prefs[UserProfileKeys.EMAIL],
-                mobileNumber = prefs[UserProfileKeys.MOBILE],
-                avatarUri = prefs[UserProfileKeys.AVATAR_URI]
+                fullName = preferences[UserProfileKeys.FULL_NAME],
+                nickname = preferences[UserProfileKeys.NICKNAME],
+                email = preferences[UserProfileKeys.EMAIL],
+                mobileNumber = preferences[UserProfileKeys.MOBILE],
+                avatarUri = preferences[UserProfileKeys.AVATAR_URI]
             )
         }
+
+    suspend fun clear() {
+        dataStore.edit { it.clear() }
+    }
 }
 
 object UserProfileKeys {

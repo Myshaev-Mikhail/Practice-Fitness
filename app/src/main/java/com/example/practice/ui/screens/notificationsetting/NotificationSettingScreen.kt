@@ -25,8 +25,8 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingAction
-import com.example.practice.ui.screens.notificationsetting.intents.NotificationSettingSideEffect
+import com.example.practice.ui.screens.notificationsetting.actions.NotificationSettingAction
+import com.example.practice.ui.screens.notificationsetting.actions.NotificationSettingSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ToggleSwitch
 import io.github.composegears.valkyrie.Arrow
@@ -58,7 +58,7 @@ fun NotificationSettingScreen(
                         set(Calendar.MINUTE, minute)
                     }
 
-                    viewModel.uiAction(
+                    viewModel.handleUiAction(
                         NotificationSettingAction.SetNotificationTime(
                             time = selectedTime,
                             context = context
@@ -93,7 +93,7 @@ fun NotificationSettingScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(NotificationSettingAction.NavigateBack)
+                            viewModel.handleUiAction(NotificationSettingAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -122,7 +122,7 @@ fun NotificationSettingScreen(
                     title = "General Notification",
                     checked = uiState.generalNotificationEnabled,
                     onCheckedChange = {
-                        viewModel.uiAction(NotificationSettingAction.ToggleGeneralNotification(it))
+                        viewModel.handleUiAction(NotificationSettingAction.ToggleGeneralNotification(it))
                     }
                 )
 
@@ -130,7 +130,7 @@ fun NotificationSettingScreen(
                     title = "Sound",
                     checked = uiState.soundEnabled,
                     onCheckedChange = {
-                        viewModel.uiAction(NotificationSettingAction.ToggleSound(it))
+                        viewModel.handleUiAction(NotificationSettingAction.ToggleSound(it))
                     }
                 )
 
@@ -138,7 +138,7 @@ fun NotificationSettingScreen(
                     title = "Vibrate",
                     checked = uiState.vibrateEnabled,
                     onCheckedChange = {
-                        viewModel.uiAction(NotificationSettingAction.ToggleVibrate(it))
+                        viewModel.handleUiAction(NotificationSettingAction.ToggleVibrate(it))
                     }
                 )
 

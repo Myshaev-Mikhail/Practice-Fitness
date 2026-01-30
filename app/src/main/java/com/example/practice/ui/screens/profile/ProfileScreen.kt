@@ -37,10 +37,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.profile.intents.ProfileAction
-import com.example.practice.ui.screens.profile.intents.ProfileSideEffect
-import com.example.practice.ui.screens.settings.intents.SettingsAction
-import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
+import com.example.practice.ui.screens.profile.actions.ProfileAction
+import com.example.practice.ui.screens.profile.actions.ProfileSideEffect
+import com.example.practice.ui.screens.settings.actions.SettingsSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.DeleteAccountDialog
 import com.example.practice.ui.uikit.components.ProfileMenuItem
@@ -132,7 +131,7 @@ fun ProfileScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(ProfileAction.NavigateBack)
+                            viewModel.handleUiAction(ProfileAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -257,35 +256,35 @@ fun ProfileScreen(
                     icon = rememberVectorPainter(Icons.Profile),
                     title = "Profile",
                     onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateProfileEditing)
+                        viewModel.handleUiAction(ProfileAction.NavigateProfileEditing)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Favorites),
                     title = "Favorite",
                     onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateFavorite)
+                        viewModel.handleUiAction(ProfileAction.NavigateFavorite)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Privacity),
                     title = "Privacy Policy",
                     onClick = {
-                        viewModel.uiAction(ProfileAction.NavigatePrivacyPolicy)
+                        viewModel.handleUiAction(ProfileAction.NavigatePrivacyPolicy)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Settings),
                     title = "Settings",
                     onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateSettings)
+                        viewModel.handleUiAction(ProfileAction.NavigateSettings)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.SupportAgent),
                     title = "Help",
                     onClick = {
-                        viewModel.uiAction(ProfileAction.NavigateHelp)
+                        viewModel.handleUiAction(ProfileAction.NavigateHelp)
                     }
                 )
                 ProfileMenuItem(
@@ -309,7 +308,7 @@ fun ProfileScreen(
                 onCancel = { showDeleteDialog = false },
                 onConfirm = {
                     showDeleteDialog = false
-                    viewModel.uiAction(ProfileAction.NavigateLogout)
+                    viewModel.handleUiAction(ProfileAction.NavigateLogout)
                 }
             )
         }

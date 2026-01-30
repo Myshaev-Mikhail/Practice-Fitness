@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.data.repository.AuthError
-import com.example.practice.ui.screens.login.intents.LogInAction
-import com.example.practice.ui.screens.login.intents.LogInSideEffect
-import com.example.practice.ui.screens.login.intents.LogInState
+import com.example.practice.ui.screens.login.actions.LogInAction
+import com.example.practice.ui.screens.login.actions.LogInSideEffect
+import com.example.practice.ui.screens.login.actions.LogInState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -20,32 +20,32 @@ class LogInViewModel(
     private val logInWithGoogleUseCase: LogInWithGoogleUseCase,
     private val setFirstSetup: SetFirstSetupUseCase
 ) : ViewModel() {
-    private val uiState = MutableStateFlow(LogInState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(LogInState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<LogInSideEffect>(LogInSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<LogInSideEffect>(LogInSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
-    fun uiAction(action: LogInAction, context: Context? = null) {
+    fun handleUiAction(action: LogInAction, context: Context? = null) {
         when (action) {
             is LogInAction.EmailChanged -> {
-                uiState.value = uiState.value.copy(email = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(email = action.value)
             }
 
             is LogInAction.PasswordChanged -> {
-                uiState.value = uiState.value.copy(password = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(password = action.value)
             }
 
             is LogInAction.EmailLogInClicked -> {
                 if (context != null && !isInternetAvailable(context)) {
-                    sideEffect.value = LogInSideEffect.ShowToast("There is no internet connection")
+                    sideEffectFlow.value = LogInSideEffect.ShowToast("There is no internet connection")
                     return
                 }
 
-                if (uiState.value.email.isEmpty()) {
-                    sideEffect.value = LogInSideEffect.ShowToast("Email is required")
-                } else if (uiState.value.password.isEmpty()) {
-                    sideEffect.value = LogInSideEffect.ShowToast("Password is required")
+                if (uiStateFlow.value.email.isEmpty()) {
+                    sideEffectFlow.value = LogInSideEffect.ShowToast("Email is required")
+                } else if (uiStateFlow.value.password.isEmpty()) {
+                    sideEffectFlow.value = LogInSideEffect.ShowToast("Password is required")
                 } else {
                     logInWithEmail()
                 }
@@ -53,7 +53,7 @@ class LogInViewModel(
 
             is LogInAction.GoogleLogInClicked -> {
                 if (context != null && !isInternetAvailable(context)) {
-                    sideEffect.value = LogInSideEffect.ShowToast("There is no internet connection")
+                    sideEffectFlow.value = LogInSideEffect.ShowToast("There is no internet connection")
                     return
                 }
 
@@ -61,26 +61,26 @@ class LogInViewModel(
             }
 
             is LogInAction.ForgotPasswordClicked -> {
-                sideEffect.value = LogInSideEffect.ShowForgottenPasswordScreen
+                sideEffectFlow.value = LogInSideEffect.ShowForgottenPasswordScreen
             }
         }
     }
 
     private fun logInWithEmail() {
-        uiState.value = uiState.value.copy(isLoading = true)
+        uiStateFlow.value = uiStateFlow.value.copy(isLoading = true)
 
         viewModelScope.launch {
             val result = logInWithEmailUseCase(
-                uiState.value.email,
-                uiState.value.password
+                uiStateFlow.value.email,
+                uiStateFlow.value.password
             )
 
-            uiState.value = uiState.value.copy(isLoading = false)
+            uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
 
             result
                 .onSuccess {
                     setFirstSetup.invoke()
-                    sideEffect.value = LogInSideEffect.Success
+                    sideEffectFlow.value = LogInSideEffect.Success
                 }
                 .onFailure { error ->
                     val message = when (error) {
@@ -88,30 +88,30 @@ class LogInViewModel(
                         is AuthError.Unknown -> error.errorMessage
                         else -> "Ошибка входа"
                     }
-                    sideEffect.value = LogInSideEffect.ShowToast(message)
+                    sideEffectFlow.value = LogInSideEffect.ShowToast(message)
                 }
         }
     }
 
     private fun logInWithGoogle() {
-        uiState.value = uiState.value.copy(isLoading = true)
+        uiStateFlow.value = uiStateFlow.value.copy(isLoading = true)
 
         viewModelScope.launch {
             val result = logInWithGoogleUseCase()
-            uiState.value = uiState.value.copy(isLoading = false)
+            uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
 
             result
                 .onSuccess {
                     setFirstSetup()
-                    sideEffect.value = LogInSideEffect.Success
+                    sideEffectFlow.value = LogInSideEffect.Success
                 }
                 .onFailure {
-                    sideEffect.value = LogInSideEffect.ShowToast("Google sign-in failed")
+                    sideEffectFlow.value = LogInSideEffect.ShowToast("Google sign-in failed")
                 }
         }
     }
 
     fun clearSideEffect() {
-        sideEffect.value = LogInSideEffect.Empty
+        sideEffectFlow.value = LogInSideEffect.Empty
     }
 }

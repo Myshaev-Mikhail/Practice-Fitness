@@ -28,8 +28,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.settings.intents.SettingsAction
-import com.example.practice.ui.screens.settings.intents.SettingsSideEffect
+import com.example.practice.ui.screens.settings.actions.SettingsAction
+import com.example.practice.ui.screens.settings.actions.SettingsSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.DeleteAccountDialog
 import com.example.practice.ui.uikit.components.ProfileMenuItem
@@ -96,7 +96,7 @@ fun SettingsScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(SettingsAction.NavigateBack)
+                            viewModel.handleUiAction(SettingsAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -125,14 +125,14 @@ fun SettingsScreen(
                     icon = rememberVectorPainter(Icons.NotificationOff),
                     title = "Notification Setting",
                     onClick = {
-                        viewModel.uiAction(SettingsAction.NavigateNotification)
+                        viewModel.handleUiAction(SettingsAction.NavigateNotification)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Key),
                     title = "Password Setting",
                     onClick = {
-                        viewModel.uiAction(SettingsAction.NavigatePassword)
+                        viewModel.handleUiAction(SettingsAction.NavigatePassword)
                     }
                 )
                 ProfileMenuItem(
@@ -154,7 +154,7 @@ fun SettingsScreen(
                 onCancel = { showDeleteDialog = false },
                 onConfirm = {
                     showDeleteDialog = false
-                    viewModel.uiAction(SettingsAction.DeleteProfile)
+                    viewModel.handleUiAction(SettingsAction.DeleteProfile)
                 }
             )
         }

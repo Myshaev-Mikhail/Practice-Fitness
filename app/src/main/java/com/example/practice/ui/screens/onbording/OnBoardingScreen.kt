@@ -19,8 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.onbording.intents.OnBoardingSideEffect
-import com.example.practice.ui.screens.onbording.intents.OnboardingAction
+import com.example.practice.ui.screens.onbording.actions.OnBoardingSideEffect
+import com.example.practice.ui.screens.onbording.actions.OnboardingAction
 import com.example.practice.ui.screens.onbording.onboardingpage.FirstOnboardingPageScreen
 import com.example.practice.ui.screens.onbording.onboardingpage.OnboardingPageScreen
 import com.example.practice.ui.screens.onbording.onboardingpage.onboardingPages
@@ -71,7 +71,7 @@ fun OnBoardingScreen(
                     currentPage = page,
                     totalPages = uiState.totalPages,
                     onSkip = {
-                        viewModel.uiAction(OnboardingAction.Skip)
+                        viewModel.handleUiAction(OnboardingAction.Skip)
                     }
                 )
             }
@@ -89,7 +89,7 @@ fun OnBoardingScreen(
                     text = "Get Started",
                     backgroundColor = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.4f),
                     onClick = {
-                        viewModel.uiAction(OnboardingAction.Finish)
+                        viewModel.handleUiAction(OnboardingAction.Finish)
                     }
                 )
             } else {
@@ -97,7 +97,7 @@ fun OnBoardingScreen(
                     text = "Next",
                     backgroundColor = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.4f),
                     onClick = {
-                        viewModel.uiAction(OnboardingAction.NextPage)
+                        viewModel.handleUiAction(OnboardingAction.NextPage)
                     }
                 )
             }

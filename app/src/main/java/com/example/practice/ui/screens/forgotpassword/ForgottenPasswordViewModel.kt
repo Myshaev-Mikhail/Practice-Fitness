@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.usecase.ResetPasswordUseCase
-import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordAction
-import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordSideEffect
-import com.example.practice.ui.screens.forgotpassword.intents.ForgottenPasswordState
+import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordAction
+import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordSideEffect
+import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordState
 import com.example.practice.ui.utils.isInternetAvailable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,21 +15,21 @@ import kotlinx.coroutines.launch
 class ForgottenPasswordViewModel(
     private val resetPasswordUseCase: ResetPasswordUseCase
 ) : ViewModel() {
-    private val uiState = MutableStateFlow(ForgottenPasswordState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(ForgottenPasswordState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<ForgottenPasswordSideEffect>(ForgottenPasswordSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<ForgottenPasswordSideEffect>(ForgottenPasswordSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
-    fun uiAction(action: ForgottenPasswordAction, context: Context? = null) {
+    fun handleUiAction(action: ForgottenPasswordAction, context: Context? = null) {
         when (action) {
             is ForgottenPasswordAction.EmailChanged -> {
-                uiState.value = uiState.value.copy(email = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(email = action.value)
             }
 
             is ForgottenPasswordAction.SendClicked -> {
                 if (context != null && !isInternetAvailable(context)) {
-                    sideEffect.value = ForgottenPasswordSideEffect.ShowToast("There is no internet connection")
+                    sideEffectFlow.value = ForgottenPasswordSideEffect.ShowToast("There is no internet connection")
                     return
                 }
 
@@ -37,34 +37,34 @@ class ForgottenPasswordViewModel(
             }
 
             is ForgottenPasswordAction.BackClicked -> {
-                sideEffect.value = ForgottenPasswordSideEffect.NavigateBack
+                sideEffectFlow.value = ForgottenPasswordSideEffect.NavigateBack
             }
 
         }
     }
 
     private fun sendResetEmail() {
-        if (uiState.value.email.isBlank()) {
-            sideEffect.value =
+        if (uiStateFlow.value.email.isBlank()) {
+            sideEffectFlow.value =
                 ForgottenPasswordSideEffect.ShowToast("Введите email")
             return
         }
-        uiState.value = uiState.value.copy(isLoading = true)
+        uiStateFlow.value = uiStateFlow.value.copy(isLoading = true)
 
         viewModelScope.launch {
-            val result = resetPasswordUseCase(uiState.value.email)
-            uiState.value = uiState.value.copy(isLoading = false)
+            val result = resetPasswordUseCase(uiStateFlow.value.email)
+            uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
 
             result
                 .onSuccess {
-                    sideEffect.value =
+                    sideEffectFlow.value =
                         ForgottenPasswordSideEffect.ShowToast(
                             "Письмо отправлено. Проверьте почту"
                         )
-                    sideEffect.value = ForgottenPasswordSideEffect.Success
+                    sideEffectFlow.value = ForgottenPasswordSideEffect.Success
                 }
                 .onFailure {
-                    sideEffect.value =
+                    sideEffectFlow.value =
                         ForgottenPasswordSideEffect.ShowToast(
                             "Ошибка отправки письма"
                         )
@@ -73,6 +73,6 @@ class ForgottenPasswordViewModel(
     }
 
     fun clearSideEffect() {
-        sideEffect.value = ForgottenPasswordSideEffect.Empty
+        sideEffectFlow.value = ForgottenPasswordSideEffect.Empty
     }
 }

@@ -17,8 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutRoundDetailAction
-import com.example.practice.ui.screens.workoutrounddetail.intents.WorkoutRoundDetailSideEffect
+import com.example.practice.ui.screens.workoutrounddetail.actions.WorkoutRoundDetailAction
+import com.example.practice.ui.screens.workoutrounddetail.actions.WorkoutRoundDetailSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ExerciseCard
 import com.example.practice.ui.uikit.components.TopBar
@@ -44,7 +44,7 @@ fun WorkoutRoundDetailScreen(
     val badgeId = entry.arguments?.getInt("badgeId") ?: return
 
     LaunchedEffect(workoutId, badgeId) {
-        viewModel.uiAction(
+        viewModel.handleUiAction(
             WorkoutRoundDetailAction.LoadWorkoutDetail(
                 workoutId = workoutId,
                 badgeId = badgeId

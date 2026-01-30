@@ -3,30 +3,30 @@ package com.example.practice.ui.screens.setpassword
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.data.repository.AuthRepositoryImpl
-import com.example.practice.ui.screens.setpassword.intents.SetPasswordAction
-import com.example.practice.ui.screens.setpassword.intents.SetPasswordSideEffect
-import com.example.practice.ui.screens.setpassword.intents.SetPasswordState
+import com.example.practice.ui.screens.setpassword.actions.SetPasswordAction
+import com.example.practice.ui.screens.setpassword.actions.SetPasswordSideEffect
+import com.example.practice.ui.screens.setpassword.actions.SetPasswordState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SetPasswordViewModel(private val oobCode: String) : ViewModel() {
-    private val uiState = MutableStateFlow(SetPasswordState())
-    val uiStateEmitter = uiState.asStateFlow()
+    private val uiStateFlow = MutableStateFlow(SetPasswordState())
+    val uiStateEmitter = uiStateFlow.asStateFlow()
 
-    private val sideEffect = MutableStateFlow<SetPasswordSideEffect>(SetPasswordSideEffect.Empty)
-    val sideEffectEmitter = sideEffect.asStateFlow()
+    private val sideEffectFlow = MutableStateFlow<SetPasswordSideEffect>(SetPasswordSideEffect.Empty)
+    val sideEffectEmitter = sideEffectFlow.asStateFlow()
 
     private val authRepository = AuthRepositoryImpl()
 
-    fun uiAction(action: SetPasswordAction) {
+    fun handleUiAction(action: SetPasswordAction) {
         when (action) {
             is SetPasswordAction.PasswordChanged -> {
-                uiState.value = uiState.value.copy(password = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(password = action.value)
             }
 
             is SetPasswordAction.ConfirmPasswordChanged -> {
-                uiState.value = uiState.value.copy(confirmPassword = action.value)
+                uiStateFlow.value = uiStateFlow.value.copy(confirmPassword = action.value)
             }
 
             is SetPasswordAction.SubmitClicked -> {
@@ -34,48 +34,48 @@ class SetPasswordViewModel(private val oobCode: String) : ViewModel() {
             }
 
             is SetPasswordAction.BackClicked -> {
-                sideEffect.value = SetPasswordSideEffect.NavigateBack
+                sideEffectFlow.value = SetPasswordSideEffect.NavigateBack
             }
         }
     }
 
     private fun submit() {
-        val state = uiState.value
+        val state = uiStateFlow.value
 
         if (state.password.length < 6) {
-            sideEffect.value =
+            sideEffectFlow.value =
                 SetPasswordSideEffect.ShowToast("Пароль минимум 6 символов")
             return
         }
 
         if (state.password != state.confirmPassword) {
-            sideEffect.value =
+            sideEffectFlow.value =
                 SetPasswordSideEffect.ShowToast("Пароли не совпадают")
             return
         }
 
-        uiState.value = state.copy(isLoading = true)
+        uiStateFlow.value = state.copy(isLoading = true)
 
         viewModelScope.launch {
             val result =
                 authRepository.confirmResetPassword(oobCode, state.password)
 
-            uiState.value = state.copy(isLoading = false)
+            uiStateFlow.value = state.copy(isLoading = false)
 
             result
                 .onSuccess {
-                    sideEffect.value =
+                    sideEffectFlow.value =
                         SetPasswordSideEffect.ShowToast("Пароль успешно изменён")
-                    sideEffect.value = SetPasswordSideEffect.Success
+                    sideEffectFlow.value = SetPasswordSideEffect.Success
                 }
                 .onFailure {
-                    sideEffect.value =
+                    sideEffectFlow.value =
                         SetPasswordSideEffect.ShowToast("Ошибка смены пароля")
                 }
         }
     }
 
     fun clearSideEffect() {
-        sideEffect.value = SetPasswordSideEffect.Empty
+        sideEffectFlow.value = SetPasswordSideEffect.Empty
     }
 }

@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -45,8 +46,8 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.practice.R
-import com.example.practice.ui.screens.editprofile.intents.EditProfileAction
-import com.example.practice.ui.screens.editprofile.intents.EditProfileSideEffect
+import com.example.practice.ui.screens.editprofile.actions.EditProfileAction
+import com.example.practice.ui.screens.editprofile.actions.EditProfileSideEffect
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.AvatarCrop
 import com.example.practice.ui.uikit.components.BottomNavigation
@@ -72,7 +73,7 @@ fun EditProfileScreen(
             contract = ActivityResultContracts.GetContent()
         ) { uri ->
             uri?.let {
-                viewModel.uiAction(
+                viewModel.handleUiAction(
                     EditProfileAction.AvatarPicked(it.toString())
                 )
             }
@@ -103,6 +104,7 @@ fun EditProfileScreen(
             modifier = Modifier
                 .verticalScroll(scrollState)
                 .padding(bottom = 48.dp)
+                .imePadding()
         ) {
             Column(
                 modifier = Modifier
@@ -116,7 +118,7 @@ fun EditProfileScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(EditProfileAction.NavigateBack)
+                            viewModel.handleUiAction(EditProfileAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -264,22 +266,22 @@ fun EditProfileScreen(
                     height = uiState.height?.toString().orEmpty(),
 
                     onFullNameChange = {
-                        viewModel.uiAction(EditProfileAction.FullNameChanged(it))
+                        viewModel.handleUiAction(EditProfileAction.FullNameChanged(it))
                     },
                     onEmailChange = {
-                        viewModel.uiAction(EditProfileAction.EmailChanged(it))
+                        viewModel.handleUiAction(EditProfileAction.EmailChanged(it))
                     },
                     onMobileNumberChange = {
-                        viewModel.uiAction(EditProfileAction.MobileChanged(it))
+                        viewModel.handleUiAction(EditProfileAction.MobileChanged(it))
                     },
                     onDateChange = {
-                        viewModel.uiAction(EditProfileAction.AgeChanged(it))
+                        viewModel.handleUiAction(EditProfileAction.AgeChanged(it))
                     },
                     onWeightChange = {
-                        viewModel.uiAction(EditProfileAction.WeightChanged(it))
+                        viewModel.handleUiAction(EditProfileAction.WeightChanged(it))
                     },
                     onHeightChange = {
-                        viewModel.uiAction(EditProfileAction.HeightChanged(it))
+                        viewModel.handleUiAction(EditProfileAction.HeightChanged(it))
                     }
                 )
                 AppButton(
@@ -296,7 +298,7 @@ fun EditProfileScreen(
                     ),
                     buttonColor = MaterialTheme.colorScheme.secondary,
                 ) {
-                    viewModel.uiAction(EditProfileAction.SaveProfile)
+                    viewModel.handleUiAction(EditProfileAction.SaveProfile)
                 }
             }
         }
@@ -373,7 +375,7 @@ fun EditProfileScreen(
     if (uiState.tempAvatarUri != null) {
         Dialog(
             onDismissRequest = {
-                viewModel.uiAction(EditProfileAction.ClearTempAvatar)
+                viewModel.handleUiAction(EditProfileAction.ClearTempAvatar)
             },
             properties = DialogProperties(
                 usePlatformDefaultWidth = false
@@ -382,12 +384,12 @@ fun EditProfileScreen(
             AvatarCrop(
                 imageUri = uiState.tempAvatarUri!!,
                 onConfirm = { finalUri ->
-                    viewModel.uiAction(
+                    viewModel.handleUiAction(
                         EditProfileAction.AvatarConfirmed(finalUri)
                     )
                 },
                 onCancel = {
-                    viewModel.uiAction(EditProfileAction.ClearTempAvatar)
+                    viewModel.handleUiAction(EditProfileAction.ClearTempAvatar)
                 }
             )
         }

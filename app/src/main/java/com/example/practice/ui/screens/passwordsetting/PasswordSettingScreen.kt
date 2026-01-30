@@ -26,8 +26,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
-import com.example.practice.ui.screens.passwordsetting.intents.PasswordSettingAction
-import com.example.practice.ui.screens.passwordsetting.intents.PasswordSettingSideEffect
+import com.example.practice.ui.screens.passwordsetting.actions.PasswordSettingAction
+import com.example.practice.ui.screens.passwordsetting.actions.PasswordSettingSideEffect
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.FormForPassword
@@ -79,7 +79,7 @@ fun PasswordSettingScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(PasswordSettingAction.NavigateBack)
+                            viewModel.handleUiAction(PasswordSettingAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -110,23 +110,23 @@ fun PasswordSettingScreen(
                     newPassword = state.newPassword,
                     confirmNewPassword = state.confirmNewPassword,
                     onCurrentPasswordChange = {
-                        viewModel.uiAction(
+                        viewModel.handleUiAction(
                             PasswordSettingAction.CurrentPasswordChanged(it)
                         )
                     },
                     onForgotPassword = {
-                        viewModel.uiAction(
+                        viewModel.handleUiAction(
                             PasswordSettingAction.ForgotPasswordClicked
                         )
                     },
                     onNewPasswordChange = {
-                        viewModel.uiAction(
+                        viewModel.handleUiAction(
                             PasswordSettingAction.NewPasswordChanged(it)
                         )
                     },
 
                     onConfirmNewPasswordChange = {
-                        viewModel.uiAction(
+                        viewModel.handleUiAction(
                             PasswordSettingAction.ConfirmNewPasswordChanged(it)
                         )
                     },
@@ -142,7 +142,7 @@ fun PasswordSettingScreen(
                     textStyle = MaterialTheme.typography.headlineSmall,
                     buttonColor = MaterialTheme.colorScheme.secondary,
                 ) {
-                    viewModel.uiAction(PasswordSettingAction.ChangePasswordClicked)
+                    viewModel.handleUiAction(PasswordSettingAction.ChangePasswordClicked)
                 }
                 Spacer(modifier = Modifier.height(44.dp))
                 BottomNavigation(

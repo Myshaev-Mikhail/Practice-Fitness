@@ -26,8 +26,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.practice.ui.screens.help.intents.HelpAction
-import com.example.practice.ui.screens.help.intents.HelpSideEffect
+import com.example.practice.ui.screens.help.actions.HelpAction
+import com.example.practice.ui.screens.help.actions.HelpSideEffect
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ProfileMenuItem
 import io.github.composegears.valkyrie.Arrow
@@ -89,7 +89,7 @@ fun HelpScreen(
                         .align(Alignment.Start)
                         .padding(horizontal = 16.dp)
                         .clickable {
-                            viewModel.uiAction(HelpAction.NavigateBack)
+                            viewModel.handleUiAction(HelpAction.NavigateBack)
                         },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -132,14 +132,14 @@ fun HelpScreen(
                     icon = rememberVectorPainter(Icons.Telegram),
                     title = "Telegram",
                     onClick = {
-                        viewModel.uiAction(HelpAction.NavigateTelegram)
+                        viewModel.handleUiAction(HelpAction.NavigateTelegram)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Globe),
                     title = "Email",
                     onClick = {
-                        viewModel.uiAction(HelpAction.NavigateEmail)
+                        viewModel.handleUiAction(HelpAction.NavigateEmail)
                     }
                 )
             }
