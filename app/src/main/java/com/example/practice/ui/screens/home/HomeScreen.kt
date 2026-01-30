@@ -62,7 +62,7 @@ fun HomeScreen(
             // TODO
         }
         is HomeSideEffect.ShowNotificationScreen -> {
-            //navController.navigate(FitnessScreen.LogIn.route)
+            navController.navigate(FitnessScreen.NotificationSetting.route)
             viewModel.clearSideEffect()
             // TODO
         }

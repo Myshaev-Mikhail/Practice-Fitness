@@ -41,7 +41,7 @@ fun AppRoot() {
             NavigationApp(startDestination = FitnessScreen.Home.route)
         }
         false -> {
-            NavigationApp(startDestination = FitnessScreen.OnBoarding.route)
+            NavigationApp(startDestination = FitnessScreen.Home.route)
         }
     }
 }
