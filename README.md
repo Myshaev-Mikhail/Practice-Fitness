@@ -1,25 +1,20 @@
-#FitBody
+<span style="font-size: 2.0em;">FitBody</span>
 
 Мобильное фитнес-приложение для отслеживания тренировок, прогресса и активности пользователя.
 
 Приложение разработано с использованием **Clean Architecture**, а также сочетания паттернов **MVVM + MVI** для управления состоянием.
 
 
-##Дизайн приложения
+<span style="font-size: 1.4em;">Дизайн приложения</span>
 
-###Главный экран
+<span style="font-size: 1.1em;">Главный экран</span>
 
+<span style="font-size: 1.1em;">Профиль пользователя</span>
 
-
-###Профиль пользователя
-
-
-###Тренировки
+<span style="font-size: 1.1em;">Тренировки</span>
 
 
-
-
-##Возможности
+<span style="font-size: 1.4em;">Возможности</span>
 Просмотр и запуск тренировок
 Отслеживание прогресса
 Подсчет калорий
@@ -28,7 +23,8 @@
 Избранные тренировки
 
 
-##Архитектура
+<span style="font-size: 1.4em;">Архитектура</span>
+```
 data/
  ├── datastore/
  ├── repository/
@@ -42,16 +38,14 @@ ui/
  ├── screens/
  ├── uikit/
  ├── utils/
+```
 
-
-##Используемые паттерны:
-
+<span style="font-size: 1.4em;">Используемые паттерны:</span>
 * MVVM (ViewModel)
 * MVI (State / Action / SideEffect)
 
 
-##Технологии
-
+<span style="font-size: 1.4em;">Технологии</span>
 **Kotlin**
 **Jetpack Compose**
 **Coroutines / Flow**
@@ -59,7 +53,7 @@ ui/
 **DataStore**
 
 
-##Аутентификация
+<span style="font-size: 1.4em;">Аутентификация</span>
 Для авторизации используется **Firebase Auth**:
 
 * регистрация
@@ -67,11 +61,12 @@ ui/
 * управление сессией
 
 
-##Хранение данных
+<span style="font-size: 1.4em;">Хранение данных</span>
 * Локальное хранение: **DataStore**
 * Асинхронная работа: **Coroutines + Flow**
 
-##Пример структуры экрана (MVI)
+<span style="font-size: 1.4em;">Пример структуры экрана (MVI)</span>
+```
 EditeProfile/
  ├── EditeProfileScreen
  ├── EditeProfileViewModel
@@ -79,18 +74,11 @@ EditeProfile/
       ├── EditeProfileState
       ├── EditeProfileAction
       ├── EditeProfileSideEffect
+```
 
-
-##Дизайн
-
+<span style="font-size: 1.4em;">Дизайн</span>
 Приложение реализовано на основе UI Kit для фитнес-приложений:
 
-* 📱 90+ экранов (частично реализованы)
-* 🎨 50+ UI компонентов
-* 🔥 Современный и интуитивный UX
-
-⚠️ В проекте реализована **часть экранов**, основные:
-
-* Главный экран
-* Экран тренировок
-* Профиль пользователя
+* 90+ экранов (частично реализованы)
+* 50+ UI компонентов
+* Современный и интуитивный UX
