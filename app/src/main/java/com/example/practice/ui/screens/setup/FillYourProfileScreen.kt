@@ -43,6 +43,7 @@ import com.example.practice.ui.uikit.components.AvatarCrop
 import com.example.practice.ui.uikit.components.FillYourProfile
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun FillYourProfileScreen(

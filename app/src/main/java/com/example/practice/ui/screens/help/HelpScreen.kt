@@ -34,12 +34,13 @@ import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Globe
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.Telegram
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HelpScreen(
     navController: NavController
 ) {
-    val viewModel: HelpViewModel = viewModel()
+    val viewModel: HelpViewModel = koinViewModel()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
 

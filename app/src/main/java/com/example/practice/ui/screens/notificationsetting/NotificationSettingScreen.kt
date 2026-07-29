@@ -31,13 +31,14 @@ import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ToggleSwitch
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 import java.util.Calendar
 
 @Composable
 fun NotificationSettingScreen(
-    navController: NavController,
-    viewModel: NotificationSettingViewModel
+    navController: NavController
 ) {
+    val viewModel: NotificationSettingViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

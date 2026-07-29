@@ -33,12 +33,13 @@ import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.FormForPassword
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun PasswordSettingScreen(
-    navController: NavController,
-    viewModel: PasswordSettingViewModel
+    navController: NavController
 ) {
+    val viewModel: PasswordSettingViewModel = koinViewModel()
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

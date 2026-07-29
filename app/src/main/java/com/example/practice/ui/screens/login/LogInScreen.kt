@@ -34,16 +34,15 @@ import com.example.practice.ui.screens.login.actions.LogInAction
 import com.example.practice.ui.screens.login.actions.LogInSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.LogIn
-import io.github.composegears.valkyrie.Facebook
-import io.github.composegears.valkyrie.FingerprintIcon
 import io.github.composegears.valkyrie.GoogleIcon
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun LogInScreen(
-    navController: NavController,
-    viewModel: LogInViewModel
+    navController: NavController
 ) {
+    val viewModel: LogInViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
@@ -169,22 +168,6 @@ fun LogInScreen(
                         .clickable {
                             viewModel.handleUiAction(LogInAction.GoogleLogInClicked, context)
                         }
-                )
-                Image(
-                    painter = rememberVectorPainter(Icons.Facebook),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .size(40.dp)
-
-                )
-                Image(
-                    painter = rememberVectorPainter(Icons.FingerprintIcon),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .size(40.dp)
-
                 )
             }
 

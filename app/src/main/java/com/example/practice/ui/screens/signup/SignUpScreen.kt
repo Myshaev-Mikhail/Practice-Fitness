@@ -34,16 +34,15 @@ import com.example.practice.ui.screens.signup.actions.SignUpAction
 import com.example.practice.ui.screens.signup.actions.SignUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.SignUp
-import io.github.composegears.valkyrie.Facebook
-import io.github.composegears.valkyrie.FingerprintIcon
 import io.github.composegears.valkyrie.GoogleIcon
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SignUpScreen(
-    navController: NavController,
-    viewModel: SignUpViewModel
+    navController: NavController
 ) {
+    val viewModel: SignUpViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
@@ -178,22 +177,6 @@ fun SignUpScreen(
                         .clickable {
                             viewModel.handleUiAction(SignUpAction.GoogleLogInClicked, context)
                         }
-                )
-                Image(
-                    painter = rememberVectorPainter(Icons.Facebook),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .size(40.dp)
-
-                )
-                Image(
-                    painter = rememberVectorPainter(Icons.FingerprintIcon),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .size(40.dp)
-
                 )
             }
 

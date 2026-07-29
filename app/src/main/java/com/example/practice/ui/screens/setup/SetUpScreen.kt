@@ -33,6 +33,7 @@ import com.example.practice.ui.screens.setup.actions.SetUpAction
 import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.theme.Poppins
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SetUpScreen(

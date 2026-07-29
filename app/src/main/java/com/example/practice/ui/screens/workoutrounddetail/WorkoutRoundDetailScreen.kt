@@ -23,12 +23,13 @@ import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ExerciseCard
 import com.example.practice.ui.uikit.components.TopBar
 import com.example.practice.ui.uikit.components.WorkoutRoundDetail
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun WorkoutRoundDetailScreen(
-    navController: NavController,
-    viewModel: WorkoutRoundDetailViewModel
+    navController: NavController
 ) {
+    val viewModel: WorkoutRoundDetailViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

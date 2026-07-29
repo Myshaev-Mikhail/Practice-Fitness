@@ -36,13 +36,17 @@ import com.example.practice.ui.screens.setpassword.actions.SetPasswordSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun SetPasswordScreen(
     navController: NavController,
     oobCode: String
 ) {
-    val viewModel: SetPasswordViewModel = viewModel()
+    val viewModel: SetPasswordViewModel = koinViewModel(
+        parameters = { parametersOf(oobCode) }
+    )
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current

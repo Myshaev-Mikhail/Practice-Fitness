@@ -34,6 +34,7 @@ import com.example.practice.ui.uikit.components.AgePicker
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AgeScreen(

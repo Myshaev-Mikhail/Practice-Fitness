@@ -9,10 +9,8 @@ import com.example.practice.domain.repository.GoogleAuthRepository
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 
-class GoogleAuthRepositoryImpl(
-    private val context: Context
-) : GoogleAuthRepository {
-    override suspend fun signIn(): Result<String> = try {
+class GoogleAuthRepositoryImpl: GoogleAuthRepository {
+    override suspend fun signIn(context: Context): Result<String> = try {
 
         val credentialManager = CredentialManager.create(context)
 

@@ -74,4 +74,9 @@ dependencies {
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+
+    //Koin
+    implementation("io.insert-koin:koin-android:4.0.2")
+    implementation("io.insert-koin:koin-core:4.0.2")
+    implementation("io.insert-koin:koin-androidx-compose:4.0.2")
 }
