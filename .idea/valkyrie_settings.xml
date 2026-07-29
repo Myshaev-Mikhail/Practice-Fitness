@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Valkyrie.Settings">
-    <option name="iconPackDestination" value="E:\icons" />
+    <option name="iconPackDestination" value="$USER_HOME$/Downloads" />
     <option name="iconPackName" value="ValkyrieIcons" />
     <option name="iconPackPackage" value="io.github.composegears.valkyrie" />
     <option name="mode" value="IconPack" />

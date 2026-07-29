@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -35,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.example.practice.R
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.theme.Poppins
 import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.Icons
@@ -56,6 +58,7 @@ fun WorkoutPreviewCard(
     modifier: Modifier = Modifier
 ) {
     val configuration = LocalConfiguration.current
+    val context = LocalContext.current
     val imageWidth = configuration.screenWidthDp.dp / 2.3f
     val bottomCorner = 16.dp
 
@@ -127,7 +130,7 @@ fun WorkoutPreviewCard(
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
-                        text = title,
+                        text = context.localizedAppText(title),
                         color = MaterialTheme.colorScheme.secondary,
                         style = TextStyle(
                             fontFamily = Poppins,
@@ -149,7 +152,7 @@ fun WorkoutPreviewCard(
                         Spacer(modifier = Modifier.width(4.dp))
 
                         Text(
-                            text = durationText,
+                            text = context.localizedAppText(durationText),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.labelMedium
                         )
@@ -168,7 +171,7 @@ fun WorkoutPreviewCard(
                         Spacer(modifier = Modifier.width(4.dp))
 
                         Text(
-                            text = exercisesText,
+                            text = context.localizedAppText(exercisesText),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.labelMedium
                         )

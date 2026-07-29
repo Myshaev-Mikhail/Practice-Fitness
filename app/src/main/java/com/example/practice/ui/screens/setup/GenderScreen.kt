@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -24,13 +25,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.domain.models.Gender
 import com.example.practice.ui.screens.setup.actions.SetUpAction
 import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.GenderItem
 import io.github.composegears.valkyrie.Arrow
@@ -52,23 +56,29 @@ fun GenderScreen(
     val context = LocalContext.current
     val selectedGender = state.gender
 
-    when (sideEffect) {
-        is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.Age.route)
-            viewModel.clearSideEffect()
-        }
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is SetUpSideEffect.NavigateNext -> {
+                viewModel.clearSideEffect()
+                navController.navigate(FitnessScreen.Age.route)
+            }
 
-        is SetUpSideEffect.NavigateBack -> {
-            navController.popBackStack()
-            viewModel.clearSideEffect()
-        }
+            is SetUpSideEffect.NavigateBack -> {
+                viewModel.clearSideEffect()
+                navController.popBackStack()
+            }
 
-        is SetUpSideEffect.ShowToast -> {
-            Toast.makeText(context, (sideEffect as SetUpSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
-            viewModel.clearSideEffect()
-        }
+            is SetUpSideEffect.ShowToast -> {
+                Toast.makeText(
+                    context,
+                    context.localizedAppText((sideEffect as SetUpSideEffect.ShowToast).text),
+                    Toast.LENGTH_SHORT
+                ).show()
+                viewModel.clearSideEffect()
+            }
 
-        else -> Unit
+            else -> Unit
+        }
     }
 
     Column(
@@ -96,7 +106,7 @@ fun GenderScreen(
             Spacer(modifier = Modifier.width(8.dp))
 
             Text(
-                text = "Back",
+                text = stringResource(R.string.back),
                 color = MaterialTheme.colorScheme.secondary,
                 style = MaterialTheme.typography.titleSmall,
             )
@@ -105,7 +115,7 @@ fun GenderScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "What’s Your Gender",
+            text = stringResource(R.string.setup_gender_title),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onBackground
         )
@@ -119,7 +129,7 @@ fun GenderScreen(
                 .padding(16.dp)
         ) {
             Text(
-                text = "This helps us provide personalized recommendations for your workouts and nutrition.",
+                text = stringResource(R.string.setup_gender_description),
                 color = MaterialTheme.colorScheme.onTertiary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center
@@ -133,7 +143,7 @@ fun GenderScreen(
                 isSelected = selectedGender == Gender.MALE,
                 icon = if (selectedGender == Gender.MALE)
                     Icons.Property1MaleOn else Icons.MaleOff,
-                text = "Male",
+                text = stringResource(R.string.male),
                 iconSize = 150.dp,
                 onClick = {
                     viewModel.handleUiAction(SetUpAction.GenderSelected(Gender.MALE))
@@ -146,7 +156,7 @@ fun GenderScreen(
                 isSelected = selectedGender == Gender.FEMALE,
                 icon = if (selectedGender == Gender.FEMALE)
                     Icons.FemaleOn else Icons.FemaleOff,
-                text = "Female",
+                text = stringResource(R.string.female),
                 iconSize = 150.dp,
                 onClick = {
                     viewModel.handleUiAction(SetUpAction.GenderSelected(Gender.FEMALE))
@@ -158,7 +168,7 @@ fun GenderScreen(
             modifier = Modifier
                 .width(180.dp)
                 .padding(vertical = 4.dp),
-            text = "Continue",
+            text = stringResource(R.string.continue_button),
             textStyle = MaterialTheme.typography.titleLarge,
         ) {
             viewModel.handleUiAction(SetUpAction.ContinueClickedGender)

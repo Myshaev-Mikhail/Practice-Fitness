@@ -26,10 +26,12 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.practice.R
+import com.example.practice.ui.utils.localizedAppText
 import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.StartSmallOn
@@ -48,6 +50,8 @@ fun CyclingChallengeCard(
     styleDescription: TextStyle = MaterialTheme.typography.labelMedium,
     image: Painter = painterResource(id = R.mipmap.woman_helping_man_gym_bike)
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(32.dp),
@@ -67,7 +71,7 @@ fun CyclingChallengeCard(
             ) {
 
                 Text(
-                    text = title,
+                    text = context.localizedAppText(title),
                     style = styleTitle
                 )
 
@@ -76,7 +80,7 @@ fun CyclingChallengeCard(
 
                 if (isDescription) {
                     Text(
-                        text = description,
+                        text = context.localizedAppText(description),
                         style = styleDescription
                     )
                 } else {
@@ -91,7 +95,7 @@ fun CyclingChallengeCard(
                             )
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(
-                                text = duration,
+                                text = context.localizedAppText(duration),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSecondary
                             )
@@ -108,7 +112,7 @@ fun CyclingChallengeCard(
                             )
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(
-                                text = calories,
+                                text = context.localizedAppText(calories),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSecondary
                             )

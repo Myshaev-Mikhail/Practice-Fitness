@@ -10,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import com.example.practice.ui.utils.localizedAppText
 
 @Composable
 fun AppOutlinedButton(
@@ -23,6 +25,8 @@ fun AppOutlinedButton(
     textStyle: TextStyle = MaterialTheme.typography.labelLarge,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Button(
         modifier = modifier.fillMaxWidth(),
         onClick = onClick,
@@ -32,7 +36,7 @@ fun AppOutlinedButton(
         border = BorderStroke(2.dp, borderColor)
     ) {
         Text(
-            text = text,
+            text = context.localizedAppText(text),
             color = textColor,
             modifier = Modifier.padding(vertical = 8.dp),
             style = textStyle

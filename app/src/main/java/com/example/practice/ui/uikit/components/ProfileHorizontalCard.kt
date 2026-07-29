@@ -13,12 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.Light
 import androidx.compose.ui.text.font.FontWeight.Companion.SemiBold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.R
 import com.example.practice.ui.uikit.theme.LeagueSpartan
 import com.example.practice.ui.uikit.theme.Poppins
 
@@ -72,13 +74,13 @@ fun ProfileHorizontalCard(
 
             Row {
                 Text(
-                    text = "Age: ",
+                    text = stringResource(R.string.age_label),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.titleSmall
                 )
 
                 Text(
-                    text = "Age: $age",
+                    text = age.toString(),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.bodySmall
                 )
@@ -102,12 +104,12 @@ fun ProfileHorizontalCard(
 
                 Column {
                     Text(
-                        text = "$weightKg Kg",
+                        text = stringResource(R.string.weight_kg_value, weightKg.toString()),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleSmall
                     )
                     Text(
-                        text = "Weight",
+                        text = stringResource(R.string.weight),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -127,12 +129,12 @@ fun ProfileHorizontalCard(
 
                 Column {
                     Text(
-                        text = String.format("%.2f CM", heightMeters),
+                        text = stringResource(R.string.height_cm_value, String.format("%.2f", heightMeters)),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleSmall
                     )
                     Text(
-                        text = "Height",
+                        text = stringResource(R.string.height),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.bodySmall
                     )

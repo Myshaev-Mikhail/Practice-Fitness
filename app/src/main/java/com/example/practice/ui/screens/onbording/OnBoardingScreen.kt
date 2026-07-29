@@ -15,10 +15,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.ui.screens.onbording.actions.OnBoardingSideEffect
 import com.example.practice.ui.screens.onbording.actions.OnboardingAction
 import com.example.practice.ui.screens.onbording.onboardingpage.FirstOnboardingPageScreen
@@ -87,7 +89,7 @@ fun OnBoardingScreen(
 
             if (uiState.currentPage == uiState.totalPages - 1) {
                 AppOutlinedButton(
-                    text = "Get Started",
+                    text = stringResource(R.string.get_started),
                     backgroundColor = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.4f),
                     onClick = {
                         viewModel.handleUiAction(OnboardingAction.Finish)
@@ -95,7 +97,7 @@ fun OnBoardingScreen(
                 )
             } else {
                 AppOutlinedButton(
-                    text = "Next",
+                    text = stringResource(R.string.next),
                     backgroundColor = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.4f),
                     onClick = {
                         viewModel.handleUiAction(OnboardingAction.NextPage)

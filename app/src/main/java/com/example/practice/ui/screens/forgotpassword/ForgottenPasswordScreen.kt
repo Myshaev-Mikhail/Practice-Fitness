@@ -27,12 +27,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.practice.ui.screens.editprofile.EditProfileViewModel
+import com.example.practice.R
 import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordAction
 import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordSideEffect
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -52,7 +54,7 @@ fun ForgottenPasswordScreen(
             is ForgottenPasswordSideEffect.ShowToast -> {
                 Toast.makeText(
                     context,
-                    (sideEffect as ForgottenPasswordSideEffect.ShowToast).message,
+                    context.localizedAppText((sideEffect as ForgottenPasswordSideEffect.ShowToast).message),
                     Toast.LENGTH_SHORT
                 ).show()
                 viewModel.clearSideEffect()
@@ -106,7 +108,7 @@ fun ForgottenPasswordScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Forgotten Password",
+                        text = stringResource(R.string.forgotten_password_title),
                         color = MaterialTheme.colorScheme.secondary,
                         style = MaterialTheme.typography.titleLarge
                     )
@@ -116,13 +118,13 @@ fun ForgottenPasswordScreen(
             Spacer(modifier = Modifier.height(28.dp))
 
             Text(
-                text = "Forgot Password?",
+                text = stringResource(R.string.forgot_password),
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.titleLarge
             )
             Text(
                 modifier = Modifier.padding(40.dp),
-                text = "Don’t worry! Enter your email and we’ll help you reset your password so you can get back on track.",
+                text = stringResource(R.string.forgot_password_description),
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center
@@ -139,7 +141,7 @@ fun ForgottenPasswordScreen(
                     .padding(horizontal = 24.dp, vertical = 32.dp)
             ) {
                 Text(
-                    text = "Enter your email address",
+                    text = stringResource(R.string.enter_email_address),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
@@ -171,7 +173,7 @@ fun ForgottenPasswordScreen(
         ) {
             AppOutlinedButton(
                 modifier = Modifier.width(185.dp),
-                text = "Continue",
+                text = stringResource(R.string.continue_button),
                 textColor = MaterialTheme.colorScheme.onPrimary
             ) {
                 viewModel.handleUiAction(ForgottenPasswordAction.SendClicked)

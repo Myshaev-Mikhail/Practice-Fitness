@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.Normal
@@ -35,7 +36,7 @@ fun FirstOnboardingPageScreen() {
         )
         Column(modifier = Modifier.align(Alignment.Center)) {
             Text(
-                text = "Welcom to",
+                text = stringResource(R.string.onboarding_welcome_to),
                 color = MaterialTheme.colorScheme.secondary,
                 style = TextStyle(
                     fontFamily = LeagueSpartan,

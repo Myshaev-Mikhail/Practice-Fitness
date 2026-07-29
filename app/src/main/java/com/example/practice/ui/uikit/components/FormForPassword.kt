@@ -16,10 +16,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.practice.R
 
 @Composable
 fun FormForPassword(
@@ -38,7 +40,7 @@ fun FormForPassword(
             .fillMaxWidth()
     ) {
         Text(
-            text = "Current Password",
+            text = stringResource(R.string.current_password),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -65,7 +67,7 @@ fun FormForPassword(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "forgot password?",
+            text = stringResource(R.string.forgot_password),
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.labelLarge,
             modifier = Modifier
@@ -78,7 +80,7 @@ fun FormForPassword(
         Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = "New Password",
+            text = stringResource(R.string.new_password),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -105,7 +107,7 @@ fun FormForPassword(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Confirm New Password",
+            text = stringResource(R.string.confirm_new_password),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )

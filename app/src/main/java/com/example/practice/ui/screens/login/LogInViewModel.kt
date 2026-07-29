@@ -68,6 +68,9 @@ class LogInViewModel(
             is LogInAction.ForgotPasswordClicked -> {
                 sideEffectFlow.value = LogInSideEffect.ShowForgottenPasswordScreen
             }
+            is LogInAction.SignInClicked -> {
+                sideEffectFlow.value = LogInSideEffect.ShowSignInScreen
+            }
         }
     }
 

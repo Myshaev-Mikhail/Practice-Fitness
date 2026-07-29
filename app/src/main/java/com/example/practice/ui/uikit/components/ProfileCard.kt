@@ -19,12 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.Light
 import androidx.compose.ui.text.font.FontWeight.Companion.SemiBold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.R
 import com.example.practice.ui.uikit.theme.LeagueSpartan
 import com.example.practice.ui.uikit.theme.Poppins
 
@@ -79,7 +81,7 @@ fun ProfileCard(
 
         Row {
             Text(
-                text = "Birthday: ",
+                text = "${stringResource(R.string.birthday_label)} ",
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = TextStyle(
                     fontFamily = Poppins,
@@ -114,13 +116,13 @@ fun ProfileCard(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "$weightKg Kg",
+                    text = stringResource(R.string.weight_kg_value, weightKg.toString()),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.titleSmall
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Weight",
+                    text = stringResource(R.string.weight),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.bodySmall
                 )
@@ -144,7 +146,7 @@ fun ProfileCard(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Years Old",
+                    text = stringResource(R.string.years_old),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.bodySmall
                 )
@@ -162,13 +164,13 @@ fun ProfileCard(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = String.format("%.2f M", heightMeters),
+                    text = stringResource(R.string.height_m_value, String.format("%.2f", heightMeters)),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.titleSmall
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Height",
+                    text = stringResource(R.string.height),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.bodySmall
                 )

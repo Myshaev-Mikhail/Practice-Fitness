@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.media.AudioAttributes
 import android.os.Build
 import android.provider.Settings
@@ -12,13 +13,17 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.practice.MainActivity
 import com.example.practice.R
+import java.util.Locale
 
 class AppNotificationManager {
     fun showNotification(
         context: Context,
         soundEnabled: Boolean,
-        vibrateEnabled: Boolean
+        vibrateEnabled: Boolean,
+        language: String = "en"
     ) {
+        val localizedContext = context.withAppLocale(language)
+
         val channelId = if (soundEnabled && vibrateEnabled) {
             "REMINDER_CHANNEL_SOUND_VIBRATE"
         } else if (soundEnabled) {
@@ -35,7 +40,11 @@ class AppNotificationManager {
             manager.deleteNotificationChannel(channelId)
 
             val importance = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel(channelId, "Reminder Notifications", importance)
+            val channel = NotificationChannel(
+                channelId,
+                localizedContext.getString(R.string.reminder_notifications),
+                importance
+            )
 
             if (soundEnabled) {
                 val soundUri = Settings.System.DEFAULT_NOTIFICATION_URI
@@ -67,7 +76,11 @@ class AppNotificationManager {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val (title, text) = motivationMessages.random()
+        val titles = localizedContext.resources.getStringArray(R.array.motivation_titles)
+        val texts = localizedContext.resources.getStringArray(R.array.motivation_texts)
+        val messageIndex = titles.indices.random()
+        val title = titles[messageIndex]
+        val text = texts.getOrElse(messageIndex) { title }
 
         val builder = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.mipmap.ic_logo)
@@ -83,28 +96,21 @@ class AppNotificationManager {
 
     companion object {
         private const val NOTIFICATION_ID = 1001
-
-        val motivationMessages = listOf(
-            "Вперёд!" to "Начни тренироваться прямо сейчас",
-            "Держись!" to "Каждое движение приближает к цели",
-            "Сила!" to "Ты сильнее, чем думаешь",
-            "Время!" to "Не откладывай тренировку на завтра",
-            "Результат!" to "Маленькая тренировка — большой прогресс",
-            "Фокус!" to "Сосредоточься и двигайся к цели",
-            "Энергия!" to "Активность делает тебя сильнее",
-            "Прогресс!" to "Сегодня лучше, чем вчера",
-            "Действуй!" to "Не сдавайся, шаг за шагом",
-            "Мотивация!" to "Каждое усилие приносит результат",
-            "Смелость!" to "Попробуй и достигни цели",
-            "Сила воли!" to "Не останавливайся на полпути",
-            "Движение!" to "Каждое действие делает тебя лучше",
-            "Вдохновение!" to "Начни день с активности",
-            "Цель!" to "Каждый шаг приближает к успеху",
-            "Успех!" to "Продолжай идти, результат близко",
-            "Старт!" to "Немного усилий сегодня — прогресс завтра",
-            "Победа!" to "Твое тело скажет спасибо",
-            "Активность!" to "Делай хотя бы маленький шаг",
-            "Сила духа!" to "Тренируйся и становись сильнее"
-        )
     }
+}
+
+private fun Context.withAppLocale(language: String): Context {
+    val locale = when (language) {
+        "ru" -> Locale.Builder()
+            .setLanguage("ru")
+            .setRegion("RU")
+            .build()
+        else -> Locale.Builder()
+            .setLanguage("en")
+            .build()
+    }
+    val configuration = Configuration(resources.configuration).apply {
+        setLocale(locale)
+    }
+    return createConfigurationContext(configuration)
 }

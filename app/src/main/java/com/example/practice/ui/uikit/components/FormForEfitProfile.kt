@@ -14,9 +14,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.practice.R
 
 @Composable
 fun FormForEfitProfile(
@@ -40,7 +42,7 @@ fun FormForEfitProfile(
             .fillMaxWidth()
     ) {
         Text(
-            text = "Full name",
+            text = stringResource(R.string.full_name),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -66,7 +68,7 @@ fun FormForEfitProfile(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Email",
+            text = stringResource(R.string.email),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -92,7 +94,7 @@ fun FormForEfitProfile(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Mobile Number",
+            text = stringResource(R.string.mobile_number),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -118,7 +120,7 @@ fun FormForEfitProfile(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Years old",
+            text = stringResource(R.string.years_old_label),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -144,7 +146,7 @@ fun FormForEfitProfile(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Weight",
+            text = stringResource(R.string.weight),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -152,7 +154,7 @@ fun FormForEfitProfile(
         Spacer(modifier = Modifier.height(4.dp))
 
         BasicTextField(
-            value = "$weight Kg",
+            value = stringResource(R.string.weight_kg_value, weight),
             onValueChange = onWeightChange,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number,
@@ -170,7 +172,7 @@ fun FormForEfitProfile(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Height",
+            text = stringResource(R.string.height),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary
         )
@@ -178,7 +180,7 @@ fun FormForEfitProfile(
         Spacer(modifier = Modifier.height(4.dp))
 
         BasicTextField(
-            value = "$height CM",
+            value = stringResource(R.string.height_cm_value, height),
             onValueChange = onHeightChange,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number,

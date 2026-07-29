@@ -23,8 +23,12 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.practice.R
+import com.example.practice.ui.utils.localizedAppText
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
 
@@ -35,6 +39,8 @@ fun OnboardingPageScreen(
     totalPages: Int,
     onSkip: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Box(Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(page.imageRes),
@@ -52,7 +58,7 @@ fun OnboardingPageScreen(
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
             ) {
                 Text(
-                    "Skip",
+                    stringResource(R.string.onboarding_skip),
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.padding(end = 4.dp)
                 )
@@ -85,13 +91,13 @@ fun OnboardingPageScreen(
                 )
 
                 Text(
-                    text = page.title,
+                    text = context.localizedAppText(page.title),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.titleLarge
                 )
 
                 Text(
-                    text = page.description,
+                    text = context.localizedAppText(page.description),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.titleLarge
                 )

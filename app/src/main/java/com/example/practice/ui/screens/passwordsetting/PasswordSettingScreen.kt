@@ -23,11 +23,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.ui.screens.passwordsetting.actions.PasswordSettingAction
 import com.example.practice.ui.screens.passwordsetting.actions.PasswordSettingSideEffect
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.FormForPassword
@@ -55,7 +58,11 @@ fun PasswordSettingScreen(
             viewModel.clearSideEffect()
         }
         is PasswordSettingSideEffect.ShowToast -> {
-            Toast.makeText(context, (sideEffect as PasswordSettingSideEffect.ShowToast).message, Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                context,
+                context.localizedAppText((sideEffect as PasswordSettingSideEffect.ShowToast).message),
+                Toast.LENGTH_LONG
+            ).show()
             viewModel.clearSideEffect()
         }
         is PasswordSettingSideEffect.Empty -> {
@@ -94,7 +101,7 @@ fun PasswordSettingScreen(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = "Notifications Settings",
+                        text = stringResource(R.string.password_setting),
                         color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.titleLarge
                     )

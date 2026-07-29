@@ -5,4 +5,5 @@ sealed class LogInSideEffect {
     data class ShowToast(val text: String) : LogInSideEffect()
     data object ShowForgottenPasswordScreen : LogInSideEffect()
     data object Empty : LogInSideEffect()
+    data object ShowSignInScreen : LogInSideEffect()
 }

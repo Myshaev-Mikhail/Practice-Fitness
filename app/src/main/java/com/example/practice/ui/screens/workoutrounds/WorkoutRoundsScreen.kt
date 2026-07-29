@@ -21,9 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.domain.models.WorkoutBadgeItem
 import com.example.practice.ui.screens.workoutrounds.actions.WorkoutRoundsSideEffect
 import com.example.practice.ui.uikit.components.BadgeItem
@@ -100,7 +102,7 @@ fun WorkoutRoundsScreen(
                     .chunked(3)
                     .forEachIndexed { index, round ->
                     Text(
-                        text = "Round ${index + 1}",
+                        text = stringResource(R.string.round_number, index + 1),
                         color = MaterialTheme.colorScheme.secondary,
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier

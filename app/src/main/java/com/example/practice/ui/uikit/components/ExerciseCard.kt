@@ -21,12 +21,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Light
 import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.R
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.theme.LeagueSpartan
 import com.example.practice.ui.uikit.theme.Poppins
 import io.github.composegears.valkyrie.Calories
@@ -42,6 +46,8 @@ fun ExerciseCard(
     durationText: String,
     levelText: String
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -55,7 +61,7 @@ fun ExerciseCard(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = title,
+                text = context.localizedAppText(title),
                 style = TextStyle(
                     fontFamily = Poppins,
                     fontWeight = Medium,
@@ -68,7 +74,7 @@ fun ExerciseCard(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = description,
+                text = context.localizedAppText(description),
                 style = TextStyle(
                     fontFamily = Poppins,
                     fontWeight = Light,
@@ -101,7 +107,7 @@ fun ExerciseCard(
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(
-                        text = durationText,
+                        text = context.localizedAppText(durationText),
                         style = TextStyle(
                             fontFamily = LeagueSpartan,
                             fontWeight = Light,
@@ -120,7 +126,7 @@ fun ExerciseCard(
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(
-                        text = "$levelText Rep",
+                        text = stringResource(R.string.rep_value, levelText),
                         style = TextStyle(
                             fontFamily = LeagueSpartan,
                             fontWeight = Light,

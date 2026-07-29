@@ -18,10 +18,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.theme.Poppins
 import io.github.composegears.valkyrie.TimeDefault
 import io.github.composegears.valkyrie.Icons
@@ -36,6 +38,8 @@ fun StatsCard(
     rightTitle: String,
     rightValue: String,
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .background(MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(24.dp))
@@ -49,7 +53,7 @@ fun StatsCard(
 
             Column {
                 Text(
-                    text = dayLabel,
+                    text = context.localizedAppText(dayLabel),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -83,7 +87,7 @@ fun StatsCard(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = centerTitle,
+                    text = context.localizedAppText(centerTitle),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -106,7 +110,7 @@ fun StatsCard(
                 horizontalAlignment = Alignment.End
             ) {
                 Text(
-                    text = rightTitle,
+                    text = context.localizedAppText(rightTitle),
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = TextStyle(
                         fontFamily = Poppins,

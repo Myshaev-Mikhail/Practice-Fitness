@@ -20,7 +20,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.practice.ui.utils.localizedAppText
 
 @Composable
 fun ToggleSwitch(
@@ -29,6 +31,8 @@ fun ToggleSwitch(
     onCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val context = LocalContext.current
+
     val trackColor by animateColorAsState(
         targetValue = if (checked)
             MaterialTheme.colorScheme.secondary
@@ -57,7 +61,7 @@ fun ToggleSwitch(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = title,
+            text = context.localizedAppText(title),
             modifier = Modifier.weight(1f),
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.headlineSmall

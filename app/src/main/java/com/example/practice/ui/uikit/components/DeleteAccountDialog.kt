@@ -19,9 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.example.practice.ui.utils.localizedAppText
 
 @Composable
 fun DeleteAccountDialog(
@@ -31,6 +33,8 @@ fun DeleteAccountDialog(
     onCancel: () -> Unit,
     onConfirm: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Dialog(
         onDismissRequest = onCancel,
         properties = DialogProperties(
@@ -70,7 +74,7 @@ fun DeleteAccountDialog(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = titleText,
+                    text = context.localizedAppText(titleText),
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
