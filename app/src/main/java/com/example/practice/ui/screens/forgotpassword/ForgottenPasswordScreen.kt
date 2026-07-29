@@ -30,17 +30,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.practice.ui.screens.editprofile.EditProfileViewModel
 import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordAction
 import com.example.practice.ui.screens.forgotpassword.actions.ForgottenPasswordSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ForgottenPasswordScreen(
-    navController: NavController,
-    viewModel: ForgottenPasswordViewModel
+    navController: NavController
 ) {
+    val viewModel: ForgottenPasswordViewModel = koinViewModel()
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current

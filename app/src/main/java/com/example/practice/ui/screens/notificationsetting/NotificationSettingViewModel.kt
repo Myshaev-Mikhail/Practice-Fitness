@@ -17,7 +17,6 @@ class NotificationSettingViewModel(
     private val useCase: NotificationSettingsUseCase,
     private val context: Context
 ) : ViewModel() {
-
     private val uiStateFlow = MutableStateFlow(NotificationSettingState())
     val uiStateEmitter = uiStateFlow.asStateFlow()
 

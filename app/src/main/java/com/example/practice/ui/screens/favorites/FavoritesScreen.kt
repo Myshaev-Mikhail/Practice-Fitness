@@ -35,12 +35,13 @@ import com.example.practice.ui.uikit.components.CyclingChallengeCard
 import com.example.practice.ui.uikit.components.TopBar
 import com.example.practice.ui.uikit.components.WorkoutCard
 import com.example.practice.ui.uikit.theme.Poppins
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun FavoritesScreen(
     navController: NavController
 ) {
-    val viewModel: FavoritesViewModel = viewModel()
+    val viewModel: FavoritesViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
 
     Box(

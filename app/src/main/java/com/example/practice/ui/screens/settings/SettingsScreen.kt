@@ -38,12 +38,13 @@ import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.Key
 import io.github.composegears.valkyrie.NotificationOff
 import io.github.composegears.valkyrie.Profile
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SettingsScreen(
-    navController: NavController,
-    viewModel: SettingsViewModel
+    navController: NavController
 ) {
+    val viewModel: SettingsViewModel = koinViewModel()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
 

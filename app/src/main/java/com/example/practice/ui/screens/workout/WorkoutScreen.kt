@@ -30,12 +30,13 @@ import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.TopBar
 import com.example.practice.ui.uikit.components.WorkoutCard
 import com.example.practice.ui.uikit.components.WorkoutHeader
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun WorkoutScreen(
-    navController: NavController,
-    viewModel: WorkoutViewModel
+    navController: NavController
 ) {
+    val viewModel: WorkoutViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

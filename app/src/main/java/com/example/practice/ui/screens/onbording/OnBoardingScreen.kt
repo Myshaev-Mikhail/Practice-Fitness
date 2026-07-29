@@ -25,12 +25,13 @@ import com.example.practice.ui.screens.onbording.onboardingpage.FirstOnboardingP
 import com.example.practice.ui.screens.onbording.onboardingpage.OnboardingPageScreen
 import com.example.practice.ui.screens.onbording.onboardingpage.onboardingPages
 import com.example.practice.ui.uikit.components.AppOutlinedButton
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun OnBoardingScreen(
     navController: NavController
 ) {
-    val viewModel: OnboardingViewModel = viewModel()
+    val viewModel: OnboardingViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

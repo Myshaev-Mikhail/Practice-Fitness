@@ -2,36 +2,24 @@ package com.example.practice
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.practice.di.EditProfileDi
 import com.example.practice.ui.screens.editprofile.EditProfileScreen
-import com.example.practice.ui.screens.editprofile.EditProfileViewModel
 import com.example.practice.ui.screens.favorites.FavoritesScreen
 import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordScreen
-import com.example.practice.ui.screens.forgotpassword.ForgottenPasswordViewModel
 import com.example.practice.ui.screens.help.HelpScreen
 import com.example.practice.ui.screens.home.HomeScreen
-import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.login.LogInScreen
-import com.example.practice.ui.screens.login.LogInViewModel
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingScreen
-import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModel
-import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModelFactory
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingScreen
-import com.example.practice.ui.screens.passwordsetting.PasswordSettingViewModel
 import com.example.practice.ui.screens.privacypolicy.PrivacyPolicyScreen
 import com.example.practice.ui.screens.profile.ProfileScreen
-import com.example.practice.ui.screens.profile.ProfileViewModel
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
 import com.example.practice.ui.screens.settings.SettingsScreen
-import com.example.practice.ui.screens.settings.SettingsViewModel
 import com.example.practice.ui.screens.setup.ActivityLevelScreen
 import com.example.practice.ui.screens.setup.AgeScreen
 import com.example.practice.ui.screens.setup.FillYourProfileScreen
@@ -42,13 +30,10 @@ import com.example.practice.ui.screens.setup.SetUpScreen
 import com.example.practice.ui.screens.setup.SetUpViewModel
 import com.example.practice.ui.screens.setup.WeightScreen
 import com.example.practice.ui.screens.signup.SignUpScreen
-import com.example.practice.ui.screens.signup.SignUpViewModel
 import com.example.practice.ui.screens.workout.WorkoutScreen
-import com.example.practice.ui.screens.workout.WorkoutViewModel
 import com.example.practice.ui.screens.workoutrounddetail.WorkoutRoundDetailScreen
-import com.example.practice.ui.screens.workoutrounddetail.WorkoutRoundDetailViewModel
 import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsScreen
-import com.example.practice.ui.screens.workoutrounds.WorkoutRoundsViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun NavigationApp(startDestination: String) {
@@ -64,38 +49,13 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.LogIn.route) {
-            val context = LocalContext.current
-
-            val viewModel: LogInViewModel = viewModel(
-                factory = EditProfileDi.provideLogInViewModelFactory(context)
-            )
-
-            LogInScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            LogInScreen(navController = navController)
         }
         composable(FitnessScreen.SignUp.route) {
-            val context = LocalContext.current
-
-            val viewModel: SignUpViewModel = viewModel(
-                factory = EditProfileDi.provideSignUpViewModelFactory(context)
-            )
-            SignUpScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            SignUpScreen(navController = navController)
         }
         composable(FitnessScreen.ForgottenPassword.route) {
-            val context = LocalContext.current
-
-            val viewModel: ForgottenPasswordViewModel = viewModel(
-                factory = EditProfileDi.provideForgottenPasswordViewModelFactory(context)
-            )
-            ForgottenPasswordScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            ForgottenPasswordScreen(navController = navController)
         }
         composable(
             route = FitnessScreen.SetPassword.route,
@@ -116,11 +76,8 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-            val context = LocalContext.current
-
-            val viewModel: SetUpViewModel = viewModel(
-                parentEntry,
-                factory = EditProfileDi.provideSetUpViewModelFactory(context)
+            val viewModel: SetUpViewModel = koinViewModel(
+                viewModelStoreOwner = parentEntry
             )
 
             SetUpScreen(
@@ -132,11 +89,8 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-            val context = LocalContext.current
-
-            val viewModel: SetUpViewModel = viewModel(
-                parentEntry,
-                factory = EditProfileDi.provideSetUpViewModelFactory(context)
+            val viewModel: SetUpViewModel = koinViewModel(
+                viewModelStoreOwner = parentEntry
             )
 
             AgeScreen(
@@ -149,11 +103,8 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-            val context = LocalContext.current
-
-            val viewModel: SetUpViewModel = viewModel(
-                parentEntry,
-                factory = EditProfileDi.provideSetUpViewModelFactory(context)
+            val viewModel: SetUpViewModel = koinViewModel(
+                viewModelStoreOwner = parentEntry
             )
 
             GenderScreen(
@@ -166,12 +117,8 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-
-            val context = LocalContext.current
-
-            val viewModel: SetUpViewModel = viewModel(
-                parentEntry,
-                factory = EditProfileDi.provideSetUpViewModelFactory(context)
+            val viewModel: SetUpViewModel = koinViewModel(
+                viewModelStoreOwner = parentEntry
             )
 
             WeightScreen(
@@ -183,11 +130,9 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-            val context = LocalContext.current
 
-            val viewModel: SetUpViewModel = viewModel(
-                parentEntry,
-                factory = EditProfileDi.provideSetUpViewModelFactory(context)
+            val viewModel: SetUpViewModel = koinViewModel(
+                viewModelStoreOwner = parentEntry
             )
 
             HeightScreen(
@@ -199,11 +144,8 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-            val context = LocalContext.current
-
-            val viewModel: SetUpViewModel = viewModel(
-                parentEntry,
-                factory = EditProfileDi.provideSetUpViewModelFactory(context)
+            val viewModel: SetUpViewModel = koinViewModel(
+                viewModelStoreOwner = parentEntry
             )
 
             GoalScreen(
@@ -215,11 +157,8 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-            val context = LocalContext.current
-
-            val viewModel: SetUpViewModel = viewModel(
-                parentEntry,
-                factory = EditProfileDi.provideSetUpViewModelFactory(context)
+            val viewModel: SetUpViewModel = koinViewModel(
+                viewModelStoreOwner = parentEntry
             )
 
             ActivityLevelScreen(
@@ -231,11 +170,9 @@ fun NavigationApp(startDestination: String) {
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry(FitnessScreen.SetUp.route)
             }
-            val context = LocalContext.current
 
-            val viewModel: SetUpViewModel = viewModel(
-                parentEntry,
-                factory = EditProfileDi.provideSetUpViewModelFactory(context)
+            val viewModel: SetUpViewModel = koinViewModel(
+                viewModelStoreOwner = parentEntry
             )
 
             FillYourProfileScreen(
@@ -244,37 +181,13 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Home.route) {
-            val dataStore = LocalContext.current
-
-            val viewModel: HomeViewModel = viewModel(
-                factory = EditProfileDi.provideHomeViewModelFactory(dataStore)
-            )
-            HomeScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            HomeScreen(navController = navController)
         }
         composable(FitnessScreen.Profile.route) {
-            val context = LocalContext.current
-
-            val viewModel: ProfileViewModel = viewModel(
-                factory = EditProfileDi.provideProfileViewModelFactory(context)
-            )
-            ProfileScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            ProfileScreen(navController = navController)
         }
         composable(FitnessScreen.EditProfile.route) {
-            val context = LocalContext.current
-
-            val viewModel: EditProfileViewModel = viewModel(
-                factory = EditProfileDi.provideEditProfileViewModelFactory(context)
-            )
-            EditProfileScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            EditProfileScreen(navController = navController)
         }
         composable(FitnessScreen.Favorites.route) {
             FavoritesScreen(
@@ -282,38 +195,13 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Settings.route) {
-            val context = LocalContext.current
-
-            val viewModel: SettingsViewModel = viewModel(
-                factory = EditProfileDi.provideSettingsViewModelFactory(context)
-            )
-
-            SettingsScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            SettingsScreen(navController = navController)
         }
         composable(FitnessScreen.NotificationSetting.route) {
-            val context = LocalContext.current
-
-            val viewModel: NotificationSettingViewModel = viewModel(
-                factory = NotificationSettingViewModelFactory(context)
-            )
-
-            NotificationSettingScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            NotificationSettingScreen(navController = navController)
         }
         composable(FitnessScreen.PasswordSetting.route) {
-            val context = LocalContext.current
-            val viewModel: PasswordSettingViewModel = viewModel(
-                factory = EditProfileDi.providePasswordSettingViewModelFactory(context)
-            )
-            PasswordSettingScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            PasswordSettingScreen(navController = navController)
         }
         composable(FitnessScreen.Help.route) {
             HelpScreen(
@@ -326,13 +214,7 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Workout.route) {
-            val viewModel: WorkoutViewModel = viewModel(
-                factory = EditProfileDi.provideWorkoutViewModelFactory()
-            )
-            WorkoutScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            WorkoutScreen(navController = navController)
         }
         composable(
             route = FitnessScreen.WorkoutRounds.route,
@@ -341,13 +223,7 @@ fun NavigationApp(startDestination: String) {
                 navArgument("workoutId") { type = NavType.IntType }
             )
         ) {
-            val viewModel: WorkoutRoundsViewModel = viewModel(
-                factory = EditProfileDi.provideWorkoutRoundsViewModelFactory()
-            )
-            WorkoutRoundsScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            WorkoutRoundsScreen(navController = navController)
         }
         composable(
             route = FitnessScreen.WorkoutRoundDetail.route,
@@ -356,13 +232,7 @@ fun NavigationApp(startDestination: String) {
                 navArgument("badgeId") { type = NavType.IntType }
             )
         ) {
-            val viewModel: WorkoutRoundDetailViewModel = viewModel(
-                factory = EditProfileDi.provideWorkoutRoundDetailViewModelFactory()
-            )
-            WorkoutRoundDetailScreen(
-                navController = navController,
-                viewModel = viewModel
-            )
+            WorkoutRoundDetailScreen(navController = navController)
         }
     }
 }

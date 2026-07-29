@@ -31,12 +31,13 @@ import com.example.practice.ui.screens.privacypolicy.actions.PrivacyPolicySideEf
 import com.example.practice.ui.uikit.components.BottomNavigation
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun PrivacyPolicyScreen(
     navController: NavController
 ) {
-    val viewModel: PrivacyPolicyViewModel = viewModel()
+    val viewModel: PrivacyPolicyViewModel = koinViewModel()
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

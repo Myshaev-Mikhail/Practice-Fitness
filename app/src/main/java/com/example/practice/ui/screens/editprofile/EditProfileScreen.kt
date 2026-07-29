@@ -56,12 +56,13 @@ import com.example.practice.ui.uikit.theme.LeagueSpartan
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.EditIcon
 import io.github.composegears.valkyrie.Icons
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun EditProfileScreen(
-    navController: NavController,
-    viewModel: EditProfileViewModel
+    navController: NavController
 ) {
+    val viewModel: EditProfileViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

@@ -10,14 +10,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class SetPasswordViewModel(private val oobCode: String) : ViewModel() {
+class SetPasswordViewModel(
+    private val oobCode: String,
+    private val authRepository: AuthRepositoryImpl
+) : ViewModel() {
     private val uiStateFlow = MutableStateFlow(SetPasswordState())
     val uiStateEmitter = uiStateFlow.asStateFlow()
 
     private val sideEffectFlow = MutableStateFlow<SetPasswordSideEffect>(SetPasswordSideEffect.Empty)
     val sideEffectEmitter = sideEffectFlow.asStateFlow()
-
-    private val authRepository = AuthRepositoryImpl()
 
     fun handleUiAction(action: SetPasswordAction) {
         when (action) {

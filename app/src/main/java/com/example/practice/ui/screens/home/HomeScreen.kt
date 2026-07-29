@@ -46,12 +46,13 @@ import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.SearchOff
 import io.github.composegears.valkyrie.UserOff
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeScreen(
-    navController: NavController,
-    viewModel: HomeViewModel
+    navController: NavController
 ) {
+    val viewModel: HomeViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

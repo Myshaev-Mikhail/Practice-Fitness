@@ -39,6 +39,7 @@ import io.github.composegears.valkyrie.FemaleOn
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.MaleOff
 import io.github.composegears.valkyrie.Property1MaleOn
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun GenderScreen(

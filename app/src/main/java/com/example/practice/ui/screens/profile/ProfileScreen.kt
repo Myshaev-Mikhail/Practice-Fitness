@@ -51,12 +51,13 @@ import io.github.composegears.valkyrie.Privacity
 import io.github.composegears.valkyrie.Profile
 import io.github.composegears.valkyrie.Settings
 import io.github.composegears.valkyrie.SupportAgent
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ProfileScreen(
-    navController: NavController,
-    viewModel: ProfileViewModel
+    navController: NavController
 ) {
+    val viewModel: ProfileViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 

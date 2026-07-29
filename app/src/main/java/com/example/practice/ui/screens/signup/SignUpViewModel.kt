@@ -61,12 +61,17 @@ class SignUpViewModel(
             }
 
             is SignUpAction.GoogleLogInClicked -> {
-                if (context != null && !isInternetAvailable(context)) {
+                if (context == null) {
+                    sideEffectFlow.value = SignUpSideEffect.ShowToast("Google sign-in is unavailable")
+                    return
+                }
+
+                if (!isInternetAvailable(context)) {
                     sideEffectFlow.value = SignUpSideEffect.ShowToast("There is no internet connection")
                     return
                 }
 
-                logInWithGoogle()
+                logInWithGoogle(context)
             }
         }
     }
@@ -100,11 +105,11 @@ class SignUpViewModel(
         }
     }
 
-    private fun logInWithGoogle() {
+    private fun logInWithGoogle(context: Context) {
         uiStateFlow.value = uiStateFlow.value.copy(isLoading = true)
 
         viewModelScope.launch {
-            val result = logInWithGoogleUseCase()
+            val result = logInWithGoogleUseCase(context)
             uiStateFlow.value = uiStateFlow.value.copy(isLoading = false)
 
             result
