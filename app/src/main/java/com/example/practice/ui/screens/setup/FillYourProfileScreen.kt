@@ -21,6 +21,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -29,15 +30,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.ui.screens.setup.actions.SetUpAction
 import com.example.practice.ui.screens.setup.actions.SetUpProfile
 import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.components.AppButton
 import com.example.practice.ui.uikit.components.AvatarCrop
 import com.example.practice.ui.uikit.components.FillYourProfile
@@ -57,6 +61,7 @@ fun FillYourProfileScreen(
     val scrollState = rememberScrollState()
 
     val context = LocalContext.current
+    val pleaseFillRequiredMessage = stringResource(R.string.please_fill_required)
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
@@ -70,46 +75,56 @@ fun FillYourProfileScreen(
     val emailFocusRequester = remember { FocusRequester() }
     val mobileNumberFocusRequester = remember { FocusRequester() }
 
-    when (sideEffect) {
-        is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.Home.route)
-            viewModel.clearSideEffect()
-        }
-
-        is SetUpSideEffect.NavigateBack -> {
-            navController.popBackStack()
-            viewModel.clearSideEffect()
-        }
-
-        is SetUpSideEffect.ShowProfileValidationError -> {
-            Toast.makeText(context, "Please fill in all required fields", Toast.LENGTH_SHORT).show()
-            viewModel.clearSideEffect()
-        }
-        is SetUpSideEffect.ShowToast -> {
-            Toast.makeText(context, (sideEffect as SetUpSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
-
-            if (profile.fullName.isNullOrEmpty()) {
-                fullNameFocusRequester.requestFocus()
-            } else if (profile.nickname.isNullOrEmpty()) {
-                nicknameFocusRequester.requestFocus()
-            } else if (profile.email.isNullOrEmpty()) {
-                emailFocusRequester.requestFocus()
-            } else {
-                mobileNumberFocusRequester.requestFocus()
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is SetUpSideEffect.NavigateNext -> {
+                viewModel.clearSideEffect()
+                navController.navigate(FitnessScreen.Home.route)
             }
 
-            viewModel.clearSideEffect()
-        }
-
-
-        is SetUpSideEffect.NavigateToHome -> {
-            navController.navigate(FitnessScreen.Home.route) {
-                popUpTo(0) { inclusive = true }
+            is SetUpSideEffect.NavigateBack -> {
+                viewModel.clearSideEffect()
+                navController.popBackStack()
             }
-            viewModel.clearSideEffect()
-        }
 
-        else -> Unit
+            is SetUpSideEffect.ShowProfileValidationError -> {
+                Toast.makeText(
+                    context,
+                    pleaseFillRequiredMessage,
+                    Toast.LENGTH_SHORT
+                ).show()
+                viewModel.clearSideEffect()
+            }
+
+            is SetUpSideEffect.ShowToast -> {
+                Toast.makeText(
+                    context,
+                    context.localizedAppText((sideEffect as SetUpSideEffect.ShowToast).text),
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                if (profile.fullName.isNullOrEmpty()) {
+                    fullNameFocusRequester.requestFocus()
+                } else if (profile.nickname.isNullOrEmpty()) {
+                    nicknameFocusRequester.requestFocus()
+                } else if (profile.email.isNullOrEmpty()) {
+                    emailFocusRequester.requestFocus()
+                } else {
+                    mobileNumberFocusRequester.requestFocus()
+                }
+
+                viewModel.clearSideEffect()
+            }
+
+            is SetUpSideEffect.NavigateToHome -> {
+                viewModel.clearSideEffect()
+                navController.navigate(FitnessScreen.Home.route) {
+                    popUpTo(0) { inclusive = true }
+                }
+            }
+
+            else -> Unit
+        }
     }
 
     Column(
@@ -138,7 +153,7 @@ fun FillYourProfileScreen(
             Spacer(modifier = Modifier.width(8.dp))
 
             Text(
-                text = "Back",
+                text = stringResource(R.string.back),
                 color = MaterialTheme.colorScheme.secondary,
                 style = MaterialTheme.typography.titleSmall,
             )
@@ -148,13 +163,13 @@ fun FillYourProfileScreen(
 
         Text(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            text = "Fill Your Profile",
+            text = stringResource(R.string.fill_your_profile),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onBackground,
         )
         Text(
             modifier = Modifier.padding(24.dp),
-            text = "Complete your profile to get the most accurate insights and a personalized fitness plan.",
+            text = stringResource(R.string.fill_profile_description),
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.labelLarge,
             textAlign = TextAlign.Center
@@ -201,7 +216,7 @@ fun FillYourProfileScreen(
                 .width(180.dp)
                 .padding(vertical = 4.dp)
                 .align(Alignment.CenterHorizontally),
-            text = "Start",
+            text = stringResource(R.string.start),
             textStyle = MaterialTheme.typography.headlineMedium,
             textColor = MaterialTheme.colorScheme.outlineVariant,
             buttonColor = MaterialTheme.colorScheme.secondary

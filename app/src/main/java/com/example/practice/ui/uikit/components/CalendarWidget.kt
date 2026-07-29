@@ -15,7 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.practice.R
+import java.text.DateFormatSymbols
 import java.util.*
 
 @Composable
@@ -28,14 +32,30 @@ fun CalendarWidget(
     var currentYear by remember { mutableStateOf(calendar.get(Calendar.YEAR)) }
     var selectedDay by remember { mutableStateOf<Int?>(calendar.get(Calendar.DAY_OF_MONTH)) }
     var monthMenuExpanded by remember { mutableStateOf(false) }
+    val configuration = LocalConfiguration.current
+    val locale = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+        configuration.locales[0]
+    } else {
+        @Suppress("DEPRECATION")
+        configuration.locale
+    }
 
-    val months = listOf(
-        "January", "February", "March", "April",
-        "May", "June", "July", "August",
-        "September", "October", "November", "December"
-    )
+    val months = remember(locale) {
+        DateFormatSymbols(locale).months.take(12)
+    }
 
-    val daysOfWeek = listOf("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
+    val daysOfWeek = remember(locale) {
+        val symbols = DateFormatSymbols(locale).shortWeekdays
+        listOf(
+            symbols[Calendar.MONDAY],
+            symbols[Calendar.TUESDAY],
+            symbols[Calendar.WEDNESDAY],
+            symbols[Calendar.THURSDAY],
+            symbols[Calendar.FRIDAY],
+            symbols[Calendar.SATURDAY],
+            symbols[Calendar.SUNDAY]
+        ).map { it.uppercase(locale) }
+    }
 
     val tempCalendar = remember(currentMonth, currentYear) {
         Calendar.getInstance().apply {
@@ -64,7 +84,7 @@ fun CalendarWidget(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Choose Date",
+                text = stringResource(R.string.choose_date),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.secondary
             )

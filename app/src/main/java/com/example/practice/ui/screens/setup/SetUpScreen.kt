@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -21,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.text.style.TextAlign
@@ -43,13 +45,15 @@ fun SetUpScreen(
     val state by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    when (sideEffect) {
-        is SetUpSideEffect.ShowGenderScreen -> {
-            navController.navigate(FitnessScreen.Gender.route)
-            viewModel.clearSideEffect()
-        }
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is SetUpSideEffect.ShowGenderScreen -> {
+                viewModel.clearSideEffect()
+                navController.navigate(FitnessScreen.Gender.route)
+            }
 
-        else -> Unit
+            else -> Unit
+        }
     }
 
     val configuration = LocalConfiguration.current
@@ -74,7 +78,7 @@ fun SetUpScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "Consistency Is \n" + "the Key To progress.\n" + "Don't Give Up!",
+            text = stringResource(R.string.setup_quote),
             color = MaterialTheme.colorScheme.secondary,
             style = TextStyle(
                 fontFamily = Poppins,
@@ -93,7 +97,7 @@ fun SetUpScreen(
                 .padding(16.dp)
         ) {
             Text(
-                text = "Stick to your workouts and track your habits — small daily efforts lead to big results.",
+                text = stringResource(R.string.setup_description),
                 color = MaterialTheme.colorScheme.onTertiary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center
@@ -106,7 +110,7 @@ fun SetUpScreen(
             modifier = Modifier
                 .width(180.dp)
                 .padding(vertical = 4.dp),
-            text = "Next",
+            text = stringResource(R.string.next),
             textStyle = MaterialTheme.typography.titleLarge
         ) {
             viewModel.handleUiAction(SetUpAction.StartSetUp)

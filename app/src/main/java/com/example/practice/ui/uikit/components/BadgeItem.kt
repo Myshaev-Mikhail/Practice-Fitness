@@ -20,12 +20,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Light
 import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.R
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.theme.LeagueSpartan
 import com.example.practice.ui.uikit.theme.Poppins
 
@@ -43,6 +47,8 @@ fun BadgeItem(
     trailingTopText: String? = null,
     trailingBottomText: String? = null,
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -85,7 +91,7 @@ fun BadgeItem(
             ) {
                 if (overlineText != null) {
                     Text(
-                        text = overlineText,
+                        text = context.localizedAppText(overlineText),
                         color = MaterialTheme.colorScheme.onSecondary,
                         style = TextStyle(
                             fontFamily = LeagueSpartan,
@@ -96,7 +102,7 @@ fun BadgeItem(
                 }
 
                 Text(
-                    text = titleText,
+                    text = context.localizedAppText(titleText),
                     color = MaterialTheme.colorScheme.onSecondary,
                     style = MaterialTheme.typography.bodyMedium
                 )
@@ -115,7 +121,7 @@ fun BadgeItem(
                         Spacer(modifier = Modifier.width(4.dp))
 
                         Text(
-                            text = subtitleText,
+                            text = context.localizedAppText(subtitleText),
                             color = MaterialTheme.colorScheme.tertiary,
                             style = TextStyle(
                                 fontFamily = Poppins,
@@ -146,14 +152,14 @@ fun BadgeItem(
                 ) {
                     if (trailingTopText != null) {
                         Text(
-                            text = "Repetition $trailingTopText",
+                            text = stringResource(R.string.repetition_value, trailingTopText),
                             color = MaterialTheme.colorScheme.primary,
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
                     if (trailingBottomText != null) {
                         Text(
-                            text = trailingBottomText,
+                            text = context.localizedAppText(trailingBottomText),
                             color = MaterialTheme.colorScheme.primary,
                             style = MaterialTheme.typography.bodyMedium
                         )

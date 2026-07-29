@@ -2,6 +2,8 @@ package com.example.practice
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -73,12 +75,7 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.SetUp.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(FitnessScreen.SetUp.route)
-            }
-            val viewModel: SetUpViewModel = koinViewModel(
-                viewModelStoreOwner = parentEntry
-            )
+            val viewModel = rememberSetUpViewModel(navController, backStackEntry)
 
             SetUpScreen(
                 navController = navController,
@@ -86,12 +83,7 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Age.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(FitnessScreen.SetUp.route)
-            }
-            val viewModel: SetUpViewModel = koinViewModel(
-                viewModelStoreOwner = parentEntry
-            )
+            val viewModel = rememberSetUpViewModel(navController, backStackEntry)
 
             AgeScreen(
                 navController = navController,
@@ -100,12 +92,7 @@ fun NavigationApp(startDestination: String) {
         }
 
         composable(FitnessScreen.Gender.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(FitnessScreen.SetUp.route)
-            }
-            val viewModel: SetUpViewModel = koinViewModel(
-                viewModelStoreOwner = parentEntry
-            )
+            val viewModel = rememberSetUpViewModel(navController, backStackEntry)
 
             GenderScreen(
                 navController = navController,
@@ -114,12 +101,7 @@ fun NavigationApp(startDestination: String) {
         }
 
         composable(FitnessScreen.Weight.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(FitnessScreen.SetUp.route)
-            }
-            val viewModel: SetUpViewModel = koinViewModel(
-                viewModelStoreOwner = parentEntry
-            )
+            val viewModel = rememberSetUpViewModel(navController, backStackEntry)
 
             WeightScreen(
                 navController = navController,
@@ -127,13 +109,7 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Height.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(FitnessScreen.SetUp.route)
-            }
-
-            val viewModel: SetUpViewModel = koinViewModel(
-                viewModelStoreOwner = parentEntry
-            )
+            val viewModel = rememberSetUpViewModel(navController, backStackEntry)
 
             HeightScreen(
                 navController = navController,
@@ -141,12 +117,7 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.Goal.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(FitnessScreen.SetUp.route)
-            }
-            val viewModel: SetUpViewModel = koinViewModel(
-                viewModelStoreOwner = parentEntry
-            )
+            val viewModel = rememberSetUpViewModel(navController, backStackEntry)
 
             GoalScreen(
                 navController = navController,
@@ -154,12 +125,7 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.ActivityLevel.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(FitnessScreen.SetUp.route)
-            }
-            val viewModel: SetUpViewModel = koinViewModel(
-                viewModelStoreOwner = parentEntry
-            )
+            val viewModel = rememberSetUpViewModel(navController, backStackEntry)
 
             ActivityLevelScreen(
                 navController = navController,
@@ -167,13 +133,7 @@ fun NavigationApp(startDestination: String) {
             )
         }
         composable(FitnessScreen.FillYourProfile.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(FitnessScreen.SetUp.route)
-            }
-
-            val viewModel: SetUpViewModel = koinViewModel(
-                viewModelStoreOwner = parentEntry
-            )
+            val viewModel = rememberSetUpViewModel(navController, backStackEntry)
 
             FillYourProfileScreen(
                 navController = navController,
@@ -235,4 +195,20 @@ fun NavigationApp(startDestination: String) {
             WorkoutRoundDetailScreen(navController = navController)
         }
     }
+}
+
+@Composable
+private fun rememberSetUpViewModel(
+    navController: NavController,
+    backStackEntry: NavBackStackEntry
+): SetUpViewModel {
+    val owner = remember(backStackEntry) {
+        runCatching {
+            navController.getBackStackEntry(FitnessScreen.SetUp.route)
+        }.getOrElse {
+            backStackEntry
+        }
+    }
+
+    return koinViewModel(viewModelStoreOwner = owner)
 }

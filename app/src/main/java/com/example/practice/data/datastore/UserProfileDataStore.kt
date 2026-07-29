@@ -28,6 +28,17 @@ class UserProfileDataStore(
             it[UserProfileKeys.FIRST_SETUP_COMPLETED] ?: false
         }
 
+    val languageFlow: Flow<String> =
+        dataStore.data.map {
+            it[UserProfileKeys.LANGUAGE] ?: "en"
+        }
+
+    suspend fun setLanguage(language: String) {
+        dataStore.edit {
+            it[UserProfileKeys.LANGUAGE] = language
+        }
+    }
+
     suspend fun setProfile(profile: UserProfile) {
         dataStore.edit { preferences ->
             preferences[UserProfileKeys.GENDER] = profile.gender.name
@@ -77,7 +88,13 @@ class UserProfileDataStore(
         }
 
     suspend fun clear() {
-        dataStore.edit { it.clear() }
+        dataStore.edit {
+            val language = it[UserProfileKeys.LANGUAGE]
+            it.clear()
+            if (language != null) {
+                it[UserProfileKeys.LANGUAGE] = language
+            }
+        }
     }
 }
 
@@ -94,4 +111,5 @@ object UserProfileKeys {
     val MOBILE = stringPreferencesKey("mobile")
     val AVATAR_URI = stringPreferencesKey("avatar_uri")
     val FIRST_SETUP_COMPLETED = booleanPreferencesKey("first_setup_completed")
+    val LANGUAGE = stringPreferencesKey("language")
 }

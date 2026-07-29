@@ -29,11 +29,13 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.example.practice.R
 import com.example.practice.ui.uikit.theme.Poppins
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -180,7 +182,7 @@ fun WeightPicker(
             Spacer(Modifier.width(4.dp))
 
             Text(
-                text = "Kg",
+                text = stringResource(R.string.kg_unit),
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                 style = TextStyle(
                     fontFamily = Poppins,

@@ -27,12 +27,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.practice.R
 import com.example.practice.ui.screens.setpassword.actions.SetPasswordAction
 import com.example.practice.ui.screens.setpassword.actions.SetPasswordSideEffect
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -56,7 +59,7 @@ fun SetPasswordScreen(
             is SetPasswordSideEffect.ShowToast -> {
                 Toast.makeText(
                     context,
-                    (sideEffect as SetPasswordSideEffect.ShowToast).message,
+                    context.localizedAppText((sideEffect as SetPasswordSideEffect.ShowToast).message),
                     Toast.LENGTH_SHORT
                 ).show()
                 viewModel.clearSideEffect()
@@ -110,7 +113,7 @@ fun SetPasswordScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "set Password",
+                        text = stringResource(R.string.set_password_title),
                         color = MaterialTheme.colorScheme.secondary,
                         style = MaterialTheme.typography.titleLarge
                     )
@@ -121,7 +124,7 @@ fun SetPasswordScreen(
 
             Text(
                 modifier = Modifier.padding(40.dp),
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                text = stringResource(R.string.set_password_description),
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center
@@ -138,7 +141,7 @@ fun SetPasswordScreen(
                     .padding(horizontal = 24.dp, vertical = 32.dp)
             ) {
                 Text(
-                    text = "Password",
+                    text = stringResource(R.string.password),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
@@ -161,7 +164,7 @@ fun SetPasswordScreen(
                 )
 
                 Text(
-                    text = " Confirm Password",
+                    text = stringResource(R.string.confirm_password),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
@@ -193,7 +196,7 @@ fun SetPasswordScreen(
         ) {
             AppOutlinedButton(
                 modifier = Modifier.width(185.dp),
-                text = "Reset Password",
+                text = stringResource(R.string.reset_password),
                 textColor = MaterialTheme.colorScheme.onPrimary
             ) {
                 viewModel.handleUiAction(SetPasswordAction.SubmitClicked)

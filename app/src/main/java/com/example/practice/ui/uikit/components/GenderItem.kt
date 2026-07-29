@@ -14,8 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.practice.ui.utils.localizedAppText
 
 @Composable
 fun GenderItem(
@@ -26,6 +28,8 @@ fun GenderItem(
     iconSize: Dp = 48.dp,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .clickable(onClick = onClick),
@@ -43,7 +47,7 @@ fun GenderItem(
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = text,
+                text = context.localizedAppText(text),
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleLarge
             )

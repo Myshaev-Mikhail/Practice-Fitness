@@ -17,11 +17,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.ui.utils.localizedAppText
 
 @Composable
 fun AppToggleCheckBox(
@@ -32,6 +34,8 @@ fun AppToggleCheckBox(
     textStyle: TextStyle = MaterialTheme.typography.headlineSmall,
     circleSize: Dp = 36.dp
 ) {
+    val context = LocalContext.current
+
     val backgroundColor =
         if (isSelected) MaterialTheme.colorScheme.outlineVariant else MaterialTheme.colorScheme.outline
 
@@ -64,7 +68,7 @@ fun AppToggleCheckBox(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = text,
+                text = context.localizedAppText(text),
                 style = textStyle,
                 color = textColor
             )

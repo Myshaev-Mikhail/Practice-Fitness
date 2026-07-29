@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.practice.ui.utils.localizedAppText
 
 @Composable
 fun WorkoutHeader(
@@ -21,6 +23,8 @@ fun WorkoutHeader(
     title: String? = "",
     subtitle: String? = ""
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.tertiary)
@@ -38,7 +42,7 @@ fun WorkoutHeader(
         Spacer(Modifier.height(24.dp))
         Text(
             modifier = Modifier.padding(start = 24.dp),
-            text = title,
+            text = context.localizedAppText(title),
             color = MaterialTheme.colorScheme.secondary,
             style = MaterialTheme.typography.titleLarge
         )
@@ -48,7 +52,7 @@ fun WorkoutHeader(
     if (subtitle != null) {
         Text(
             modifier = Modifier.padding(start = 24.dp),
-            text = subtitle,
+            text = context.localizedAppText(subtitle),
             color = MaterialTheme.colorScheme.outline,
             style = MaterialTheme.typography.bodyMedium
         )

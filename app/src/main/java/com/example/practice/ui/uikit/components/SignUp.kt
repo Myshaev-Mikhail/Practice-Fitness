@@ -12,17 +12,15 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
+import com.example.practice.R
 
 @Composable
 fun SignUp(
@@ -46,7 +44,7 @@ fun SignUp(
             .padding(horizontal = 24.dp, vertical = 32.dp)
     ) {
         Text(
-            text = "Full name",
+            text = stringResource(R.string.full_name),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )
@@ -74,7 +72,7 @@ fun SignUp(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Email or Mobile Number",
+            text = stringResource(R.string.signup_email_or_mobile_number),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )
@@ -101,7 +99,7 @@ fun SignUp(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Password",
+            text = stringResource(R.string.password),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )
@@ -129,7 +127,7 @@ fun SignUp(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Confirm Password",
+            text = stringResource(R.string.confirm_password),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSecondary
         )

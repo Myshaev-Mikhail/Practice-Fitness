@@ -13,11 +13,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Light
 import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.R
 import com.example.practice.ui.uikit.theme.LeagueSpartan
 
 @Composable
@@ -37,7 +39,7 @@ fun Search(
         ),
         placeholder = {
             Text(
-                text = "Search",
+                text = stringResource(R.string.search),
                 fontFamily = LeagueSpartan,
                 fontWeight = Light,
                 fontSize = 12.sp,

@@ -12,9 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.practice.ui.utils.localizedAppText
 
 @Composable
 fun AppToggleButton(
@@ -24,6 +26,8 @@ fun AppToggleButton(
     modifier: Modifier = Modifier,
     textStyle: TextStyle = MaterialTheme.typography.headlineMedium,
 ) {
+    val context = LocalContext.current
+
     val backgroundColor =
         if (isSelected) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.onPrimary
 
@@ -43,7 +47,7 @@ fun AppToggleButton(
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = text,
+            text = context.localizedAppText(text),
             style = textStyle,
             color = textColor,
             textAlign = TextAlign.Center

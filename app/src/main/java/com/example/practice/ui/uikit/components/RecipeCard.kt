@@ -25,7 +25,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.practice.ui.utils.localizedAppText
 import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.StartSmallOn
@@ -41,6 +43,8 @@ fun RecipeCard(
     modifier: Modifier = Modifier,
     colorFilterStar: Color? = null
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .wrapContentSize()
@@ -69,7 +73,7 @@ fun RecipeCard(
                 .padding(horizontal = 20.dp, vertical = 6.dp)
         ) {
             Text(
-                text = badgeText,
+                text = context.localizedAppText(badgeText),
                 style = MaterialTheme.typography.bodyMedium
             )
         }
@@ -94,7 +98,7 @@ fun RecipeCard(
             ) {
                 if (title != null) {
                     Text(
-                        text = title,
+                        text = context.localizedAppText(title),
                         color = MaterialTheme.colorScheme.secondary,
                         style = MaterialTheme.typography.titleMedium
                     )
@@ -112,7 +116,7 @@ fun RecipeCard(
                     Spacer(modifier = Modifier.width(4.dp))
 
                     Text(
-                        text = timeText,
+                        text = context.localizedAppText(timeText),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.labelMedium
                     )
@@ -130,7 +134,7 @@ fun RecipeCard(
                     Spacer(modifier = Modifier.width(4.dp))
 
                     Text(
-                        text = caloriesText,
+                        text = context.localizedAppText(caloriesText),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.labelMedium
                     )

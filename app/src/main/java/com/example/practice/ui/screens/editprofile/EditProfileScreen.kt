@@ -26,6 +26,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +38,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -80,19 +82,21 @@ fun EditProfileScreen(
             }
         }
 
-    when(sideEffect) {
-        is EditProfileSideEffect.ShowNavigateBack -> {
-            navController.popBackStack()
-            viewModel.clearSideEffect()
-        }
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is EditProfileSideEffect.ShowNavigateBack -> {
+                navController.popBackStack()
+                viewModel.clearSideEffect()
+            }
 
-        is EditProfileSideEffect.ShowUnsavedChangesDialog -> {
-            isUnsavedChangesDialog = true
-            viewModel.clearSideEffect()
-        }
+            is EditProfileSideEffect.ShowUnsavedChangesDialog -> {
+                isUnsavedChangesDialog = true
+                viewModel.clearSideEffect()
+            }
 
-        is EditProfileSideEffect.Empty -> {
+            is EditProfileSideEffect.Empty -> {
             // Nothing
+            }
         }
     }
 
@@ -133,7 +137,7 @@ fun EditProfileScreen(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = "My Profile",
+                        text = stringResource(R.string.my_profile),
                         color = MaterialTheme.colorScheme.outline,
                         style = MaterialTheme.typography.titleLarge
                     )
@@ -182,7 +186,7 @@ fun EditProfileScreen(
                 )
 
                 Text(
-                    text = "Birthday: April 1st",
+                    text = stringResource(R.string.birthday_april_first),
                     color = MaterialTheme.colorScheme.outline,
                     style = MaterialTheme.typography.bodyMedium
                 )
@@ -202,12 +206,12 @@ fun EditProfileScreen(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text ="${uiState.weight} Kg",
+                        text = stringResource(R.string.weight_kg_value, uiState.weight.toString()),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Weight",
+                        text = stringResource(R.string.weight),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -227,7 +231,7 @@ fun EditProfileScreen(
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Years Old",
+                        text = stringResource(R.string.years_old),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -242,12 +246,12 @@ fun EditProfileScreen(
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text = "${uiState.height} CM",
+                        text = stringResource(R.string.height_cm_value, uiState.height.toString()),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Height",
+                        text = stringResource(R.string.height),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -290,7 +294,7 @@ fun EditProfileScreen(
                         .width(180.dp)
                         .align(Alignment.CenterHorizontally)
                         .padding(bottom = 24.dp),
-                    text = "Update Profile",
+                    text = stringResource(R.string.update_profile),
                     textColor = MaterialTheme.colorScheme.onSecondary,
                     textStyle = TextStyle(
                         fontFamily = LeagueSpartan,
@@ -334,7 +338,7 @@ fun EditProfileScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "You have unsaved changes!",
+                            text = stringResource(R.string.unsaved_changes),
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.onBackground
                         )
@@ -345,7 +349,7 @@ fun EditProfileScreen(
                         ) {
                             AppButton(
                                 modifier = Modifier.width(120.dp),
-                                text = "Cancel",
+                                text = stringResource(R.string.cancel),
                                 textStyle = MaterialTheme.typography.headlineSmall,
                                 buttonColor = MaterialTheme.colorScheme.secondary,
                                 textColor = MaterialTheme.colorScheme.onSecondary
@@ -358,7 +362,7 @@ fun EditProfileScreen(
 
                             AppButton(
                                 modifier = Modifier.width(120.dp),
-                                text = "Exit",
+                                text = stringResource(R.string.exit),
                                 textStyle = MaterialTheme.typography.headlineSmall,
                                 buttonColor = MaterialTheme.colorScheme.onPrimary,
                                 textColor = MaterialTheme.colorScheme.onSecondary

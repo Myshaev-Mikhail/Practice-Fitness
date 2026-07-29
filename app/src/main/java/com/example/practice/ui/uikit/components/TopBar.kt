@@ -16,9 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.ui.utils.localizedAppText
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.BellNotificationOff
 import io.github.composegears.valkyrie.Icons
@@ -31,6 +33,8 @@ fun TopBar(
     modifier: Modifier = Modifier,
     title: String
 ) {
+    val context = LocalContext.current
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -57,7 +61,7 @@ fun TopBar(
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
-                    text = title,
+                    text = context.localizedAppText(title),
                     color = MaterialTheme.colorScheme.primary,
                     style = MaterialTheme.typography.titleLarge
                 )

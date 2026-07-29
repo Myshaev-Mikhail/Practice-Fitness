@@ -14,11 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.example.practice.R
 import com.example.practice.ui.uikit.theme.Poppins
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
@@ -98,7 +100,7 @@ fun HeightPicker(
             Spacer(Modifier.width(6.dp))
 
             Text(
-                text = "cm",
+                text = stringResource(R.string.cm_unit),
                 color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.6f),
                 fontFamily = Poppins,
                 fontWeight = Bold,

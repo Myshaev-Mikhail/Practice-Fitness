@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -24,13 +25,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.domain.models.Goal
 import com.example.practice.ui.screens.setup.actions.SetUpAction
 import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.AppToggleCheckBox
 import io.github.composegears.valkyrie.Arrow
@@ -48,23 +52,29 @@ fun GoalScreen(
     val context = LocalContext.current
     val selectedGoals = state.goal?.toSet() ?: emptySet()
 
-    when (sideEffect) {
-        is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.ActivityLevel.route)
-            viewModel.clearSideEffect()
-        }
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is SetUpSideEffect.NavigateNext -> {
+                viewModel.clearSideEffect()
+                navController.navigate(FitnessScreen.ActivityLevel.route)
+            }
 
-        is SetUpSideEffect.NavigateBack -> {
-            navController.popBackStack()
-            viewModel.clearSideEffect()
-        }
+            is SetUpSideEffect.NavigateBack -> {
+                viewModel.clearSideEffect()
+                navController.popBackStack()
+            }
 
-        is SetUpSideEffect.ShowToast -> {
-            Toast.makeText(context, (sideEffect as SetUpSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
-            viewModel.clearSideEffect()
-        }
+            is SetUpSideEffect.ShowToast -> {
+                Toast.makeText(
+                    context,
+                    context.localizedAppText((sideEffect as SetUpSideEffect.ShowToast).text),
+                    Toast.LENGTH_SHORT
+                ).show()
+                viewModel.clearSideEffect()
+            }
 
-        else -> Unit
+            else -> Unit
+        }
     }
 
     Column(
@@ -92,7 +102,7 @@ fun GoalScreen(
             Spacer(modifier = Modifier.width(8.dp))
 
             Text(
-                text = "Back",
+                text = stringResource(R.string.back),
                 color = MaterialTheme.colorScheme.secondary,
                 style = MaterialTheme.typography.titleSmall,
             )
@@ -107,7 +117,7 @@ fun GoalScreen(
         ) {
             Text(
                 modifier = Modifier.align(Alignment.CenterHorizontally),
-                text = "What Is Your Goal?",
+                text = stringResource(R.string.setup_goal_title),
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onBackground
             )
@@ -115,7 +125,7 @@ fun GoalScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "Whether it’s building muscle, losing fat, or improving endurance, we’ll guide you every step.",
+                text = stringResource(R.string.setup_goal_description),
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.labelLarge,
                 textAlign = TextAlign.Center
@@ -132,7 +142,7 @@ fun GoalScreen(
         ) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 AppToggleCheckBox(
-                    text = "Lose Weight",
+                    text = stringResource(R.string.lose_weight),
                     isSelected = selectedGoals.contains(Goal.LOSE_WEIGHT),
                     onClick = {
                         val updatedGoals =
@@ -147,7 +157,7 @@ fun GoalScreen(
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 AppToggleCheckBox(
-                    text = "Gain weight",
+                    text = stringResource(R.string.gain_weight),
                     isSelected = selectedGoals.contains(Goal.GAIN_WEIGHT),
                     onClick = {
                         val updatedGoals =
@@ -162,7 +172,7 @@ fun GoalScreen(
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 AppToggleCheckBox(
-                    text = "Muscle Mass Gain",
+                    text = stringResource(R.string.muscle_mass_gain),
                     isSelected = selectedGoals.contains(Goal.MUSCLE_MASS_GAIN),
                     onClick = {
                         val updatedGoals =
@@ -177,7 +187,7 @@ fun GoalScreen(
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 AppToggleCheckBox(
-                    text = "Shape body",
+                    text = stringResource(R.string.shape_body),
                     isSelected = selectedGoals.contains(Goal.SHAPE_BODY),
                     onClick = {
                         val updatedGoals =
@@ -192,7 +202,7 @@ fun GoalScreen(
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 AppToggleCheckBox(
-                    text = "Others",
+                    text = stringResource(R.string.others),
                     isSelected = selectedGoals.contains(Goal.OTHERS),
                     onClick = {
                         val updatedGoals =
@@ -213,7 +223,7 @@ fun GoalScreen(
             modifier = Modifier
                 .width(180.dp)
                 .padding(vertical = 4.dp),
-            text = "Continue",
+            text = stringResource(R.string.continue_button),
             textStyle = MaterialTheme.typography.titleLarge,
         ) {
             viewModel.handleUiAction(SetUpAction.ContinueClickedGoal)

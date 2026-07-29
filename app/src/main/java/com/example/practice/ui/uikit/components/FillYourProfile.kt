@@ -27,6 +27,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -95,7 +96,7 @@ fun FillYourProfile(
             modifier = Modifier.padding(24.dp)
         ) {
             Text(
-                text = "Full name",
+                text = stringResource(R.string.full_name),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary
             )
@@ -123,7 +124,7 @@ fun FillYourProfile(
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = "Nickname",
+                text = stringResource(R.string.nickname),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary
             )
@@ -151,7 +152,7 @@ fun FillYourProfile(
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = "Email",
+                text = stringResource(R.string.email),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary
             )
@@ -179,7 +180,7 @@ fun FillYourProfile(
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = "Mobile Number",
+                text = stringResource(R.string.mobile_number),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary
             )

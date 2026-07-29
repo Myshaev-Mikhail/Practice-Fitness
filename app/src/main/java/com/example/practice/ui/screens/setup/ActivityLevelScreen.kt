@@ -17,19 +17,23 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.domain.models.ActivityLevel
 import com.example.practice.ui.screens.setup.actions.SetUpAction
 import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.components.AppOutlinedButton
 import com.example.practice.ui.uikit.components.AppToggleButton
 import io.github.composegears.valkyrie.Arrow
@@ -47,23 +51,29 @@ fun ActivityLevelScreen(
     val context = LocalContext.current
     val selectedActivityLevel = uiState.activityLevel
 
-    when (sideEffect) {
-        is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.FillYourProfile.route)
-            viewModel.clearSideEffect()
-        }
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is SetUpSideEffect.NavigateNext -> {
+                navController.navigate(FitnessScreen.FillYourProfile.route)
+                viewModel.clearSideEffect()
+            }
 
-        is SetUpSideEffect.NavigateBack -> {
-            navController.popBackStack()
-            viewModel.clearSideEffect()
-        }
+            is SetUpSideEffect.NavigateBack -> {
+                navController.popBackStack()
+                viewModel.clearSideEffect()
+            }
 
-        is SetUpSideEffect.ShowToast -> {
-            Toast.makeText(context, (sideEffect as SetUpSideEffect.ShowToast).text, Toast.LENGTH_SHORT).show()
-            viewModel.clearSideEffect()
-        }
+            is SetUpSideEffect.ShowToast -> {
+                Toast.makeText(
+                    context,
+                    context.localizedAppText((sideEffect as SetUpSideEffect.ShowToast).text),
+                    Toast.LENGTH_SHORT
+                ).show()
+                viewModel.clearSideEffect()
+            }
 
-        else -> Unit
+            else -> Unit
+        }
     }
 
     Box(
@@ -94,7 +104,7 @@ fun ActivityLevelScreen(
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
-                    text = "Back",
+                    text = stringResource(R.string.back),
                     color = MaterialTheme.colorScheme.secondary,
                     style = MaterialTheme.typography.titleSmall,
                 )
@@ -109,7 +119,7 @@ fun ActivityLevelScreen(
             ) {
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    text = "Physical Activity Level",
+                    text = stringResource(R.string.setup_activity_title),
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onBackground
                 )
@@ -117,7 +127,7 @@ fun ActivityLevelScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Tell us how active you are so we can create a program that fits your lifestyle.",
+                    text = stringResource(R.string.setup_activity_description),
                     color = MaterialTheme.colorScheme.onBackground,
                     style = MaterialTheme.typography.labelLarge,
                     textAlign = TextAlign.Center
@@ -135,7 +145,7 @@ fun ActivityLevelScreen(
                     .padding(24.dp)
             ) {
                 AppToggleButton(
-                    text = "Beginner",
+                    text = stringResource(R.string.beginner),
                     isSelected = selectedActivityLevel == ActivityLevel.BEGINNER,
                     onClick = {
                         viewModel.handleUiAction(SetUpAction.ActivitySelected(ActivityLevel.BEGINNER))
@@ -143,7 +153,7 @@ fun ActivityLevelScreen(
                 )
                 Spacer(modifier = Modifier.height(28.dp))
                 AppToggleButton(
-                    text = "Intermediate",
+                    text = stringResource(R.string.intermediate),
                     isSelected = selectedActivityLevel == ActivityLevel.INTERMEDIATE,
                     onClick = {
                         viewModel.handleUiAction(SetUpAction.ActivitySelected(ActivityLevel.INTERMEDIATE))
@@ -151,7 +161,7 @@ fun ActivityLevelScreen(
                 )
                 Spacer(modifier = Modifier.height(28.dp))
                 AppToggleButton(
-                    text = "Advance",
+                    text = stringResource(R.string.advance),
                     isSelected = selectedActivityLevel == ActivityLevel.ADVANCED,
                     onClick = {
                         viewModel.handleUiAction(SetUpAction.ActivitySelected(ActivityLevel.ADVANCED))
@@ -168,7 +178,7 @@ fun ActivityLevelScreen(
                 modifier = Modifier
                     .width(180.dp)
                     .padding(vertical = 4.dp),
-                text = "Continue",
+                text = stringResource(R.string.continue_button),
                 textStyle = MaterialTheme.typography.titleLarge,
             ) {
                 viewModel.handleUiAction(SetUpAction.ContinueClickedActivityLevel)

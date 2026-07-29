@@ -25,11 +25,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.Light
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.theme.LeagueSpartan
 import io.github.composegears.valkyrie.BookmarkOff1
 import io.github.composegears.valkyrie.BookmarkOn
@@ -50,6 +52,8 @@ fun ProfileStatsCard(
     backgroundColor: Color = MaterialTheme.colorScheme.background,
     accentColor: Color = MaterialTheme.colorScheme.secondary,
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -99,7 +103,7 @@ fun ProfileStatsCard(
             Spacer(Modifier.height(16.dp))
 
             Text(
-                text = description,
+                text = context.localizedAppText(description),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.secondary
             )

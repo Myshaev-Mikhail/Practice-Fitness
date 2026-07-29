@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,10 +25,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.ui.screens.setup.actions.SetUpAction
 import com.example.practice.ui.screens.setup.actions.SetUpSideEffect
 import com.example.practice.ui.uikit.components.AppOutlinedButton
@@ -46,18 +49,20 @@ fun HeightScreen(
 
     var selectedHeight by remember { mutableStateOf(165) }
 
-    when (sideEffect) {
-        is SetUpSideEffect.NavigateNext -> {
-            navController.navigate(FitnessScreen.Goal.route)
-            viewModel.clearSideEffect()
-        }
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is SetUpSideEffect.NavigateNext -> {
+                viewModel.clearSideEffect()
+                navController.navigate(FitnessScreen.Goal.route)
+            }
 
-        is SetUpSideEffect.NavigateBack -> {
-            navController.popBackStack()
-            viewModel.clearSideEffect()
-        }
+            is SetUpSideEffect.NavigateBack -> {
+                viewModel.clearSideEffect()
+                navController.popBackStack()
+            }
 
-        else -> Unit
+            else -> Unit
+        }
     }
 
     Box(
@@ -88,7 +93,7 @@ fun HeightScreen(
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
-                    text = "Back",
+                    text = stringResource(R.string.back),
                     color = MaterialTheme.colorScheme.secondary,
                     style = MaterialTheme.typography.titleSmall,
                 )
@@ -103,7 +108,7 @@ fun HeightScreen(
             ) {
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    text = "What Is Your height?",
+                    text = stringResource(R.string.setup_height_title),
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onBackground
                 )
@@ -111,7 +116,7 @@ fun HeightScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Your height, along with weight, helps calculate your BMI and tailor your fitness plan.",
+                    text = stringResource(R.string.setup_height_description),
                     color = MaterialTheme.colorScheme.onBackground,
                     style = MaterialTheme.typography.labelLarge,
                     textAlign = TextAlign.Center
@@ -134,7 +139,7 @@ fun HeightScreen(
                 modifier = Modifier
                     .width(180.dp)
                     .padding(vertical = 4.dp),
-                text = "Continue",
+                text = stringResource(R.string.continue_button),
                 textStyle = MaterialTheme.typography.titleLarge,
             ) {
                 viewModel.handleUiAction(SetUpAction.HeightEntered(selectedHeight))

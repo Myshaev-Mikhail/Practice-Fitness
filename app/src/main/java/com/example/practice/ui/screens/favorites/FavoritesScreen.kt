@@ -20,12 +20,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.practice.R
 import com.example.practice.ui.screens.favorites.actions.FavoritesAction
 import com.example.practice.ui.screens.favorites.actions.FavoritesFilter
 import com.example.practice.ui.screens.favorites.actions.FavoritesItem
@@ -67,7 +69,7 @@ fun FavoritesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Sort By",
+                    text = stringResource(R.string.sort_by),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,

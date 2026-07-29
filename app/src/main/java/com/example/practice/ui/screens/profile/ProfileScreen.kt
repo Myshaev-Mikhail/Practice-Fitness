@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,13 +34,15 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.ui.screens.profile.actions.ProfileAction
 import com.example.practice.ui.screens.profile.actions.ProfileSideEffect
-import com.example.practice.ui.screens.settings.actions.SettingsSideEffect
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.DeleteAccountDialog
 import com.example.practice.ui.uikit.components.ProfileMenuItem
@@ -64,52 +67,54 @@ fun ProfileScreen(
     val context = LocalContext.current
     var showDeleteDialog by remember { mutableStateOf(false) }
 
-    when (sideEffect) {
-        is ProfileSideEffect.ShowNavigateBack -> {
-            navController.popBackStack()
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowEditProfileScreen -> {
-            navController.navigate(FitnessScreen.EditProfile.route)
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowFavoritesScreen -> {
-            navController.navigate(FitnessScreen.Favorites.route)
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowPrivacyPolicyScreen -> {
-            navController.navigate(FitnessScreen.PrivacyPolicy.route)
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowSettingsScreen -> {
-            navController.navigate(FitnessScreen.Settings.route)
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowHelpScreen -> {
-            navController.navigate(FitnessScreen.Help.route)
-            viewModel.clearSideEffect()
-        }
-
-        is ProfileSideEffect.ShowLogoutScreen -> {
-            navController.navigate(FitnessScreen.OnBoarding.route) {
-                popUpTo(0)
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is ProfileSideEffect.ShowNavigateBack -> {
+                navController.popBackStack()
+                viewModel.clearSideEffect()
             }
-            viewModel.clearSideEffect()
-        }
 
-        is ProfileSideEffect.ShowError -> {
-            val message = (sideEffect as SettingsSideEffect.ShowError).throwable.message ?: "Unknown error"
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-            viewModel.clearSideEffect()
-        }
+            is ProfileSideEffect.ShowEditProfileScreen -> {
+                navController.navigate(FitnessScreen.EditProfile.route)
+                viewModel.clearSideEffect()
+            }
 
-        is ProfileSideEffect.Empty -> {
+            is ProfileSideEffect.ShowFavoritesScreen -> {
+                navController.navigate(FitnessScreen.Favorites.route)
+                viewModel.clearSideEffect()
+            }
+
+            is ProfileSideEffect.ShowPrivacyPolicyScreen -> {
+                navController.navigate(FitnessScreen.PrivacyPolicy.route)
+                viewModel.clearSideEffect()
+            }
+
+            is ProfileSideEffect.ShowSettingsScreen -> {
+                navController.navigate(FitnessScreen.Settings.route)
+                viewModel.clearSideEffect()
+            }
+
+            is ProfileSideEffect.ShowHelpScreen -> {
+                navController.navigate(FitnessScreen.Help.route)
+                viewModel.clearSideEffect()
+            }
+
+            is ProfileSideEffect.ShowLogoutScreen -> {
+                navController.navigate(FitnessScreen.OnBoarding.route) {
+                    popUpTo(0)
+                }
+                viewModel.clearSideEffect()
+            }
+
+            is ProfileSideEffect.ShowError -> {
+                val message = (sideEffect as ProfileSideEffect.ShowError).throwable.message ?: "Unknown error"
+                Toast.makeText(context, context.localizedAppText(message), Toast.LENGTH_SHORT).show()
+                viewModel.clearSideEffect()
+            }
+
+            is ProfileSideEffect.Empty -> {
             // Nothing
+            }
         }
     }
 
@@ -146,7 +151,7 @@ fun ProfileScreen(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = "My Profile",
+                        text = stringResource(R.string.my_profile),
                         color = MaterialTheme.colorScheme.outline,
                         style = MaterialTheme.typography.titleLarge
                     )
@@ -177,7 +182,7 @@ fun ProfileScreen(
                 )
 
                 Text(
-                    text = "Birthday: April 1st",
+                    text = stringResource(R.string.birthday_april_first),
                     color = MaterialTheme.colorScheme.outline,
                     style = MaterialTheme.typography.bodyMedium
                 )
@@ -197,12 +202,12 @@ fun ProfileScreen(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text = "${uiState.weight} Kg",
+                        text = stringResource(R.string.weight_kg_value, uiState.weight.toString()),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Weight",
+                        text = stringResource(R.string.weight),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -222,7 +227,7 @@ fun ProfileScreen(
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Years Old",
+                        text = stringResource(R.string.years_old),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -237,12 +242,12 @@ fun ProfileScreen(
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text = "${uiState.height} CM",
+                        text = stringResource(R.string.height_cm_value, uiState.height.toString()),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Height",
+                        text = stringResource(R.string.height),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.bodySmall
                     )
@@ -255,42 +260,42 @@ fun ProfileScreen(
             ) {
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Profile),
-                    title = "Profile",
+                    title = stringResource(R.string.profile),
                     onClick = {
                         viewModel.handleUiAction(ProfileAction.NavigateProfileEditing)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Favorites),
-                    title = "Favorite",
+                    title = stringResource(R.string.favorite),
                     onClick = {
                         viewModel.handleUiAction(ProfileAction.NavigateFavorite)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Privacity),
-                    title = "Privacy Policy",
+                    title = stringResource(R.string.privacy_policy),
                     onClick = {
                         viewModel.handleUiAction(ProfileAction.NavigatePrivacyPolicy)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Settings),
-                    title = "Settings",
+                    title = stringResource(R.string.settings),
                     onClick = {
                         viewModel.handleUiAction(ProfileAction.NavigateSettings)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.SupportAgent),
-                    title = "Help",
+                    title = stringResource(R.string.help),
                     onClick = {
                         viewModel.handleUiAction(ProfileAction.NavigateHelp)
                     }
                 )
                 ProfileMenuItem(
                     icon = rememberVectorPainter(Icons.Logout),
-                    title = "Logout",
+                    title = stringResource(R.string.logout),
                     onClick = {
                         showDeleteDialog = true
                     }
@@ -304,8 +309,8 @@ fun ProfileScreen(
 
         if (showDeleteDialog) {
             DeleteAccountDialog(
-                titleText = "Are you sure you want to log out?",
-                delAccount = "Yes, logout",
+                titleText = stringResource(R.string.logout_question),
+                delAccount = stringResource(R.string.yes_logout),
                 onCancel = { showDeleteDialog = false },
                 onConfirm = {
                     showDeleteDialog = false

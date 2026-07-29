@@ -10,6 +10,7 @@ import com.example.practice.data.datastore.NotificationSettingsDataStore
 import com.example.practice.data.repository.NotificationSettingsRepositoryImpl
 import com.example.practice.domain.usecase.NotificationSettingsUseCase
 import com.example.practice.extensions.notificationSettingsPreferences
+import com.example.practice.extensions.userProfileDataStore
 import kotlinx.coroutines.flow.first
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
@@ -25,13 +26,15 @@ class NotificationReceiver(
         val useCase = NotificationSettingsUseCase(repository)
 
         val settings = useCase.observeSettings().first()
+        val language = applicationContext.userProfileDataStore.languageFlow.first()
 
         if (!settings.generalEnabled) return Result.success()
 
         AppNotificationManager().showNotification(
             context = applicationContext,
             soundEnabled = settings.soundEnabled,
-            vibrateEnabled = settings.vibrateEnabled
+            vibrateEnabled = settings.vibrateEnabled,
+            language = language
         )
 
         scheduleNextWorker(

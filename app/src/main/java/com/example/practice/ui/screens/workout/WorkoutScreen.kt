@@ -1,6 +1,7 @@
 package com.example.practice.ui.screens.workout
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -19,9 +19,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.practice.FitnessScreen
+import com.example.practice.R
 import com.example.practice.domain.models.WorkoutFilter
 import com.example.practice.ui.screens.workout.actions.WorkoutAction
 import com.example.practice.ui.screens.workout.actions.WorkoutSideEffect
@@ -41,9 +43,9 @@ fun WorkoutScreen(
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
     val filters = listOf(
-        WorkoutFilter.BEGINNER to "Beginner",
-        WorkoutFilter.INTERMEDIATE to "Intermediate",
-        WorkoutFilter.ADVANCED to "Advanced"
+        WorkoutFilter.BEGINNER to stringResource(R.string.beginner),
+        WorkoutFilter.INTERMEDIATE to stringResource(R.string.intermediate),
+        WorkoutFilter.ADVANCED to stringResource(R.string.advanced)
     )
 
     when (sideEffect) {
@@ -86,13 +88,14 @@ fun WorkoutScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
-                    .padding(start = 12.dp, top = 8.dp, end = 24.dp, bottom = 12.dp),
+                    .padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 12.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 filters.forEach { (filter, title) ->
                     AppButton(
                         modifier = Modifier
-                            .width(110.dp)
+                            .weight(1f)
                             .height(30.dp),
                         text = title,
                         textColor = if (uiState.selectedFilter == filter) {
@@ -100,7 +103,7 @@ fun WorkoutScreen(
                         } else {
                             MaterialTheme.colorScheme.primary
                         },
-                        textStyle = MaterialTheme.typography.headlineSmall,
+                        textStyle = MaterialTheme.typography.titleSmall,
                         buttonColor = if (uiState.selectedFilter == filter) {
                             MaterialTheme.colorScheme.secondary
                         } else {
@@ -111,7 +114,6 @@ fun WorkoutScreen(
                             WorkoutAction.SelectFilter(filter)
                         )
                     }
-                    Spacer(Modifier.width(4.dp))
                 }
             }
 

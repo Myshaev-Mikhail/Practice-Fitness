@@ -10,11 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Light
 import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.theme.Poppins
 
 @Composable
@@ -25,6 +27,8 @@ fun StepsChartCard(
     months: List<String>,
     values: List<Float>,
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .width(250.dp)
@@ -39,7 +43,7 @@ fun StepsChartCard(
             .padding(start = 16.dp, top = 8.dp, end = 12.dp, bottom = 8.dp)
     ) {
         Text(
-            text = title,
+            text = context.localizedAppText(title),
             color = MaterialTheme.colorScheme.secondary,
             style = TextStyle(
                 fontFamily = Poppins,
@@ -119,7 +123,7 @@ fun StepsChartCard(
                 ) {
                     months.forEach {
                         Text(
-                            text = it,
+                            text = context.localizedAppText(it),
                             color = MaterialTheme.colorScheme.secondary,
                             style = MaterialTheme.typography.bodyMedium
                         )

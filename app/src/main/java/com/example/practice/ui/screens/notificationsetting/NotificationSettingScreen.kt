@@ -23,10 +23,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.practice.R
 import com.example.practice.ui.screens.notificationsetting.actions.NotificationSettingAction
 import com.example.practice.ui.screens.notificationsetting.actions.NotificationSettingSideEffect
+import com.example.practice.ui.utils.findActivity
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ToggleSwitch
 import io.github.composegears.valkyrie.Arrow
@@ -41,6 +45,7 @@ fun NotificationSettingScreen(
     val viewModel: NotificationSettingViewModel = koinViewModel()
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
+    val viewContext = LocalView.current.context
 
     when (sideEffect) {
         is NotificationSettingSideEffect.ShowNavigateBack -> {
@@ -49,10 +54,11 @@ fun NotificationSettingScreen(
         }
         is NotificationSettingSideEffect.ShowTimePicker -> {
             val context = LocalContext.current
+            val activityContext = viewContext.findActivity() ?: context
             val calendar = uiState.notificationTime ?: Calendar.getInstance()
 
             TimePickerDialog(
-                context,
+                activityContext,
                 { _, hourOfDay, minute ->
                     val selectedTime = Calendar.getInstance().apply {
                         set(Calendar.HOUR_OF_DAY, hourOfDay)
@@ -108,7 +114,7 @@ fun NotificationSettingScreen(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = "Notifications Settings",
+                        text = stringResource(R.string.notifications_settings),
                         color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.titleLarge
                     )

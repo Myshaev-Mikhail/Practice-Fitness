@@ -18,6 +18,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -25,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.text.font.FontWeight.Companion.Normal
@@ -56,42 +58,44 @@ fun HomeScreen(
     val uiState by viewModel.uiStateEmitter.collectAsState()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
 
-    when(sideEffect) {
-        is HomeSideEffect.ShowSearchScreen -> {
+    LaunchedEffect(sideEffect) {
+        when (sideEffect) {
+            is HomeSideEffect.ShowSearchScreen -> {
             //navController.navigate(FitnessScreen.LogIn.route)
-            viewModel.clearSideEffect()
+                viewModel.clearSideEffect()
             // TODO
-        }
-        is HomeSideEffect.ShowNotificationScreen -> {
-            navController.navigate(FitnessScreen.NotificationSetting.route)
-            viewModel.clearSideEffect()
+            }
+            is HomeSideEffect.ShowNotificationScreen -> {
+                navController.navigate(FitnessScreen.NotificationSetting.route)
+                viewModel.clearSideEffect()
             // TODO
-        }
-        is HomeSideEffect.ShowProfileScreen -> {
-            navController.navigate(FitnessScreen.Profile.route)
-            viewModel.clearSideEffect()
-        }
-        is HomeSideEffect.ShowProgressTrackingScreen -> {
+            }
+            is HomeSideEffect.ShowProfileScreen -> {
+                navController.navigate(FitnessScreen.Profile.route)
+                viewModel.clearSideEffect()
+            }
+            is HomeSideEffect.ShowProgressTrackingScreen -> {
             //navController.navigate(FitnessScreen.LogIn.route)
-            viewModel.clearSideEffect()
+                viewModel.clearSideEffect()
             // TODO
-        }
-        is HomeSideEffect.ShowNutritionScreen -> {
+            }
+            is HomeSideEffect.ShowNutritionScreen -> {
             //navController.navigate(FitnessScreen.LogIn.route)
-            viewModel.clearSideEffect()
+                viewModel.clearSideEffect()
             // TODO
-        }
-        is HomeSideEffect.ShowCommunityScreen -> {
+            }
+            is HomeSideEffect.ShowCommunityScreen -> {
             //navController.navigate(FitnessScreen.LogIn.route)
-            viewModel.clearSideEffect()
+                viewModel.clearSideEffect()
             // TODO
-        }
-        is HomeSideEffect.ShowWorkoutSeeAll -> {
-            navController.navigate(FitnessScreen.Workout.route)
-            viewModel.clearSideEffect()
-        }
-        is HomeSideEffect.Empty -> {
+            }
+            is HomeSideEffect.ShowWorkoutSeeAll -> {
+                navController.navigate(FitnessScreen.Workout.route)
+                viewModel.clearSideEffect()
+            }
+            is HomeSideEffect.Empty -> {
             // Nothing
+            }
         }
     }
 
@@ -109,63 +113,65 @@ fun HomeScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 24.dp, top = 0.dp, end = 24.dp, bottom = 0.dp)
+                    .padding(start = 24.dp, top = 0.dp, end = 24.dp, bottom = 0.dp),
+                verticalAlignment = Alignment.Top
             ) {
-                Column() {
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
                     Row(
                         modifier = Modifier
                             .padding(4.dp)
                             .align(Alignment.Start)
                     ) {
                         Text(
-                            text = uiState.nickname?.let { "Hi, $it" } ?: "Hi!",
+                            text = uiState.nickname?.let {
+                                stringResource(R.string.home_hi_name, it)
+                            } ?: stringResource(R.string.home_hi),
                             style = MaterialTheme.typography.titleLarge,
                             color = MaterialTheme.colorScheme.primary
                         )
                     }
                     Text(
-                        text = "It's time to challenge your limits.",
+                        text = stringResource(R.string.home_challenge_limits),
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.outline
                     )
                 }
-                Column(
-                    modifier = Modifier.fillMaxWidth()
+                Row(
+                    modifier = Modifier.padding(start = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Row(
-                        modifier = Modifier.align(Alignment.End)
-                    ) {
-                        Image(
-                            painter = rememberVectorPainter(image = Icons.SearchOff),
-                            contentDescription = "search",
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(24.dp)
-                                .clickable {
-                                    viewModel.handleUiAction(HomeAction.Search)
-                                }
-                        )
-                        Image(
-                            painter = rememberVectorPainter(image = Icons.BellNotificationOff),
-                            contentDescription = "notification",
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(24.dp)
-                                .clickable {
-                                    viewModel.handleUiAction(HomeAction.Notification)
-                                }
-                        )
-                        Image(
-                            painter = rememberVectorPainter(image = Icons.UserOff),
-                            contentDescription = "profile_user",
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(24.dp)
-                                .clickable {
-                                    viewModel.handleUiAction(HomeAction.Profile)
-                                }
-                        )
-                    }
+                    Image(
+                        painter = rememberVectorPainter(image = Icons.SearchOff),
+                        contentDescription = "search",
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .size(24.dp)
+                            .clickable {
+                                viewModel.handleUiAction(HomeAction.Search)
+                            }
+                    )
+                    Image(
+                        painter = rememberVectorPainter(image = Icons.BellNotificationOff),
+                        contentDescription = "notification",
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .size(24.dp)
+                            .clickable {
+                                viewModel.handleUiAction(HomeAction.Notification)
+                            }
+                    )
+                    Image(
+                        painter = rememberVectorPainter(image = Icons.UserOff),
+                        contentDescription = "profile_user",
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .size(24.dp)
+                            .clickable {
+                                viewModel.handleUiAction(HomeAction.Profile)
+                            }
+                    )
                 }
             }
             NavBar(
@@ -192,7 +198,7 @@ fun HomeScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Recommendations",
+                    text = stringResource(R.string.recommendations),
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.secondary
                 )
@@ -201,7 +207,7 @@ fun HomeScreen(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = "See all",
+                        text = stringResource(R.string.see_all),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.outline
                     )
@@ -266,7 +272,7 @@ fun HomeScreen(
             }
 
             Text(
-                text = "Articles & Tips",
+                text = stringResource(R.string.articles_tips),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.secondary,
                 modifier = Modifier.padding(start = 24.dp, top = 12.dp)

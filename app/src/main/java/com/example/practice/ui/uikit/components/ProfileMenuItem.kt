@@ -16,7 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.practice.ui.utils.localizedAppText
 import io.github.composegears.valkyrie.Arrow
 import io.github.composegears.valkyrie.Icons
 
@@ -27,6 +29,8 @@ fun ProfileMenuItem(
     rotate: Float = 180f,
     onClick: () -> Unit = {}
 ) {
+    val context = LocalContext.current
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -43,7 +47,7 @@ fun ProfileMenuItem(
         Spacer(Modifier.width(16.dp))
 
         Text(
-            text = title,
+            text = context.localizedAppText(title),
             modifier = Modifier.weight(1f),
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.headlineSmall

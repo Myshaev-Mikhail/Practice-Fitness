@@ -23,11 +23,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.practice.R
 import com.example.practice.ui.screens.help.actions.HelpAction
 import com.example.practice.ui.screens.help.actions.HelpSideEffect
+import com.example.practice.ui.utils.findActivity
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.ProfileMenuItem
 import io.github.composegears.valkyrie.Arrow
@@ -43,6 +47,7 @@ fun HelpScreen(
     val viewModel: HelpViewModel = koinViewModel()
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
     val context = LocalContext.current
+    val activityContext = LocalView.current.context.findActivity() ?: context
 
     when (sideEffect) {
         is HelpSideEffect.ShowNavigateBack -> {
@@ -55,7 +60,7 @@ fun HelpScreen(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://t.me/lebensmude_spotter")
             )
-            context.startActivity(intent)
+            activityContext.startActivity(intent)
             viewModel.clearSideEffect()
         }
 
@@ -64,7 +69,7 @@ fun HelpScreen(
                 Intent.ACTION_SENDTO,
                 Uri.parse("mailto:mikhailmyshaev@gmail.com")
             )
-            context.startActivity(intent)
+            activityContext.startActivity(intent)
             viewModel.clearSideEffect()
         }
 
@@ -104,7 +109,7 @@ fun HelpScreen(
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = "Help & FAQs",
+                        text = stringResource(R.string.help_faqs),
                         color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.titleLarge
                     )
@@ -115,7 +120,7 @@ fun HelpScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "How Can We Help You?",
+                    text = stringResource(R.string.help_prompt),
                     color = MaterialTheme.colorScheme.outline,
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier

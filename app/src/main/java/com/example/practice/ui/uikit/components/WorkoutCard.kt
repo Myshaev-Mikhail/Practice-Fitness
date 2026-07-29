@@ -28,9 +28,11 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.practice.R
+import com.example.practice.ui.utils.localizedAppText
 import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.Icons
 import io.github.composegears.valkyrie.PlayOff
@@ -49,6 +51,8 @@ fun WorkoutCard(
     colorFilterStar: Color? = null,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -69,7 +73,7 @@ fun WorkoutCard(
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = title,
+                    text = context.localizedAppText(title),
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSecondary
                 )
@@ -87,7 +91,7 @@ fun WorkoutCard(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            text = duration,
+                            text = context.localizedAppText(duration),
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSecondary
                         )
@@ -104,7 +108,7 @@ fun WorkoutCard(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            text = calories,
+                            text = context.localizedAppText(calories),
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSecondary
                         )
@@ -121,7 +125,7 @@ fun WorkoutCard(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            text = exercises,
+                            text = context.localizedAppText(exercises),
                             style = MaterialTheme.typography.labelMedium,
                         )
                     }
