@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
@@ -27,19 +28,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice.R
+import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.theme.Poppins
 import com.example.practice.ui.uikit.components.BadgeItem
 import com.example.practice.ui.uikit.components.CalendarWidget
 import com.example.practice.ui.uikit.components.CyclingChallengeCard
 import com.example.practice.ui.uikit.components.ExerciseCard
-import com.example.practice.ui.uikit.components.HeightPicker
-import com.example.practice.ui.uikit.components.LogIn
 import com.example.practice.ui.uikit.components.ProfileCard
 import com.example.practice.ui.uikit.components.ProfileHorizontalCard
 import com.example.practice.ui.uikit.components.ProfileStatsCard
 import com.example.practice.ui.uikit.components.RecipeCard
 import com.example.practice.ui.uikit.components.Search
-import com.example.practice.ui.uikit.components.SignUp
 import com.example.practice.ui.uikit.components.StatsCard
 import com.example.practice.ui.uikit.components.StepsChartCard
 import com.example.practice.ui.uikit.components.WeightPicker
@@ -59,6 +58,8 @@ import io.github.composegears.valkyrie.WorkOut
 @Preview(widthDp = 2450, heightDp = 3500)
 @Composable
 fun AdditionalElements() {
+    val context = LocalContext.current
+
     Column {
         Box(
             modifier = Modifier
@@ -70,7 +71,7 @@ fun AdditionalElements() {
         ) {
             Text(
                 modifier = Modifier.padding(start = 24.dp),
-                text = "Additional Elements",
+                text = context.localizedAppText("Additional Elements"),
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = TextStyle(
                     fontFamily = Poppins,
@@ -84,7 +85,7 @@ fun AdditionalElements() {
             Column {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Avatar",
+                    text = context.localizedAppText("Avatar"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -127,7 +128,7 @@ fun AdditionalElements() {
             Column {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Badges",
+                    text = context.localizedAppText("Badges"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -200,7 +201,7 @@ fun AdditionalElements() {
             Column {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Illustrations",
+                    text = context.localizedAppText("Illustrations"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -220,7 +221,7 @@ fun AdditionalElements() {
             Column {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Оставшиеся картинки",
+                    text = context.localizedAppText("Remaining Images"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -350,7 +351,7 @@ fun AdditionalElements() {
             Column {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Cards",
+                    text = context.localizedAppText("Cards"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -406,8 +407,8 @@ fun AdditionalElements() {
                     name = "Madison",
                     age = 28,
                     genderSymbol = rememberVectorPainter(image = Icons.WomanGender),
-                    weightKg = 75,
-                    heightMeters = 1.65f
+                    weightKg = 75f,
+                    heightMeters = 165
                 )
             }
 
@@ -422,7 +423,7 @@ fun AdditionalElements() {
             Column(modifier = Modifier.padding(4.dp)) {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Graphs",
+                    text = context.localizedAppText("Graphs"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -435,7 +436,7 @@ fun AdditionalElements() {
                     title = "Steps",
                     yLabels = listOf(170, 165, 155, 150),
                     months = listOf("Jan", "Feb", "Mar", "Apr"),
-                    values = listOf(0.65f, 0.85f, 0.55f, 0.60f)
+                    values = listOf(0.70f, 0.65f, 0.55f, 0.50f)
                 )
                 WeightPicker(modifier = Modifier.width(310.dp))
             }
@@ -456,7 +457,7 @@ fun AdditionalElements() {
             Column(modifier = Modifier.padding(4.dp)) {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Calendar",
+                    text = context.localizedAppText("Calendar"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -477,7 +478,7 @@ fun AdditionalElements() {
 
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "App Logo",
+                    text = context.localizedAppText("App Logo"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -533,7 +534,7 @@ fun AdditionalElements() {
             Column(modifier = Modifier.padding(4.dp)) {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "CTA",
+                    text = context.localizedAppText("CTA"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -621,7 +622,7 @@ fun AdditionalElements() {
             Column(modifier = Modifier.padding(4.dp)) {
                 Text(
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Input Fields",
+                    text = context.localizedAppText("Input Fields"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -634,7 +635,7 @@ fun AdditionalElements() {
 
                 Text(
                     modifier = Modifier.padding(start = 12.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Search",
+                    text = context.localizedAppText("Search"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,
@@ -651,7 +652,7 @@ fun AdditionalElements() {
 
                 Text(
                     modifier = Modifier.padding(start = 12.dp, top = 8.dp, end = 0.dp, bottom = 4.dp),
-                    text = "Password & Date Iput Feild",
+                    text = context.localizedAppText("Password & Date Input Field"),
                     color = MaterialTheme.colorScheme.secondary,
                     style = TextStyle(
                         fontFamily = Poppins,

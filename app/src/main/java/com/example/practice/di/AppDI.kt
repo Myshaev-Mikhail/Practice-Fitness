@@ -11,6 +11,8 @@ import com.example.practice.ui.screens.onbording.OnboardingViewModel
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingViewModel
 import com.example.practice.ui.screens.privacypolicy.PrivacyPolicyViewModel
 import com.example.practice.ui.screens.profile.ProfileViewModel
+import com.example.practice.ui.screens.progress_tracking.charts.ChartsViewModel
+import com.example.practice.ui.screens.progress_tracking.workout_log.ProgressTrackingViewModel
 import com.example.practice.ui.screens.setpassword.SetPasswordViewModel
 import com.example.practice.ui.screens.settings.SettingsViewModel
 import com.example.practice.ui.screens.setup.SetUpViewModel
@@ -33,6 +35,8 @@ val appModule = module {
     viewModel<PasswordSettingViewModel> { PasswordSettingViewModel(get()) }
     viewModel<PrivacyPolicyViewModel> { PrivacyPolicyViewModel() }
     viewModel<ProfileViewModel> { ProfileViewModel(get(), get(), get()) }
+    viewModel<ProgressTrackingViewModel> { ProgressTrackingViewModel(get()) }
+    viewModel<ChartsViewModel> { ChartsViewModel() }
     viewModel<SetPasswordViewModel> { params ->
         SetPasswordViewModel(oobCode = params.get(), get())
     }

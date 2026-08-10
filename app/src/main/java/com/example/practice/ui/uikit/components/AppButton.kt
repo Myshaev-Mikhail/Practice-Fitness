@@ -1,6 +1,7 @@
 package com.example.practice.ui.uikit.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
@@ -19,6 +20,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.practice.ui.utils.localizedAppText
@@ -44,7 +46,11 @@ fun AppButton(
         colors = ButtonDefaults.buttonColors(containerColor = buttonColor),
         contentPadding = buttonPaddingValues,
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             if (image != null) {
                 Image(
                     painter = image,
@@ -63,6 +69,7 @@ fun AppButton(
                 text = context.localizedAppText(text),
                 color = textColor,
                 style = textStyle,
+                textAlign = TextAlign.Center
             )
         }
     }

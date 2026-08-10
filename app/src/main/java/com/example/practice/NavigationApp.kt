@@ -20,6 +20,8 @@ import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingScreen
 import com.example.practice.ui.screens.privacypolicy.PrivacyPolicyScreen
 import com.example.practice.ui.screens.profile.ProfileScreen
+import com.example.practice.ui.screens.progress_tracking.charts.ChartsScreen
+import com.example.practice.ui.screens.progress_tracking.workout_log.ProgressTrackingScreen
 import com.example.practice.ui.screens.setpassword.SetPasswordScreen
 import com.example.practice.ui.screens.settings.SettingsScreen
 import com.example.practice.ui.screens.setup.ActivityLevelScreen
@@ -172,6 +174,12 @@ fun NavigationApp(startDestination: String) {
             PrivacyPolicyScreen(
                 navController = navController
             )
+        }
+        composable(FitnessScreen.ProgressTracking.route) {
+            ProgressTrackingScreen(navController = navController)
+        }
+        composable(FitnessScreen.Charts.route) {
+            ChartsScreen(navController = navController)
         }
         composable(FitnessScreen.Workout.route) {
             WorkoutScreen(navController = navController)
