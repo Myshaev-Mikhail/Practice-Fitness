@@ -268,6 +268,22 @@
     <string name="activity_not_selected">Уровень активности не выбран</string>
     <string name="all_fields_must_be_filled">Все поля должны быть заполнены</string>
     <string name="reminder_notifications">Напоминания</string>
+    <string name="step_counter_notification_title">Счетчик шагов</string>
+    <string name="step_counter_notification_text">Отслеживаем ваши шаги</string>
+    <string name="steps_permission_popup_text">Разрешите отслеживание шагов, чтобы считать ежедневный прогресс.</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="today">Сегодня</string>
+    <string name="live">live</string>
+    <string name="goal">цель</string>
+    <string name="records">Рекорды</string>
+    <string name="best_periods">Лучшие периоды</string>
+    <string name="day">День</string>
+    <string name="week">Неделя</string>
+    <string name="month">Месяц</string>
+    <string name="year">Год</string>
+    <string name="km_unit">км</string>
+    <string name="kcal_unit">ккал</string>
     <string-array name="motivation_titles">
         <item>Вперёд!</item>
         <item>Держись!</item>

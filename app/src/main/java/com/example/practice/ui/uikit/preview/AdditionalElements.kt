@@ -41,6 +41,7 @@ import com.example.practice.ui.uikit.components.RecipeCard
 import com.example.practice.ui.uikit.components.Search
 import com.example.practice.ui.uikit.components.StatsCard
 import com.example.practice.ui.uikit.components.StepsChartCard
+import com.example.practice.ui.uikit.components.TodayActivityCard
 import com.example.practice.ui.uikit.components.WeightPicker
 import com.example.practice.ui.uikit.components.WorkoutCard
 import com.example.practice.ui.uikit.components.WorkoutPreviewCard
@@ -433,8 +434,9 @@ fun AdditionalElements() {
                 )
                 Spacer(modifier = Modifier.height(20.dp))
                 StepsChartCard(
+                    modifier = Modifier.width(320.dp),
                     title = "Steps",
-                    yLabels = listOf(170, 165, 155, 150),
+                    yLabels = listOf(170f, 165f, 155f, 150f),
                     months = listOf("Jan", "Feb", "Mar", "Apr"),
                     values = listOf(0.70f, 0.65f, 0.55f, 0.50f)
                 )
@@ -661,6 +663,17 @@ fun AdditionalElements() {
                     )
                 )
                 Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(8.dp))
+
+                TodayActivityCard(
+                    modifier = Modifier.width(320.dp),
+                    date = "28 августа",
+                    steps = 8436,
+                    km = 6.1f,
+                    calories = 312,
+                    goalOfSteps = 12000,
+                    goalProgress = 0.7f
+                )
                 //LogIn(modifier = Modifier.width(350.dp))
                 Spacer(modifier = Modifier.height(8.dp))
                 //SignUp(modifier = Modifier.width(350.dp))

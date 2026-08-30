@@ -268,6 +268,22 @@
     <string name="activity_not_selected">Physical activity level is not selected</string>
     <string name="all_fields_must_be_filled">All fields must be filled</string>
     <string name="reminder_notifications">Reminder Notifications</string>
+    <string name="step_counter_notification_title">Step counter</string>
+    <string name="step_counter_notification_text">Tracking your steps</string>
+    <string name="steps_permission_popup_text">Allow step tracking to count your daily progress.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="today">Today</string>
+    <string name="live">live</string>
+    <string name="goal">goal</string>
+    <string name="records">Records</string>
+    <string name="best_periods">Best periods</string>
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="km_unit">km</string>
+    <string name="kcal_unit">kcal</string>
     <string-array name="motivation_titles">
         <item>Go!</item>
         <item>Keep Going!</item>

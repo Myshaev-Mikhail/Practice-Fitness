@@ -36,7 +36,7 @@ val appModule = module {
     viewModel<PrivacyPolicyViewModel> { PrivacyPolicyViewModel() }
     viewModel<ProfileViewModel> { ProfileViewModel(get(), get(), get()) }
     viewModel<ProgressTrackingViewModel> { ProgressTrackingViewModel(get()) }
-    viewModel<ChartsViewModel> { ChartsViewModel() }
+    viewModel<ChartsViewModel> { ChartsViewModel(get()) }
     viewModel<SetPasswordViewModel> { params ->
         SetPasswordViewModel(oobCode = params.get(), get())
     }

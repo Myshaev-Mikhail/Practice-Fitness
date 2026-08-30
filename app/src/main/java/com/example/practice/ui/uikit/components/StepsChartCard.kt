@@ -18,12 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice.ui.utils.localizedAppText
 import com.example.practice.ui.uikit.theme.Poppins
+import kotlin.math.roundToInt
 
 @Composable
 fun StepsChartCard(
     modifier: Modifier = Modifier,
     title: String,
-    yLabels: List<Int>,
+    yLabels: List<Float>,
     months: List<String>,
     values: List<Float>,
 ) {
@@ -82,7 +83,7 @@ fun StepsChartCard(
                 ) {
                     yLabels.forEach {
                         Text(
-                            text = it.toString(),
+                            text = it.toChartLabel(),
                             color = MaterialTheme.colorScheme.secondary,
                             style = MaterialTheme.typography.bodyMedium
                         )
@@ -160,5 +161,14 @@ fun StepsChartCard(
                 }
             }
         }
+    }
+}
+
+private fun Float.toChartLabel(): String {
+    val rounded = (this * 10f).roundToInt() / 10f
+    return if (rounded % 1f == 0f) {
+        rounded.toInt().toString()
+    } else {
+        rounded.toString()
     }
 }

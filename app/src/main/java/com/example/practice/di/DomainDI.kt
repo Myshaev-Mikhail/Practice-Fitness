@@ -14,6 +14,7 @@ import com.example.practice.domain.usecase.ResetPasswordUseCase
 import com.example.practice.domain.usecase.SetFirstSetupUseCase
 import com.example.practice.domain.usecase.SetUserProfileUseCase
 import com.example.practice.domain.usecase.SignUpUseCase
+import com.example.practice.domain.usecase.StepsUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -31,4 +32,5 @@ val domainModule = module {
     factory { GetWorkoutsByFilterUseCase(get()) }
     factory { GetWorkoutByIdUseCase(get()) }
     factory { GetWorkoutDetailUseCase(get()) }
+    factory { StepsUseCase(get(), get()) }
 }
