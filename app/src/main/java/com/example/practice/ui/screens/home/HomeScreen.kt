@@ -75,9 +75,8 @@ fun HomeScreen(
                 viewModel.clearSideEffect()
             }
             is HomeSideEffect.ShowProgressTrackingScreen -> {
-            //navController.navigate(FitnessScreen.LogIn.route)
+                navController.navigate(FitnessScreen.ProgressTracking.route)
                 viewModel.clearSideEffect()
-            // TODO
             }
             is HomeSideEffect.ShowNutritionScreen -> {
             //navController.navigate(FitnessScreen.LogIn.route)
@@ -108,7 +107,7 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(top = 36.dp)
+                .padding(vertical = 40.dp)
         ) {
             Row(
                 modifier = Modifier
@@ -176,7 +175,7 @@ fun HomeScreen(
             }
             NavBar(
                 workout = true,
-                onWorkoutClick = { null },
+                onWorkoutClick = {},
                 onProgressClick = {
                     viewModel.handleUiAction(HomeAction.ProgressTracking)
                 },

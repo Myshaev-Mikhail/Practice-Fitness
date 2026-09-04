@@ -16,12 +16,9 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
-import androidx.compose.ui.text.font.FontWeight.Companion.Light
-import androidx.compose.ui.text.font.FontWeight.Companion.SemiBold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice.R
-import com.example.practice.ui.uikit.theme.LeagueSpartan
 import com.example.practice.ui.uikit.theme.Poppins
 
 @Composable
@@ -31,14 +28,14 @@ fun ProfileHorizontalCard(
     name: String,
     age: Int,
     genderSymbol: Painter,
-    weightKg: Int,
-    heightMeters: Float
+    weightKg: Float,
+    heightMeters: Int
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.tertiary)
-            .padding(10.dp),
+            .padding(vertical = 12.dp, horizontal = 24.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
@@ -78,6 +75,8 @@ fun ProfileHorizontalCard(
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.titleSmall
                 )
+
+                Spacer(modifier = Modifier.width(4.dp))
 
                 Text(
                     text = age.toString(),
@@ -129,7 +128,7 @@ fun ProfileHorizontalCard(
 
                 Column {
                     Text(
-                        text = stringResource(R.string.height_cm_value, String.format("%.2f", heightMeters)),
+                        text = stringResource(R.string.height_cm_value, heightMeters.toString()),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.titleSmall
                     )

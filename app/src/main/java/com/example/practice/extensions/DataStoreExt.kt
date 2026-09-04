@@ -17,6 +17,10 @@ val Context.notificationSettingsPreferences: DataStore<Preferences> by preferenc
     name = "notification_settings"
 )
 
+val Context.stepCounterPreferences: DataStore<Preferences> by preferencesDataStore(
+    name = "step_counter"
+)
+
 fun provideNotificationSettingsUseCase(context: Context): NotificationSettingsUseCase {
     val dataStore = NotificationSettingsDataStore(context.notificationSettingsPreferences)
     val repository = NotificationSettingsRepositoryImpl(dataStore)

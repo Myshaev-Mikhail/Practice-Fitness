@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
 }
 
@@ -79,4 +80,12 @@ dependencies {
     implementation("io.insert-koin:koin-android:4.0.2")
     implementation("io.insert-koin:koin-core:4.0.2")
     implementation("io.insert-koin:koin-androidx-compose:4.0.2")
+
+    //Room
+    implementation("androidx.room:room-runtime:2.8.4")
+    implementation("androidx.room:room-ktx:2.8.4")
+    ksp("androidx.room:room-compiler:2.8.4")
+
+    //Work
+    implementation("androidx.work:work-runtime-ktx:2.8.1")
 }

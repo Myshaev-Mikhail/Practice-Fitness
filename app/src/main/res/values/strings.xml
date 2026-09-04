@@ -91,7 +91,11 @@
     <string name="cycling_challenge_description">Lorem Ipsum Dolor Sit Amet Consectetur.\nMagnis Pellentesque Felis\nUllamcorper Imperdiet.</string>
     <string name="plank_with_hip_twist">Plank With Hip Twist</string>
     <string name="workout">Workout</string>
+    <string name="progress_tracking_title">Progress Tracking</string>
     <string name="progress_tracking">Progress \ntracking</string>
+    <string name="workout_log">Workout Log</string>
+    <string name="charts">Charts</string>
+    <string name="steps">Steps</string>
     <string name="nutrition">Nutrition</string>
     <string name="community">Community</string>
     <string name="beginner">Beginner</string>
@@ -224,6 +228,18 @@
     <string name="article_hydrate_description">Stay hydrated before, during, and after your workouts to optimize...</string>
     <string name="exercise_description_placeholder">Follow the movement with controlled form, steady breathing, and comfortable pace.</string>
     <string name="no_internet">There is no internet connection</string>
+    <string name="additional_elements">Additional Elements</string>
+    <string name="avatar">Avatar</string>
+    <string name="badges">Badges</string>
+    <string name="illustrations">Illustrations</string>
+    <string name="remaining_images">Remaining Images</string>
+    <string name="cards">Cards</string>
+    <string name="graphs">Graphs</string>
+    <string name="calendar">Calendar</string>
+    <string name="app_logo">App Logo</string>
+    <string name="cta">CTA</string>
+    <string name="input_fields">Input Fields</string>
+    <string name="password_date_input_field">Password &amp; Date Input Field</string>
     <string name="email_required">Email is required</string>
     <string name="password_required">Password is required</string>
     <string name="full_name_required">Full name is required</string>
@@ -252,6 +268,22 @@
     <string name="activity_not_selected">Physical activity level is not selected</string>
     <string name="all_fields_must_be_filled">All fields must be filled</string>
     <string name="reminder_notifications">Reminder Notifications</string>
+    <string name="step_counter_notification_title">Step counter</string>
+    <string name="step_counter_notification_text">Tracking your steps</string>
+    <string name="steps_permission_popup_text">Allow step tracking to count your daily progress.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="today">Today</string>
+    <string name="live">live</string>
+    <string name="goal">goal</string>
+    <string name="records">Records</string>
+    <string name="best_periods">Best periods</string>
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="km_unit">km</string>
+    <string name="kcal_unit">kcal</string>
     <string-array name="motivation_titles">
         <item>Go!</item>
         <item>Keep Going!</item>

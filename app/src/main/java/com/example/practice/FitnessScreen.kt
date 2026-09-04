@@ -31,6 +31,8 @@ sealed class FitnessScreen(val route: String) {
     data object PasswordSetting : FitnessScreen("password_setting")
     data object Help : FitnessScreen("help")
     data object PrivacyPolicy : FitnessScreen("privacy_policy")
+    data object ProgressTracking : FitnessScreen("progress_tracking")
+    data object Charts : FitnessScreen("charts")
     data object Workout : FitnessScreen("workout")
     data object WorkoutRounds : FitnessScreen("workout_rounds/{filter}/{workoutId}") {
         fun createRoute(filter: WorkoutFilter, workoutId: Int) =
