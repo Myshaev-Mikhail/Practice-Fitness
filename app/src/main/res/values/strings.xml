@@ -298,4 +298,48 @@
         <item>Do not postpone your workout until tomorrow</item>
         <item>A small workout is big progress</item>
     </string-array>
+    <string name="meal_plan_dietary_title">Dietary Preferences</string>
+    <string name="meal_plan_dietary_question">What are your dietary preferences?</string>
+    <string name="meal_plan_vegetarian">Vegetarian</string>
+    <string name="meal_plan_vegan">Vegan</string>
+    <string name="meal_plan_gluten_free">Gluten-Free</string>
+    <string name="meal_plan_keto">Keto</string>
+    <string name="meal_plan_paleo">Paleo</string>
+    <string name="meal_plan_no_preference">No preferences</string>
+    <string name="meal_plan_allergy_title">Allergies</string>
+    <string name="meal_plan_allergy_question">Do you have any food allergies we should know about?</string>
+    <string name="meal_plan_nuts">Nuts</string>
+    <string name="meal_plan_dairy">Dairy</string>
+    <string name="meal_plan_shellfish">Shellfish</string>
+    <string name="meal_plan_eggs">Eggs</string>
+    <string name="meal_plan_no_allergies">No allergies</string>
+    <string name="meal_plan_meal_type_title">Meal Types</string>
+    <string name="meal_plan_meal_type_question">Which meals do you want to plan?</string>
+    <string name="meal_plan_breakfast">Breakfast</string>
+    <string name="meal_plan_lunch">Lunch</string>
+    <string name="meal_plan_dinner">Dinner</string>
+    <string name="meal_plan_snacks">Snacks</string>
+    <string name="meal_plan_calorie_title">Caloric Goal</string>
+    <string name="meal_plan_calorie_question">What is your daily caloric intake goal?</string>
+    <string name="meal_plan_calorie_under_1500">Less than 1500 calories</string>
+    <string name="meal_plan_calorie_1500_2000">1500-2000 calories</string>
+    <string name="meal_plan_calorie_over_2000">More than 2000 calories</string>
+    <string name="meal_plan_calorie_no_goal">Not sure/Don\'t have a goal</string>
+    <string name="meal_plan_cooking_title">Cooking Time Preference</string>
+    <string name="meal_plan_cooking_question">How much time are you willing to spend cooking each meal?</string>
+    <string name="meal_plan_cooking_under_15">Less than 15 minutes</string>
+    <string name="meal_plan_cooking_15_30">15-30 minutes</string>
+    <string name="meal_plan_cooking_over_30">More than 30 minutes</string>
+    <string name="meal_plan_servings_title">Number Of Servings</string>
+    <string name="meal_plan_servings_question">How many servings do you need per meal?</string>
+    <string name="meal_plan_servings_one">1</string>
+    <string name="meal_plan_servings_two">2</string>
+    <string name="meal_plan_servings_three_four">3-4</string>
+    <string name="meal_plan_servings_over_four">More than 4</string>
+    <string name="meal_plan_title">Meal Plans</string>
+    <string name="meal_plan_start">Know your plan</string>
+    <string name="meal_plan_create">Create</string>
+    <string name="meal_plan_description">Choose meals that suit your preferences, cooking time, and goals.</string>
+    <string name="meal_plan_missing_answers">Choose an answer in: %1$s.</string>
+    <string name="meal_plan_save_error">Could not save your answers. Please try again.</string>
 </resources>
