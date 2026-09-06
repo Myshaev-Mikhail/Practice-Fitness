@@ -298,4 +298,48 @@
         <item>Не откладывай тренировку на завтра</item>
         <item>Маленькая тренировка — большой прогресс</item>
     </string-array>
+    <string name="meal_plan_dietary_title">Предпочтения в питании</string>
+    <string name="meal_plan_dietary_question">Какие у вас предпочтения в питании?</string>
+    <string name="meal_plan_vegetarian">Вегетарианское</string>
+    <string name="meal_plan_vegan">Веганское</string>
+    <string name="meal_plan_gluten_free">Без глютена</string>
+    <string name="meal_plan_keto">Кето</string>
+    <string name="meal_plan_paleo">Палео</string>
+    <string name="meal_plan_no_preference">Нет предпочтений</string>
+    <string name="meal_plan_allergy_title">Аллергии</string>
+    <string name="meal_plan_allergy_question">Есть ли у вас пищевая аллергия?</string>
+    <string name="meal_plan_nuts">Орехи</string>
+    <string name="meal_plan_dairy">Молочные продукты</string>
+    <string name="meal_plan_shellfish">Моллюски и ракообразные</string>
+    <string name="meal_plan_eggs">Яйца</string>
+    <string name="meal_plan_no_allergies">Нет аллергий</string>
+    <string name="meal_plan_meal_type_title">Приёмы пищи</string>
+    <string name="meal_plan_meal_type_question">Какие приёмы пищи вы хотите запланировать?</string>
+    <string name="meal_plan_breakfast">Завтрак</string>
+    <string name="meal_plan_lunch">Обед</string>
+    <string name="meal_plan_dinner">Ужин</string>
+    <string name="meal_plan_snacks">Перекусы</string>
+    <string name="meal_plan_calorie_title">Цель по калориям</string>
+    <string name="meal_plan_calorie_question">Сколько калорий в день вы планируете потреблять?</string>
+    <string name="meal_plan_calorie_under_1500">Менее 1500 ккал</string>
+    <string name="meal_plan_calorie_1500_2000">1500–2000 ккал</string>
+    <string name="meal_plan_calorie_over_2000">Более 2000 ккал</string>
+    <string name="meal_plan_calorie_no_goal">Не знаю / нет цели</string>
+    <string name="meal_plan_cooking_title">Время приготовления</string>
+    <string name="meal_plan_cooking_question">Сколько времени вы готовы тратить на приготовление каждого блюда?</string>
+    <string name="meal_plan_cooking_under_15">Менее 15 минут</string>
+    <string name="meal_plan_cooking_15_30">15–30 минут</string>
+    <string name="meal_plan_cooking_over_30">Более 30 минут</string>
+    <string name="meal_plan_servings_title">Количество порций</string>
+    <string name="meal_plan_servings_question">Сколько порций вам нужно на каждый приём пищи?</string>
+    <string name="meal_plan_servings_one">1</string>
+    <string name="meal_plan_servings_two">2</string>
+    <string name="meal_plan_servings_three_four">3–4</string>
+    <string name="meal_plan_servings_over_four">Более 4</string>
+    <string name="meal_plan_title">Планы питания</string>
+    <string name="meal_plan_start">Подобрать план</string>
+    <string name="meal_plan_create">Создать</string>
+    <string name="meal_plan_description">Подберите блюда с учётом ваших предпочтений, времени на готовку и целей.</string>
+    <string name="meal_plan_missing_answers">Выберите ответ в разделах: %1$s.</string>
+    <string name="meal_plan_save_error">Не удалось сохранить ответы. Попробуйте ещё раз.</string>
 </resources>

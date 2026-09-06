@@ -7,6 +7,7 @@ import com.example.practice.ui.screens.help.HelpViewModel
 import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.login.LogInViewModel
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModel
+import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanViewModel
 import com.example.practice.ui.screens.onbording.OnboardingViewModel
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingViewModel
 import com.example.practice.ui.screens.privacypolicy.PrivacyPolicyViewModel
@@ -46,4 +47,5 @@ val appModule = module {
     viewModel<WorkoutViewModel> { WorkoutViewModel(get(), get(), get()) }
     viewModel<WorkoutRoundDetailViewModel> { WorkoutRoundDetailViewModel(get(), get()) }
     viewModel<WorkoutRoundsViewModel> { WorkoutRoundsViewModel(get()) }
+    viewModel<MealPlanViewModel> { MealPlanViewModel(get()) }
 }

@@ -44,4 +44,8 @@ sealed class FitnessScreen(val route: String) {
         fun createRoute(workoutId: Int, badgeId: Int) =
             "workout_badge_detail/$workoutId/$badgeId"
     }
+
+    data object YourPlan : FitnessScreen("your_plan")
+    data object MealPlanPreferences : FitnessScreen("meal_plan_preferences")
+    data object MealPlanGoals : FitnessScreen("meal_plan_goals")
 }

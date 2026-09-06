@@ -79,9 +79,9 @@ fun HomeScreen(
                 viewModel.clearSideEffect()
             }
             is HomeSideEffect.ShowNutritionScreen -> {
-            //navController.navigate(FitnessScreen.LogIn.route)
+                navController.navigate(FitnessScreen.YourPlan.route)
                 viewModel.clearSideEffect()
-            // TODO
+                // TODO
             }
             is HomeSideEffect.ShowCommunityScreen -> {
             //navController.navigate(FitnessScreen.LogIn.route)

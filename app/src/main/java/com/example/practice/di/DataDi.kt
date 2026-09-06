@@ -1,6 +1,7 @@
 package com.example.practice.di
 
 import androidx.room.Room
+import com.example.practice.data.datastore.MealPlanDataStore
 import com.example.practice.data.datastore.NotificationSettingsDataStore
 import com.example.practice.data.datastore.StepCounterDataStore
 import com.example.practice.data.datastore.UserProfileDataStore
@@ -8,16 +9,19 @@ import com.example.practice.data.local.AppDatabase
 import com.example.practice.data.local.DailyStepsDao
 import com.example.practice.data.repository.AuthRepositoryImpl
 import com.example.practice.data.repository.GoogleAuthRepositoryImpl
+import com.example.practice.data.repository.MealPlanRepositoryImpl
 import com.example.practice.data.repository.NotificationSettingsRepositoryImpl
 import com.example.practice.data.repository.StepsRepositoryImpl
 import com.example.practice.data.repository.UserProfileRepositoryImpl
 import com.example.practice.data.repository.WorkoutRepositoryImpl
 import com.example.practice.domain.repository.AuthRepository
 import com.example.practice.domain.repository.GoogleAuthRepository
+import com.example.practice.domain.repository.MealPlanRepository
 import com.example.practice.domain.repository.NotificationSettingsRepository
 import com.example.practice.domain.repository.StepsRepository
 import com.example.practice.domain.repository.UserProfileRepository
 import com.example.practice.domain.repository.WorkoutRepository
+import com.example.practice.extensions.mealPlanPreferences
 import com.example.practice.extensions.notificationSettingsPreferences
 import com.example.practice.extensions.stepCounterPreferences
 import com.example.practice.extensions.userProfileDataStore
@@ -39,6 +43,11 @@ val dataModule = module {
     single<StepCounterDataStore> {
         StepCounterDataStore(
             androidContext().stepCounterPreferences
+        )
+    }
+    single<MealPlanDataStore> {
+        MealPlanDataStore(
+            androidContext().mealPlanPreferences
         )
     }
     single<AuthRepository> {
@@ -69,5 +78,8 @@ val dataModule = module {
     }
     single<StepsRepository> {
         StepsRepositoryImpl(get(), get())
+    }
+    single<MealPlanRepository> {
+        MealPlanRepositoryImpl(get())
     }
 }
