@@ -48,4 +48,5 @@ sealed class FitnessScreen(val route: String) {
     data object YourPlan : FitnessScreen("your_plan")
     data object MealPlanPreferences : FitnessScreen("meal_plan_preferences")
     data object MealPlanGoals : FitnessScreen("meal_plan_goals")
+    data object MealPlanLoading : FitnessScreen("meal_plan_loading")
 }

@@ -17,6 +17,7 @@ import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.login.LogInScreen
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingScreen
 import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanGoalsScreen
+import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanLoadingScreen
 import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanPreferencesScreen
 import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanViewModel
 import com.example.practice.ui.screens.nutrition.meal_plans.YourPlanScreen
@@ -226,6 +227,14 @@ fun NavigationApp(startDestination: String) {
             val viewModel = rememberMealPlanViewModel(navController, backStackEntry)
 
             MealPlanGoalsScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(route = FitnessScreen.MealPlanLoading.route) { backStackEntry ->
+            val viewModel = rememberMealPlanViewModel(navController, backStackEntry)
+
+            MealPlanLoadingScreen(
                 navController = navController,
                 viewModel = viewModel
             )

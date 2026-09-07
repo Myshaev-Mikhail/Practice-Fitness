@@ -88,7 +88,7 @@ fun MealPlanPreferencesScreen(
         }
 
         is MealPlanSideEffect.ShowMealPlanCreated -> {
-            // TODO
+            // Nothing
         }
     }
 

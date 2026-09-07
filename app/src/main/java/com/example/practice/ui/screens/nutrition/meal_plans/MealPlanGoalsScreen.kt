@@ -73,12 +73,12 @@ fun MealPlanGoalsScreen(
         }
 
         is MealPlanSideEffect.ShowNavigationNext -> {
-            navController.navigate(FitnessScreen.MealPlanGoals.route)
-            viewModel.clearSideEffect()
+            // Nothing
         }
 
         is MealPlanSideEffect.ShowMealPlanCreated -> {
-            // TODO
+            navController.navigate(FitnessScreen.MealPlanLoading.route)
+            viewModel.clearSideEffect()
         }
     }
 
