@@ -52,7 +52,7 @@ import io.github.composegears.valkyrie.BulbOn
 import io.github.composegears.valkyrie.Calories
 import io.github.composegears.valkyrie.CardioDefault
 import io.github.composegears.valkyrie.CardioVariant
-import io.github.composegears.valkyrie.Check
+import io.github.composegears.valkyrie.CheckCircle
 import io.github.composegears.valkyrie.CupOff
 import io.github.composegears.valkyrie.CupOn
 import io.github.composegears.valkyrie.CheckProgressFull
@@ -394,7 +394,7 @@ fun IconsAndImages() {
                                     .padding(start = 0.dp, top = 4.dp, end = 4.dp, bottom = 4.dp)
                             )
                             Image(
-                                painter = rememberVectorPainter(image = Icons.Check),
+                                painter = rememberVectorPainter(image = Icons.CheckCircle),
                                 contentDescription = "check",
                                 modifier = Modifier
                                     .size(35.dp)
