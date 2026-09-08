@@ -225,7 +225,6 @@ fun MealPlanAnswer.isChecked(p: MealPlanPreferences): Boolean =
         is MealPlanAnswer.Meal -> value in p.mealTypes
         is MealPlanAnswer.Calories -> value == p.calorieGoal
         is MealPlanAnswer.Cooking -> value == p.cookingTime
-        is MealPlanAnswer.Servings -> value == p.servings
     }
 
 fun MealPlanAnswer.toClickAction(): MealPlanAction =
@@ -235,5 +234,4 @@ fun MealPlanAnswer.toClickAction(): MealPlanAction =
         is MealPlanAnswer.Meal -> MealPlanAction.MealTypeClicked(value)
         is MealPlanAnswer.Calories -> MealPlanAction.CalorieGoalClicked(value)
         is MealPlanAnswer.Cooking -> MealPlanAction.CookingTimeClicked(value)
-        is MealPlanAnswer.Servings -> MealPlanAction.ServingsOptionClicked(value)
     }

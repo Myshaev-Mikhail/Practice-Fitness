@@ -10,7 +10,6 @@ import com.example.practice.domain.models.CookingTime
 import com.example.practice.domain.models.DietaryPreference
 import com.example.practice.domain.models.MealPlanPreferences
 import com.example.practice.domain.models.MealType
-import com.example.practice.domain.models.ServingsOption
 import com.example.practice.domain.usecase.MealPlanUseCase
 import com.example.practice.ui.screens.nutrition.meal_plans.actions.CheckboxItem
 import com.example.practice.ui.screens.nutrition.meal_plans.actions.MealPlanAction
@@ -76,10 +75,6 @@ class MealPlanViewModel(
             is MealPlanAction.CookingTimeClicked -> {
                 selectCookingTime(action.value)
             }
-
-            is MealPlanAction.ServingsOptionClicked -> {
-                selectServings(action.value)
-            }
         }
     }
 
@@ -126,7 +121,6 @@ class MealPlanViewModel(
 
     fun selectCalorieGoal(value: CalorieGoal) = changePreferences { it.copy(calorieGoal = value) }
     fun selectCookingTime(value: CookingTime): Unit = changePreferences { it.copy(cookingTime = value) }
-    fun selectServings(value: ServingsOption) = changePreferences { it.copy(servings = value) }
 
     private fun validateAnswers(includeGoals: Boolean): Boolean {
         val answers = uiStateFlow.value.preferences
@@ -137,7 +131,6 @@ class MealPlanViewModel(
             if (includeGoals) {
                 if (answers.calorieGoal == null) add(R.string.meal_plan_calorie_title)
                 if (answers.cookingTime == null) add(R.string.meal_plan_cooking_title)
-                if (answers.servings == null) add(R.string.meal_plan_servings_title)
             }
         }
         uiStateFlow.update {
@@ -289,37 +282,15 @@ class MealPlanViewModel(
                 checkboxItem = listOf(
                     CheckboxItem(
                         answer = MealPlanAnswer.Cooking(CookingTime.UNDER_15_MINUTES),
-                        label = R.string.meal_plan_cooking_under_15,
+                        label = R.string.meal_plan_cooking_up_to_15,
                     ),
                     CheckboxItem(
-                        answer = MealPlanAnswer.Cooking(CookingTime.FROM_15_TO_30_MINUTES),
-                        label = R.string.meal_plan_cooking_15_30,
+                        answer = MealPlanAnswer.Cooking(CookingTime.UNDER_30_MINUTES),
+                        label = R.string.meal_plan_cooking_up_to_30,
                     ),
                     CheckboxItem(
-                        answer = MealPlanAnswer.Cooking(CookingTime.OVER_30_MINUTES),
-                        label = R.string.meal_plan_cooking_over_30,
-                    )
-                )
-            ),
-            MealPlanOption(
-                title = R.string.meal_plan_servings_title,
-                question = R.string.meal_plan_servings_question,
-                checkboxItem = listOf(
-                    CheckboxItem(
-                        answer = MealPlanAnswer.Servings(ServingsOption.ONE),
-                        label = R.string.meal_plan_servings_one,
-                    ),
-                    CheckboxItem(
-                        answer = MealPlanAnswer.Servings(ServingsOption.TWO),
-                        label = R.string.meal_plan_servings_two,
-                    ),
-                    CheckboxItem(
-                        answer = MealPlanAnswer.Servings(ServingsOption.THREE_TO_FOUR),
-                        label = R.string.meal_plan_servings_three_four,
-                    ),
-                    CheckboxItem(
-                        answer = MealPlanAnswer.Servings(ServingsOption.MORE_THAN_FOUR),
-                        label = R.string.meal_plan_servings_over_four,
+                        answer = MealPlanAnswer.Cooking(CookingTime.NO_LIMIT),
+                        label = R.string.meal_plan_cooking_time_is_not_important,
                     )
                 )
             )

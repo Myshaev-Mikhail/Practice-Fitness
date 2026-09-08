@@ -11,7 +11,6 @@ import com.example.practice.domain.models.CookingTime
 import com.example.practice.domain.models.DietaryPreference
 import com.example.practice.domain.models.MealPlanPreferences
 import com.example.practice.domain.models.MealType
-import com.example.practice.domain.models.ServingsOption
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -32,11 +31,10 @@ class MealPlanDataStore(
             calorieGoal = preferences[Keys.CALORIES]?.let {
                 enumValueOf<CalorieGoal>(it)
             },
-            cookingTime = preferences[Keys.TIME]?.let {
-                enumValueOf<CookingTime>(it)
-            },
-            servings = preferences[Keys.SERVINGS]?.let {
-                enumValueOf<ServingsOption>(it)
+            cookingTime = when (val savedTime = preferences[Keys.TIME]) {
+                "FROM_15_TO_30_MINUTES" -> CookingTime.UNDER_30_MINUTES
+                "OVER_30_MINUTES", "TIME_IS_IMPORTANT" -> CookingTime.NO_LIMIT
+                else -> CookingTime.entries.firstOrNull { it.name == savedTime }
             }
         )
     }
@@ -52,7 +50,6 @@ class MealPlanDataStore(
             prefs[Keys.MEALS] = value.mealTypes.map { it.name }.toSet()
             putOrRemove(Keys.CALORIES, value.calorieGoal?.name)
             putOrRemove(Keys.TIME, value.cookingTime?.name)
-            putOrRemove(Keys.SERVINGS, value.servings?.name)
         }
     }
 
@@ -62,6 +59,5 @@ class MealPlanDataStore(
         val MEALS = stringSetPreferencesKey("meal_plan_meal_ids")
         val CALORIES = stringPreferencesKey("meal_plan_calorie_id")
         val TIME = stringPreferencesKey("meal_plan_time_id")
-        val SERVINGS = stringPreferencesKey("meal_plan_servings_id")
     }
 }

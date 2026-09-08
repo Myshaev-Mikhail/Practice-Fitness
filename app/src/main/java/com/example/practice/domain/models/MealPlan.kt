@@ -17,11 +17,7 @@ enum class CalorieGoal {
 }
 
 enum class CookingTime {
-    UNDER_15_MINUTES, FROM_15_TO_30_MINUTES, OVER_30_MINUTES
-}
-
-enum class ServingsOption {
-    ONE, TWO, THREE_TO_FOUR, MORE_THAN_FOUR
+    UNDER_15_MINUTES, UNDER_30_MINUTES, NO_LIMIT
 }
 
 data class MealPlanPreferences(
@@ -29,6 +25,5 @@ data class MealPlanPreferences(
     val allergens: Set<Allergy>? = null,
     val mealTypes: Set<MealType> = emptySet(),
     val calorieGoal: CalorieGoal? = null,
-    val cookingTime: CookingTime? = null,
-    val servings: ServingsOption? = null
+    val cookingTime: CookingTime? = null
 )

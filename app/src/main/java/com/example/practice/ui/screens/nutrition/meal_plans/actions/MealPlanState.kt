@@ -8,7 +8,6 @@ import com.example.practice.domain.models.CookingTime
 import com.example.practice.domain.models.DietaryPreference
 import com.example.practice.domain.models.MealPlanPreferences
 import com.example.practice.domain.models.MealType
-import com.example.practice.domain.models.ServingsOption
 
 data class MealPlanState(
     val preferencesItems: List<MealPlanOption> = emptyList(),
@@ -31,7 +30,6 @@ sealed interface MealPlanAnswer {
     data class Meal(val value: MealType) : MealPlanAnswer
     data class Calories(val value: CalorieGoal) : MealPlanAnswer
     data class Cooking(val value: CookingTime) : MealPlanAnswer
-    data class Servings(val value: ServingsOption) : MealPlanAnswer
 }
 
 data class CheckboxItem(

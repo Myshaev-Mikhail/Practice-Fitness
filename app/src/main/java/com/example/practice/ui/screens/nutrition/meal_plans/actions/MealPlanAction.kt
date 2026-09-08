@@ -5,7 +5,6 @@ import com.example.practice.domain.models.CalorieGoal
 import com.example.practice.domain.models.CookingTime
 import com.example.practice.domain.models.DietaryPreference
 import com.example.practice.domain.models.MealType
-import com.example.practice.domain.models.ServingsOption
 
 sealed class MealPlanAction {
     data object NavigateBackPressed : MealPlanAction()
@@ -17,5 +16,4 @@ sealed class MealPlanAction {
     data class MealTypeClicked(val value: MealType) : MealPlanAction()
     data class CalorieGoalClicked(val value: CalorieGoal) : MealPlanAction()
     data class CookingTimeClicked(val value: CookingTime) : MealPlanAction()
-    data class ServingsOptionClicked(val value: ServingsOption) : MealPlanAction()
 }
