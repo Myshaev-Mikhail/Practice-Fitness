@@ -9,7 +9,10 @@ import com.example.practice.domain.usecase.GetWorkoutsByFilterUseCase
 import com.example.practice.domain.usecase.GetWorkoutsUseCase
 import com.example.practice.domain.usecase.LogInWithEmailUseCase
 import com.example.practice.domain.usecase.LogInWithGoogleUseCase
+import com.example.practice.domain.usecase.MealIdeasUseCase
+import com.example.practice.domain.usecase.MealPlanUseCase
 import com.example.practice.domain.usecase.NotificationSettingsUseCase
+import com.example.practice.domain.usecase.RecipeUseCase
 import com.example.practice.domain.usecase.ResetPasswordUseCase
 import com.example.practice.domain.usecase.SetFirstSetupUseCase
 import com.example.practice.domain.usecase.SetUserProfileUseCase
@@ -33,4 +36,7 @@ val domainModule = module {
     factory { GetWorkoutByIdUseCase(get()) }
     factory { GetWorkoutDetailUseCase(get()) }
     factory { StepsUseCase(get(), get()) }
+    factory { MealPlanUseCase(get()) }
+    factory { RecipeUseCase(get()) }
+    factory { MealIdeasUseCase(get(), get()) }
 }

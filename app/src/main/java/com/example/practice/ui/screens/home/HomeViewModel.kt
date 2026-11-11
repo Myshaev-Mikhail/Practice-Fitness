@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.practice.domain.models.UserProfile
 import com.example.practice.domain.usecase.GetUserProfileUseCase
+import com.example.practice.domain.usecase.MealIdeasUseCase
 import com.example.practice.ui.screens.home.actions.HomeAction
 import com.example.practice.ui.screens.home.actions.HomeSideEffect
 import com.example.practice.ui.screens.home.actions.HomeState
@@ -12,7 +13,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val getUserProfile: GetUserProfileUseCase
+    private val getUserProfile: GetUserProfileUseCase,
+    private val mealIdeasUseCase: MealIdeasUseCase
 ) : ViewModel() {
     private val uiStateFlow = MutableStateFlow(HomeState())
     val uiStateEmitter = uiStateFlow.asStateFlow()
@@ -52,7 +54,13 @@ class HomeViewModel(
                 sideEffectFlow.value = HomeSideEffect.ShowProgressTrackingScreen
             }
             is HomeAction.Nutrition -> {
-                sideEffectFlow.value = HomeSideEffect.ShowNutritionScreen
+                viewModelScope.launch {
+                    sideEffectFlow.value = if (mealIdeasUseCase.hasSavedMealIdeas()) {
+                        HomeSideEffect.ShowMealIdeasScreen
+                    } else {
+                        HomeSideEffect.ShowMealPlanScreen
+                    }
+                }
             }
             is HomeAction.Community -> {
                 sideEffectFlow.value = HomeSideEffect.ShowCommunityScreen

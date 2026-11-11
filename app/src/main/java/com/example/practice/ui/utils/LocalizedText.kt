@@ -1,7 +1,14 @@
 package com.example.practice.ui.utils
 
 import android.content.Context
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalConfiguration
 import com.example.practice.R
+
+@Composable
+fun isRussianLanguage(): Boolean {
+    return LocalConfiguration.current.locales[0].language == "ru"
+}
 
 fun Context.localizedAppText(value: String): String = when (value) {
     "Back" -> getString(R.string.back)

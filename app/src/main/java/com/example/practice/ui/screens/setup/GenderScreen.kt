@@ -130,7 +130,7 @@ fun GenderScreen(
         ) {
             Text(
                 text = stringResource(R.string.setup_gender_description),
-                color = MaterialTheme.colorScheme.onTertiary,
+                color = MaterialTheme.colorScheme.onSecondary,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center
             )

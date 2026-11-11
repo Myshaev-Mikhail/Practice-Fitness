@@ -16,6 +16,14 @@ import com.example.practice.ui.screens.help.HelpScreen
 import com.example.practice.ui.screens.home.HomeScreen
 import com.example.practice.ui.screens.login.LogInScreen
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingScreen
+import com.example.practice.ui.screens.nutrition.meal_ideas.MealIdeaDetailsScreen
+import com.example.practice.ui.screens.nutrition.meal_ideas.MealIdeasScreen
+import com.example.practice.ui.screens.nutrition.meal_ideas.MealIdeasViewModel
+import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanGoalsScreen
+import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanLoadingScreen
+import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanPreferencesScreen
+import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanViewModel
+import com.example.practice.ui.screens.nutrition.meal_plans.YourPlanScreen
 import com.example.practice.ui.screens.onbording.OnBoardingScreen
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingScreen
 import com.example.practice.ui.screens.privacypolicy.PrivacyPolicyScreen
@@ -202,6 +210,65 @@ fun NavigationApp(startDestination: String) {
         ) {
             WorkoutRoundDetailScreen(navController = navController)
         }
+        composable(route = FitnessScreen.YourPlan.route) { backStackEntry ->
+            val viewModel = rememberMealPlanViewModel(navController, backStackEntry)
+
+            YourPlanScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(route = FitnessScreen.MealPlanPreferences.route) { backStackEntry ->
+            val viewModel = rememberMealPlanViewModel(navController, backStackEntry)
+
+            MealPlanPreferencesScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(route = FitnessScreen.MealPlanGoals.route) { backStackEntry ->
+            val viewModel = rememberMealPlanViewModel(navController, backStackEntry)
+
+            MealPlanGoalsScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(route = FitnessScreen.MealPlanLoading.route) { backStackEntry ->
+            val viewModel = rememberMealPlanViewModel(navController, backStackEntry)
+
+            MealPlanLoadingScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(route = FitnessScreen.MealIdeas.route) { backStackEntry ->
+            val viewModel = rememberMealIdeasViewModel(navController, backStackEntry)
+
+            MealIdeasScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(
+            route = FitnessScreen.MealIdeaDetails.route,
+            arguments = listOf(
+                navArgument("mealIdeaId") { type = NavType.StringType },
+                navArgument("recipeId") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val mealIdeaId = backStackEntry.arguments?.getString("mealIdeaId") ?: return@composable
+            val recipeId = backStackEntry.arguments?.getString("recipeId") ?: return@composable
+
+            val viewModel = rememberMealIdeasViewModel(navController, backStackEntry)
+
+            MealIdeaDetailsScreen(
+                navController = navController,
+                viewModel = viewModel,
+                mealIdeaId = mealIdeaId,
+                recipeId = recipeId
+            )
+        }
     }
 }
 
@@ -213,6 +280,38 @@ private fun rememberSetUpViewModel(
     val owner = remember(backStackEntry) {
         runCatching {
             navController.getBackStackEntry(FitnessScreen.SetUp.route)
+        }.getOrElse {
+            backStackEntry
+        }
+    }
+
+    return koinViewModel(viewModelStoreOwner = owner)
+}
+
+@Composable
+private fun rememberMealPlanViewModel(
+    navController: NavController,
+    backStackEntry: NavBackStackEntry
+): MealPlanViewModel {
+    val owner = remember(backStackEntry) {
+        runCatching {
+            navController.getBackStackEntry(FitnessScreen.YourPlan.route)
+        }.getOrElse {
+            backStackEntry
+        }
+    }
+
+    return koinViewModel(viewModelStoreOwner = owner)
+}
+
+@Composable
+private fun rememberMealIdeasViewModel(
+    navController: NavController,
+    backStackEntry: NavBackStackEntry
+): MealIdeasViewModel {
+    val owner = remember(backStackEntry) {
+        runCatching {
+            navController.getBackStackEntry(FitnessScreen.MealIdeas.route)
         }.getOrElse {
             backStackEntry
         }

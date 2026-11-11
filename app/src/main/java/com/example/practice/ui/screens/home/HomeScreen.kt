@@ -78,10 +78,13 @@ fun HomeScreen(
                 navController.navigate(FitnessScreen.ProgressTracking.route)
                 viewModel.clearSideEffect()
             }
-            is HomeSideEffect.ShowNutritionScreen -> {
-            //navController.navigate(FitnessScreen.LogIn.route)
+            is HomeSideEffect.ShowMealPlanScreen -> {
+                navController.navigate(FitnessScreen.YourPlan.route)
                 viewModel.clearSideEffect()
-            // TODO
+            }
+            is HomeSideEffect.ShowMealIdeasScreen -> {
+                navController.navigate(FitnessScreen.MealIdeas.route)
+                viewModel.clearSideEffect()
             }
             is HomeSideEffect.ShowCommunityScreen -> {
             //navController.navigate(FitnessScreen.LogIn.route)

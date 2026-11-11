@@ -22,6 +22,7 @@ class UserProfileApplication : Application() {
             )
         )
     }
+
     override fun onCreate() {
         super.onCreate()
 

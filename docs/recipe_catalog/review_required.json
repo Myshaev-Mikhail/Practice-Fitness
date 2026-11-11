@@ -1,0 +1,867 @@
+{
+  "schemaVersion": 2,
+  "catalogVersion": "2026-11-11.3",
+  "languages": [
+    "ru",
+    "en"
+  ],
+  "status": "REVIEWED_SEED_NOT_PRODUCTION_IMPORT",
+  "checkedOn": "2026-09-11",
+  "quantityPolicy": "Ingredients are full-batch quantities. Nutrition is per displayed serving. Original measures and serving factors are retained.",
+  "imageCreditsPath": "recipe_catalog/image_credits.json",
+  "allergensVerifiedPolicy": "False until the application's allergy vocabulary and importer can preserve all allergen and review metadata.",
+  "recipes": [
+    {
+      "recipe": {
+        "id": "baked-berry-oatmeal",
+        "nameRu": "Запечённая овсянка с ягодами",
+        "nameEn": "Baked Berry Oatmeal",
+        "descriptionRu": "Овсяная запеканка с ягодами. В исходнике орехи указаны как необязательное дополнение.",
+        "descriptionEn": "Baked oats with berries; the source lists walnuts as an optional addition.",
+        "imagePath": "recipe_catalog/images/baked-berry-oatmeal.jpg",
+        "caloriesPerServing": 280,
+        "totalTimeMinutes": 45,
+        "allergensVerified": false
+      },
+      "ingredients": [
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 0,
+          "nameIngredientsRu": "Овсяные хлопья длительной варки с маркировкой gluten-free",
+          "nameIngredientsEn": "Certified gluten-free old-fashioned rolled oats",
+          "amount": 178,
+          "ingredientUnit": "GRAM",
+          "noteRu": "Примерный вес. Исходная мера — 2 мерн. чаш.",
+          "noteEn": "Approximate weight. Source measure: 2 US cup(s).",
+          "sourceTextEn": "2 cups old fashioned rolled oats",
+          "weightReferenceUrl": "https://www.kingarthurbaking.com/learn/ingredient-weight-chart"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 1,
+          "nameIngredientsRu": "Разрыхлитель без глютена",
+          "nameIngredientsEn": "Gluten-free baking powder",
+          "amount": 1.0,
+          "ingredientUnit": "TEASPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 teaspoon baking powder"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 2,
+          "nameIngredientsRu": "Корица",
+          "nameIngredientsEn": "cinnamon",
+          "amount": 1.0,
+          "ingredientUnit": "TEASPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 teaspoon cinnamon"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 3,
+          "nameIngredientsRu": "Соль",
+          "nameIngredientsEn": "salt",
+          "amount": 0.25,
+          "ingredientUnit": "TEASPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1/4 teaspoon salt"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 4,
+          "nameIngredientsRu": "Яйца",
+          "nameIngredientsEn": "eggs",
+          "amount": 2.0,
+          "ingredientUnit": "PIECE",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "2 eggs"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 5,
+          "nameIngredientsRu": "Коричневый сахар, плотно заполненная мерка",
+          "nameIngredientsEn": "packed brown sugar",
+          "amount": 0.5,
+          "ingredientUnit": "CUP",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1/2 cup packed brown sugar"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 6,
+          "nameIngredientsRu": "Ванильный экстракт",
+          "nameIngredientsEn": "vanilla",
+          "amount": 1.5,
+          "ingredientUnit": "TEASPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 1/2 teaspoons vanilla"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 7,
+          "nameIngredientsRu": "Молоко 1% или обезжиренное",
+          "nameIngredientsEn": "1% or nonfat milk",
+          "amount": 2.0,
+          "ingredientUnit": "CUP",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "2 cups 1% or nonfat milk"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 8,
+          "nameIngredientsRu": "Растопленное сливочное масло или маргарин",
+          "nameIngredientsEn": "margarine or butter, melted",
+          "amount": 4.0,
+          "ingredientUnit": "TEASPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "4 teaspoons margarine or butter, melted"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 9,
+          "nameIngredientsRu": "Малина или ежевика, свежая либо замороженная",
+          "nameIngredientsEn": "cane berries, fresh or frozen (raspberries, blackberries, marionberries)",
+          "amount": 2.0,
+          "ingredientUnit": "CUP",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "2 cups cane berries, fresh or frozen (raspberries, blackberries, marionberries)"
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 10,
+          "nameIngredientsRu": "Рубленые грецкие орехи, необязательно",
+          "nameIngredientsEn": "chopped walnuts (optional)",
+          "amount": 0.25,
+          "ingredientUnit": "CUP",
+          "noteRu": "Необязательно.",
+          "noteEn": "Optional.",
+          "sourceTextEn": "1/4 cup chopped walnuts (optional)"
+        }
+      ],
+      "steps": [
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 0,
+          "textRu": "Вымойте руки. Разогрейте духовку до 190 °C (375 °F).",
+          "textEn": "Wash hands. Preheat the oven to 190 C (375 F)."
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 1,
+          "textRu": "Смешайте хлопья, разрыхлитель, корицу и соль.",
+          "textEn": "Mix oats, baking powder, cinnamon and salt."
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 2,
+          "textRu": "Отдельно взбейте яйца; добавьте сахар, ваниль, молоко и растопленное масло.",
+          "textEn": "In a separate bowl, beat the eggs, then add sugar, vanilla, milk and melted butter."
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 3,
+          "textRu": "Соедините обе смеси. Осторожно вмешайте ягоды.",
+          "textEn": "Combine the two mixtures. Gently fold in the berries."
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 4,
+          "textRu": "Перелейте в форму объёмом около 1,9 л. При желании добавьте орехи сверху.",
+          "textEn": "Pour into a baking dish of about 1.9 litres (2 US quarts). Add the optional walnuts on top if using."
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 5,
+          "textRu": "Выпекайте 20–30 минут до золотистого верха и полной готовности яичной смеси. Для запеканки проверьте 74 °C в центре.",
+          "textEn": "Bake for 20 to 30 minutes until golden and cooked through. Check that the centre of the casserole reaches 74 C (165 F)."
+        },
+        {
+          "recipeId": "baked-berry-oatmeal",
+          "position": 6,
+          "textRu": "Разделите на порции. Уберите остатки в холодильник в течение двух часов.",
+          "textEn": "Divide into servings. Refrigerate leftovers within two hours."
+        }
+      ],
+      "mealTypes": [
+        "BREAKFAST"
+      ],
+      "dietaryPreferences": [
+        "VEGETARIAN",
+        "GLUTEN_FREE"
+      ],
+      "allergens": [
+        "NUTS",
+        "DAIRY",
+        "EGGS"
+      ],
+      "additionalAllergens": [],
+      "snackAddition": false,
+      "serving": {
+        "batchServings": 6,
+        "ingredientsBasis": "FULL_SOURCE_BATCH",
+        "nutritionBasis": "ONE_DISPLAYED_SERVING",
+        "sourceServingsPerPortion": 1,
+        "sourceBatchServings": 6,
+        "descriptionRu": "1 чашка (189 г)",
+        "descriptionEn": "1 cup (189g)",
+        "automaticPortionScalingAllowed": false
+      },
+      "nutrition": {
+        "energyKcal": 280,
+        "proteinGrams": 9.0,
+        "fatGrams": 7.0,
+        "saturatedFatGrams": 2.0,
+        "carbohydrateGrams": 46.0,
+        "fiberGrams": 4.0,
+        "sugarGrams": 26.0,
+        "sodiumMilligrams": 270.0,
+        "basis": "PUBLISHED_ESTIMATE_SCALED_TO_DISPLAYED_SERVING"
+      },
+      "source": {
+        "url": "https://medlineplus.gov/recipes/baked-berry-oatmeal/",
+        "title": "Baked Berry Oatmeal",
+        "publisher": "MedlinePlus, National Library of Medicine",
+        "origin": "Food Hero / Oregon State University Extension",
+        "checkedOn": "2026-09-11",
+        "htmlSha256": "697cb4c6a76f0c856e248dd5304bfcd4460bd1be78e581acd99cffd3b665a694",
+        "contentRights": "Public-domain Healthy Recipes content per MedlinePlus policy; photographs licensed separately.",
+        "rightsUrl": "https://medlineplus.gov/about/using/usingcontent/",
+        "attribution": "Source: MedlinePlus, National Library of Medicine.",
+        "originalAgencyAttribution": "Food Hero, Oregon State University Extension Service, as published by MedlinePlus.",
+        "translation": "Independent Russian translation and edited English instructions; not an official NIH translation or endorsement.",
+        "sourceTimingText": "Prep time: 15 minutes Cook time: 30 minutes Total time: 45 minutes Number of Servings: 6"
+      },
+      "review": {
+        "status": "QUARANTINED",
+        "publishedFactsCompared": true,
+        "ingredientAllergensReviewed": true,
+        "nutritionSuitableForApproximateMatching": false,
+        "completeTimeSuitableForFiltering": true,
+        "independentlyCookedOrLabTested": false,
+        "clinicalReviewComplete": false,
+        "productionImportAllowed": false,
+        "issues": [
+          "OPTIONAL_WALNUTS_NUTRITION_BASIS_UNCLEAR"
+        ]
+      },
+      "warningsRu": [
+        "Ингредиенты и шаги рассчитаны на весь выход; калорийность — на одну указанную порцию.",
+        "Калорийность рассчитана по данным источника и зависит от продуктов и фактического размера порции.",
+        "Проверьте состав и предупреждения на упаковках. Отсутствие перекрёстного загрязнения аллергенами не проверено.",
+        "Фото иллюстративное: состав, способ приготовления и гарнир могут отличаться. Следуйте списку ингредиентов.",
+        "Для безглютенового варианта используйте продукты с подходящей маркировкой, особенно овёс, приправы, соусы и бульон.",
+        "Сыр должен быть с вегетарианским ферментом, без животного сычуга; йогурт — без желатина."
+      ],
+      "warningsEn": [
+        "Ingredients and instructions are for the complete batch; nutrition is for one stated serving.",
+        "Nutrition is based on the published estimate and varies with ingredients and portion size.",
+        "Check package ingredients and warnings. Allergen cross-contact has not been verified.",
+        "Representative photo: ingredients, cooking method and sides may differ. Follow the ingredient list.",
+        "For the gluten-free variant use appropriately labelled ingredients, especially oats, seasoning, sauces and broth.",
+        "Use cheese made with vegetarian rennet, not animal rennet, and yogurt without gelatin."
+      ]
+    },
+    {
+      "recipe": {
+        "id": "skillet-braised-chicken",
+        "nameRu": "Куриная грудка под крышкой",
+        "nameEn": "Skillet Braised Chicken",
+        "descriptionRu": "Куриная грудка, обжаренная и доведённая до готовности под крышкой. Гарнир не включён.",
+        "descriptionEn": "Chicken breast browned in a skillet, then cooked and rested under a lid; no side dish included.",
+        "imagePath": "recipe_catalog/images/skillet-braised-chicken.jpg",
+        "caloriesPerServing": 130,
+        "totalTimeMinutes": 25,
+        "allergensVerified": false
+      },
+      "ingredients": [
+        {
+          "recipeId": "skillet-braised-chicken",
+          "position": 0,
+          "nameIngredientsRu": "Куриная грудка; исходник не указывает массу сырой грудки",
+          "nameIngredientsEn": "chicken breast",
+          "amount": 1.0,
+          "ingredientUnit": "PIECE",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 chicken breast"
+        },
+        {
+          "recipeId": "skillet-braised-chicken",
+          "position": 1,
+          "nameIngredientsRu": "Оливковое масло, выбранное из разрешённых растительных масел",
+          "nameIngredientsEn": "Olive oil, selected from the permitted oils",
+          "amount": 1.0,
+          "ingredientUnit": "TABLESPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 Tablespoon oil"
+        },
+        {
+          "recipeId": "skillet-braised-chicken",
+          "position": 2,
+          "nameIngredientsRu": "Соль, перец, луковый или чесночный порошок по вкусу",
+          "nameIngredientsEn": "seasoning (such as salt, pepper, seasoning salt, onion powder or garlic powder)",
+          "amount": null,
+          "ingredientUnit": null,
+          "noteRu": "По вкусу или по необходимости.",
+          "noteEn": "To taste or as needed.",
+          "sourceTextEn": "seasoning (such as salt, pepper, seasoning salt, onion powder or garlic powder)"
+        }
+      ],
+      "steps": [
+        {
+          "recipeId": "skillet-braised-chicken",
+          "position": 0,
+          "textRu": "Приправьте грудку. Обжарьте с маслом на средне-сильном огне по одной минуте с каждой стороны.",
+          "textEn": "Season the breast. Brown it in oil over medium-high heat for one minute on each side."
+        },
+        {
+          "recipeId": "skillet-braised-chicken",
+          "position": 1,
+          "textRu": "Плотно накройте сковороду, уменьшите огонь до слабого и готовьте 10 минут, не поднимая крышку.",
+          "textEn": "Cover tightly, reduce the heat to low and cook for 10 minutes without lifting the lid."
+        },
+        {
+          "recipeId": "skillet-braised-chicken",
+          "position": 2,
+          "textRu": "Выключите огонь и оставьте под крышкой ещё на 10 минут.",
+          "textEn": "Turn off the heat and leave covered for another 10 minutes."
+        },
+        {
+          "recipeId": "skillet-braised-chicken",
+          "position": 3,
+          "textRu": "Проверьте термометром температуру в самой толстой части: не ниже 74 °C. Если она ниже, продолжайте готовить под крышкой.",
+          "textEn": "Check the thickest part with a food thermometer: it must reach at least 74 C (165 F). If necessary, continue cooking under the lid."
+        },
+        {
+          "recipeId": "skillet-braised-chicken",
+          "position": 4,
+          "textRu": "Уберите остатки в холодильник в течение двух часов.",
+          "textEn": "Refrigerate leftovers within two hours."
+        }
+      ],
+      "mealTypes": [
+        "LUNCH",
+        "DINNER"
+      ],
+      "dietaryPreferences": [
+        "GLUTEN_FREE",
+        "KETO",
+        "PALEO"
+      ],
+      "allergens": [],
+      "additionalAllergens": [],
+      "snackAddition": false,
+      "serving": {
+        "batchServings": 2,
+        "ingredientsBasis": "FULL_SOURCE_BATCH",
+        "nutritionBasis": "ONE_DISPLAYED_SERVING",
+        "sourceServingsPerPortion": 1,
+        "sourceBatchServings": 2,
+        "descriptionRu": "половина грудки (50 г в таблице источника)",
+        "descriptionEn": "1/2 breast (50g)",
+        "automaticPortionScalingAllowed": false
+      },
+      "nutrition": {
+        "energyKcal": 130,
+        "proteinGrams": 13.0,
+        "fatGrams": 9.0,
+        "saturatedFatGrams": 1.0,
+        "carbohydrateGrams": 0.0,
+        "fiberGrams": 0.0,
+        "sugarGrams": 0.0,
+        "sodiumMilligrams": 30.0,
+        "basis": "PUBLISHED_ESTIMATE_SCALED_TO_DISPLAYED_SERVING"
+      },
+      "source": {
+        "url": "https://medlineplus.gov/recipes/skillet-braised-chicken/",
+        "title": "Skillet Braised Chicken",
+        "publisher": "MedlinePlus, National Library of Medicine",
+        "origin": "Food Hero / Oregon State University Extension",
+        "checkedOn": "2026-09-11",
+        "htmlSha256": "a4735386c4a47dff4bc409744b90d9c94bdee855b65d69c15038da4343c8315e",
+        "contentRights": "Public-domain Healthy Recipes content per MedlinePlus policy; photographs licensed separately.",
+        "rightsUrl": "https://medlineplus.gov/about/using/usingcontent/",
+        "attribution": "Source: MedlinePlus, National Library of Medicine.",
+        "originalAgencyAttribution": "Food Hero, Oregon State University Extension Service, as published by MedlinePlus.",
+        "translation": "Independent Russian translation and edited English instructions; not an official NIH translation or endorsement.",
+        "sourceTimingText": "Prep time: 5 minutes Cook time: 20 minutes Total time: 25 minutes Number of Servings: 2"
+      },
+      "review": {
+        "status": "QUARANTINED",
+        "publishedFactsCompared": true,
+        "ingredientAllergensReviewed": true,
+        "nutritionSuitableForApproximateMatching": false,
+        "completeTimeSuitableForFiltering": false,
+        "independentlyCookedOrLabTested": false,
+        "clinicalReviewComplete": false,
+        "productionImportAllowed": false,
+        "issues": [
+          "SOURCE_RAW_BREAST_WEIGHT_UNSPECIFIED",
+          "SOURCE_TOTAL_25_VS_TIMED_STEPS_27_MINIMUM"
+        ]
+      },
+      "warningsRu": [
+        "Ингредиенты и шаги рассчитаны на весь выход; калорийность — на одну указанную порцию.",
+        "Калорийность рассчитана по данным источника и зависит от продуктов и фактического размера порции.",
+        "Проверьте состав и предупреждения на упаковках. Отсутствие перекрёстного загрязнения аллергенами не проверено.",
+        "Фото иллюстративное: состав, способ приготовления и гарнир могут отличаться. Следуйте списку ингредиентов.",
+        "Для безглютенового варианта используйте продукты с подходящей маркировкой, особенно овёс, приправы, соусы и бульон.",
+        "Метка keto — предварительная оценка состава одной порции, не гарантия кетогенного рациона за день.",
+        "Полное время с разморозкой или охлаждением не установлено. Не использовать при ограничении 15 или 30 минут."
+      ],
+      "warningsEn": [
+        "Ingredients and instructions are for the complete batch; nutrition is for one stated serving.",
+        "Nutrition is based on the published estimate and varies with ingredients and portion size.",
+        "Check package ingredients and warnings. Allergen cross-contact has not been verified.",
+        "Representative photo: ingredients, cooking method and sides may differ. Follow the ingredient list.",
+        "For the gluten-free variant use appropriately labelled ingredients, especially oats, seasoning, sauces and broth.",
+        "The keto tag is a preliminary ingredient/serving assessment, not a guarantee of a ketogenic daily plan.",
+        "Complete time including thawing or cooling is unknown. Exclude from 15- and 30-minute filters."
+      ]
+    },
+    {
+      "recipe": {
+        "id": "vegetarian-cowboy-salad",
+        "nameRu": "Салат с фасолью и кукурузой",
+        "nameEn": "Vegetarian Cowboy Salad",
+        "descriptionRu": "Салат из фасоли, кукурузы, помидоров и зелени; в исходнике авокадо необязателен.",
+        "descriptionEn": "A bean, corn, tomato and herb salad; avocado is optional in the source.",
+        "imagePath": "recipe_catalog/images/vegetarian-cowboy-salad.jpg",
+        "caloriesPerServing": 90,
+        "totalTimeMinutes": 20,
+        "allergensVerified": false
+      },
+      "ingredients": [
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 0,
+          "nameIngredientsRu": "Консервированная черноглазая или чёрная фасоль, две банки по 425 г до слива",
+          "nameIngredientsEn": "black-eyed peas or black beans (try a mix, or other types)",
+          "amount": 850.49,
+          "ingredientUnit": "GRAM",
+          "noteRu": "Вес содержимого банки.",
+          "noteEn": "Net weight of the can contents.",
+          "sourceTextEn": "2 cans (15 ounces) black-eyed peas or black beans (try a mix, or other types)"
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 1,
+          "nameIngredientsRu": "Кукуруза, готовая к употреблению, без жидкости",
+          "nameIngredientsEn": "corn (canned and drained, frozen, or fresh cooked)",
+          "amount": 1.5,
+          "ingredientUnit": "CUP",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 1/2 cups corn (canned and drained, frozen, or fresh cooked)"
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 2,
+          "nameIngredientsRu": "Кинза, один пучок",
+          "nameIngredientsEn": "cilantro",
+          "amount": null,
+          "ingredientUnit": null,
+          "noteRu": "Один пучок; точная масса не задана.",
+          "noteEn": "One bunch; no exact weight specified.",
+          "sourceTextEn": "1 bunch cilantro"
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 3,
+          "nameIngredientsRu": "Зелёный лук, один пучок из пяти стеблей",
+          "nameIngredientsEn": "green onions (5 green onions)",
+          "amount": null,
+          "ingredientUnit": null,
+          "noteRu": "Один пучок; для зелёного лука в источнике указано пять стеблей.",
+          "noteEn": "One bunch (five green onions).",
+          "sourceTextEn": "1 bunch green onions (5 green onions)"
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 4,
+          "nameIngredientsRu": "Средние помидоры",
+          "nameIngredientsEn": "medium tomatoes",
+          "amount": 3.0,
+          "ingredientUnit": "PIECE",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "3 medium tomatoes"
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 5,
+          "nameIngredientsRu": "Авокадо, необязательно",
+          "nameIngredientsEn": "avocado (optional)",
+          "amount": 1.0,
+          "ingredientUnit": "PIECE",
+          "noteRu": "Необязательно.",
+          "noteEn": "Optional.",
+          "sourceTextEn": "1 avocado (optional)"
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 6,
+          "nameIngredientsRu": "Рапсовое или другое растительное масло",
+          "nameIngredientsEn": "canola or vegetable oil",
+          "amount": 1.0,
+          "ingredientUnit": "TABLESPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 Tablespoon canola or vegetable oil"
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 7,
+          "nameIngredientsRu": "Уксус или сок лайма",
+          "nameIngredientsEn": "vinegar or lime juice",
+          "amount": 2.0,
+          "ingredientUnit": "TABLESPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "2 Tablespoons vinegar or lime juice"
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 8,
+          "nameIngredientsRu": "Соль и чёрный перец, каждого указанное количество",
+          "nameIngredientsEn": "each salt and pepper",
+          "amount": 0.5,
+          "ingredientUnit": "TEASPOON",
+          "noteRu": "Указанное количество каждого: отдельно соли и отдельно перца.",
+          "noteEn": "The stated quantity of EACH: salt and pepper separately.",
+          "sourceTextEn": "1/2 teaspoon each salt and pepper"
+        }
+      ],
+      "steps": [
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 0,
+          "textRu": "Слейте жидкость и промойте фасоль и консервированную кукурузу.",
+          "textEn": "Drain and rinse the beans and canned corn."
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 1,
+          "textRu": "Мелко порубите кинзу и зелёный лук. Нарежьте помидоры и, если используете, авокадо.",
+          "textEn": "Finely chop cilantro and green onions. Dice tomatoes and, if using, avocado."
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 2,
+          "textRu": "Соедините овощи и фасоль в большой миске.",
+          "textEn": "Combine the vegetables and beans in a large bowl."
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 3,
+          "textRu": "Отдельно смешайте масло, уксус или лайм, соль и перец. Заправьте салат и осторожно перемешайте.",
+          "textEn": "Mix oil, vinegar or lime juice, salt and pepper separately. Add to the salad and toss gently."
+        },
+        {
+          "recipeId": "vegetarian-cowboy-salad",
+          "position": 4,
+          "textRu": "Уберите остатки в холодильник в течение двух часов.",
+          "textEn": "Refrigerate leftovers within two hours."
+        }
+      ],
+      "mealTypes": [
+        "LUNCH",
+        "DINNER",
+        "SNACKS"
+      ],
+      "dietaryPreferences": [
+        "VEGETARIAN",
+        "VEGAN",
+        "GLUTEN_FREE"
+      ],
+      "allergens": [],
+      "additionalAllergens": [],
+      "snackAddition": false,
+      "serving": {
+        "batchServings": 15,
+        "ingredientsBasis": "FULL_SOURCE_BATCH",
+        "nutritionBasis": "ONE_DISPLAYED_SERVING",
+        "sourceServingsPerPortion": 1,
+        "sourceBatchServings": 15,
+        "descriptionRu": "половина чашки (119 г)",
+        "descriptionEn": "1/2 cup (119g)",
+        "automaticPortionScalingAllowed": false
+      },
+      "nutrition": {
+        "energyKcal": 90,
+        "proteinGrams": 4.0,
+        "fatGrams": 3.5,
+        "saturatedFatGrams": 0.0,
+        "carbohydrateGrams": 14.0,
+        "fiberGrams": 5.0,
+        "sugarGrams": 2.0,
+        "sodiumMilligrams": 260.0,
+        "basis": "PUBLISHED_ESTIMATE_SCALED_TO_DISPLAYED_SERVING"
+      },
+      "source": {
+        "url": "https://medlineplus.gov/recipes/vegetarian-cowboy-salad/",
+        "title": "Vegetarian Cowboy Salad",
+        "publisher": "MedlinePlus, National Library of Medicine",
+        "origin": "Food Hero / Oregon State University Extension",
+        "checkedOn": "2026-09-11",
+        "htmlSha256": "25b77470524b927a1e052dea3e28060c4dea1733c898a40775be4e57389f2dd3",
+        "contentRights": "Public-domain Healthy Recipes content per MedlinePlus policy; photographs licensed separately.",
+        "rightsUrl": "https://medlineplus.gov/about/using/usingcontent/",
+        "attribution": "Source: MedlinePlus, National Library of Medicine.",
+        "originalAgencyAttribution": "Food Hero, Oregon State University Extension Service, as published by MedlinePlus.",
+        "translation": "Independent Russian translation and edited English instructions; not an official NIH translation or endorsement.",
+        "sourceTimingText": "Prep time: 20 minutes Cook time: 0 minutes Total time: 20 minutes Number of Servings: 15"
+      },
+      "review": {
+        "status": "QUARANTINED",
+        "publishedFactsCompared": true,
+        "ingredientAllergensReviewed": true,
+        "nutritionSuitableForApproximateMatching": false,
+        "completeTimeSuitableForFiltering": true,
+        "independentlyCookedOrLabTested": false,
+        "clinicalReviewComplete": false,
+        "productionImportAllowed": false,
+        "issues": [
+          "OPTIONAL_AVOCADO_NUTRITION_BASIS_UNCLEAR"
+        ]
+      },
+      "warningsRu": [
+        "Ингредиенты и шаги рассчитаны на весь выход; калорийность — на одну указанную порцию.",
+        "Калорийность рассчитана по данным источника и зависит от продуктов и фактического размера порции.",
+        "Проверьте состав и предупреждения на упаковках. Отсутствие перекрёстного загрязнения аллергенами не проверено.",
+        "Фото иллюстративное: состав, способ приготовления и гарнир могут отличаться. Следуйте списку ингредиентов.",
+        "Для безглютенового варианта используйте продукты с подходящей маркировкой, особенно овёс, приправы, соусы и бульон."
+      ],
+      "warningsEn": [
+        "Ingredients and instructions are for the complete batch; nutrition is for one stated serving.",
+        "Nutrition is based on the published estimate and varies with ingredients and portion size.",
+        "Check package ingredients and warnings. Allergen cross-contact has not been verified.",
+        "Representative photo: ingredients, cooking method and sides may differ. Follow the ingredient list.",
+        "For the gluten-free variant use appropriately labelled ingredients, especially oats, seasoning, sauces and broth."
+      ]
+    },
+    {
+      "recipe": {
+        "id": "salmon-pasta-skillet",
+        "nameRu": "Паста с лососем на сковороде",
+        "nameEn": "Salmon Pasta Skillet",
+        "descriptionRu": "Цельнозерновая паста с консервированным лососем, помидорами и лимоном.",
+        "descriptionEn": "Whole-grain pasta with canned salmon, tomatoes and lemon.",
+        "imagePath": "recipe_catalog/images/salmon-pasta-skillet.jpg",
+        "caloriesPerServing": 150,
+        "totalTimeMinutes": 30,
+        "allergensVerified": false
+      },
+      "ingredients": [
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 0,
+          "nameIngredientsRu": "Сухая цельнозерновая паста без яйца",
+          "nameIngredientsEn": "Dry egg-free whole-grain pasta",
+          "amount": 1.5,
+          "ingredientUnit": "CUP",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 1/2 cups whole grain pasta (try shells, elbow, or bow tie)"
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 1,
+          "nameIngredientsRu": "Сливочное масло или маргарин; молоко учитывается как возможный аллерген",
+          "nameIngredientsEn": "Butter or margarine; dairy is conservatively included as an allergen",
+          "amount": 1.0,
+          "ingredientUnit": "TABLESPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 Tablespoon margarine or butter"
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 2,
+          "nameIngredientsRu": "Репчатый лук, порубить",
+          "nameIngredientsEn": "chopped onion",
+          "amount": 2.0,
+          "ingredientUnit": "TABLESPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "2 Tablespoons chopped onion"
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 3,
+          "nameIngredientsRu": "Консервированный лосось, слить жидкость",
+          "nameIngredientsEn": "canned salmon, drained (about 1/2 cup cooked fresh salmon)",
+          "amount": 141.75,
+          "ingredientUnit": "GRAM",
+          "noteRu": "Вес содержимого банки до слива жидкости.",
+          "noteEn": "Net weight before draining.",
+          "sourceTextEn": "1 can (5 ounces) canned salmon, drained (about 1/2 cup cooked fresh salmon)"
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 4,
+          "nameIngredientsRu": "Небольшие помидоры, нарезать",
+          "nameIngredientsEn": "small tomatoes, chopped",
+          "amount": 2.0,
+          "ingredientUnit": "PIECE",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "2 small tomatoes, chopped"
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 5,
+          "nameIngredientsRu": "Лимонный сок",
+          "nameIngredientsEn": "lemon juice",
+          "amount": 3.0,
+          "ingredientUnit": "TABLESPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "3 Tablespoons lemon juice"
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 6,
+          "nameIngredientsRu": "Свежая петрушка, порубить",
+          "nameIngredientsEn": "Fresh parsley, chopped",
+          "amount": 1.0,
+          "ingredientUnit": "TABLESPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1 Tablespoon chopped parsley or 1 teaspoon dried parsley"
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 7,
+          "nameIngredientsRu": "Соль",
+          "nameIngredientsEn": "salt",
+          "amount": 0.25,
+          "ingredientUnit": "TEASPOON",
+          "noteRu": null,
+          "noteEn": null,
+          "sourceTextEn": "1/4 teaspoon salt"
+        }
+      ],
+      "steps": [
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 0,
+          "textRu": "Вымойте руки. Сварите пасту по инструкции упаковки и слейте воду.",
+          "textEn": "Wash hands. Cook the pasta according to the package instructions and drain."
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 1,
+          "textRu": "Пока паста варится, разогрейте масло в сковороде на среднем огне и приготовьте лук до мягкости.",
+          "textEn": "While it cooks, heat butter or margarine in a skillet over medium heat and cook the onion until tender."
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 2,
+          "textRu": "Добавьте пасту, лосось, помидоры, лимонный сок, петрушку и соль. Прогрейте смесь.",
+          "textEn": "Add pasta, salmon, tomatoes, lemon juice, parsley and salt. Heat through."
+        },
+        {
+          "recipeId": "salmon-pasta-skillet",
+          "position": 3,
+          "textRu": "Уберите остатки в холодильник в течение двух часов.",
+          "textEn": "Refrigerate leftovers within two hours."
+        }
+      ],
+      "mealTypes": [
+        "LUNCH",
+        "DINNER"
+      ],
+      "dietaryPreferences": [],
+      "allergens": [
+        "DAIRY"
+      ],
+      "additionalAllergens": [
+        "FISH",
+        "WHEAT"
+      ],
+      "snackAddition": false,
+      "serving": {
+        "batchServings": 6,
+        "ingredientsBasis": "FULL_SOURCE_BATCH",
+        "nutritionBasis": "ONE_DISPLAYED_SERVING",
+        "sourceServingsPerPortion": 1,
+        "sourceBatchServings": 6,
+        "descriptionRu": "половина чашки (157 г в таблице источника; требует уточнения)",
+        "descriptionEn": "1/2 cup (157g)",
+        "automaticPortionScalingAllowed": false
+      },
+      "nutrition": {
+        "energyKcal": 150,
+        "proteinGrams": 10.0,
+        "fatGrams": 3.5,
+        "saturatedFatGrams": 0.5,
+        "carbohydrateGrams": 22.0,
+        "fiberGrams": 2.0,
+        "sugarGrams": 2.0,
+        "sodiumMilligrams": 210.0,
+        "basis": "PUBLISHED_ESTIMATE_SCALED_TO_DISPLAYED_SERVING"
+      },
+      "source": {
+        "url": "https://medlineplus.gov/recipes/salmon-pasta-skillet/",
+        "title": "Salmon Pasta Skillet",
+        "publisher": "MedlinePlus, National Library of Medicine",
+        "origin": "Food Hero / Oregon State University Extension",
+        "checkedOn": "2026-09-11",
+        "htmlSha256": "f1c5532b2ed85d99225d84a06ba181bbdeaef29c6157f24b6c9c584d82391fba",
+        "contentRights": "Public-domain Healthy Recipes content per MedlinePlus policy; photographs licensed separately.",
+        "rightsUrl": "https://medlineplus.gov/about/using/usingcontent/",
+        "attribution": "Source: MedlinePlus, National Library of Medicine.",
+        "originalAgencyAttribution": "Food Hero, Oregon State University Extension Service, as published by MedlinePlus.",
+        "translation": "Independent Russian translation and edited English instructions; not an official NIH translation or endorsement.",
+        "sourceTimingText": "Prep time: 10 minutes Cook time: 20 minutes Total time: 30 minutes Number of Servings: 6"
+      },
+      "review": {
+        "status": "QUARANTINED",
+        "publishedFactsCompared": true,
+        "ingredientAllergensReviewed": true,
+        "nutritionSuitableForApproximateMatching": false,
+        "completeTimeSuitableForFiltering": true,
+        "independentlyCookedOrLabTested": false,
+        "clinicalReviewComplete": false,
+        "productionImportAllowed": false,
+        "issues": [
+          "SOURCE_SERVING_HALF_CUP_157G_NEEDS_RECHECK",
+          "SOURCE_BUTTER_OR_MARGARINE_NUTRITION_VARIATION"
+        ]
+      },
+      "warningsRu": [
+        "Ингредиенты и шаги рассчитаны на весь выход; калорийность — на одну указанную порцию.",
+        "Калорийность рассчитана по данным источника и зависит от продуктов и фактического размера порции.",
+        "Проверьте состав и предупреждения на упаковках. Отсутствие перекрёстного загрязнения аллергенами не проверено.",
+        "Фото иллюстративное: состав, способ приготовления и гарнир могут отличаться. Следуйте списку ингредиентов."
+      ],
+      "warningsEn": [
+        "Ingredients and instructions are for the complete batch; nutrition is for one stated serving.",
+        "Nutrition is based on the published estimate and varies with ingredients and portion size.",
+        "Check package ingredients and warnings. Allergen cross-contact has not been verified.",
+        "Representative photo: ingredients, cooking method and sides may differ. Follow the ingredient list."
+      ]
+    }
+  ],
+  "excludedSources": {
+    "breakfast-banana-split": "Visible nutrition is 230 kcal, JSON-LD is 190 kcal, and instructions differ. Do not combine the two versions.",
+    "favorite-pancakes-without-eggs": "The visible egg-free recipe lists 50 mg cholesterol per serving, inconsistent with the listed nonfat milk and egg-free ingredients; requires source clarification.",
+    "veggie-skillet-eggs": "Header says five minutes cooking, but eggs alone require about six minutes after sauteing vegetables. Broad unspecified vegetable choices also change nutrition.",
+    "quinoa-salad": "The stated total of 30 minutes excludes the unspecified required refrigeration/cooling step.",
+    "salmon-salad-mix": "The required chilling duration is unspecified although the header says 10 minutes total.",
+    "turkey-salad": "Cooked turkey and toasted nuts must already be prepared; the final chilling time is unspecified.",
+    "rice-bowl-southwestern-style": "Meat, beans and tofu are alternative proteins with different nutrition; the 320 kcal analysis is not tied to one unambiguous version. Rice and protein are already cooked.",
+    "grilled-tuna": "The requested primary-source URL returned HTTP 404 during retrieval."
+  }
+}

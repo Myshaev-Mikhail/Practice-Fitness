@@ -1,0 +1,3446 @@
+{
+  "baked-berry-oatmeal": {
+    "slug": "baked-berry-oatmeal",
+    "timing": "Prep time: 15 minutes Cook time: 30 minutes Total time: 45 minutes Number of Servings: 6",
+    "ingredients": [
+      "2 cups old fashioned rolled oats",
+      "1 teaspoon baking powder",
+      "1 teaspoon cinnamon",
+      "1/4 teaspoon salt",
+      "2 eggs",
+      "1/2 cup packed brown sugar",
+      "1 1/2 teaspoons vanilla",
+      "2 cups 1% or nonfat milk",
+      "4 teaspoons margarine or butter, melted",
+      "2 cups cane berries, fresh or frozen (raspberries, blackberries, marionberries)",
+      "1/4 cup chopped walnuts (optional)"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Preheat oven to 375 °F.",
+      "In a medium bowl, mix together oats, baking powder, cinnamon and salt.",
+      "In a separate bowl, beat the eggs until blended. Stir in brown sugar, vanilla, milk and melted butter.",
+      "Pour wet ingredients into the dry ingredients and stir until well combined.",
+      "Add the berries and stir lightly to spread them evenly. Pour mixture into a 2-quart baking dish. Sprinkle with chopped nuts if desired.",
+      "Bake for 20 to 30 minutes or until the top is golden brown.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [],
+    "facts": [
+      "Serving size 1 cup (189g)",
+      "Calories 280",
+      "Total Fat 7g 9%",
+      "Saturated Fat 2g 10%",
+      "Trans Fat 0g",
+      "Cholesterol 65mg 22%",
+      "Sodium 270mg 12%",
+      "Total Carbohydrate 46g 17%",
+      "Dietary Fiber 4g 14%",
+      "Total Sugars 26g",
+      "Includes 18g Added Sugars 36%",
+      "Protein 9g",
+      "Vitamin A 101mcg 11%",
+      "Vitamin C 2mg 3%",
+      "Vitamin D 1mcg 6%",
+      "Calcium 197mg 15%",
+      "Iron 2mg 10%",
+      "Potassium 304mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/baked-berry-oatmeal/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "697cb4c6a76f0c856e248dd5304bfcd4460bd1be78e581acd99cffd3b665a694",
+    "title": "Baked Berry Oatmeal",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension"
+  },
+  "baked-tilapia-with-tomatoes": {
+    "slug": "baked-tilapia-with-tomatoes",
+    "timing": "Prep time: 10 minutes Cook time: 25 minutes Total time: 35 minutes Number of Servings: 4",
+    "ingredients": [
+      "Nonstick vegetable oil spray",
+      "4 tilapia fillets",
+      "4 medium tomatoes, peeled and chopped",
+      "2 tablespoons olive oil",
+      "1 and 1/2 teaspoons thyme",
+      "1/4 cup pitted black olives, diced",
+      "1/4 teaspoon red pepper flakes",
+      "2 cloves garlic, minced",
+      "1/2 cup red onion, diced",
+      "1 tablespoon lime juice",
+      "Parsley and lemon wedges for garnish"
+    ],
+    "steps": [
+      "Preheat oven to 400 °F.",
+      "Spray baking dish with vegetable oil spray.",
+      "Arrange fillets in the baking dish. The dish should be large enough so the fillets do not overlap.",
+      "Mix remaining ingredients in a bowl.",
+      "Spoon the tomato mixture evenly over the fillets.",
+      "Bake uncovered 15 to 20 minutes or until the fish flakes easily with a fork.",
+      "Garnish with parsley and a lemon wedge."
+    ],
+    "notes": [],
+    "facts": [
+      "Serving size 1 fillet",
+      "Calories 265",
+      "Total Fat 16g",
+      "Saturated Fat 2g",
+      "Cholesterol 58mg",
+      "Sodium 172mg",
+      "Total Carbohydrate 9g",
+      "Dietary Fiber 3g",
+      "Protein 22g",
+      "Potassium 635mg"
+    ],
+    "url": "https://medlineplus.gov/recipes/baked-tilapia-with-tomatoes/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "66b4605865214bf8ce9961b391e7dccd003fec37265ede10d48bfdb298856c86",
+    "title": "Baked Tilapia with Tomatoes",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "NHLBI",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Baked Tilapia with Tomatoes",
+      "image": [
+        "https://medlineplus.gov/images/recipe_bakedtilapiawithtomatoes.jpg",
+        "https://medlineplus.gov/images/recipe_bakedtilapiawithtomatoes_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "National Heart, Lung, and Blood Institute"
+      },
+      "datePublished": "2019-02-05",
+      "description": "This dish is easy to prepare, low in calories, and economical.",
+      "prepTime": "PT10M",
+      "cookTime": "PT25M",
+      "totalTime": "PT35M",
+      "keywords": "cooking,main courses,tilapia",
+      "recipeYield": "4 servings",
+      "recipeCategory": "Dinner",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 fillet",
+        "calories": "265 calories",
+        "fatContent": "16 grams",
+        "saturatedFatContent": "2 grams",
+        "cholesterolContent": "58 milligrams",
+        "sodiumContent": "172 milligrams",
+        "fiberContent": "3 grams",
+        "proteinContent": "22 grams",
+        "carbohydrateContent": "9 grams"
+      },
+      "recipeIngredient": [
+        "Nonstick vegetable oil spray",
+        "4 tilapia fillets",
+        "4 medium tomatoes, peeled and chopped",
+        "2 tablespoons olive oil",
+        "1 and 1/2 teaspoons thyme",
+        "1/4 cup pitted black olives, diced",
+        "1/4 teaspoon red pepper flakes",
+        "2 cloves garlic, minced",
+        "1/2 cup red onion, diced",
+        "1 tablespoon lime juice",
+        "Parsley and lemon wedges for garnish"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Preheat oven to 400 °F."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Spray baking dish with vegetable oil spray."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Arrange fillets in the baking dish. The dish should be large enough so the fillets do not overlap."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Mix remaining ingredients in a bowl."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Spoon the tomato mixture evenly over the fillets."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bake uncovered 15 to 20 minutes or until the fish flakes easily with a fork."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Garnish with parsley and a lemon wedge."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.11",
+          "ratingCount": "9"
+        }
+      ]
+    }
+  },
+  "baked-tomatoes-with-cheese": {
+    "slug": "baked-tomatoes-with-cheese",
+    "timing": "Prep time: 5 minutes Cook time: 10 minutes Total time: 15 minutes Number of Servings: 4",
+    "ingredients": [
+      "2 large tomatoes cut into thick slices (about 1 inch)",
+      "1/3 cup shredded cheese (try parmesan, Swiss, or cheddar)",
+      "1 teaspoon oregano",
+      "1/4 teaspoon each salt and pepper",
+      "1/4 teaspoon garlic powder or 1 clove garlic, minced"
+    ],
+    "steps": [
+      "Preheat oven to 400 °F. Place tomato slices in a single layer in a shallow baking dish.",
+      "In a small bowl, combine cheese, oregano, salt, pepper and garlic powder. Sprinkle mixture over tomatoes.",
+      "Bake 5 to 10 minutes, or until cheese turns golden brown and starts to bubble. Serve warm.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Try on toasted bread or an English muffin."
+    ],
+    "facts": [
+      "Serving size 2 slices (99g)",
+      "Calories 45",
+      "Total Fat 2g 3%",
+      "Saturated Fat 1g 5%",
+      "Trans Fat 0g",
+      "Cholesterol 5mg 2%",
+      "Sodium 270mg 12%",
+      "Total Carbohydrate 5g 2%",
+      "Dietary Fiber 1g 4%",
+      "Total Sugars 2g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 3g",
+      "Vitamin A 56mcg 6%",
+      "Vitamin C 12mg 14%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 74mg 6%",
+      "Iron 0mg 0%",
+      "Potassium 238mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/baked-tomatoes-with-cheese/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "67895b5bd4f43507a487ff56cae48802bfe0d55660c288b51ad4b70475fe9063",
+    "title": "Baked Tomatoes with Cheese",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Baked Tomatoes with Cheese",
+      "image": [
+        "https://medlineplus.gov/images/recipe_bakedtomatoeswithcheese.jpg",
+        "https://medlineplus.gov/images/recipe_bakedtomatoeswithcheese_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-04-08",
+      "description": "Baked tomatoes with cheese are the perfect snack when you’re short on time and ingredients. Parmesan, Swiss, or cheddar cheese makes this a savory treat!",
+      "prepTime": "PT5M",
+      "cookTime": "PT10M",
+      "totalTime": "PT15M",
+      "keywords": "tomatoes,cheese,parmesan,swiss,cheddar,snacks,vegetarian,baked",
+      "recipeYield": "4 servings",
+      "recipeCategory": "snacks,vegetarian",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "2 slices (99 grams)",
+        "calories": "45 calories",
+        "fatContent": "2 grams",
+        "saturatedFatContent": "1 gram",
+        "cholesterolContent": "5 milligrams",
+        "sodiumContent": "270 milligrams",
+        "fiberContent": "1 gram",
+        "proteinContent": "3 grams",
+        "carbohydrateContent": "5 grams"
+      },
+      "recipeIngredient": [
+        "2 large tomatoes cut into thick slices (about 1 inch)",
+        "1/3 cup shredded cheese (try parmesan, Swiss, or cheddar)",
+        "1 teaspoon oregano",
+        "1/4 teaspoon each salt and pepper",
+        "1/4 teaspoon garlic powder or 1 clove garlic, minced"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Preheat oven to 400 °F. Place tomato slices in a single layer in a shallow baking dish."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "In a small bowl, combine cheese, oregano, salt, pepper and garlic powder. Sprinkle mixture over tomatoes."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bake 5 to 10 minutes, or until cheese turns golden brown and starts to bubble. Serve warm."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "banana-oatmeal-cookies": {
+    "slug": "banana-oatmeal-cookies",
+    "timing": "Prep time: 10 minutes Cook time: 15 minutes Total time: 25 minutes Number of Servings: 7",
+    "ingredients": [
+      "2 very ripe bananas",
+      "1 cup oats (quick or old-fashioned)",
+      "1/2 teaspoon cinnamon",
+      "1/2 teaspoon vanilla",
+      "1/2 cup raisins"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Preheat oven to 350 °F.",
+      "In a medium bowl, mash bananas with a fork until mostly smooth.",
+      "Add oats, cinnamon, vanilla and raisins. Mix well.",
+      "Drop spoonfuls of dough onto lightly sprayed or oiled baking sheet. Flatten with the back of a spoon or bottom of a drinking glass.",
+      "Bake 10 to 15 minutes. Remove from oven and let cool before serving."
+    ],
+    "notes": [
+      "Texture will be best when freshly made.",
+      "Try dried cranberries or chopped nuts instead of raisins."
+    ],
+    "facts": [
+      "Serving size 2 cookies (58g)",
+      "Calories 120",
+      "Total Fat 1g 1%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 0mg 0%",
+      "Total Carbohydrate 25g 9%",
+      "Dietary Fiber 2g 7%",
+      "Total Sugars 13g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 3g",
+      "Vitamin A 1mcg 0%",
+      "Vitamin C 3mg 3%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 15mg 2%",
+      "Iron 1mg 6%",
+      "Potassium 211mg 4%"
+    ],
+    "url": "https://medlineplus.gov/recipes/banana-oatmeal-cookies/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "ef8b70ef61977a8a97fa2d2f2e76fb3bca021760daa4712b1df12613569a2fcd",
+    "title": "Banana Oatmeal Cookies",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Banana Oatmeal Cookies",
+      "image": [
+        "https://medlineplus.gov/images/recipe_bananaoatmealcookies.jpg",
+        "https://medlineplus.gov/images/recipe_bananaoatmealcookies_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2020-04-30",
+      "description": "Looking for another way to use overripe bananas (besides bread)? These Banana Oatmeal Cookies only have five ingredients and can be ready in less than 30 minutes. Check it out!",
+      "prepTime": "PT10M",
+      "cookTime": "PT15M",
+      "totalTime": "PT25M",
+      "keywords": "bananas,oats,cinnamon,vanilla,raisins",
+      "recipeYield": "7 servings",
+      "recipeCategory": "Desserts",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "2 cookies (58 grams)",
+        "calories": "120 calories",
+        "fatContent": "1 gram",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "0 milligrams",
+        "fiberContent": "2 grams",
+        "proteinContent": "3 grams",
+        "carbohydrateContent": "25 grams"
+      },
+      "recipeIngredient": [
+        "2 very ripe bananas",
+        "1 cup oats (quick or old-fashioned)",
+        "1/2 teaspoon cinnamon",
+        "1/2 teaspoon vanilla",
+        "1/2 cup raisins"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Preheat oven to 350 °F."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "In a medium bowl, mash bananas with a fork until mostly smooth."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add oats, cinnamon, vanilla and raisins. Mix well."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Drop spoonfuls of dough onto lightly sprayed or oiled baking sheet. Flatten with the back of a spoon or bottom of a drinking glass."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bake 10 to 15 minutes. Remove from oven and let cool before serving."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.91",
+          "ratingCount": "44"
+        }
+      ]
+    }
+  },
+  "black-bean-soup": {
+    "slug": "black-bean-soup",
+    "timing": "Prep time: 15 minutes Cook time: 45 minutes Total time: 60 minutes Number of Servings: 12",
+    "ingredients": [
+      "1 Tablespoon vegetable oil",
+      "1 small onion chopped (about 1 cup)",
+      "4 cloves garlic, minced or 1 teaspoon garlic powder",
+      "1 can (15 ounces) diced tomatoes",
+      "4 cups black beans, about 2 cans (15 ounces) cooked or canned (with liquid)",
+      "2 potatoes, peeled and diced",
+      "4 cups water",
+      "1/2 cup fresh cilantro, chopped",
+      "1 Tablespoon cumin",
+      "1/3 cup lime juice or juice from 1 lime",
+      "hot sauce to taste"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Heat oil in a large pot over medium-high heat. Sauté the onion for 2 minutes. Add the garlic and tomatoes and cook for 2 minutes. Stir often.",
+      "Add the beans, potatoes and water. Bring to a boil; then reduce to medium-low heat. Cover and cook for 20 minutes.",
+      "Add the cilantro, cumin, lime juice and hot pepper sauce, if desired. Stir and cook for 10 minutes. Serve hot.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Try topping soup with non-fat sour cream, chopped cilantro and baked tortilla chips.",
+      "Freeze extra lime juice to use later."
+    ],
+    "facts": [
+      "Serving size 1 cup (255g)",
+      "Calories 130",
+      "Total Fat 1.5g 2%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 200mg 9%",
+      "Total Carbohydrate 24g 9%",
+      "Dietary Fiber 7g 25%",
+      "Total Sugars 2g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 6g",
+      "Vitamin A 9mcg 1%",
+      "Vitamin C 18mg 20%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 56mg 4%",
+      "Iron 2mg 10%",
+      "Potassium 512mg 10%"
+    ],
+    "url": "https://medlineplus.gov/recipes/black-bean-soup/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "c16d6169cbfb62b3031d67c1f9c652cce0a83b62f5e9ef2765e66aa07cdca073",
+    "title": "Black Bean Soup",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Black Bean Soup",
+      "image": [
+        "https://medlineplus.gov/images/recipe_blackbeansoup.jpg",
+        "https://medlineplus.gov/images/recipe_blackbeansoup_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-12-29",
+      "description": "This rich, hearty black bean soup is also vegan, gluten-free, and vegetarian. Tomatoes, potatoes, and cilantro give it a nice freshness and light flavor.",
+      "prepTime": "PT15M",
+      "cookTime": "PT45M",
+      "totalTime": "PT60M",
+      "keywords": "soups,lunch,low-fat,vegetarian,black bean soup,tomatoes,potatoes,cilantro,cumin,lime juice,hot sauce",
+      "recipeYield": "12 servings",
+      "recipeCategory": "soups,lunch,low-fat,vegetarian",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup (255 grams)",
+        "calories": "130 calories",
+        "fatContent": "1.5 grams",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "200 milligrams",
+        "fiberContent": "7 grams",
+        "proteinContent": "6 grams",
+        "carbohydrateContent": "24 grams"
+      },
+      "recipeIngredient": [
+        "1 Tablespoon vegetable oil",
+        "1 small onion chopped (about 1 cup)",
+        "4 cloves garlic, minced or 1 teaspoon garlic powder",
+        "1 can (15 ounces) diced tomatoes",
+        "4 cups black beans, about 2 cans (15 ounces) cooked or canned (with liquid)",
+        "2 potatoes, peeled and diced",
+        "4 cups water",
+        "1/2 cup fresh cilantro, chopped",
+        "1 Tablespoon cumin",
+        "1/3 cup lime juice or juice from 1 lime",
+        "hot sauce to taste"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Heat oil in a large pot over medium-high heat. Sauté the onion for 2 minutes. Add the garlic and tomatoes and cook for 2 minutes. Stir often."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add the beans, potatoes and water. Bring to a boil; then reduce to medium-low heat. Cover and cook for 20 minutes."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add the cilantro, cumin, lime juice and hot pepper sauce, if desired. Stir and cook for 10 minutes. Serve hot."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "blueberry-tofu-smoothie": {
+    "slug": "blueberry-tofu-smoothie",
+    "timing": "Prep time: 5 minutes Cook time: 0 minutes Total time: 5 minutes Number of Servings: 4",
+    "ingredients": [
+      "3/4 cup frozen blueberries",
+      "1 ripe banana",
+      "1 cup vanilla soy milk",
+      "3 ounces silken tofu",
+      "1/2 cup orange juice (juice from 1 orange)",
+      "1 teaspoon lime juice"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Combine all ingredients in a blender.",
+      "Puree until completely smooth.",
+      "Serve immediately.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Add 2-3 more teaspoons of lime juice for more tartness.",
+      "Freeze extra lime juice to use later.",
+      "Can use almond milk instead of milk"
+    ],
+    "facts": [
+      "Serving size 1 cup (170g)",
+      "Calories 90",
+      "Total Fat 2g 3%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 30mg 1%",
+      "Total Carbohydrate 16g 6%",
+      "Dietary Fiber 2g 7%",
+      "Total Sugars 10g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 3g",
+      "Vitamin A 2mcg 0%",
+      "Vitamin C 18mg 20%",
+      "Vitamin D 1mcg 6%",
+      "Calcium 104mg 8%",
+      "Iron 1mg 6%",
+      "Potassium 262mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/blueberry-tofu-smoothie/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "e80a121d4437e39ac4c756f19016aa0663ee5e3054a8447081c2587bd8ee17eb",
+    "title": "Blueberry Tofu Smoothie",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Blueberry Tofu Smoothie",
+      "image": [
+        "https://medlineplus.gov/images/recipe_blueberrytofusmoothie.jpg",
+        "https://medlineplus.gov/images/recipe_blueberrytofusmoothie_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2022-10-20",
+      "description": "This Blueberry Tofu Smoothie recipe is packed with protein from tofu and soy milk. It&#x27;s creamy and fruity with blueberries, banana, lime, and orange juice.",
+      "prepTime": "PT5M",
+      "cookTime": "PT0M",
+      "totalTime": "PT5M",
+      "keywords": "smoothie,blueberry,tofu,blueberry smoothie,blueberries,banana,soy milk,silken tofu,orange juice,lime juice,vanilla soy milk",
+      "recipeYield": "4 servings",
+      "recipeCategory": "breakfast,snack,drinks,low fat,low sodium",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup",
+        "calories": "90 calories",
+        "fatContent": "2 grams",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "30 milligrams",
+        "fiberContent": "2 grams",
+        "proteinContent": "3 grams",
+        "carbohydrateContent": "16 grams"
+      },
+      "recipeIngredient": [
+        "3/4 cup frozen blueberries",
+        "1 ripe banana",
+        "1 cup vanilla soy milk",
+        "3 ounces silken tofu",
+        "1/2 cup orange juice (juice from 1 orange)",
+        "1 teaspoon lime juice"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Combine all ingredients in a blender."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Puree until completely smooth."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Serve immediately."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "breakfast-banana-split": {
+    "slug": "breakfast-banana-split",
+    "timing": "Prep time: 5 minutes Cook time: 0 minutes Total time: 5 minutes Number of Servings: 2",
+    "ingredients": [
+      "1 small banana",
+      "1/2 cup oat, corn, or granola cereal",
+      "1/2 cup low-fat vanilla or strawberry yogurt",
+      "1/2 teaspoon honey, optional (skip for children under the age of one)",
+      "1/2 cup canned pineapple tidbits or chunks (drained)"
+    ],
+    "steps": [
+      "Peel and split banana lengthwise. Place half in two separate cereal bowls.",
+      "Over each banana, spoon yogurt, sprinkle cereal and drizzle honey, if desired.",
+      "Top with pineapple and serve immediately.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Try other flavors of low fat yogurt or even cottage cheese.",
+      "Try other fresh, frozen, or canned fruits.",
+      "Some foods can cause choking in young children. Be sure that fruit pieces are very small and soft for toddlers. Avoid grapes, chunks of pineapple or melon. Instead, use softer canned fruit, such as fruit cocktail.",
+      "Honey is not recommended for children under 1 year old.",
+      "Add nuts or seeds for more protein."
+    ],
+    "facts": [
+      "Serving size 1/2 banana split (177g)",
+      "Calories 230",
+      "Total Fat 4.5g 6%",
+      "Saturated Fat 0.5g 3%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 45mg 2%",
+      "Total Carbohydrate 44g 16%",
+      "Dietary Fiber 3g 11%",
+      "Total Sugars 28g",
+      "Includes 3g Added Sugars 6%",
+      "Protein 6g",
+      "Vitamin A 4mcg 0%",
+      "Vitamin C 9mg 10%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 127mg 10%",
+      "Iron 1mg 6%",
+      "Potassium 477mg 10%"
+    ],
+    "url": "https://medlineplus.gov/recipes/breakfast-banana-split/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "3a20eb29de9b862774ad21eddb69093800e39aa3ce71d0e41d636995550c1ffd",
+    "title": "Breakfast Banana Split",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Breakfast Banana Split",
+      "image": [
+        "https://medlineplus.gov/images/recipe_breakfastbananasplit.jpg",
+        "https://medlineplus.gov/images/recipe_breakfastbananasplit_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2019-01-30",
+      "description": "Bananas, pineapple, yogurt, and granola, what a healthy way to start your day! Treat yourself and your kids with this healthy breakfast treat.",
+      "prepTime": "PT5M",
+      "cookTime": "PT0M",
+      "totalTime": "PT5M",
+      "keywords": "child nutrition,fruit,yogurt,breakfast",
+      "recipeYield": "2 servings",
+      "recipeCategory": "Breakfast",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1/2 banana split",
+        "calories": "190 calories",
+        "fatContent": "3 grams",
+        "saturatedFatContent": "1 grams",
+        "cholesterolContent": "5 milligrams",
+        "sodiumContent": "80 milligrams",
+        "fiberContent": "3 grams",
+        "proteinContent": "5 grams",
+        "carbohydrateContent": "38 grams"
+      },
+      "recipeIngredient": [
+        "1 small banana",
+        "1/2 cup oat, corn, or granola cereal",
+        "1/2 cup low-fat vanilla or strawberry yogurt",
+        "1/2 teaspoon honey, optional (skip for children under the age of one)",
+        "1/2 cup canned pineapple tidbits or chunks"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Peel and split banana lengthwise. Place half in two separate cereal bowls."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Sprinkle granola over banana, reserving some for topping."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Spoon yogurt on top and drizzle with honey."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Decorate with reserved granola and pineapple."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Serve immediately."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.61",
+          "ratingCount": "56"
+        }
+      ]
+    }
+  },
+  "chicken-and-rice": {
+    "slug": "chicken-and-rice",
+    "timing": "Prep time: 15 minutes Cook time: 1 hour 15 minutes Total time: 1 hour 30 minutes Number of Servings: 6",
+    "ingredients": [
+      "6 chicken pieces (legs and breasts), skinned",
+      "2 tsp vegetable oil",
+      "4 cups water",
+      "2 tomatoes, chopped",
+      "1/2 cup green pepper, chopped",
+      "1/4 cup red pepper, chopped",
+      "1/4 cup celery, diced",
+      "1 medium carrot, grated",
+      "1/4 cup frozen yellow corn",
+      "1/2 cup onion, chopped",
+      "1/4 cup chopped fresh cilantro",
+      "2 cloves garlic, chopped fine",
+      "1/8 tsp salt",
+      "1/8 tsp ground black pepper",
+      "2 cups rice",
+      "1/2 cup frozen peas",
+      "2 oz Spanish olives",
+      "1/4 cup raisins"
+    ],
+    "steps": [
+      "In a large pot, brown chicken pieces in oil.",
+      "Add water, tomatoes, green and red peppers, celery, carrot, corn, onion, cilantro, garlic, salt, and black pepper. Cover and cook over medium heat for 20 to 30 minutes, or until chicken is done.",
+      "Remove chicken from the pot and place in the refrigerator. Add rice, peas, and olives to the pot. Cover pot and cook over low heat for about 20 minutes, until rice is cooked.",
+      "Add chicken and raisins, and cook for another 8 minutes. Serve."
+    ],
+    "notes": [],
+    "facts": [
+      "Serving size 1 cup rice and 1 piece chicken",
+      "Calories 448",
+      "Total Fat 7g",
+      "Saturated Fat 2g",
+      "Cholesterol 49mg",
+      "Sodium 352mg",
+      "Calcium 63mg",
+      "Iron 4mg"
+    ],
+    "url": "https://medlineplus.gov/recipes/chicken-and-rice/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "293d09774d8bbfdf981ebcc07874c22d709c3025c1be5a26fe11777daac59179",
+    "title": "Chicken and Rice",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "NHLBI",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Chicken and Rice",
+      "image": [
+        "https://medlineplus.gov/images/recipe_chickenandrice.jpg",
+        "https://medlineplus.gov/images/recipe_chickenandrice_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "National Heart, Lung, and Blood Institute"
+      },
+      "datePublished": "2019-02-05",
+      "description": "A crowd-pleaser made from simple ingredients in a single pot.",
+      "prepTime": "PT15M",
+      "cookTime": "PT1H15M",
+      "totalTime": "PT1H30M",
+      "keywords": "chicken,rice,tomatoes,celery,carrot,yellow corn,raisins",
+      "recipeYield": "6 servings",
+      "recipeCategory": "Dinner",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup rice and 1 piece chicken",
+        "calories": "448 calories",
+        "fatContent": "7 grams",
+        "saturatedFatContent": "2 grams",
+        "cholesterolContent": "49 milligrams",
+        "sodiumContent": "352 milligrams",
+        "fiberContent": "null",
+        "proteinContent": "null",
+        "carbohydrateContent": "null"
+      },
+      "recipeIngredient": [
+        "6 chicken pieces (legs and breasts), skinned",
+        "2 tsp vegetable oil",
+        "4 cups water",
+        "2 tomatoes, chopped",
+        "1/2 cup green pepper, chopped",
+        "1/4 cup red pepper, chopped",
+        "1/4 cup celery, diced",
+        "1 medium carrot, grated",
+        "1/4 cup frozen yellow corn",
+        "1/2 cup onion, chopped",
+        "1/4 cup chopped fresh cilantro",
+        "2 cloves garlic, chopped fine",
+        "1/8 tsp salt",
+        "1/8 tsp ground black pepper",
+        "2 cups rice",
+        "1/2 cup frozen peas",
+        "2 oz Spanish olives",
+        "1/4 cup raisins"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "In a large pot, brown chicken pieces in oil."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add water, tomatoes, green and red peppers, celery, carrot, corn, onion, cilantro, garlic, salt, and black pepper. Cover and cook over medium heat for 20 to 30 minutes, or until chicken is done."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Remove chicken from the pot and place in the refrigerator. Add rice, peas, and olives to the pot. Cover pot and cook over low heat for about 20 minutes, until rice is cooked."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add chicken and raisins, and cook for another 8 minutes. Serve."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.75",
+          "ratingCount": "12"
+        }
+      ]
+    }
+  },
+  "favorite-pancakes-without-eggs": {
+    "slug": "favorite-pancakes-without-eggs",
+    "timing": "Prep time: 10 minutes Cook time: 5 minutes Total time: 15 minutes Number of Servings: 4",
+    "ingredients": [
+      "1 1/4 cups all-purpose flour",
+      "1 Tablespoon baking powder",
+      "1 Tablespoon sugar",
+      "1/4 teaspoon salt",
+      "1 cup nonfat or 1% milk",
+      "2 Tablespoons vegetable oil",
+      "2 Tablespoons water",
+      "1 teaspoon vanilla (optional)"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Mix together flour, baking powder, sugar and salt in medium bowl.",
+      "Combine milk, oil and water. Add to dry ingredients.",
+      "Stir just until moistened.",
+      "Lightly spray a large skillet or griddle with non-stick cooking spray or lightly wipe with oil. Heat skillet or griddle over medium-high heat (350 °F in an electric skillet). For each pancake, pour about 1/4 cup of batter onto the hot griddle.",
+      "Pancakes are ready to turn when tops are bubbly all over, a few bubbles have burst, and the edges begin to appear dry. Use a quick flip with a broad spatula to turn pancakes. Turn only once. Bake until bottoms are brown and dry.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "To see if skillet is hot enough, sprinkle with a few drops of water. If drops skitter around, heat is just right.",
+      "Combine wet ingredients ahead of time. Store in refrigerator up to 2 days.",
+      "Mix dry ingredients ahead of time and store in a sealed container.",
+      "Top with applesauce, fresh fruit or yogurt.",
+      "Whole Wheat: use whole-wheat pastry flour or replace about half the all-purpose flour with whole-wheat flour. Add 1 to 2 Tablespoons of water or milk if batter is too thick.",
+      "Oatmeal: replace about half the flour with rolled oats. Soak the rolled oats in the milk for 5 minutes before mixing the batter.",
+      "Corn Cakes: Omit the sugar, replace up to half the flour with cornmeal and add 1/2 to 1 cup cooked corn.",
+      "Buttermilk: replace milk with buttermilk; reduce the baking powder to 2 teaspoons and add 1/2 teaspoon baking soda.",
+      "Apple: Add 1/2 cup shredded or chopped apple to the liquid ingredients.",
+      "Berry: Try blueberries, raspberries, blackberries or a mix. After batter is poured on the skillet or griddle, sprinkle the tops with berries. No need to thaw frozen berries.",
+      "Pumpkin: Add 1/2 cup canned pumpkin.",
+      "Zucchini: Add 1/2 cup grated zucchini. Squeeze out some moisture before adding.",
+      "Waffles: This batter also works great in waffle makers!"
+    ],
+    "facts": [
+      "Serving size 2 (4-in) pancakes (134g)",
+      "Calories 270",
+      "Total Fat 9g 12%",
+      "Saturated Fat 1.5g 8%",
+      "Trans Fat 0g",
+      "Cholesterol 50mg 17%",
+      "Sodium 560mg 24%",
+      "Total Carbohydrate 37g 13%",
+      "Dietary Fiber 1g 4%",
+      "Total Sugars 7g",
+      "Includes 3g Added Sugars 6%",
+      "Protein 8g",
+      "Vitamin A 60mcg 7%",
+      "Vitamin C 0mg 0%",
+      "Vitamin D 1mcg 6%",
+      "Calcium 301mg 25%",
+      "Iron 2mg 10%",
+      "Potassium 162mg 4%"
+    ],
+    "url": "https://medlineplus.gov/recipes/favorite-pancakes-without-eggs/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "a7d7066359acc48e445695c14b50486c77d11c9e9a04ccbc3a803e889b60bf47",
+    "title": "Favorite Pancakes without Eggs",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension"
+  },
+  "green-pineapple-power-smoothie": {
+    "slug": "green-pineapple-power-smoothie",
+    "timing": "Prep time: 10 minutes Cook time: 0 minutes Total time: 10 minutes Number of Servings: 4",
+    "ingredients": [
+      "1 cup orange juice",
+      "1/2 cup pineapple juice",
+      "1/2 cup low-fat plain or vanilla yogurt",
+      "1 banana, peeled and sliced",
+      "2 cups fresh spinach leaves",
+      "2 cups crushed ice"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Combine all ingredients in a blender.",
+      "Puree until completely smooth.",
+      "Serve immediately.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "For a thicker smoothie, use frozen fruit or vegetables instead of ice.",
+      "Use any type of juice, even juice from canned pineapple."
+    ],
+    "facts": [
+      "Serving size 1 cup (166g)",
+      "Calories 90",
+      "Total Fat 0.5g 1%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 35mg 2%",
+      "Total Carbohydrate 20g 7%",
+      "Dietary Fiber 1g 4%",
+      "Total Sugars 15g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 3g",
+      "Vitamin A 81mcg 9%",
+      "Vitamin C 42mg 46%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 77mg 6%",
+      "Iron 1mg 6%",
+      "Potassium 355mg 8%"
+    ],
+    "url": "https://medlineplus.gov/recipes/green-pineapple-power-smoothie/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "6c5b939d2e338ec0fbe9b11b3c6a64f2064b2ed48dc3bab2c9390e0b6e3d185a",
+    "title": "Green Pineapple Power Smoothie",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Green Pineapple Power Smoothie",
+      "image": [
+        "https://medlineplus.gov/images/recipe_greenpineapplepowersmoothie.jpg",
+        "https://medlineplus.gov/images/recipe_greenpineapplepowersmoothie_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-06-21",
+      "description": "This pineapple green power smoothie is a refreshing blend of pineapple, banana, spinach, and yogurt. A delicious way to add more leafy greens to your diet!",
+      "prepTime": "PT10M",
+      "cookTime": "PT0M",
+      "totalTime": "PT10M",
+      "keywords": "drinks,breakfast,low fat,orange juice,smoothie,yogurt,banana,spinach,ice,blender",
+      "recipeYield": "4 servings",
+      "recipeCategory": "drinks,breakfast,low fat",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup (166 grams)",
+        "calories": "90 calories",
+        "fatContent": "0.5 grams",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "35 milligrams",
+        "fiberContent": "1 gram",
+        "proteinContent": "3 grams",
+        "carbohydrateContent": "20 grams"
+      },
+      "recipeIngredient": [
+        "1 cup orange juice",
+        "1/2 cup pineapple juice",
+        "1/2 cup low-fat plain or vanilla yogurt",
+        "1 banana, peeled and sliced",
+        "2 cups fresh spinach leaves",
+        "2 cups crushed ice"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Combine all ingredients in a blender."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Puree until completely smooth."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Serve immediately."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "hummus-with-tahini": {
+    "slug": "hummus-with-tahini",
+    "timing": "Prep time: 5 minutes Cook time: 0 minutes Total time: 5 minutes Number of Servings: 12",
+    "ingredients": [
+      "1 can (15 ounces) garbanzo beans, drained and rinsed",
+      "2 Tablespoons lemon juice (fresh or bottled)",
+      "1 1/2 Tablespoons vegetable oil",
+      "2 Tablespoons water",
+      "1 clove garlic or 1/4 teaspoon garlic powder",
+      "1 Tablespoon tahini (sesame seed paste)"
+    ],
+    "steps": [
+      "Place all ingredients in a blender",
+      "Blend until desired consistency (more time for smooth dip, less for a chunky dip).",
+      "If hummus seems too thick, add 2 teaspoons of water.",
+      "Refrigerate leftovers within 2 hours.",
+      "Spread garbanzo beans on a large plate. Mash well with a fork until they are as smooth as you like.",
+      "Mix with other ingredients in a small bowl.",
+      "If hummus seems too thick, add 2 teaspoons of water.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Change the flavor by adding chili powder, chopped cilantro or parsley, or hot sauce.",
+      "No tahini? Try Hummus (no tahini) recipe.",
+      "Freeze extra lemon juice to use later.",
+      "Cook your own dry beans. One can (15 ounces) is about 1 1/2 to 1 3/4 cups drained beans."
+    ],
+    "facts": [
+      "Serving size 2 Tablespoons (27g)",
+      "Calories 50",
+      "Total Fat 3g 4%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 40mg 2%",
+      "Total Carbohydrate 5g 2%",
+      "Dietary Fiber 1g 4%",
+      "Total Sugars 1g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 2g",
+      "Vitamin A 0mcg 0%",
+      "Vitamin C 1mg 1%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 10mg 0%",
+      "Iron 0mg 0%",
+      "Potassium 30mg 0%"
+    ],
+    "url": "https://medlineplus.gov/recipes/hummus-with-tahini/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "76dfd982e3203019a5ec21f4f92782027c127d588219be3083760c520cc1cfb3",
+    "title": "Hummus (with tahini)",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Hummus (with tahini)",
+      "image": [
+        "https://medlineplus.gov/images/recipe_hummuswithtahini.jpg",
+        "https://medlineplus.gov/images/recipe_hummuswithtahini_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2019-06-12",
+      "description": "It's easy to make hummus at home and it only takes 5 minutes! Follow this recipe for a traditional hummus taste.",
+      "prepTime": "PT5M",
+      "cookTime": "PT0M",
+      "totalTime": "PT5M",
+      "keywords": "garbanzo beans,lemon juice,tahini",
+      "recipeYield": "12 servings",
+      "recipeCategory": "Dips, Salsas, and Sauces",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "2 Tablespoons (27 grams)",
+        "calories": "50 calories",
+        "fatContent": "3 grams",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "40 milligrams",
+        "fiberContent": "1 gram",
+        "proteinContent": "2 grams",
+        "carbohydrateContent": "5 grams"
+      },
+      "recipeIngredient": [
+        "1 can (15 ounces) garbanzo beans, drained and rinsed",
+        "2 Tablespoons lemon juice (fresh or bottled)",
+        "1 1/2 Tablespoons vegetable oil",
+        "2 Tablespoons water",
+        "1 clove garlic or 1/4 teaspoon garlic powder",
+        "1 Tablespoon tahini (sesame seed paste)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Place all ingredients in a blender."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Blend until desired consistency (more time for smooth dip, less for a chunky dip)."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "If hummus seems too thick, add 2 teaspoons of water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "OR"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Spread garbanzo beans on a large plate. Mash well with a fork until they are as smooth as you like."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Mix with other ingredients in a small bowl."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "If hummus seems too thick, add 2 teaspoons of water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "5.00",
+          "ratingCount": "7"
+        }
+      ]
+    }
+  },
+  "kale-and-white-bean-soup": {
+    "slug": "kale-and-white-bean-soup",
+    "timing": "Prep time: 15 minutes Cook time: 15 minutes Total time: 30 minutes Number of Servings: 5",
+    "ingredients": [
+      "1 cup chopped onion",
+      "4 cloves garlic, minced or 1 teaspoon garlic powder",
+      "1 Tablespoon margarine or butter",
+      "2 cups low-sodium broth (any type)",
+      "1 1/2 cups cooked white beans or 1 can (15 ounces) drained and rinsed",
+      "1 3/4 cups diced tomatoes or 1 can (14.5 ounces) with juice",
+      "1 Tablespoon Italian seasoning",
+      "3 cups chopped kale (fresh or frozen)"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "In a saucepan over medium-high heat, sauté onion and garlic in margarine or butter until soft.",
+      "Add broth, white beans and tomatoes; stir to combine.",
+      "Bring to a boil. Reduce heat, cover, and simmer for about 5 minutes.",
+      "Add the kale and Italian seasoning. Simmer until kale has softened, 3 to 5 minutes. Serve warm.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "1 bunch fresh kale (about 8 cups, chopped)"
+    ],
+    "facts": [
+      "Serving size 1 cup (241g)",
+      "Calories 120",
+      "Total Fat 3.5g 4%",
+      "Saturated Fat 0.5g 3%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 260mg 11%",
+      "Total Carbohydrate 20g 7%",
+      "Dietary Fiber 5g 18%",
+      "Total Sugars 5g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 6g",
+      "Vitamin A 63mcg 7%",
+      "Vitamin C 13mg 14%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 44mg 4%",
+      "Iron 1mg 6%",
+      "Potassium 370mg 8%"
+    ],
+    "url": "https://medlineplus.gov/recipes/kale-and-white-bean-soup/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "e1f9b7301a63e6154fc55c9e41010ca7f8ebabd332a5f01c809977f57c0d2abb",
+    "title": "Kale and White Bean Soup",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Kale and White Bean Soup",
+      "image": [
+        "https://medlineplus.gov/images/recipe_kaleandwhitebeansoup.jpg",
+        "https://medlineplus.gov/images/recipe_kaleandwhitebeansoup_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-09-09",
+      "description": "This simple kale and white bean soup is a great gluten-free, vegetarian dish. It's delicious and filling comfort food that's also nutritious!",
+      "prepTime": "PT15M",
+      "cookTime": "PT15M",
+      "totalTime": "PT30M",
+      "keywords": "onion,garlic,white beans,tomatoes,italian seasoning,kale,soups,vegetarian,lunch",
+      "recipeYield": "5 servings",
+      "recipeCategory": "soups,vegetarian,lunch",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup (241 grams)",
+        "calories": "120 calories",
+        "fatContent": "3.5 grams",
+        "saturatedFatContent": "0.5 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "260 milligrams",
+        "fiberContent": "5 grams",
+        "proteinContent": "6 grams",
+        "carbohydrateContent": "20 grams"
+      },
+      "recipeIngredient": [
+        "1 cup chopped onion",
+        "4 cloves garlic, minced or 1 teaspoon garlic powder",
+        "1 Tablespoon margarine or butter",
+        "2 cups low-sodium broth (any type)",
+        "1 1/2 cups cooked white beans or 1 can (15 ounces) drained and rinsed",
+        "1 3/4 cups diced tomatoes or 1 can (14.5 ounces) with juice",
+        "1 Tablespoon Italian seasoning",
+        "3 cups chopped kale (fresh or frozen)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "In a saucepan over medium-high heat, sauté onion and garlic in margarine or butter until soft."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add broth, white beans and tomatoes; stir to combine."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bring to a boil. Reduce heat, cover, and simmer for about 5 minutes."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add the kale and Italian seasoning. Simmer until kale has softened, 3 to 5 minutes. Serve warm."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "melon-and-mint": {
+    "slug": "melon-and-mint",
+    "timing": "Prep time: 15 minutes Cook time: 0 minutes Total time: 15 minutes Number of Servings: 8",
+    "ingredients": [
+      "1 Tablespoon lime juice",
+      "1/4 cup fresh mint leaves",
+      "2 Tablespoons packed brown sugar",
+      "3 cups watermelon cubes",
+      "3 cups honeydew cubes"
+    ],
+    "steps": [
+      "Blend lime juice, mint leaves and brown sugar together in a small food processor.",
+      "Place melon cubes in a bowl. Drizzle dressing over melon and toss gently.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Try with other types of melon such as cantaloupe or crenshaw.",
+      "Try omitting the brown sugar and adding crumbled feta cheese."
+    ],
+    "facts": [
+      "Serving size 3/4 cup (127g)",
+      "Calories 50",
+      "Total Fat 0g 0%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 15mg 1%",
+      "Total Carbohydrate 14g 5%",
+      "Dietary Fiber 1g 4%",
+      "Total Sugars 12g",
+      "Includes 3g Added Sugars 6%",
+      "Protein 1g",
+      "Vitamin A 20mcg 2%",
+      "Vitamin C 17mg 19%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 13mg 2%",
+      "Iron 0mg 0%",
+      "Potassium 221mg 4%"
+    ],
+    "url": "https://medlineplus.gov/recipes/melon-and-mint/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "bc6d96aef3c905c3d0d5a70093bf6432c98405d19f1dad0bb296a3c3541e4b6d",
+    "title": "Melon and Mint",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Melon and Mint",
+      "image": [
+        "https://medlineplus.gov/images/recipe_melonandmint.jpg",
+        "https://medlineplus.gov/images/recipe_melonandmint_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-04-15",
+      "description": "This sweet, fresh melon and mint salad uses only 5 ingredients. It's the perfect side dish for a picnic, and is gluten and dairy free!",
+      "prepTime": "PT15M",
+      "cookTime": "PT0M",
+      "totalTime": "PT15M",
+      "keywords": "sweet,fresh melon,mint,salads, side dishes,dairy free,low fat,vegetarian,5 ingredients, gluten free",
+      "recipeYield": "8 servings",
+      "recipeCategory": "side dishes,salads,dairy free,low fat,vegetarian",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "3/4 cup (127 grams)",
+        "calories": "50 calories",
+        "fatContent": "0 grams",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "15 milligrams",
+        "fiberContent": "1 gram",
+        "proteinContent": "1 gram",
+        "carbohydrateContent": "14 grams"
+      },
+      "recipeIngredient": [
+        "1 Tablespoon lime juice",
+        "1/4 cup fresh mint leaves",
+        "2 Tablespoons packed brown sugar",
+        "3 cups watermelon cubes",
+        "3 cups honeydew cubes"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Blend lime juice, mint leaves and brown sugar together in a small food processor."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Place melon cubes in a bowl. Drizzle dressing over melon and toss gently."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "oatmeal-pecan-waffles-or-pancakes": {
+    "slug": "oatmeal-pecan-waffles-or-pancakes",
+    "timing": "Prep time: 10 minutes Cook time: 30 minutes Total time: 40 minutes Number of Servings: 4",
+    "ingredients": [
+      "1 cup whole-wheat flour",
+      "1/2 cup quick-cooking oats",
+      "2 tsp baking powder",
+      "1 tsp sugar",
+      "1/4 cup unsalted pecans, chopped",
+      "2 large eggs, separated (for pancakes, see note)",
+      "1 and 1/2 cup fat-free (skim) milk",
+      "1 Tbsp vegetable oil",
+      "2 cups fresh strawberries, rinsed, stems removed, and cut in half (or substitute frozen strawberries, thawed)",
+      "1 cup fresh blackberries, rinsed (or substitute frozen blackberries, thawed)",
+      "1 cup fresh blueberries, rinsed (or substitute frozen blueberries, thawed)",
+      "1 tsp powdered sugar"
+    ],
+    "steps": [
+      "Preheat waffle iron.",
+      "Combine flour, oats, baking powder, sugar, and pecans in a large bowl.",
+      "Combine egg yolks, milk, and vegetable oil in a separate bowl, and mix well.",
+      "Add liquid mixture to the dry ingredients, and stir together. Do not overmix; mixture should be a bit lumpy.",
+      "Whip egg whites to medium peaks. Gently fold egg whites into batter (for pancakes, see note below).",
+      "Pour batter into preheated waffle iron, and cook until the waffle iron light signals it's done or steam stops coming out of the iron. (A waffle is perfect when it is crisp and well-browned on the outside with a moist, light, airy and fluffy inside.) (Or make pancakes.)",
+      "Add fresh fruit and a light dusting of powdered sugar to each waffle, and serve."
+    ],
+    "notes": [],
+    "facts": [
+      "Serving size 3 small (2-inch) or 1 large (6-inch) waffle (depending on waffle iron size) or pancakes",
+      "Calories 340",
+      "Total Fat 11g",
+      "Saturated Fat 2g",
+      "Cholesterol 107mg",
+      "Sodium 331mg",
+      "Total Carbohydrate 50g",
+      "Dietary Fiber 9g",
+      "Protein 14g",
+      "Vitamin A 8%",
+      "Vitamin C 60%",
+      "Calcium 30%",
+      "Iron 6%",
+      "Potassium 369mg"
+    ],
+    "url": "https://medlineplus.gov/recipes/oatmeal-pecan-waffles-or-pancakes/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "d6ee3705ad2a518b144dba98c5f4533a5608ee6ec5a9c3842810f22493feea48",
+    "title": "Oatmeal Pecan Waffles (or Pancakes)",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "NHLBI",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Oatmeal Pecan Waffles (or Pancakes)",
+      "image": [
+        "https://medlineplus.gov/images/recipe_oatmealpecanwaffles.jpg",
+        "https://medlineplus.gov/images/recipe_oatmealwaffles_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "National Heart, Lung, and Blood Institute"
+      },
+      "datePublished": "2019-02-05",
+      "description": "Your children will jump right out of bed for this delicious meal.",
+      "prepTime": "PT10M",
+      "cookTime": "PT30M",
+      "totalTime": "PT40M",
+      "keywords": "Oats, Pancakes, Pecans, Waffles",
+      "recipeYield": "4 servings",
+      "recipeCategory": "Breakfast",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "3 small (2-inch) or 1 large (6-inch) waffle (depending on waffle iron size) or pancakes",
+        "calories": "340 calories",
+        "fatContent": "11 grams",
+        "saturatedFatContent": "2 grams",
+        "cholesterolContent": "107 milligrams",
+        "sodiumContent": "331 milligrams",
+        "fiberContent": "9 grams",
+        "proteinContent": "14 grams",
+        "carbohydrateContent": "50 grams"
+      },
+      "recipeIngredient": [
+        "1 cup whole-wheat flour",
+        "1/2 cup quick-cooking oats",
+        "2 tsp baking powder",
+        "1 tsp sugar",
+        "1/4 cup unsalted pecans, chopped",
+        "2 large eggs, separated (for pancakes, see note)",
+        "1 and 1/2 cup fat-free (skim) milk",
+        "1 Tbsp vegetable oil",
+        "2 cups fresh strawberries, rinsed, stems removed, and cut in half (or substitute frozen strawberries, thawed)",
+        "1 cup fresh blackberries, rinsed (or substitute frozen blackberries, thawed)",
+        "1 cup fresh blueberries, rinsed (or substitute frozen blueberries, thawed)",
+        "1 tsp powdered sugar"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Preheat waffle iron."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Combine flour, oats, baking powder, sugar, and pecans in a large bowl."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Combine egg yolks, milk, and vegetable oil in a separate bowl, and mix well."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add liquid mixture to the dry ingredients, and stir together. Do not overmix; mixture should be a bit lumpy."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Whip egg whites to medium peaks. Gently fold egg whites into batter (for pancakes, see note below)."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Pour batter into preheated waffle iron, and cook until the waffle iron light signals it's done or steam stops coming out of the iron. (A waffle is perfect when it is crisp and well-browned on the outside with a moist, light, airy and fluffy inside.) (Or make pancakes.)"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add fresh fruit and a light dusting of powdered sugar to each waffle, and serve."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.79",
+          "ratingCount": "18"
+        }
+      ]
+    }
+  },
+  "oven-baked-salmon": {
+    "slug": "oven-baked-salmon",
+    "timing": "Prep time: 5 minutes Cook time: 15 minutes Total time: 20 minutes Number of Servings: 4",
+    "ingredients": [
+      "1 Tablespoon vegetable oil",
+      "12 to 16 ounces fresh or thawed salmon, cut into 3 or 4 pieces of similar size",
+      "1/4 teaspoon salt",
+      "1/4 teaspoon pepper"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Preheat the oven to 450 °F.",
+      "Place the salmon, skin side down, on a foil-lined baking pan. Drizzle the flesh with oil and sprinkle on the salt and pepper.",
+      "Bake the salmon for 10 to 15 minutes, depending on the thickness and size of the fish pieces.",
+      "The salmon has cooked long enough when it is opaque on the outside and flakes when tested with a fork. If you have a food thermometer, check in the middle of a piece for a temperature of 145 °F.",
+      "Remove the pan from the oven and serve the salmon skin side down.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "No time to thaw? You can bake salmon from frozen: Preheat the oven to 450 °F. Place the frozen salmon pieces in a foil-lined baking dish. Tightly cover the dish (without the cover touching the salmon) and bake for 15 minutes. Remove the cover, drizzle the salmon with oil, season with salt and pepper and cook uncovered for 10 to 12 minutes until it is opaque on the outside and flakes when tested with a fork.",
+      "Preheat the oven to 450 °F.",
+      "Place the frozen salmon pieces in a foil-lined baking dish. Tightly cover the dish (without the cover touching the salmon) and bake for 15 minutes.",
+      "Remove the cover, drizzle the salmon with oil, season with salt and pepper and cook uncovered for 10 to 12 minutes until it is opaque on the outside and flakes when tested with a fork.",
+      "Cook a smaller fish portion for one or two or save extras for another meal.",
+      "Preheat the oven to 450 °F.",
+      "Place the frozen salmon pieces in a foil-lined baking dish. Tightly cover the dish (without the cover touching the salmon) and bake for 15 minutes.",
+      "Remove the cover, drizzle the salmon with oil, season with salt and pepper and cook uncovered for 10 to 12 minutes until it is opaque on the outside and flakes when tested with a fork."
+    ],
+    "facts": [
+      "Serving size 1 portion (116g)",
+      "Calories 160",
+      "Total Fat 7g 9%",
+      "Saturated Fat 1g 5%",
+      "Trans Fat 0g",
+      "Cholesterol 50mg 17%",
+      "Sodium 230mg 10%",
+      "Total Carbohydrate 0g 0%",
+      "Dietary Fiber 0g 0%",
+      "Total Sugars 0g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 23g",
+      "Vitamin A 40mcg 4%",
+      "Vitamin C 0mg 0%",
+      "Vitamin D 12mcg 60%",
+      "Calcium 9mg 0%",
+      "Iron 0mg 0%",
+      "Potassium 417mg 8%"
+    ],
+    "url": "https://medlineplus.gov/recipes/oven-baked-salmon/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "8b06ebbd3afe8702be937260c5fb75968c1f2cd591288aba49ea6c361c0005e1",
+    "title": "Oven Baked Salmon",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Oven Baked Salmon",
+      "image": [
+        "https://medlineplus.gov/images/recipe_ovenbakedsalmon_.jpg",
+        "https://medlineplus.gov/images/recipe_ovenbakedsalmon_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2022-06-21",
+      "description": "This oven baked salmon recipe is quick and easy. Bake in a pan for nice flaky tenderness and light, savory flavor. It's low fat and high in protein. Enjoy!",
+      "prepTime": "PT05M",
+      "cookTime": "PT15M",
+      "totalTime": "PT20M",
+      "keywords": "lunch,dinner,gluten sensitive,dairy free,salmon, oven baked salmon,baked salmon,fish",
+      "recipeYield": "4 servings",
+      "recipeCategory": "lunch,dinner,gluten sensitive",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 portion",
+        "calories": "160 calories",
+        "fatContent": "7 grams",
+        "saturatedFatContent": "1 gram",
+        "cholesterolContent": "50 milligrams",
+        "sodiumContent": "230 milligrams",
+        "fiberContent": "0 grams",
+        "proteinContent": "23 grams",
+        "carbohydrateContent": "0 grams"
+      },
+      "recipeIngredient": [
+        "1 Tablespoon vegetable oil",
+        "12 to 16 ounces fresh or thawed salmon, cut into 3 or 4 pieces of similar size",
+        "1/4 teaspoon salt",
+        "1/4 teaspoon pepper"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Preheat the oven to 450 °F."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Place the salmon, skin side down, on a foil-lined baking pan. Drizzle the flesh with oil and sprinkle on the salt and pepper."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bake the salmon for 10 to 15 minutes, depending on the thickness and size of the fish pieces."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "The salmon has cooked long enough when it is opaque on the outside and flakes when tested with a fork. If you have a food thermometer, check in the middle of a piece for a temperature of 145 °F."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Remove the pan from the oven and serve the salmon skin side down."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "overnight-oats-for-one": {
+    "slug": "overnight-oats-for-one",
+    "timing": "Prep time: 15 minutes Chill time: 6 to 12 hours Total time: 6 to 12 hours Number of Servings: 1",
+    "ingredients": [
+      "1/3 cup old fashioned rolled oats",
+      "1/3 cup yogurt",
+      "1/3 cup milk",
+      "2 Tablespoons dry milk",
+      "dash of cinnamon or other spice",
+      "1/2 cup bite-sized cut fruit (fresh, canned or frozen)"
+    ],
+    "steps": [
+      "In a small bowl or 12-ounce mug, mix oats, yogurt, milk, dry milk and cinnamon.",
+      "Add the fruit now or add just before eating.",
+      "Cover and refrigerate oatmeal mixture for 6 to 12 hours.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Try other fresh, frozen or canned fruits."
+    ],
+    "facts": [
+      "Serving size 1 cup (281g)",
+      "Calories 290",
+      "Total Fat 5g 10%",
+      "Saturated Fat 2.5g 13%",
+      "Trans Fat 0g",
+      "Cholesterol 10mg 3%",
+      "Sodium 150mg 7%",
+      "Total Carbohydrate 46g 17%",
+      "Dietary Fiber 5g 18%",
+      "Total Sugars 21g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 15g",
+      "Vitamin A 58mcg 6%",
+      "Vitamin C 4mg 5%",
+      "Vitamin D 1mcg 6%",
+      "Calcium 388mg 30%",
+      "Iron 2mg 10%",
+      "Potassium 604mg 15%"
+    ],
+    "url": "https://medlineplus.gov/recipes/overnight-oats-for-one/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "fa2afa6ea32215348217609df995a9bd646b8cb21e149e5392dc2af454432e2c",
+    "title": "Overnight Oats for One",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Overnight Oats For One",
+      "image": [
+        "https://medlineplus.gov/images/recipe_overnightoatsforone.jpg",
+        "https://medlineplus.gov/images/recipe_overnightoatsforone_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2022-10-22",
+      "description": "The convenience of making just one serving of these Overnight Oats is so appealing! Best of all, toppings can be varied to your taste preferences.",
+      "prepTime": "PT15M",
+      "cookTime": "PT6-12H",
+      "totalTime": "PT6-12H",
+      "keywords": "overnight oats,yogurt,milk,dry milk,cinnamon,fruit,old fashioned rolled oats,rolled oats,breakfast",
+      "recipeYield": "1 servings",
+      "recipeCategory": "breakfast,low fat,low sodium",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup",
+        "calories": "290 calories",
+        "fatContent": "5 grams",
+        "saturatedFatContent": "2.5 grams",
+        "cholesterolContent": "10 milligrams",
+        "sodiumContent": "150 milligrams",
+        "fiberContent": "5 grams",
+        "proteinContent": "15 grams",
+        "carbohydrateContent": "46 grams"
+      },
+      "recipeIngredient": [
+        "1/3 cup old fashioned rolled oats",
+        "1/3 cup yogurt",
+        "1/3 cup milk",
+        "2 Tablespoons dry milk",
+        "dash of cinnamon or other spice",
+        "1/2 cup bite-sized cut fruit (fresh, canned or frozen)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "In a small bowl or 12-ounce mug, mix oats, yogurt, milk, dry milk and cinnamon."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add the fruit now or add just before eating."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Cover and refrigerate oatmeal mixture for 6 to 12 hours."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "pasta-caprese": {
+    "slug": "pasta-caprese",
+    "timing": "Prep time: 15 minutes Cook time: 6 minutes Total time: 21 minutes Number of Servings: 4",
+    "ingredients": [
+      "8 oz whole-wheat thin spaghetti",
+      "1 Tbsp olive oil",
+      "4 large tomatoes, rinsed, cored, and cubed",
+      "1/4 cup fresh basil leaves, rinsed, dried, and cut into 1/8-inch wide slivers",
+      "3 oz part-skim mozzarella cheese (chunk package), cubed",
+      "8 pitted black olives, cut into long slivers"
+    ],
+    "steps": [
+      "In a 4-quart saucepan, bring 3 quarts of water to a boil over high heat.",
+      "Add spaghetti, and cook according to package directions for the shortest recommended time, about 6 minutes. (Whole-wheat pasta tends to fall apart if overcooked.)",
+      "Reserve 1 cup of the cooking water and set aside. Drain spaghetti.",
+      "Add the spaghetti back into the pasta pot. Toss with olive oil and just enough reserved water to coat well.",
+      "Add the tomatoes, basil, mozzarella, and olives. Toss gently until well mixed.",
+      "Divide pasta evenly among four dinner plates (about 2 and 1/4 cups each). Serve immediately."
+    ],
+    "notes": [],
+    "facts": [
+      "Serving size 2 and 1/4 cup pasta",
+      "Calories 342",
+      "Total Fat 10g",
+      "Saturated Fat 3g",
+      "Cholesterol 11mg",
+      "Sodium 233mg",
+      "Total Carbohydrate 52g",
+      "Dietary Fiber 9g",
+      "Protein 13g",
+      "Potassium 416mg"
+    ],
+    "url": "https://medlineplus.gov/recipes/pasta-caprese/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "18bd2b260191699c4041c7066f36ad75aea5c208ab9b27ebeaab7750de108034",
+    "title": "Pasta Caprese",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "NHLBI",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Pasta Caprese",
+      "image": [
+        "https://medlineplus.gov/images/recipe_pastacaprese.jpg",
+        "https://medlineplus.gov/images/recipe_pastacaprese_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "National Heart, Lung, and Blood Institute"
+      },
+      "datePublished": "2019-02-05",
+      "description": "Use the ripest tomatoes to create a fresh pasta sauce for this dish.",
+      "prepTime": "PT15M",
+      "cookTime": "PT6M",
+      "totalTime": "PT21M",
+      "keywords": "Basil, Mozarella cheese, Pasta, Tomatoes",
+      "recipeYield": "4 servings",
+      "recipeCategory": "Dinner",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "2 and 1/4 cup pasta",
+        "calories": "342 calories",
+        "fatContent": "10 grams",
+        "saturatedFatContent": "3 grams",
+        "cholesterolContent": "11 milligrams",
+        "sodiumContent": "233 milligrams",
+        "fiberContent": "9 grams",
+        "proteinContent": "13 grams",
+        "carbohydrateContent": "52 grams"
+      },
+      "recipeIngredient": [
+        "8 oz whole-wheat thin spaghetti",
+        "1 Tbsp olive oil",
+        "4 large tomatoes, rinsed, cored, and cubed",
+        "1/4 cup fresh basil leaves, rinsed, dried, and cut into 1/8-inch wide slivers",
+        "3 oz part-skim mozzarella cheese (chunk package), cubed",
+        "8 pitted black olives, cut into long slivers"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "In a 4-quart saucepan, bring 3 quarts of water to a boil over high heat."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add spaghetti, and cook according to package directions for the shortest recommended time, about 6 minutes. (Whole-wheat pasta tends to fall apart if overcooked.)"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Reserve 1 cup of the cooking water and set aside. Drain spaghetti."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add the spaghetti back into the pasta pot. Toss with olive oil and just enough reserved water to coat well."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add the tomatoes, basil, mozzarella, and olives. Toss gently until well mixed."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Divide pasta evenly among four dinner plates (about 2 and 1/4 cups each). Serve immediately."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "5.00",
+          "ratingCount": "8"
+        }
+      ]
+    }
+  },
+  "peanut-power-smoothie": {
+    "slug": "peanut-power-smoothie",
+    "timing": "Prep time: 10 minutes Cook time: 0 minutes Total time: 10 minutes Number of Servings: 4",
+    "ingredients": [
+      "1/4 cup peanut butter",
+      "1 3/4 cups banana (or any other fresh or canned and drained fruit)",
+      "1/4 cup nonfat dry milk powder",
+      "1 1/2 cups cold water"
+    ],
+    "steps": [
+      "Put all ingredients in blender. Blend on low until smooth, and serve.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "To avoid peanuts or peanut butter, try sunflower seeds or sunflower seed butter."
+    ],
+    "facts": [
+      "Serving size 1 cup (175g)",
+      "Calories 170",
+      "Total Fat 8g 10%",
+      "Saturated Fat 1.5g 8%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 95mg 4%",
+      "Total Carbohydrate 21g 8%",
+      "Dietary Fiber 3g 11%",
+      "Total Sugars 12g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 6g",
+      "Vitamin A 2mcg 0%",
+      "Vitamin C 7mg 7%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 76mg 6%",
+      "Iron 0mg 0%",
+      "Potassium 401mg 8%"
+    ],
+    "url": "https://medlineplus.gov/recipes/peanut-power-smoothie/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "255f637bafd248ff44cd0d1130efc3ee2d57e0a263839bbbf50bc5b2db5636ff",
+    "title": "Peanut Power Smoothie",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Peanut Power Smoothie",
+      "image": [
+        "https://medlineplus.gov/images/recipe_peanutpowersmoothie.jpg",
+        "https://medlineplus.gov/images/recipe_peanutpowersmoothie_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2019-10-10",
+      "description": "Peanut butter? Check. Banana? Check. A delicious smoothie rich in protein? Check! Try this Peanut Power Smoothie recipe for a powerful start to your day (or workout!)",
+      "prepTime": "PT10M",
+      "cookTime": "PT0M",
+      "totalTime": "PT10M",
+      "keywords": "banana,nonfat dry milk powder,peanut butter,protein",
+      "recipeYield": "4 servings",
+      "recipeCategory": "Drinks",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup (175 grams)",
+        "calories": "170 calories",
+        "fatContent": "8 grams",
+        "saturatedFatContent": "1.5 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "95 milligrams",
+        "fiberContent": "3 grams",
+        "proteinContent": "6 grams",
+        "carbohydrateContent": "21 grams"
+      },
+      "recipeIngredient": [
+        "1/4 cup peanut butter",
+        "1 3/4 cups banana (or any other fresh or canned and drained fruit)",
+        "1/4 cup nonfat dry milk powder",
+        "1 1/2 cups cold water"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Put all ingredients in blender. Blend on low until smooth, and serve."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "5.00",
+          "ratingCount": "15"
+        }
+      ]
+    }
+  },
+  "perfect-hard-cooked-eggs": {
+    "slug": "perfect-hard-cooked-eggs",
+    "timing": "Prep time: 5 minutes Cook time: 20 minutes Total time: 25 minutes Number of Servings: 1",
+    "ingredients": [
+      "Eggs"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Place a single layer of eggs in a saucepan. Add cold water to cover the eggs by at least 1 inch. Heat over high heat just until the water comes to a full boil.",
+      "Take the pan off the heat and cover with a lid or plate. Leave eggs in the hot water. Time depends on egg size: medium - 9 minutes; large - 12 minutes; extra large - 15 minutes",
+      "Immediately drain eggs. Serve warm, or cool completely under cold running water or in ice water. Refrigerate within 2 hours of cooking. Use peeled eggs within 2 days or refrigerate in the shell for up to a week."
+    ],
+    "notes": [
+      "Refrigerate the eggs for 7-10 days before cooking. This gives time for the two membranes inside the shell to separate slightly.",
+      "Let eggs cool after cooking.",
+      "Roll the egg gently on the counter until the shell has small cracks all over.",
+      "Start peeling at the large end.",
+      "Hold the egg under cold running water to help loosen the shell."
+    ],
+    "facts": [
+      "Serving size 1 egg (50g)",
+      "Calories 70",
+      "Total Fat 5g 6%",
+      "Saturated Fat 1.5g 8%",
+      "Trans Fat 0g",
+      "Cholesterol 185mg 62%",
+      "Sodium 70mg 3%",
+      "Total Carbohydrate 0g 0%",
+      "Dietary Fiber 0g 0%",
+      "Total Sugars 0g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 6g",
+      "Vitamin A 80mcg 9%",
+      "Vitamin C 0mg 0%",
+      "Vitamin D 1mcg 6%",
+      "Calcium 28mg 2%",
+      "Iron 1mg 6%",
+      "Potassium 69mg 2%"
+    ],
+    "url": "https://medlineplus.gov/recipes/perfect-hard-cooked-eggs/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "ed4e7fc81ef736d74b73fd5ec4ad5cda0a55450b8d740d41624afa9b6672c8f0",
+    "title": "Perfect Hard-Cooked Eggs",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Perfect Hard-Cooked Eggs",
+      "image": [
+        "https://medlineplus.gov/images/recipe_perfecthardcookedeggs.jpg",
+        "https://medlineplus.gov/images/recipe_perfecthardcookedeggs_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-08-05",
+      "description": "Finally learn how to make the perfect hard-cooked eggs. Keep these hard-boiled eggs on hand for a protein-packed snack or healthy addition to a salad.",
+      "prepTime": "PT5M",
+      "cookTime": "PT20M",
+      "totalTime": "PT25M",
+      "keywords": "stove,hard-cooked eggs,side dishes",
+      "recipeYield": "1 serving",
+      "recipeCategory": "side dishes",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 egg (50 grams)",
+        "calories": "70 calories",
+        "fatContent": "5 grams",
+        "saturatedFatContent": "1.5 grams",
+        "cholesterolContent": "185 milligrams",
+        "sodiumContent": "70 milligrams",
+        "fiberContent": "0 grams",
+        "proteinContent": "6 grams",
+        "carbohydrateContent": "0 grams"
+      },
+      "recipeIngredient": [
+        "Eggs"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Place a single layer of eggs in a saucepan. Add cold water to cover the eggs by at least 1 inch. Heat over high heat just until the water comes to a full boil."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Take the pan off the heat and cover with a lid or plate. Leave eggs in the hot water. Time depends on egg size: medium - 9 minutes; large - 12 minutes; extra large - 15 minutes"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Immediately drain eggs. Serve warm, or cool completely under cold running water or in ice water. Refrigerate within 2 hours of cooking. Use peeled eggs within 2 days or refrigerate in the shell for up to a week."
+        }
+      ]
+    }
+  },
+  "quick-black-bean-dip": {
+    "slug": "quick-black-bean-dip",
+    "timing": "Prep time: 10 minutes Cook time: 0 minutes Total time: 10 minutes Number of Servings: 24",
+    "ingredients": [
+      "1 can (15 ounces) black beans, rinsed, drained",
+      "1/2 cup diced onion",
+      "1 small bell pepper, diced",
+      "1 medium tomato, diced",
+      "1 clove garlic, minced, or 1/4 teaspoon garlic powder",
+      "1 teaspoon cumin",
+      "1 teaspoon chili powder",
+      "1 Tablespoon cider vinegar"
+    ],
+    "steps": [
+      "For a smooth dip, place ingredients in a food processor or blender and process until smooth OR For a chunky dip, mash beans well with a fork or potato masher, stir in remaining ingredients. Add additional liquid as needed for desired consistency.",
+      "Add salt and pepper to taste.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Serve with fresh vegetables or baked tortilla chips.",
+      "Cook your own dry beans. One can (15 ounces) is about 1 1/2 to 1 3/4 cups drained beans."
+    ],
+    "facts": [
+      "Serving size 2 Tablespoons (33g)",
+      "Calories 20",
+      "Total Fat 0g 0%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 30mg 1%",
+      "Total Carbohydrate 4g 1%",
+      "Dietary Fiber 1g 4%",
+      "Total Sugars 0g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 1g",
+      "Vitamin A 3mcg 0%",
+      "Vitamin C 6mg 6%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 9mg 0%",
+      "Iron 0mg 0%",
+      "Potassium 71mg 2%"
+    ],
+    "url": "https://medlineplus.gov/recipes/quick-black-bean-dip/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "8909e02f447f339cf3e160adc04bdc886a89269d2a0da7f611ca96ad08bde12d",
+    "title": "Quick Black Bean Dip",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Quick Black Bean Dip",
+      "image": [
+        "https://medlineplus.gov/images/recipe_quickblackbeandip.jpg",
+        "https://medlineplus.gov/images/recipe_quickblackbeandip_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2020-06-12",
+      "description": "This Quick Black Bean Dip with tomatoes, peppers, and a kick of chili powder only takes 10 minutes to throw together! Try serving it with fresh vegetables or tortilla chips at your next party.",
+      "prepTime": "PT10M",
+      "cookTime": "PT0M",
+      "totalTime": "PT10M",
+      "keywords": "black beans,onion,bell pepper,tomato,cumin",
+      "recipeYield": "24 servings",
+      "recipeCategory": "Dips, Salsas, and Sauces",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "2 Tablespoons (33 grams)",
+        "calories": "20 calories",
+        "fatContent": "0 grams",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "30 milligrams",
+        "fiberContent": "1 gram",
+        "proteinContent": "1 gram",
+        "carbohydrateContent": "4 grams"
+      },
+      "recipeIngredient": [
+        "1 can (15 ounces) black beans, rinsed, drained",
+        "1/2 cup diced onion",
+        "1 small bell pepper, diced",
+        "1 medium tomato, diced",
+        "1 clove garlic, minced, or 1/4 teaspoon garlic powder",
+        "1 teaspoon cumin",
+        "1 teaspoon chili powder",
+        "1 Tablespoon cider vinegar"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "For a smooth dip, place ingredients in a food processor or blender and process until smooth OR For a chunky dip, mash beans well with a fork or potato masher, stir in remaining ingredients. Add additional liquid as needed for desired consistency."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add salt and pepper to taste."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "5.00",
+          "ratingCount": "31"
+        }
+      ]
+    }
+  },
+  "quinoa-salad": {
+    "slug": "quinoa-salad",
+    "timing": "Prep time: 15 minutes Cook time: 15 minutes Total time: 30 minutes Number of Servings: 9",
+    "ingredients": [
+      "1 cup dry quinoa",
+      "2 cups water or low-sodium vegetable broth",
+      "2 large carrots, diced",
+      "3 large celery stalks, diced",
+      "1 large red bell pepper, diced",
+      "3 green onions, sliced",
+      "3 Tablespoons minced parsley",
+      "1/2 cup rice vinegar",
+      "2 Tablespoons water",
+      "1 Tablespoon vegetable oil",
+      "2 cloves garlic, finely chopped or 1/2 teaspoon garlic powder"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Rinse the quinoa in a fine-mesh wire strainer under running water for 1 minute.",
+      "Bring the water or broth and quinoa to a boil in a 2 to 3-quart saucepan. Lower the heat, cover, and simmer for 15 minutes. Refrigerate until cool.",
+      "While quinoa is cooling, combine all the vegetables in a salad bowl.",
+      "In a small bowl or jar with a tight lid, mix or shake together the dressing ingredients. Add to the vegetables.",
+      "Add quinoa and stir gently to combine.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Try adding chopped cilantro or basil instead of parsley.",
+      "No quinoa? Use bulgur instead."
+    ],
+    "facts": [
+      "Serving size 2/3 cup (142g)",
+      "Calories 110",
+      "Total Fat 3g 4%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 35mg 2%",
+      "Total Carbohydrate 17g 6%",
+      "Dietary Fiber 3g 11%",
+      "Total Sugars 2g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 3g",
+      "Vitamin A 175mcg 19%",
+      "Vitamin C 28mg 31%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 32mg 2%",
+      "Iron 1mg 6%",
+      "Potassium 275mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/quinoa-salad/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "62516a0336732aa469d09d0df2483b381931f9a91765a4ca59544937e548d4b0",
+    "title": "Quinoa Salad",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Quinoa Salad",
+      "image": [
+        "https://medlineplus.gov/images/recipe_quinoasalad.jpg",
+        "https://medlineplus.gov/images/recipe_quinoasalad_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-07-22",
+      "description": "This quinoa salad is high in protein, with a sweet, nutty flavor. Crisp bell peppers, green onion, and carrots add color and freshness to this side dish.",
+      "prepTime": "PT15M",
+      "cookTime": "PT15M",
+      "totalTime": "PT30M",
+      "keywords": "lunch,salads,low fat,dairy free,vegetarian,30 minutes or less,quinoa,carrots,celery,red bell pepper,green onions,parsely,dressing,rice vinegar,garlic",
+      "recipeYield": "9 servings",
+      "recipeCategory": "lunch,salads,low fat,dairy free,vegetarian",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "2/3 cup (142 grams)",
+        "calories": "110 calories",
+        "fatContent": "3 grams",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "35 milligrams",
+        "fiberContent": "3 grams",
+        "proteinContent": "3 grams",
+        "carbohydrateContent": "17 grams"
+      },
+      "recipeIngredient": [
+        "1 cup dry quinoa",
+        "2 cups water or low-sodium vegetable broth",
+        "2 large carrots, diced",
+        "3 large celery stalks, diced",
+        "1 large red bell pepper, diced",
+        "3 green onions, sliced",
+        "3 Tablespoons minced parsley",
+        "1/2 cup rice vinegar",
+        "2 Tablespoons water",
+        "1 Tablespoon vegetable oil",
+        "2 cloves garlic, finely chopped or 1/2 teaspoon garlic powder"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Rinse the quinoa in a fine-mesh wire strainer under running water for 1 minute."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bring the water or broth and quinoa to a boil in a 2 to 3-quart saucepan. Lower the heat, cover, and simmer for 15 minutes. Refrigerate until cool."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "While quinoa is cooling, combine all the vegetables in a salad bowl."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "In a small bowl or jar with a tight lid, mix or shake together the dressing ingredients. Add to the vegetables."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add quinoa and stir gently to combine."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "rice-bowl-southwestern-style": {
+    "slug": "rice-bowl-southwestern-style",
+    "timing": "Prep time: 15 minutes Cook time: 10 minutes Total time: 25 minutes Number of Servings: 2",
+    "ingredients": [
+      "1 teaspoon vegetable oil",
+      "1 cup chopped vegetables (try a mixture - bell peppers, onion, corn, tomato, zucchini)",
+      "1 cup cooked meat (chopped or shredded), beans or tofu",
+      "1 cup cooked brown rice",
+      "2 Tablespoons salsa, shredded cheese or low-fat sour cream"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "In a medium skillet, heat oil over medium high heat (350 °F in an electric skillet). Add vegetables and cook until tender-crisp, about 3 to 5 minutes.",
+      "Add cooked meat, beans or tofu and cooked rice to skillet and heat through.",
+      "Divide rice mixture between two bowls. Top with salsa, cheese or sour cream and serve warm.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "For a spicier dish, add chili powder, red pepper flakes or taco sauce in Step 1.",
+      "You can use any leftover cooked grain in this recipe. Try white or wild rice, quinoa, barley or oatmeal."
+    ],
+    "facts": [
+      "Serving size 1 cup (269g)",
+      "Calories 320",
+      "Total Fat 12g 15%",
+      "Saturated Fat 3.5g 18%",
+      "Trans Fat 0g",
+      "Cholesterol 65mg 22%",
+      "Sodium 410mg 18%",
+      "Total Carbohydrate 35g 13%",
+      "Dietary Fiber 3g 11%",
+      "Total Sugars 3g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 19g",
+      "Vitamin A 52mcg 6%",
+      "Vitamin C 44mg 49%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 33mg 2%",
+      "Iron 1mg 6%",
+      "Potassium 250mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/rice-bowl-southwestern-style/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "c6a0dfd934cde42e2be4ce451781acec378816459f14b647aac698478aed0e99",
+    "title": "Rice Bowl Southwestern Style",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Rice Bowl Southwestern Style",
+      "image": [
+        "https://medlineplus.gov/images/recipe_ricebowlsouthwesternstyle.jpg",
+        "https://medlineplus.gov/images/recipe_ricebowlsouthwesternstyle_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-07-08",
+      "description": "This Rice Bowl Southwestern Style is perfect for meal prep or quick weeknight meals. Use your choice of protein and vegetables, and any leftover cooked grain.",
+      "prepTime": "PT15M",
+      "cookTime": "PT10M",
+      "totalTime": "PT25M",
+      "keywords": "dinner,lunch,30 minutes or less,bell pepper,zucchini,tomato,onion,corn,meat,brown rice,salsa,cheese,sour cream,skillet,bowl",
+      "recipeYield": "2 servings",
+      "recipeCategory": "dinner,lunch",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup (269 grams)",
+        "calories": "320 calories",
+        "fatContent": "12 grams",
+        "saturatedFatContent": "3.5 grams",
+        "cholesterolContent": "65 milligrams",
+        "sodiumContent": "410 milligrams",
+        "fiberContent": "3 grams",
+        "proteinContent": "19 grams",
+        "carbohydrateContent": "35 grams"
+      },
+      "recipeIngredient": [
+        "1 teaspoon vegetable oil",
+        "1 cup chopped vegetables (try a mixture - bell peppers, onion, corn, tomato, zucchini)",
+        "1 cup cooked meat (chopped or shredded), beans or tofu",
+        "1 cup cooked brown rice",
+        "2 Tablespoons salsa, shredded cheese or low-fat sour cream"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "In a medium skillet, heat oil over medium high heat (350 °F in an electric skillet). Add vegetables and cook until tender-crisp, about 3 to 5 minutes."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add cooked meat, beans or tofu and cooked rice to skillet and heat through."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Divide rice mixture between two bowls. Top with salsa, cheese or sour cream and serve warm."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "salmon-pasta-skillet": {
+    "slug": "salmon-pasta-skillet",
+    "timing": "Prep time: 10 minutes Cook time: 20 minutes Total time: 30 minutes Number of Servings: 6",
+    "ingredients": [
+      "1 1/2 cups whole grain pasta (try shells, elbow, or bow tie)",
+      "1 Tablespoon margarine or butter",
+      "2 Tablespoons chopped onion",
+      "1 can (5 ounces) canned salmon, drained (about 1/2 cup cooked fresh salmon)",
+      "2 small tomatoes, chopped",
+      "3 Tablespoons lemon juice",
+      "1 Tablespoon chopped parsley or 1 teaspoon dried parsley",
+      "1/4 teaspoon salt"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Cook pasta according to package directions. Drain, then set aside.",
+      "While pasta is cooking, heat margarine or butter in a medium skillet over medium heat (300 °F in an electric skillet). Add onion and cook until tender.",
+      "Add cooked pasta, salmon, tomato, lemon juice, parsley and salt. Cook until heated through.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "No salmon? Use canned tuna or mackerel instead."
+    ],
+    "facts": [
+      "Serving size 1/2 cup (157g)",
+      "Calories 150",
+      "Total Fat 3.5g 4%",
+      "Saturated Fat 0.5g 3%",
+      "Trans Fat 0g",
+      "Cholesterol 20mg 7%",
+      "Sodium 210mg 9%",
+      "Total Carbohydrate 22g 8%",
+      "Dietary Fiber 2g 7%",
+      "Total Sugars 2g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 10g",
+      "Vitamin A 26mcg 3%",
+      "Vitamin C 11mg 13%",
+      "Vitamin D 3mcg 15%",
+      "Calcium 34mg 2%",
+      "Iron 1mg 6%",
+      "Potassium 123mg 2%"
+    ],
+    "url": "https://medlineplus.gov/recipes/salmon-pasta-skillet/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "f1c5532b2ed85d99225d84a06ba181bbdeaef29c6157f24b6c9c584d82391fba",
+    "title": "Salmon Pasta Skillet",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Salmon Pasta Skillet",
+      "image": [
+        "https://medlineplus.gov/images/recipe_salmonpastaskillet.jpg",
+        "https://medlineplus.gov/images/recipe_salmonpastaskillet_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-06-10",
+      "description": "Try this easy salmon pasta skillet dish for a healthy, family-friendly meal. Use cooked fresh salmon or canned. It's tasty, quick, and easy to make!",
+      "prepTime": "PT10M",
+      "cookTime": "PT20M",
+      "totalTime": "PT30M",
+      "keywords": "dinner,low fat,dairy free,whole grain pasta,margarine,butter,salmon,onion,tomatoes,lemon juice,parsley,skillet",
+      "recipeYield": "6 servings",
+      "recipeCategory": "dinner,low fat,dairy free",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1/2 cup (157 grams)",
+        "calories": "150 calories",
+        "fatContent": "3.5 grams",
+        "saturatedFatContent": "0.5 grams",
+        "cholesterolContent": "20 milligrams",
+        "sodiumContent": "210 milligrams",
+        "fiberContent": "2 grams",
+        "proteinContent": "10 grams",
+        "carbohydrateContent": "22 grams"
+      },
+      "recipeIngredient": [
+        "1 1/2 cups whole grain pasta (try shells, elbow, or bow tie)",
+        "1 Tablespoon margarine or butter",
+        "2 Tablespoons chopped onion",
+        "1 can (5 ounces) canned salmon, drained (about 1/2 cup cooked fresh salmon)",
+        "2 small tomatoes, chopped",
+        "3 Tablespoons lemon juice",
+        "1 Tablespoon chopped parsley or 1 teaspoon dried parsley",
+        "1/4 teaspoon salt"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Cook pasta according to package directions. Drain, then set aside."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "While pasta is cooking, heat margarine or butter in a medium skillet over medium heat (300 °F in an electric skillet). Add onion and cook until tender."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add cooked pasta, salmon, tomato, lemon juice, parsley and salt. Cook until heated through."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ]
+    }
+  },
+  "salmon-salad-mix": {
+    "slug": "salmon-salad-mix",
+    "timing": "Prep time: 10 minutes Cook time: 0 minutes Total time: 10 minutes Number of Servings: 6",
+    "ingredients": [
+      "1 can (14.75 ounce) salmon, drained",
+      "1/4 cup pickle relish (dill or sweet) or chopped pickles",
+      "1/4 cup nonfat or low-fat plain yogurt",
+      "2 Tablespoons mayonnaise",
+      "2 Tablespoons lemon juice (about 1/2 lemon)"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "In a medium bowl, break up salmon and skin and mash small bones with a fork.",
+      "Add relish, yogurt, mayonnaise and lemon juice. Mix together until well combined.",
+      "Chill before serving. Serve on a bed of salad greens or use as a sandwich filling.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Small salmon bones are soft after canning. They can be mashed and eaten for more calcium.",
+      "Salmon skin is also soft after canning. Stir it in for healthy fats (omega-3 fatty acids)."
+    ],
+    "facts": [
+      "Serving size 1/4 cup (99g)",
+      "Calories 130",
+      "Total Fat 7g 9%",
+      "Saturated Fat 1g 5%",
+      "Trans Fat 0g",
+      "Cholesterol 60mg 20%",
+      "Sodium 450mg 20%",
+      "Total Carbohydrate 1g 0%",
+      "Dietary Fiber 0g 0%",
+      "Total Sugars 1g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 17g",
+      "Vitamin A 30mcg 3%",
+      "Vitamin C 3mg 3%",
+      "Vitamin D 10mcg 50%",
+      "Calcium 210mg 15%",
+      "Iron 1mg 6%",
+      "Potassium 238mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/salmon-salad-mix/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "7b34bfd2c6badb07266dde5637232f024dc757bf64fd8a45555e5801c2a96b36",
+    "title": "Salmon Salad Mix",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension"
+  },
+  "skillet-braised-chicken": {
+    "slug": "skillet-braised-chicken",
+    "timing": "Prep time: 5 minutes Cook time: 20 minutes Total time: 25 minutes Number of Servings: 2",
+    "ingredients": [
+      "1 chicken breast",
+      "1 Tablespoon oil",
+      "seasoning (such as salt, pepper, seasoning salt, onion powder or garlic powder)"
+    ],
+    "steps": [
+      "Season the chicken. Saute it for 1 minute per side in a lightly oiled skillet over medium-high heat until lightly browned.",
+      "Cover skillet with a tight-fitting lid. Reduce the heat to low. Cook for 10 minutes. Do not lift the lid.",
+      "Turn off the heat. Let the chicken rest for 10 minutes. Do not remove the lid.",
+      "Check if the chicken is cooked all the way through. If you have a meat thermometer, check in the thickest part to make sure the temperature is at least 165 °F. If not, cover and return to heat.",
+      "Refrigerate leftovers within 2 hours or freeze for longer storage."
+    ],
+    "notes": [],
+    "facts": [
+      "Serving size 1/2 breast (50g)",
+      "Calories 130",
+      "Total Fat 9g 12%",
+      "Saturated Fat 1g 5%",
+      "Trans Fat 0g",
+      "Cholesterol 35mg 12%",
+      "Sodium 30mg 1%",
+      "Total Carbohydrate 0g 0%",
+      "Dietary Fiber 0g 0%",
+      "Total Sugars 0g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 13g",
+      "Vitamin A 3mcg 0%",
+      "Vitamin C 0mg 0%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 6mg 0%",
+      "Iron 0mg 0%",
+      "Potassium 110mg 2%"
+    ],
+    "url": "https://medlineplus.gov/recipes/skillet-braised-chicken/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "a4735386c4a47dff4bc409744b90d9c94bdee855b65d69c15038da4343c8315e",
+    "title": "Skillet Braised Chicken",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Skillet Braised Chicken",
+      "image": [
+        "https://medlineplus.gov/images/recipe_skilletbraisedchicken.jpg",
+        "https://medlineplus.gov/images/recipe_skilletbraisedchicken_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2020-09-10",
+      "description": "You can have moist, tasty chicken for any meal with this Skillet-Braised Chicken recipe. With only three ingredients and a 20 minute cooking time, it's a simple and quick way to add a lean protein source to your diet.",
+      "prepTime": "PT5M",
+      "cookTime": "PT20M",
+      "totalTime": "PT25M",
+      "keywords": "braising,chicken breast,skillet",
+      "recipeYield": "2 servings",
+      "recipeCategory": "Lunch, Dinner",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1/2 breast (50 grams)",
+        "calories": "130 calories",
+        "fatContent": "9 grams",
+        "saturatedFatContent": "1 gram",
+        "cholesterolContent": "35 milligrams",
+        "sodiumContent": "30 milligrams",
+        "fiberContent": "0 grams",
+        "proteinContent": "13 grams",
+        "carbohydrateContent": "0 grams"
+      },
+      "recipeIngredient": [
+        "1 chicken breast",
+        "1 Tablespoon oil",
+        "seasoning (such as salt, pepper, seasoning salt, onion powder or garlic powder)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Season the chicken. Saute it for 1 minute per side in a lightly oiled skillet over medium-high heat until lightly browned."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Cover skillet with a tight-fitting lid. Reduce the heat to low. Cook for 10 minutes. Do not lift the lid."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Turn off the heat. Let the chicken rest for 10 minutes. Do not remove the lid."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Check if the chicken is cooked all the way through. If you have a meat thermometer, check in the thickest part to make sure the temperature is at least 165 °F. If not, cover and return to heat."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours or freeze for longer storage."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.33",
+          "ratingCount": "6"
+        }
+      ]
+    }
+  },
+  "tofu-scramble": {
+    "slug": "tofu-scramble",
+    "timing": "Prep time: 10 minutes Cook time: 10 minutes Total time: 20 minutes Number of Servings: 5",
+    "ingredients": [
+      "14 ounces extra firm tofu",
+      "1 cup onion, chopped",
+      "1 cup bell pepper, chopped (any color)",
+      "1 teaspoon oil",
+      "10 ounces frozen chopped spinach, thawed/drained",
+      "1 teaspoon garlic powder or 4 garlic cloves, minced",
+      "1/2 teaspoon salt",
+      "1/2 teaspoon pepper",
+      "1 ounce (1/4 cup) cheddar cheese"
+    ],
+    "steps": [
+      "Drain and press tofu to remove extra liquid. Crumble; set aside.",
+      "In a medium skillet over medium heat, sauté onion and bell pepper in oil until tender, 5-7 minutes.",
+      "Add spinach, garlic, salt and pepper. Stir to combine.",
+      "Add tofu; cook and stir until heated through. Sprinkle cheese over the top. Serve hot.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "More spice? Try cumin or chili powder. Add other veggies."
+    ],
+    "facts": [
+      "Serving size 1 cup (206g)",
+      "Calories 140",
+      "Total Fat 7g 9%",
+      "Saturated Fat 1.5g 8%",
+      "Trans Fat 0g",
+      "Cholesterol 5mg 2%",
+      "Sodium 320mg 14%",
+      "Total Carbohydrate 10g 4%",
+      "Dietary Fiber 3g 11%",
+      "Total Sugars 3g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 11g",
+      "Vitamin A 398mcg 44%",
+      "Vitamin C 44mg 48%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 224mg 15%",
+      "Iron 2mg 10%",
+      "Potassium 321mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/tofu-scramble/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "ad58c5fc07288fc9a578d8fa579e4390dd1ffd216611dcd1fe60fa9f32082bd4",
+    "title": "Tofu Scramble",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Tofu Scramble",
+      "image": [
+        "https://medlineplus.gov/images/recipe_tofuscramble.jpg",
+        "https://medlineplus.gov/images/recipe_tofuscramble_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2020-06-25",
+      "description": "This Tofu Scramble recipe is a great alternative to scrambled eggs. It's a vegetarian breakfast loaded with onion, peppers, and spinach and topped with cheese.",
+      "prepTime": "PT10M",
+      "cookTime": "PT10M",
+      "totalTime": "PT20M",
+      "keywords": "tofu,onion,bell pepper,spinach,garlic,cheddar cheese",
+      "recipeYield": "5 servings",
+      "recipeCategory": "Breakfast",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 cup (206 grams)",
+        "calories": "140 calories",
+        "fatContent": "7 grams",
+        "saturatedFatContent": "1.5 grams",
+        "cholesterolContent": "5 milligrams",
+        "sodiumContent": "320 milligrams",
+        "fiberContent": "3 grams",
+        "proteinContent": "11 grams",
+        "carbohydrateContent": "10 grams"
+      },
+      "recipeIngredient": [
+        "14 ounces extra firm tofu",
+        "1 cup onion, chopped",
+        "1 cup bell pepper, chopped (any color)",
+        "1 teaspoon oil",
+        "10 ounces frozen chopped spinach, thawed/drained",
+        "1 teaspoon garlic powder or 4 garlic cloves, minced",
+        "1/2 teaspoon salt",
+        "1/2 teaspoon pepper",
+        "1 ounce (1/4 cup) cheddar cheese"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Drain and press tofu to remove extra liquid. Crumble; set aside."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "In a medium skillet over medium heat, sauté onion and bell pepper in oil until tender, 5-7 minutes."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add spinach, garlic, salt and pepper. Stir to combine."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add tofu; cook and stir until heated through. Sprinkle cheese over the top. Serve hot."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.71",
+          "ratingCount": "14"
+        }
+      ]
+    }
+  },
+  "turkey-salad": {
+    "slug": "turkey-salad",
+    "timing": "Prep time: 10 minutes Cook time: 0 minutes Total time: 10 minutes Number of Servings: 8",
+    "ingredients": [
+      "1 1/2 cups cooked turkey or smoked turkey, diced",
+      "1/2 cup walnuts, toasted and chopped",
+      "1/2 cup raisins or other dried fruit",
+      "3/4 cup celery, chopped (about 1.5 stalks)",
+      "1/4 cup diced red or yellow onion (1/4 medium onion)",
+      "1/4 cup diced carrot",
+      "1/4 cup parsley, chopped (optional)",
+      "1 red apple, cored and chopped (about 1 1/2 cups)",
+      "1/3 cup low-fat mayonnaise",
+      "1 Tablespoon vinegar (cider, red or white)"
+    ],
+    "steps": [
+      "Mix turkey, nuts, raisins, celery, onions, carrots, parsley and apple in a large bowl.",
+      "In a small bowl, combine mayonnaise and vinegar; mix well.",
+      "Toss meat mixture with dressing and chill.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Serve cold with lettuce and tomato wedges, or use as sandwich filling."
+    ],
+    "facts": [
+      "Serving size 1/2 cup (97g)",
+      "Calories 160",
+      "Total Fat 8g 10%",
+      "Saturated Fat 1g 5%",
+      "Trans Fat 0g",
+      "Cholesterol 30mg 10%",
+      "Sodium 120mg 5%",
+      "Total Carbohydrate 14g 5%",
+      "Dietary Fiber 2g 7%",
+      "Total Sugars 9g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 9g",
+      "Vitamin A 38mcg 4%",
+      "Vitamin C 2mg 3%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 24mg 2%",
+      "Iron 1mg 6%",
+      "Potassium 244mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/turkey-salad/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "887cf0f55285dff4d98a95d6854ccd7328dbcd3d89715342277f366223a38579",
+    "title": "Turkey Salad",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Turkey Salad",
+      "image": [
+        "https://medlineplus.gov/images/recipe_turkeysalad.jpg",
+        "https://medlineplus.gov/images/recipe_turkeysalad_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2020-01-09",
+      "description": "This delicious turkey salad makes a hearty sandwich filling or serve it cold with lettuce and tomato wedges. Try it for lunch today!",
+      "prepTime": "PT10M",
+      "cookTime": "PT0M",
+      "totalTime": "PT10M",
+      "keywords": "turkey,walnuts,raisins,celery,onion,carrot,apple",
+      "recipeYield": "8 servings",
+      "recipeCategory": "Lunch, Salads",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1/2 cup (97 grams)",
+        "calories": "160 calories",
+        "fatContent": "8 grams",
+        "saturatedFatContent": "1 gram",
+        "cholesterolContent": "30 milligrams",
+        "sodiumContent": "120 milligrams",
+        "fiberContent": "2 grams",
+        "proteinContent": "9 grams",
+        "carbohydrateContent": "14 grams"
+      },
+      "recipeIngredient": [
+        "1 1/2 cups cooked turkey or smoked turkey, diced",
+        "1/2 cup walnuts, toasted and chopped",
+        "1/2 cup raisins or other dried fruit",
+        "3/4 cup celery, chopped (about 1.5 stalks)",
+        "1/4 cup diced red or yellow onion (1/4 medium onion)",
+        "1/4 cup diced carrot",
+        "1/4 cup parsley, chopped (optional)",
+        "1 red apple, cored and chopped (about 1 1/2 cups)",
+        "1/3 cup low-fat mayonnaise",
+        "1 Tablespoon vinegar (cider, red or white)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Mix turkey, nuts, raisins, celery, onions, carrots, parsley and apple in a large bowl."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "In a small bowl, combine mayonnaise and vinegar; mix well."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Toss meat mixture with dressing and chill."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.57",
+          "ratingCount": "45"
+        }
+      ]
+    }
+  },
+  "vegetarian-chili": {
+    "slug": "vegetarian-chili",
+    "timing": "Prep time: 15 minutes Cook time: 30 minutes Total time: 45 minutes Number of Servings: 8",
+    "ingredients": [
+      "2 teaspoons vegetable oil",
+      "2 cloves garlic, minced or 1/2 teaspoon garlic powder",
+      "1 medium onion, chopped",
+      "1 green bell pepper, chopped",
+      "2 cups sliced mushrooms",
+      "1 cup corn, fresh, frozen or canned and drained",
+      "1 can (15.5 ounces) pinto beans, drained and rinsed",
+      "1 can (8 ounces) tomato sauce",
+      "1 can (14.5 ounces) stewed tomatoes with juice",
+      "1/2 cup bulgur, uncooked",
+      "1 cup water",
+      "1 teaspoon oregano",
+      "1 teaspoon cumin",
+      "1 teaspoon chili powder",
+      "3/4 cup grated cheddar cheese"
+    ],
+    "steps": [
+      "Wash hands with soap and water.",
+      "Heat oil in large skillet over medium-high heat (350 °F in an electric skillet).",
+      "Add garlic, onion, pepper and mushrooms and sauté until tender, about 6 to 8 minutes.",
+      "Add remaining ingredients except cheese.",
+      "Reduce heat to low, cover the skillet and cook until bulgur is soft, 10 to 15 minutes.",
+      "Sprinkle with grated cheese and serve.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Use kidney or black beans instead of pinto beans.",
+      "Cook your own dry beans. One can (15 ounces) is about 1 1/2 to 1 3/4 cups drained beans.",
+      "One large ear of corn makes about 1 cup of cut corn.",
+      "Top with chopped cilantro, avocado, plain yogurt or any mix.",
+      "Add cayenne pepper or hot sauce if you like a spicy chili.",
+      "If you like a thinner chili, add more water at the end of step 5."
+    ],
+    "facts": [
+      "Serving size 1 cup (236g)",
+      "Calories 180",
+      "Total Fat 6g 8%",
+      "Saturated Fat 2g 10%",
+      "Trans Fat 0g",
+      "Cholesterol 10mg 3%",
+      "Sodium 429mg 18%",
+      "Total Carbohydrate 24g 9%",
+      "Dietary Fiber 3g 11%",
+      "Total Sugars 5g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 9g",
+      "Vitamin A 47mcg 5%",
+      "Vitamin C 16mg 18%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 128mg 10%",
+      "Iron 2mg 10%",
+      "Potassium 128mg 8%"
+    ],
+    "url": "https://medlineplus.gov/recipes/vegetarian-chili/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "2bce5c7409ea894b9efad9e778f26e68d57451331b4f0997476ae097e3d7dd24",
+    "title": "Vegetarian Chili",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension"
+  },
+  "vegetarian-cowboy-salad": {
+    "slug": "vegetarian-cowboy-salad",
+    "timing": "Prep time: 20 minutes Cook time: 0 minutes Total time: 20 minutes Number of Servings: 15",
+    "ingredients": [
+      "2 cans (15 ounces) black-eyed peas or black beans (try a mix, or other types)",
+      "1 1/2 cups corn (canned and drained, frozen, or fresh cooked)",
+      "1 bunch cilantro",
+      "1 bunch green onions (5 green onions)",
+      "3 medium tomatoes",
+      "1 avocado (optional)",
+      "1 Tablespoon canola or vegetable oil",
+      "2 Tablespoons vinegar or lime juice",
+      "1/2 teaspoon each salt and pepper"
+    ],
+    "steps": [
+      "Drain and rinse the black-eyed peas (or black beans) and corn.",
+      "Finely chop the cilantro and green onions.",
+      "Dice the tomatoes and avocado.",
+      "Combine all veggies in a large bowl.",
+      "Mix oil, vinegar or lime juice, salt and pepper together in a small bowl.",
+      "Pour oil mixture over salad ingredients and toss lightly.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [
+      "Use as a filling for tacos, burritos or wraps, on a burger, over a baked potato, or as a snack with tortilla chips.",
+      "Try adding other vegetables such as sweet or hot peppers, cucumber or zucchini.",
+      "Freeze extra lime juice to use later.",
+      "Cook your own dry beans. One can (15 ounces) is about 1 1/2 to 1 3/4 cups drained beans."
+    ],
+    "facts": [
+      "Serving size 1/2 cup (119g)",
+      "Calories 90",
+      "Total Fat 3.5g 4%",
+      "Saturated Fat 0g 0%",
+      "Trans Fat 0g",
+      "Cholesterol 0mg 0%",
+      "Sodium 260mg 11%",
+      "Total Carbohydrate 14g 5%",
+      "Dietary Fiber 5g 18%",
+      "Total Sugars 2g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 4g",
+      "Vitamin A 8mcg 1%",
+      "Vitamin C 8mg 8%",
+      "Vitamin D 0mcg 0%",
+      "Calcium 27mg 2%",
+      "Iron 1mg 6%",
+      "Potassium 291mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/vegetarian-cowboy-salad/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "25b77470524b927a1e052dea3e28060c4dea1733c898a40775be4e57389f2dd3",
+    "title": "Vegetarian Cowboy Salad",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Vegetarian Cowboy Salad",
+      "image": [
+        "https://medlineplus.gov/images/recipe_vegetariancowboysalad.jpg",
+        "https://medlineplus.gov/images/recipe_vegetariancowboysalad_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2020-06-04",
+      "description": "This colorful Vegetarian Cowboy Salad is a cross between a bean salad and a fresh salsa. It can be used as a filling for tacos, burritos or wraps, on a burger, over a baked potato, or as a snack with tortilla chips.",
+      "prepTime": "PT20M",
+      "cookTime": "PT0M",
+      "totalTime": "PT20M",
+      "keywords": "black beans,black eyed peas,corn,tomato,avocado",
+      "recipeYield": "15 servings",
+      "recipeCategory": "Salads, Lunch, Side Dishes",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1/2 cup (119 grams)",
+        "calories": "90 calories",
+        "fatContent": "3.5 grams",
+        "saturatedFatContent": "0 grams",
+        "cholesterolContent": "0 milligrams",
+        "sodiumContent": "260 milligrams",
+        "fiberContent": "5 grams",
+        "proteinContent": "4 grams",
+        "carbohydrateContent": "14 grams"
+      },
+      "recipeIngredient": [
+        "2 cans (15 ounces) black-eyed peas or black beans (try a mix, or other types)",
+        "1 1/2 cups corn (canned and drained, frozen, or fresh cooked)",
+        "1 bunch cilantro",
+        "1 bunch green onions (5 green onions)",
+        "3 medium tomatoes",
+        "1 avocado (optional)",
+        "1 Tablespoon canola or vegetable oil",
+        "2 Tablespoons vinegar or lime juice",
+        "1/2 teaspoon each salt and pepper"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Drain and rinse the black-eyed peas (or black beans) and corn."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Finely chop the cilantro and green onions."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Dice the tomatoes and avocado."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Combine all veggies in a large bowl."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Mix oil, vinegar or lime juice, salt and pepper together in a small bowl."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Pour oil mixture over salad ingredients and toss lightly."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.89",
+          "ratingCount": "37"
+        }
+      ]
+    }
+  },
+  "veggie-omelet-in-a-mug": {
+    "slug": "veggie-omelet-in-a-mug",
+    "timing": "Prep time: 10 minutes Cook time: 3 minutes Total time: 13 minutes Number of Servings: 1",
+    "ingredients": [
+      "2 eggs",
+      "2 Tablespoons low-fat or nonfat milk",
+      "1 dash salt",
+      "1 dash pepper",
+      "1/4 cup finely chopped vegetables (any type)",
+      "2 Tablespoons grated cheese (any type)"
+    ],
+    "steps": [
+      "Wash hands with soap and water. Gather ingredients and cooking tools.",
+      "Lightly grease the inside of a 12-ounce microwave-safe mug.",
+      "Use a fork to combine the eggs, milk, salt and pepper in the mug and stir well. Mix in the vegetables and cheese.",
+      "Microwave on HIGH for 45 seconds. Stir. Return to the microwave and cook on HIGH until the mixture has puffed and set, 60 to 90 seconds. The omelet may look wet on the top but it will dry as it cools."
+    ],
+    "notes": [
+      "To make a meal, serve with a slice of whole grain toast and fruit."
+    ],
+    "facts": [
+      "Serving size 1 omelet (169g)",
+      "Calories 220",
+      "Total Fat 15g 19%",
+      "Saturated Fat 6g 30%",
+      "Trans Fat 0g",
+      "Cholesterol 390mg 130%",
+      "Sodium 400mg 17%",
+      "Total Carbohydrate 5g 2%",
+      "Dietary Fiber 0g 0%",
+      "Total Sugars 3g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 17g",
+      "Vitamin A 242mcg 27%",
+      "Vitamin C 3mg 3%",
+      "Vitamin D 2mcg 10%",
+      "Calcium 203mg 15%",
+      "Iron 2mg 10%",
+      "Potassium 247mg 6%"
+    ],
+    "url": "https://medlineplus.gov/recipes/veggie-omelet-in-a-mug/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "72d0f266c665ef49854ea14f08fb057d8b40df302e519823b6e2dbf2fff2eb6c",
+    "title": "Veggie Omelet in a Mug",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Veggie Omelet in a Mug",
+      "image": [
+        "https://medlineplus.gov/images/recipe_veggieomeletinamug.jpg",
+        "https://medlineplus.gov/images/recipe_veggieomeletinamug_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2021-01-21",
+      "description": "Use your microwave to make this quick and easy Veggie Omelet in a Mug. It provides a classic egg breakfast in seconds. Perfect for a busy morning!",
+      "prepTime": "PT10M",
+      "cookTime": "PT3M",
+      "totalTime": "PT13M",
+      "keywords": "30 minutes or less,eggs,milk,vegetables,vegetarian,breakfast,cheese,microwave,mug",
+      "recipeYield": "1 serving",
+      "recipeCategory": "Vegetarian,Breakfast",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 omelet (169 grams)",
+        "calories": "220 calories",
+        "fatContent": "15 grams",
+        "saturatedFatContent": "6 grams",
+        "cholesterolContent": "390 milligrams",
+        "sodiumContent": "400 milligrams",
+        "fiberContent": "0 grams",
+        "proteinContent": "17 grams",
+        "carbohydrateContent": "5 grams"
+      },
+      "recipeIngredient": [
+        "2 eggs",
+        "2 Tablespoons low-fat or nonfat milk",
+        "1 dash salt",
+        "1 dash pepper",
+        "1/4 cup finely chopped vegetables (any type)",
+        "2 Tablespoons grated cheese (any type)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Wash hands with soap and water. Gather ingredients and cooking tools."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Lightly grease the inside of a 12-ounce microwave-safe mug."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Use a fork to combine the eggs, milk, salt and pepper in the mug and stir well. Mix in the vegetables and cheese."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Microwave on HIGH for 45 seconds. Stir. Return to the microwave and cook on HIGH until the mixture has puffed and set, 60 to 90 seconds. The omelet may look wet on the top but it will dry as it cools."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.67",
+          "ratingCount": "60"
+        }
+      ]
+    }
+  },
+  "veggie-skillet-eggs": {
+    "slug": "veggie-skillet-eggs",
+    "timing": "Prep time: 5 minutes Cook time: 5 minutes Total time: 10 minutes Number of Servings: 6",
+    "ingredients": [
+      "6 medium or large eggs",
+      "1/4 teaspoon pepper",
+      "1/2 teaspoon oregano or basil",
+      "1/3 cup shredded cheese (1 1/2 ounces)",
+      "2 teaspoons oil",
+      "1 small onion, chopped (about 2/3 cup)",
+      "1 clove garlic, chopped (or 1/8 teaspoon garlic powder)",
+      "2 cups fresh, canned or frozen mixed vegetables (green beans, zucchini, peas, corn, broccoli, mushrooms)",
+      "1 medium tomato, sliced"
+    ],
+    "steps": [
+      "Beat eggs with pepper, oregano or basil, and cheese in a medium bowl.",
+      "Heat oil in a medium skillet. Add onions, garlic, and other vegetables and cook on medium (300 °F in an electric skillet) until soft.",
+      "Pour egg mixture over vegetables. With knife or spatula, lift outer edges of eggs so egg mixture flows to the bottom of the pan.",
+      "Cook until eggs are set, about 6 minutes. Top with tomato slices.",
+      "Cut into 6 wedges; serve hot.",
+      "Refrigerate leftovers within 2 hours."
+    ],
+    "notes": [],
+    "facts": [
+      "Serving size 1 wedge (139g)",
+      "Calories 130",
+      "Total Fat 8g 10%",
+      "Saturated Fat 2.5g 13%",
+      "Trans Fat 0g",
+      "Cholesterol 170mg 57%",
+      "Sodium 180mg 8%",
+      "Total Carbohydrate 5g 2%",
+      "Dietary Fiber 1g 4%",
+      "Total Sugars 3g",
+      "Includes 0g Added Sugars 0%",
+      "Protein 8g",
+      "Vitamin A 107mcg 12%",
+      "Vitamin C 6mg 7%",
+      "Vitamin D 1mcg 6%",
+      "Calcium 91mg 8%",
+      "Iron 1mg 6%",
+      "Potassium 226mg 4%"
+    ],
+    "url": "https://medlineplus.gov/recipes/veggie-skillet-eggs/",
+    "checkedOn": "2026-09-11",
+    "htmlSha256": "ecb83614ecc2b5f90d18e6b2467bdf0b3d6a584b1f26b3cac16b6a5fce97ceee",
+    "title": "Veggie Skillet Eggs",
+    "publisher": "MedlinePlus, National Library of Medicine",
+    "origin": "Food Hero / Oregon State University Extension",
+    "jsonLdForComparisonOnly": {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Veggie Skillet Eggs",
+      "image": [
+        "https://medlineplus.gov/images/recipe_veggieskilleteggs.jpg",
+        "https://medlineplus.gov/images/recipe_veggieskilleteggs_fb.jpg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Food Hero"
+      },
+      "datePublished": "2019-09-19",
+      "description": "Start your day off with a satisfying, hearty breakfast: Veggie Skillet Eggs. Zucchini? Broccoli? Corn? You choose your favorite veggies to throw in and modify the recipe to your tastes.",
+      "prepTime": "PT5M",
+      "cookTime": "PT5M",
+      "totalTime": "PT10M",
+      "keywords": "cheese,eggs,vegetables",
+      "recipeYield": "6 servings",
+      "recipeCategory": "Breakfast",
+      "recipeCuisine": "American",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 wedge (139 grams)",
+        "calories": "130 calories",
+        "fatContent": "8 grams",
+        "saturatedFatContent": "2.5 grams",
+        "cholesterolContent": "170 milligrams",
+        "sodiumContent": "180 milligrams",
+        "fiberContent": "1 gram",
+        "proteinContent": "8 grams",
+        "carbohydrateContent": "5 grams"
+      },
+      "recipeIngredient": [
+        "6 medium or large eggs",
+        "1/4 teaspoon pepper",
+        "1/2 teaspoon oregano or basil",
+        "1/3 cup shredded cheese (1 1/2 ounces)",
+        "2 teaspoons oil",
+        "1 small onion, chopped (about 2/3 cup)",
+        "1 clove garlic, chopped (or 1/8 teaspoon garlic powder)",
+        "2 cups fresh, canned or frozen mixed vegetables (green beans, zucchini, peas, corn, broccoli, mushrooms)",
+        "1 medium tomato, sliced"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Beat eggs with pepper, oregano or basil, and cheese in a medium bowl."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Heat oil in a medium skillet. Add onions, garlic, and other vegetables and cook on medium (300 °F in an electric skillet) until soft."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Pour egg mixture over vegetables. With knife or spatula, lift outer edges of eggs so egg mixture flows to the bottom of the pan."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Cook until eggs are set, about 6 minutes. Top with tomato slices."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Cut into 6 wedges; serve hot."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Refrigerate leftovers within 2 hours."
+        }
+      ],
+      "aggregateRating": [
+        {
+          "@type": "AggregateRating",
+          "ratingValue": "4.73",
+          "ratingCount": "44"
+        }
+      ]
+    }
+  }
+}

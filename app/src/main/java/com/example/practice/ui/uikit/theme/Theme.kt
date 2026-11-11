@@ -20,7 +20,7 @@ private val DarkColorScheme = darkColorScheme(
     onSecondary = Black,
 
     tertiary = LightPurple,
-    onTertiary = Black,
+    onTertiary = PurpleGrey40,
 
     background = Black,
     onBackground = White,

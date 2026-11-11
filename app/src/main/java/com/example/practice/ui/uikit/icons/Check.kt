@@ -10,37 +10,31 @@ import androidx.compose.ui.unit.dp
 
 val Icons.Check: ImageVector
     get() {
-        if (_Property1Check != null) {
-            return _Property1Check!!
+        if (_Check != null) {
+            return _Check!!
         }
-        _Property1Check = ImageVector.Builder(
-            name = "Property1Check",
-            defaultWidth = 35.dp,
-            defaultHeight = 35.dp,
-            viewportWidth = 35f,
-            viewportHeight = 35f
+        _Check = ImageVector.Builder(
+            name = "Vector",
+            defaultWidth = 52.dp,
+            defaultHeight = 41.dp,
+            viewportWidth = 52f,
+            viewportHeight = 41f
         ).apply {
-            path(fill = SolidColor(Color(0xFFE2F163))) {
-                moveTo(17.5f, 17.5f)
-                moveToRelative(-17.5f, 0f)
-                arcToRelative(17.5f, 17.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, 35f, 0f)
-                arcToRelative(17.5f, 17.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, -35f, 0f)
-            }
             path(
-                stroke = SolidColor(Color(0xFF232323)),
-                strokeLineWidth = 5f,
+                stroke = SolidColor(Color(0xFF896CFE)),
+                strokeLineWidth = 7f,
                 strokeLineCap = StrokeCap.Round,
                 strokeLineJoin = StrokeJoin.Round
             ) {
-                moveTo(10f, 18.566f)
-                lineTo(14.071f, 24f)
-                lineTo(19.536f, 18f)
-                lineTo(25f, 12f)
+                moveTo(3.5f, 21.967f)
+                lineTo(15.714f, 37.25f)
+                lineTo(32.107f, 20.375f)
+                lineTo(48.5f, 3.5f)
             }
         }.build()
 
-        return _Property1Check!!
+        return _Check!!
     }
 
 @Suppress("ObjectPropertyName")
-private var _Property1Check: ImageVector? = null
+private var _Check: ImageVector? = null
