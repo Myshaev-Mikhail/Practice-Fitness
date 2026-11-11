@@ -103,7 +103,7 @@ fun ExerciseCard(
                         painter = rememberVectorPainter(Icons.TimeDefault),
                         contentDescription = null,
                         modifier = Modifier.size(12.dp),
-                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onTertiary)
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSecondary)
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(
@@ -122,7 +122,7 @@ fun ExerciseCard(
                         painter = rememberVectorPainter(Icons.Calories),
                         contentDescription = null,
                         modifier = Modifier.size(12.dp),
-                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onTertiary)
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSecondary)
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(

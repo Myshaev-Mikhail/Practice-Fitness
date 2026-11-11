@@ -1,5 +1,6 @@
 package com.example.practice.ui.screens.nutrition.meal_plans
 
+import android.os.SystemClock
 import com.example.practice.R
 import com.example.practice.ui.screens.nutrition.meal_plans.actions.MealPlanMessage
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,7 @@ import com.example.practice.domain.models.CookingTime
 import com.example.practice.domain.models.DietaryPreference
 import com.example.practice.domain.models.MealPlanPreferences
 import com.example.practice.domain.models.MealType
+import com.example.practice.domain.usecase.MealIdeasUseCase
 import com.example.practice.domain.usecase.MealPlanUseCase
 import com.example.practice.ui.screens.nutrition.meal_plans.actions.CheckboxItem
 import com.example.practice.ui.screens.nutrition.meal_plans.actions.MealPlanAction
@@ -18,13 +20,15 @@ import com.example.practice.ui.screens.nutrition.meal_plans.actions.MealPlanOpti
 import com.example.practice.ui.screens.nutrition.meal_plans.actions.MealPlanSideEffect
 import com.example.practice.ui.screens.nutrition.meal_plans.actions.MealPlanState
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MealPlanViewModel(
-    private val mealPlanUseCase: MealPlanUseCase
+    private val mealPlanUseCase: MealPlanUseCase,
+    private val mealIdeasUseCase: MealIdeasUseCase
 ): ViewModel() {
     private val uiStateFlow = MutableStateFlow(MealPlanState())
     val uiStateEmitter = uiStateFlow.asStateFlow()
@@ -47,13 +51,9 @@ class MealPlanViewModel(
             }
 
             is MealPlanAction.NavigationNextPressed -> {
-                if (!uiStateFlow.value.isSaving && validateAnswers(includeGoals = false)) {
+                if (!uiStateFlow.value.isSaving && validateAnswers(includeGoals = action.includeGoals)) {
                     sideEffectFlow.value = MealPlanSideEffect.ShowNavigationNext
                 }
-            }
-
-            is MealPlanAction.MealPlanCreatedPressed -> {
-                saveMealPlan()
             }
 
             is MealPlanAction.DietaryPreferenceClicked -> {
@@ -129,7 +129,7 @@ class MealPlanViewModel(
             if (answers.allergens.isNullOrEmpty()) add(R.string.meal_plan_allergy_title)
             if (answers.mealTypes.isEmpty()) add(R.string.meal_plan_meal_type_title)
             if (includeGoals) {
-                if (answers.calorieGoal == null) add(R.string.meal_plan_calorie_title)
+                if (answers.isFullDay && answers.calorieGoal == null) add(R.string.meal_plan_calorie_title)
                 if (answers.cookingTime == null) add(R.string.meal_plan_cooking_title)
             }
         }
@@ -143,22 +143,66 @@ class MealPlanViewModel(
 
     fun saveMealPlan() {
         val state = uiStateFlow.value
-        if (state.isSaving) return
-        if (!validateAnswers(includeGoals = true)) return
-        val answers = state.preferences
-        uiStateFlow.update { it.copy(isSaving = true, errorMessage = null) }
+
+        if (state.isSaving || state.isCreated) return
+
+        uiStateFlow.update {
+            it.copy(
+                isSaving = true,
+                isCreated = false,
+                errorMessage = null
+            )
+        }
+
         viewModelScope.launch {
+            val startedAt = SystemClock.elapsedRealtime()
+
             try {
-                mealPlanUseCase.saveMealPlan(answers)
-                sideEffectFlow.value = MealPlanSideEffect.ShowMealPlanCreated
+                val preferences = if (state.preferences.isFullDay) state.preferences
+                else state.preferences.copy(calorieGoal = null)
+                when (mealIdeasUseCase.generateAndSaveMealIdeas(preferences)) {
+                    is MealIdeasUseCase.GenerationResult.Saved -> {
+                        mealPlanUseCase.saveMealPlan(preferences)
+                    }
+
+                    MealIdeasUseCase.GenerationResult.NoMealsMatch -> {
+                        showSaveError(R.string.meal_plan_no_matching_meals)
+                        return@launch
+                    }
+
+                    MealIdeasUseCase.GenerationResult.CalorieGoalUnavailable -> {
+                        showSaveError(R.string.meal_plan_calorie_goal_unavailable)
+                        return@launch
+                    }
+                }
+
+                val elapsedTime =
+                    SystemClock.elapsedRealtime() - startedAt
+
+                val remainingTime =
+                    MIN_LOADING_TIME_MS - elapsedTime
+
+                if (remainingTime > 0L) {
+                    delay(remainingTime)
+                }
+
+                uiStateFlow.update {
+                    it.copy(isCreated = true)
+                }
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                uiStateFlow.update { it.copy(errorMessage = MealPlanMessage(R.string.meal_plan_save_error)) }
+                showSaveError(R.string.meal_plan_save_error)
             } finally {
-                uiStateFlow.update { it.copy(isSaving = false) }
+                uiStateFlow.update {
+                    it.copy(isSaving = false)
+                }
             }
         }
+    }
+
+    private fun showSaveError(@androidx.annotation.StringRes messageRes: Int) {
+        uiStateFlow.update { it.copy(errorMessage = MealPlanMessage(messageRes)) }
     }
 
     fun clearErrorMessage() {
@@ -170,6 +214,8 @@ class MealPlanViewModel(
     }
 
     companion object {
+        private const val MIN_LOADING_TIME_MS = 7_000L
+
         val preferencesItems = listOf(
             MealPlanOption(
                 title = R.string.meal_plan_dietary_title,

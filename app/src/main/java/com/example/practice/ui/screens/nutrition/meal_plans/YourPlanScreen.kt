@@ -61,10 +61,6 @@ fun YourPlanScreen(
             navController.navigate(FitnessScreen.MealPlanPreferences.route)
             viewModel.clearSideEffect()
         }
-
-        is MealPlanSideEffect.ShowMealPlanCreated -> {
-            // Nothing
-        }
     }
 
     Box(

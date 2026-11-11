@@ -73,11 +73,9 @@ fun MealPlanGoalsScreen(
         }
 
         is MealPlanSideEffect.ShowNavigationNext -> {
-            // Nothing
-        }
-
-        is MealPlanSideEffect.ShowMealPlanCreated -> {
-            navController.navigate(FitnessScreen.MealPlanLoading.route)
+            navController.navigate(
+                FitnessScreen.MealPlanLoading.route
+            )
             viewModel.clearSideEffect()
         }
     }
@@ -100,7 +98,9 @@ fun MealPlanGoalsScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp)
         ) {
-            uiState.goalsItems.forEach { item ->
+            val goals = uiState.goalsItems
+                .filter { uiState.preferences.isFullDay || it.title != R.string.meal_plan_calorie_title }
+            goals.forEach { item ->
                 Spacer(modifier = Modifier.height(12.dp))
 
                 MealPlanOptionItem(
@@ -126,7 +126,7 @@ fun MealPlanGoalsScreen(
                 textStyle = MaterialTheme.typography.headlineSmall,
                 buttonColor = MaterialTheme.colorScheme.secondary,
             ) {
-                viewModel.handleUiAction(MealPlanAction.MealPlanCreatedPressed)
+                viewModel.handleUiAction(MealPlanAction.NavigationNextPressed(includeGoals = true))
             }
 
             Spacer(modifier = Modifier.height(12.dp))

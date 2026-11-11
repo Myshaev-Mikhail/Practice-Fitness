@@ -12,4 +12,5 @@ class MealPlanRepositoryImpl(
     override suspend fun save(preferences: MealPlanPreferences) {
         dataStore.save(preferences)
     }
+
 }

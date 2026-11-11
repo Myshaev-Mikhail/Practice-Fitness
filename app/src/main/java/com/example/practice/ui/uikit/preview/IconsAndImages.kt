@@ -909,7 +909,7 @@ fun IconsAndImages() {
                         textColor = MaterialTheme.colorScheme.onSecondary,
                         image = rememberVectorPainter(image = Icons.Store),
                         imageSize = 14.dp,
-                        imageColor = MaterialTheme.colorScheme.onTertiary
+                        imageColor = MaterialTheme.colorScheme.onSecondary
                     ) { }
                 }
             }

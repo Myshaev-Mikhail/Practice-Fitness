@@ -336,4 +336,47 @@
     <string name="meal_plan_description">Choose meals that suit your preferences, cooking time, and goals.</string>
     <string name="meal_plan_missing_answers">Choose an answer in: %1$s.</string>
     <string name="meal_plan_save_error">Could not save your answers. Please try again.</string>
+    <string name="meal_plan_creating">Creating your meal plan</string>
+    <string name="meal_plan_error_description">Go back and try creating the plan again</string>
+    <string name="meal_plan_status_today">Today</string>
+    <string name="meal_plan_status_appropriate">Appropriate</string>
+    <string name="meal_plan_status_earlier">Earlier</string>
+    <string name="meal_ideas_title">Meal Ideas</string>
+    <string name="meal_ideas_day_totals">Total</string>
+    <string name="meal_ideas_daily_plan_title">Your meal plan</string>
+    <string name="meal_ideas_minutes_format">%1$d minutes</string>
+    <string name="meal_ideas_minutes_short_format">%1$d min</string>
+    <string name="meal_ideas_calories_format">%1$d kcal</string>
+    <string name="meal_ideas_calories_short_format">%1$d kcal</string>
+    <plurals name="meal_ideas_dishes">
+        <item quantity="one">%1$d dish</item>
+        <item quantity="other">%1$d dishes</item>
+    </plurals>
+    <string name="meal_ideas_ingredients_title">Ingredients</string>
+    <string name="meal_ideas_preparation_title">Preparation</string>
+    <string name="meal_ideas_bullet_item">• %1$s</string>
+    <string name="meal_ideas_choose_today">Choose this menu for today</string>
+    <string name="meal_ideas_cancel_today">Cancel this menu for today</string>
+    <string name="meal_ideas_selected_today">This is my menu today</string>
+    <string name="meal_ideas_choose_again_today">Choose this menu again today</string>
+    <string name="meal_plan_no_matching_meals">No menu matches your meal and recipe preferences.</string>
+    <string name="meal_plan_calorie_goal_unavailable">No menu fits your calorie range with these preferences.</string>
+    <string name="meal_plan_adjust_preferences">Go back to adjust your preferences and try again.</string>
+    <string name="meal_ideas_calories_per_serving">%1$d kcal per serving</string>
+    <string name="meal_ideas_serving_size">One serving: %1$s</string>
+    <plurals name="meal_ideas_recipe_yield">
+        <item quantity="one">Ingredients for %1$d serving</item>
+        <item quantity="other">Ingredients for %1$d servings</item>
+    </plurals>
+    <string name="meal_ideas_ingredient_amount">%1$s — %2$s %3$s</string>
+    <string name="meal_ideas_ingredient_note">%1$s (%2$s)</string>
+    <string name="meal_ideas_unit_gram">g</string>
+    <string name="meal_ideas_unit_milliliter">mL</string>
+    <string name="meal_ideas_unit_piece">pcs</string>
+    <string name="meal_ideas_unit_teaspoon">tsp</string>
+    <string name="meal_ideas_unit_tablespoon">tbsp</string>
+    <string name="meal_ideas_unit_cup">US cup</string>
+    <string name="meal_ideas_unit_clove">clove(s)</string>
+    <string name="meal_ideas_snack_addition">Snack addition</string>
+    <string name="meal_ideas_dip_tab">Dip</string>
 </resources>

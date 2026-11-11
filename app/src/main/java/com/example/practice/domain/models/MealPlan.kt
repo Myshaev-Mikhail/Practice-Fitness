@@ -26,4 +26,9 @@ data class MealPlanPreferences(
     val mealTypes: Set<MealType> = emptySet(),
     val calorieGoal: CalorieGoal? = null,
     val cookingTime: CookingTime? = null
-)
+) {
+    val isFullDay: Boolean
+        get() = MealType.BREAKFAST in mealTypes &&
+            MealType.LUNCH in mealTypes &&
+            MealType.DINNER in mealTypes
+}

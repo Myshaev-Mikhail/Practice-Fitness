@@ -28,7 +28,6 @@ import com.example.practice.ui.screens.nutrition.meal_plans.actions.MealPlanSide
 import com.example.practice.ui.uikit.components.BottomNavigation
 import com.example.practice.ui.uikit.components.Loading
 import com.example.practice.ui.uikit.components.TopBar
-import kotlinx.coroutines.delay
 
 @Composable
 fun MealPlanLoadingScreen(
@@ -36,16 +35,21 @@ fun MealPlanLoadingScreen(
     viewModel: MealPlanViewModel
 ) {
     val sideEffect by viewModel.sideEffectEmitter.collectAsState()
-
-    var isLoading by remember { mutableStateOf(true) }
+    val uiState by viewModel.uiStateEmitter.collectAsState()
 
     LaunchedEffect(Unit) {
-        delay(5000L)
-        isLoading = false
-        delay(2000L)
-        // TODO: Navigate to the meal plan result screen.
-        navController.navigate(FitnessScreen.Home.route)
-        viewModel.clearSideEffect()
+        viewModel.saveMealPlan()
+    }
+
+    LaunchedEffect(uiState.isCreated) {
+        if (uiState.isCreated) {
+            navController.navigate(FitnessScreen.MealIdeas.route) {
+                popUpTo(FitnessScreen.YourPlan.route) {
+                    inclusive = true
+                }
+                launchSingleTop = true
+            }
+        }
     }
 
     when (sideEffect) {
@@ -59,10 +63,6 @@ fun MealPlanLoadingScreen(
         }
 
         is MealPlanSideEffect.ShowNavigationNext -> {
-            // Nothing
-        }
-
-        is MealPlanSideEffect.ShowMealPlanCreated -> {
             // Nothing
         }
     }
@@ -86,15 +86,38 @@ fun MealPlanLoadingScreen(
                 .padding(horizontal = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Loading(
-                isLoading = isLoading
-            )
+            val errorMessage = uiState.errorMessage
 
-            Text(
-                text = "Creating a plan for you",
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.secondary
-            )
+            if (errorMessage == null) {
+                Loading(isLoading = true)
+
+                Text(
+                    text = stringResource(R.string.meal_plan_creating),
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.secondary,
+                    textAlign = TextAlign.Center
+                )
+            } else {
+                Text(
+                    text = stringResource(errorMessage.messageRes),
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.error,
+                    textAlign = TextAlign.Center
+                )
+
+                Text(
+                    text = stringResource(
+                        if (errorMessage.messageRes == R.string.meal_plan_save_error) {
+                            R.string.meal_plan_error_description
+                        } else {
+                            R.string.meal_plan_adjust_preferences
+                        }
+                    ),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
 
         BottomNavigation(

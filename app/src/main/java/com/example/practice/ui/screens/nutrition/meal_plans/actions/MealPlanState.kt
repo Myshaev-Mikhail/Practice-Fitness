@@ -14,6 +14,7 @@ data class MealPlanState(
     val goalsItems: List<MealPlanOption> = emptyList(),
     val preferences: MealPlanPreferences = MealPlanPreferences(),
     val isSaving: Boolean = false,
+    val isCreated: Boolean = false,
     val errorMessage: MealPlanMessage? = null,
     val isLoading: Boolean = true
 )

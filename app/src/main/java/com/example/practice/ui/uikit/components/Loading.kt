@@ -31,7 +31,7 @@ fun Loading(
         dotCount = 0
         while (isLoading) {
             delay(400L)
-            dotCount = (dotCount + 1) % 8
+            dotCount = (dotCount + 1) % 4
         }
     }
 

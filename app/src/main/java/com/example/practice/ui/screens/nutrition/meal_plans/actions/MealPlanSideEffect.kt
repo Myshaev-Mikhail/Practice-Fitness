@@ -4,5 +4,4 @@ sealed class MealPlanSideEffect {
     data object Empty: MealPlanSideEffect()
     data object ShowNavigateBack: MealPlanSideEffect()
     data object ShowNavigationNext: MealPlanSideEffect()
-    data object ShowMealPlanCreated : MealPlanSideEffect()
 }

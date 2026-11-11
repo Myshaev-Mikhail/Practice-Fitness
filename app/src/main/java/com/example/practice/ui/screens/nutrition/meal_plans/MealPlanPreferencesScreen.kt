@@ -86,10 +86,6 @@ fun MealPlanPreferencesScreen(
             navController.navigate(FitnessScreen.MealPlanGoals.route)
             viewModel.clearSideEffect()
         }
-
-        is MealPlanSideEffect.ShowMealPlanCreated -> {
-            // Nothing
-        }
     }
 
     Column(
@@ -136,7 +132,7 @@ fun MealPlanPreferencesScreen(
                 textStyle = MaterialTheme.typography.headlineSmall,
                 buttonColor = MaterialTheme.colorScheme.secondary,
             ) {
-                viewModel.handleUiAction(MealPlanAction.NavigationNextPressed)
+                viewModel.handleUiAction(MealPlanAction.NavigationNextPressed(includeGoals = false))
             }
 
             Spacer(modifier = Modifier.height(12.dp))

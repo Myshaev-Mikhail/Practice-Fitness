@@ -49,4 +49,11 @@ sealed class FitnessScreen(val route: String) {
     data object MealPlanPreferences : FitnessScreen("meal_plan_preferences")
     data object MealPlanGoals : FitnessScreen("meal_plan_goals")
     data object MealPlanLoading : FitnessScreen("meal_plan_loading")
+    data object MealIdeas : FitnessScreen("meal_ideas")
+    data object MealIdeaDetails : FitnessScreen(
+        "meal_idea_details/{mealIdeaId}/{recipeId}"
+    ) {
+        fun createRoute(mealIdeaId: String, recipeId: String) =
+            "meal_idea_details/$mealIdeaId/$recipeId"
+    }
 }

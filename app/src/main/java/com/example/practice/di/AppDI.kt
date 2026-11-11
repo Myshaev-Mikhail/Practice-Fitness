@@ -7,6 +7,7 @@ import com.example.practice.ui.screens.help.HelpViewModel
 import com.example.practice.ui.screens.home.HomeViewModel
 import com.example.practice.ui.screens.login.LogInViewModel
 import com.example.practice.ui.screens.notificationsetting.NotificationSettingViewModel
+import com.example.practice.ui.screens.nutrition.meal_ideas.MealIdeasViewModel
 import com.example.practice.ui.screens.nutrition.meal_plans.MealPlanViewModel
 import com.example.practice.ui.screens.onbording.OnboardingViewModel
 import com.example.practice.ui.screens.passwordsetting.PasswordSettingViewModel
@@ -29,7 +30,7 @@ val appModule = module {
     viewModel<FavoritesViewModel> { FavoritesViewModel() }
     viewModel<ForgottenPasswordViewModel> { ForgottenPasswordViewModel(get()) }
     viewModel<HelpViewModel> { HelpViewModel() }
-    viewModel<HomeViewModel> { HomeViewModel(get()) }
+    viewModel<HomeViewModel> { HomeViewModel(get(), get()) }
     viewModel<LogInViewModel> { LogInViewModel(get(), get(), get()) }
     viewModel<NotificationSettingViewModel> { NotificationSettingViewModel(get(), get()) }
     viewModel<OnboardingViewModel> { OnboardingViewModel() }
@@ -47,5 +48,6 @@ val appModule = module {
     viewModel<WorkoutViewModel> { WorkoutViewModel(get(), get(), get()) }
     viewModel<WorkoutRoundDetailViewModel> { WorkoutRoundDetailViewModel(get(), get()) }
     viewModel<WorkoutRoundsViewModel> { WorkoutRoundsViewModel(get()) }
-    viewModel<MealPlanViewModel> { MealPlanViewModel(get()) }
+    viewModel<MealPlanViewModel> { MealPlanViewModel(get(), get()) }
+    viewModel<MealIdeasViewModel> { MealIdeasViewModel(get(), get()) }
 }

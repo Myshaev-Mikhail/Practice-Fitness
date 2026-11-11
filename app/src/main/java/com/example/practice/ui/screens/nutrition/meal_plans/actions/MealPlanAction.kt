@@ -8,9 +8,8 @@ import com.example.practice.domain.models.MealType
 
 sealed class MealPlanAction {
     data object NavigateBackPressed : MealPlanAction()
-    data object NavigationNextPressed : MealPlanAction()
+    data class NavigationNextPressed(val includeGoals: Boolean) : MealPlanAction()
     data object StartMealPlanPressed : MealPlanAction()
-    data object MealPlanCreatedPressed : MealPlanAction()
     data class DietaryPreferenceClicked(val value: DietaryPreference) : MealPlanAction()
     data class AllergyClicked(val value: Allergy) : MealPlanAction()
     data class MealTypeClicked(val value: MealType) : MealPlanAction()
